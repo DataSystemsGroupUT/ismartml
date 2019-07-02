@@ -40,5 +40,7 @@ def upload_file():
             flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
             return redirect(request.url)
 
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080,debug=True)
