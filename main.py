@@ -2,7 +2,7 @@ import os
 #import magic
 import urllib.request
 from app import app
-from flask import Flask, flash, request, redirect, render_template
+from flask import Flask, flash, request, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
 from classify import classification_task
@@ -33,14 +33,30 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #flash('File successfully uploaded')
-            outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            flash(outp)
-            return redirect('/')
+            #outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #flash(outp)
+            print(filename)
+            return redirect(url_for(".running",filename=filename))
         else:
             flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
             return redirect(request.url)
 
 
+@app.route('/running')
+def running():
+    filename = request.args['filename'] 
+    return render_template('running.html')
+    #outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080,debug=True)
+@app.route('/run_optimize')
+def run_optimize():
+    filename = request.args.get('filename', None)
+    print(filename)
+    outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    return '<h1>Done!</h1>'
+
+
+app.run(host='0.0.0.0', port=8080,debug=True)
+
+
+

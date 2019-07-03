@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <script>
+      function navigate() {
+        window.location.href = 'done';  // redirect when done!
+      }
+      fetch('slow').then(navigate); // load the slow url then navigate
+    </script>
+  </head>
+  <body>
+    Loading...  <!-- Display a fancy loading screen -->
+  </body>
+</html>
