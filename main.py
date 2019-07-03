@@ -52,8 +52,9 @@ def run_optimize():
     print("last")
     filename=session.get('filename', 'not set')
     print(filename)
-    outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return '<h1>Done!</h1>'
+    results=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    flash(results)
+    return render_template("results.html")
 
 
 app.run(host='0.0.0.0', port=8080,debug=True)

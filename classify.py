@@ -10,6 +10,7 @@ import sklearn.datasets
 import sklearn.metrics
 
 def classification_task(path):
+    results=[]
     data=np.load(path)
     X=data[:,:-1]
     y=data[:,-1]
@@ -22,7 +23,12 @@ def classification_task(path):
     )
     automl.fit(X_train, y_train)
     y_hat = automl.predict(X_test)
-    return "Accuracy score: "+ str(sklearn.metrics.accuracy_score(y_test, y_hat))
+    results.append("Accuracy score: "+ str(sklearn.metrics.accuracy_score(y_test, y_hat)))
+    #results.append(automl.show_models())
+    results.append(automl.cv_results_)
+    #results.append(automl.sprint_statistics())
+    #print("R2 score:", sklearn.metrics.r2_score(y_test, predictions))
+    return results
 
 if __name__=="__main__":
     print(classification_task("../digits_c.np.npy"))
