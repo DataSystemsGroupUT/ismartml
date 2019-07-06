@@ -6,7 +6,7 @@ from app import app
 from flask import Flask, flash, request, redirect, render_template, url_for, session
 from werkzeug.utils import secure_filename
 
-from classify import classification_task
+from optimization import run_task
 
 
 #ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -58,10 +58,7 @@ def run_optimize():
     filename=session.get('filename', 'not set')
     time=int(session.get('time', 'not set'))
     task=session.get('task', 'not set')
-    try:
-        results=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),time)
-    except:
-        return "Error"
+    results=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,time)
     #flash(results)
     #session['results']=results
     df=pd.DataFrame(data=results[1]).sort_values(by="rank_test_scores")
