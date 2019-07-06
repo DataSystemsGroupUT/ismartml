@@ -26,13 +26,16 @@ def upload_file():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
+        time = request.form['time']
+
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #session['filename']=filename
+            session['filename']=filename
+            session['time']=time
             #flash('File successfully uploaded')
             #outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #flash(outp)
@@ -49,10 +52,9 @@ def running():
 
 @app.route('/run_optimize')
 def run_optimize():
-    print("last")
     filename=session.get('filename', 'not set')
-    print(filename)
-    results=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    time=int(session.get('time', 'not set'))
+    results=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),time)
     flash(results)
     return render_template("results.html")
 

@@ -1,6 +1,5 @@
 <!doctype html>
-<title>Python Flask File Upload Example</title>
-<h2>Select a file to upload</h2>
+<title>Autosklearn</title>
 
 
 <p>
@@ -16,6 +15,12 @@
 </p>
 <form method="post" action="/" enctype="multipart/form-data">
     <dl>
+	    	<p>Enter Time Budget in seconds (min 30)</p>
+	    	<p>	
+			<input type="text"  name="time" required>
+		</p>
+	    	<p>Upload Dataset (Numpy Array)</p>
+		
 		<p>
 			<input type="file" name="file" autocomplete="off" required>
 		</p>

@@ -9,7 +9,7 @@ import sklearn.model_selection
 import sklearn.datasets
 import sklearn.metrics
 
-def classification_task(path):
+def classification_task(path, time):
     results=[]
     data=np.load(path)
     X=data[:,:-1]
@@ -18,7 +18,7 @@ def classification_task(path):
     X_train, X_test, y_train, y_test = \
             sklearn.model_selection.train_test_split(X, y, random_state=1)
     automl = autosklearn.classification.AutoSklearnClassifier(
-        time_left_for_this_task=30,
+        time_left_for_this_task=time,
         per_run_time_limit=1
     )
     automl.fit(X_train, y_train)
