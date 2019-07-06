@@ -1,6 +1,7 @@
 import os
 #import magic
 import urllib.request
+import pandas as pd
 from app import app
 from flask import Flask, flash, request, redirect, render_template, url_for, session
 from werkzeug.utils import secure_filename
@@ -55,8 +56,11 @@ def run_optimize():
     filename=session.get('filename', 'not set')
     time=int(session.get('time', 'not set'))
     results=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),time)
-    flash(results)
-    return render_template("results.html")
+    #flash(results)
+    #session['results']=results
+    df=pd.DataFrame(data=results[1]).sort_values(by="rank_test_scores")
+
+    return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
 
 
 app.run(host='0.0.0.0', port=8080,debug=True)
