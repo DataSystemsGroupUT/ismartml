@@ -51,7 +51,9 @@ def upload_file():
 
 @app.route('/running')
 def running():
-    return render_template('running.html')
+    time=session.get('time', 'not set')
+    task=session.get('task', 'not set')
+    return render_template('running.html',task=task,time=time)
 
 @app.route('/run_optimize')
 def run_optimize():
