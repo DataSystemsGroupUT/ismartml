@@ -1,23 +1,31 @@
 import threading
 import time
 
-val=10
+class Result_C:
 
-def f():
+    def __init__(self, value):
+        self.value = value
+
+
+#val=10
+val=Result_C(10)
+
+
+def f(val):
     for i in range(1, 10):
          time.sleep(1)
          print(i)
-         global val
-         val=val*i
+         #global val
+         val.value*=i
 
-def dd():
-    for i in range(1, 10):
+def dd(val):
+    for i in range(1, 5):
          time.sleep(2)
-         print(val)
+         print(val.value)
 
 
-thread = threading.Thread(target=f)
-thread2 = threading.Thread(target=dd)
+thread = threading.Thread(target=f,args=[val])
+thread2 = threading.Thread(target=dd,args=[val])
 thread.start()
 thread2.start()
 
