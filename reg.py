@@ -1,6 +1,7 @@
 import sklearn.model_selection
 import sklearn.datasets
 import sklearn.metrics
+import threading
 
 import autosklearn.regression
 
