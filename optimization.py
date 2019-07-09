@@ -36,6 +36,8 @@ def run_task(path,task, time):
 
 
     automl.fit(X_train, y_train)
+    print("aaaaa")
+    automl.fit(X_train, y_train)
     y_hat = automl.predict(X_test)
     #results.append("Accuracy score: "+ str(sklearn.metrics.accuracy_score(y_test, y_hat)))
     results.append(None)
@@ -48,5 +50,6 @@ def run_task(path,task, time):
 
 
 if __name__=="__main__":
-    print(classification_task("../digits_c.np.npy"))
+    #print(classification_task("../digits_c.np.npy"))
+    run_task("../digits_c.np.npy","classification",30)
 
