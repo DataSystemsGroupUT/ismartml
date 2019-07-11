@@ -71,6 +71,7 @@ def get_spawn_classifier(X_train, y_train):
         )
         automl.fit(X_train, y_train, dataset_name=dataset_name)
         #print(automl.cv_results_)
+        return automl.cv_results_
     return spawn_classifier
 
 
@@ -137,14 +138,14 @@ def run_task(path,task,time,interval=3):
         sklearn.model_selection.train_test_split(X, y, random_state=1)
     
     if task=="classification":
-        spawn_classifier = get_spawn_classifier(X_train, y_train)
+        spawn_estimator = get_spawn_classifier(X_train, y_train)
     elif task=="regression":
-        spawn_classifier = get_spawn_regressor(X_train, y_train)
+        spawn_estimator = get_spawn_regressor(X_train, y_train)
 
     for i in range(interval): 
-        results.append(spawn_classifier(i,time))
-    
-   return results 
+        #results.append(spawn_classifier(i,time))
+        results.append(spawn_estimator(i,time))
+    return results[-1]
     
     """
     print('Starting to build an ensemble!')
@@ -179,4 +180,5 @@ def run_task(path,task,time,interval=3):
     """
 
 if __name__ == '__main__':
+    #run_task("../digits_c.np.npy","classification",30)
     run_task("../digits_c.np.npy","regression",30)

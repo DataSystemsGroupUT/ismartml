@@ -6,7 +6,7 @@ from app import app
 from flask import Flask, flash, request, redirect, render_template, url_for, session
 from werkzeug.utils import secure_filename
 
-from optimization import run_task
+from multi import run_task
 
 
 #ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -63,8 +63,8 @@ def run_optimize():
     results=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,time)
     #flash(results)
     #session['results']=results
-    df=pd.DataFrame(data=results[1]).sort_values(by="rank_test_scores")
-
+    #df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
+    df=pd.DataFrame(data=results)
     return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
 
 
