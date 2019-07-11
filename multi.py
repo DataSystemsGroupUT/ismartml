@@ -1,4 +1,7 @@
 import multiprocessing
+import warnings
+#warnings.filterwarnings(action='once')
+warnings.filterwarnings('ignore')
 import shutil
 
 import sklearn.model_selection
@@ -45,7 +48,7 @@ def get_spawn_classifier(X_train, y_train):
         # models.
         # 3. all instances of the AutoSklearnClassifier must have a different seed!
         automl = AutoSklearnClassifier(
-            time_left_for_this_task=60,
+            time_left_for_this_task=30,
             # sec., how long should this seed fit process run
             per_run_time_limit=15,
             # sec., each model may only take this long before it's killed
@@ -76,14 +79,15 @@ def main():
     processes = []
     spawn_classifier = get_spawn_classifier(X_train, y_train)
     for i in range(4):  # set this at roughly half of your cores
-        p = multiprocessing.Process(
-            target=spawn_classifier,
-            args=(i, 'breast_cancer'),
-        )
-        p.start()
-        processes.append(p)
-    for p in processes:
-        p.join()
+        #p = multiprocessing.Process(
+        #    target=spawn_classifier,
+        #    args=(i, 'breast_cancer'),
+        #)
+        #p.start()
+        #processes.append(p)
+    #for p in processes:
+        #p.join()
+        spawn_classifier(i,"breast_cancer")
 
     print('Starting to build an ensemble!')
     automl = AutoSklearnClassifier(
@@ -114,6 +118,7 @@ def main():
     predictions = automl.predict(X_test)
     print(automl.show_models())
     print("Accuracy score", sklearn.metrics.accuracy_score(y_test, predictions))
+    print(automl.cv_results_)
 
 
 if __name__ == '__main__':
