@@ -14,8 +14,8 @@ from autosklearn.constants import MULTICLASS_CLASSIFICATION
 import numpy as np
 
 
-tmp_folder = '/tmp/autosklearn_parallel_2_example_tmp'
-output_folder = '/tmp/autosklearn_parallel_2_example_out'
+tmp_folder = 'tmp/autosk_tmp'
+output_folder = 'tmp/autosk_out'
 
 
 for dir_ in [tmp_folder, output_folder]:
@@ -69,7 +69,8 @@ def get_spawn_classifier(X_train, y_train):
             smac_scenario_args=smac_scenario_args,
         )
         automl.fit(X_train, y_train, dataset_name=dataset_name)
-        print(automl.cv_results_)
+        #print(automl.cv_results_)
+        print("tick")
     return spawn_classifier
 
 
@@ -94,7 +95,7 @@ def main(path):
     #for p in processes:
         #p.join()
         spawn_classifier(i,"breast_cancer")
-
+    """
     print('Starting to build an ensemble!')
     automl = AutoSklearnClassifier(
         time_left_for_this_task=30,
@@ -124,7 +125,7 @@ def main(path):
     predictions = automl.predict(X_test)
     print(automl.show_models())
     print("Accuracy score", sklearn.metrics.accuracy_score(y_test, predictions))
-
+    """
 
 if __name__ == '__main__':
     main("../digits_c.np.npy")
