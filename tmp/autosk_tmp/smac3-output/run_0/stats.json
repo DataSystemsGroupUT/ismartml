@@ -1,1 +1,1 @@
-{"ta_runs": 9, "wallclock_time_used": 24.946046590805054, "ta_time_used": 17.510181665420532, "inc_changed": 3, "_n_configs_per_intensify": 0, "_n_calls_of_intensify": 0, "_ema_n_configs_per_intensifiy": 0, "_EMA_ALPHA": 0.2}
+{"ta_runs": 10, "wallclock_time_used": 23.816829919815063, "ta_time_used": 12.489330768585205, "inc_changed": 1, "_n_configs_per_intensify": 8, "_n_calls_of_intensify": 4, "_ema_n_configs_per_intensifiy": 2.0, "_EMA_ALPHA": 0.2}

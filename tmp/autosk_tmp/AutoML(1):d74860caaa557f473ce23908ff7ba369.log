@@ -1,721 +1,710 @@
-[DEBUG] [2019-07-11 15:21:44,675:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:21:44,675:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[INFO] [2019-07-11 15:21:44,676:AutoML(1):d74860caaa557f473ce23908ff7ba369] Starting to create dummy predictions.
-[DEBUG] [2019-07-11 15:21:44,677:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:44,677:pynisher] Restricting your function to 30 seconds wall time.
-[DEBUG] [2019-07-11 15:21:44,677:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:44,677:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0e99adb1d0>, 'config': 1, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 1, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': None, 'exclude': None, 'disable_file_output': False, 'instance': None, 'init_params': {'instance': None}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:44,681:pynisher] call function
-[DEBUG] [2019-07-11 15:21:44,694:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:21:44,696:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:21:44,696:pynisher] return value: (None, 0)
-[INFO] [2019-07-11 15:21:44,703:AutoML(1):d74860caaa557f473ce23908ff7ba369] Finished creating dummy predictions.
-[DEBUG] [2019-07-11 15:21:44,968:autosklearn.util.backend] Created Configuration space file tmp/autosk_tmp/space.pcs
-[INFO] [2019-07-11 15:21:44,968:AutoML(1):d74860caaa557f473ce23908ff7ba369] Start Ensemble with 29.70sec time left
-[INFO] [2019-07-11 15:21:44,968:AutoML(1):d74860caaa557f473ce23908ff7ba369] Not starting ensemble builder because ensemble size is <= 0.
-[INFO] [2019-07-11 15:21:44,969:AutoML(1):d74860caaa557f473ce23908ff7ba369] Start SMAC with 29.70sec time left
-[INFO] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] Output to tmp/autosk_tmp/smac3-output
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] Scenario Options:
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] abort_on_first_run_crash = False
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] always_race_default = False
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] execdir = .
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] deterministic = True
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] intensification_percentage = 0.5
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] run_obj = quality
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] overall_obj = par10
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] cost_for_crash = 1.0
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] cutoff = 15.0
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] memory_limit = 1024
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] algo_runs_timelimit = inf
-[DEBUG] [2019-07-11 15:21:44,971:smac.scenario.scenario.Scenario] wallclock_limit = 23.698299407958984
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] ta_run_limit = inf
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] minR = 1
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] maxR = 2000
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] output_dir = tmp/autosk_tmp/smac3-output
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] input_psmac_dirs = tmp/autosk_tmp/smac3-output/run_*
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] shared_model = True
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] initial_incumbent = RANDOM
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] Output directory does not exist! Will be created.
-[DEBUG] [2019-07-11 15:21:44,972:smac.scenario.scenario.Scenario] Writing scenario-file to tmp/autosk_tmp/smac3-output/run_1/scenario.txt.
-[DEBUG] [2019-07-11 15:21:44,978:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:44,978:pynisher] Restricting your function to 15 seconds wall time.
-[DEBUG] [2019-07-11 15:21:44,978:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:44,979:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0e99aaeeb8>, 'config': Configuration:
-  balancing:strategy, Value: 'none'
-  categorical_encoding:__choice__, Value: 'no_encoding'
-  classifier:__choice__, Value: 'qda'
-  classifier:qda:reg_param, Value: 0.3537754099494175
-  imputation:strategy, Value: 'most_frequent'
-  preprocessor:__choice__, Value: 'nystroem_sampler'
-  preprocessor:nystroem_sampler:gamma, Value: 0.00028865670828587595
-  preprocessor:nystroem_sampler:kernel, Value: 'rbf'
-  preprocessor:nystroem_sampler:n_components, Value: 2507
-  rescaling:__choice__, Value: 'normalize'
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 2, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:44,984:pynisher] call function
-[DEBUG] [2019-07-11 15:21:46,394:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:21:46,396:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:21:46,396:pynisher] return value: (None, 0)
-[DEBUG] [2019-07-11 15:21:46,409:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.894382, time: 1.419719, additional: {'duration': 1.3172979354858398, 'num_run': 2, 'train_loss': 0.893569844789357, 'configuration_origin': 'Random initial design.'}
-[DEBUG] [2019-07-11 15:21:46,422:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:21:46,429:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 10 observations
-[DEBUG] [2019-07-11 15:21:46,511:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 54 configurations. Computing the acquisition value for one configuration took 0.001011 seconds on average.
-[DEBUG] [2019-07-11 15:21:46,550:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 29 configurations. Computing the acquisition value for one configuration took 0.001023 seconds on average.
-[DEBUG] [2019-07-11 15:21:46,593:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:46,633:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 68 configurations. Computing the acquisition value for one configuration took 0.001013 seconds on average.
-[DEBUG] [2019-07-11 15:21:46,666:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:46,723:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 71 configurations. Computing the acquisition value for one configuration took 0.001025 seconds on average.
-[DEBUG] [2019-07-11 15:21:46,729:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:46,800:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:46,877:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 121 configurations. Computing the acquisition value for one configuration took 0.001018 seconds on average.
-[DEBUG] [2019-07-11 15:21:46,885:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:46,916:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:46,964:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,004:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 95 configurations. Computing the acquisition value for one configuration took 0.001021 seconds on average.
-[DEBUG] [2019-07-11 15:21:47,007:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,020:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,029:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,076:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 52 configurations. Computing the acquisition value for one configuration took 0.001019 seconds on average.
-[DEBUG] [2019-07-11 15:21:47,092:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,122:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,189:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 90 configurations. Computing the acquisition value for one configuration took 0.001017 seconds on average.
-[DEBUG] [2019-07-11 15:21:47,199:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,203:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,227:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,255:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,298:smac.optimizer.ei_optimization.LocalSearch] Local search took 5 steps and looked at 82 configurations. Computing the acquisition value for one configuration took 0.001024 seconds on average.
-[DEBUG] [2019-07-11 15:21:47,305:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,310:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,347:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:47,420:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 86 configurations. Computing the acquisition value for one configuration took 0.001021 seconds on average.
-[DEBUG] [2019-07-11 15:21:48,167:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)'], [0.8023654211997264, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:21:48,169:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:48,169:pynisher] Restricting your function to 15 seconds wall time.
-[DEBUG] [2019-07-11 15:21:48,169:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:48,170:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0e9994ff98>, 'config': Configuration:
-  balancing:strategy, Value: 'weighting'
-  categorical_encoding:__choice__, Value: 'no_encoding'
-  classifier:__choice__, Value: 'gradient_boosting'
-  classifier:gradient_boosting:criterion, Value: 'mse'
-  classifier:gradient_boosting:learning_rate, Value: 0.011734503830913224
-  classifier:gradient_boosting:loss, Constant: 'deviance'
-  classifier:gradient_boosting:max_depth, Value: 10
-  classifier:gradient_boosting:max_features, Value: 0.49709188725201037
-  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
-  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
-  classifier:gradient_boosting:min_samples_leaf, Value: 18
-  classifier:gradient_boosting:min_samples_split, Value: 6
-  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
-  classifier:gradient_boosting:n_estimators, Value: 116
-  classifier:gradient_boosting:subsample, Value: 0.11007990038285682
-  imputation:strategy, Value: 'mean'
-  preprocessor:__choice__, Value: 'select_percentile_classification'
-  preprocessor:select_percentile_classification:percentile, Value: 23.177726747031304
-  preprocessor:select_percentile_classification:score_func, Value: 'f_classif'
-  rescaling:__choice__, Value: 'standardize'
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 3, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:48,174:pynisher] call function
-[DEBUG] [2019-07-11 15:21:49,823:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:21:49,825:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:21:49,825:pynisher] return value: (None, 0)
-[DEBUG] [2019-07-11 15:21:49,833:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.130337, time: 1.657003, additional: {'duration': 1.6024549007415771, 'num_run': 3, 'train_loss': 0.13082039911308208, 'configuration_origin': 'Random Search (sorted)'}
-[INFO] [2019-07-11 15:21:49,834:smac.intensification.intensification.Intensifier] Challenger (0.1303) is better than incumbent (0.8944) on 1 runs.
-[INFO] [2019-07-11 15:21:49,834:smac.intensification.intensification.Intensifier] Challenger (0.1303) is better than incumbent (0.8944) on 1 runs.
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier] Changes in incumbent:
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier] Changes in incumbent:
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   balancing:strategy : 'none' -> 'weighting'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   balancing:strategy : 'none' -> 'weighting'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'qda' -> 'gradient_boosting'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'qda' -> 'gradient_boosting'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:criterion : None -> 'mse'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:criterion : None -> 'mse'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:learning_rate : None -> 0.011734503830913224
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:learning_rate : None -> 0.011734503830913224
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:loss : None -> 'deviance'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:loss : None -> 'deviance'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_depth : None -> 10
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_depth : None -> 10
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_features : None -> 0.49709188725201037
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_features : None -> 0.49709188725201037
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_leaf_nodes : None -> 'None'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_leaf_nodes : None -> 'None'
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_impurity_decrease : None -> 0.0
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_impurity_decrease : None -> 0.0
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_samples_leaf : None -> 18
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_samples_leaf : None -> 18
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_samples_split : None -> 6
-[INFO] [2019-07-11 15:21:49,835:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_samples_split : None -> 6
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_weight_fraction_leaf : None -> 0.0
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_weight_fraction_leaf : None -> 0.0
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:n_estimators : None -> 116
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:n_estimators : None -> 116
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:subsample : None -> 0.11007990038285682
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:subsample : None -> 0.11007990038285682
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   imputation:strategy : 'most_frequent' -> 'mean'
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   imputation:strategy : 'most_frequent' -> 'mean'
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'nystroem_sampler' -> 'select_percentile_classification'
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'nystroem_sampler' -> 'select_percentile_classification'
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   preprocessor:select_percentile_classification:percentile : None -> 23.177726747031304
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   preprocessor:select_percentile_classification:percentile : None -> 23.177726747031304
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   preprocessor:select_percentile_classification:score_func : None -> 'f_classif'
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   preprocessor:select_percentile_classification:score_func : None -> 'f_classif'
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'normalize' -> 'standardize'
-[INFO] [2019-07-11 15:21:49,836:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'normalize' -> 'standardize'
-[DEBUG] [2019-07-11 15:21:49,840:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:49,840:pynisher] Restricting your function to 13 seconds wall time.
-[DEBUG] [2019-07-11 15:21:49,840:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:49,841:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0e99613438>, 'config': Configuration:
-  balancing:strategy, Value: 'weighting'
+[DEBUG] [2019-07-11 15:51:19,924:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:19,924:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[INFO] [2019-07-11 15:51:19,924:AutoML(1):d74860caaa557f473ce23908ff7ba369] Starting to create dummy predictions.
+[DEBUG] [2019-07-11 15:51:19,925:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:19,925:pynisher] Restricting your function to 30 seconds wall time.
+[DEBUG] [2019-07-11 15:51:19,925:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:19,925:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a5f8ad68>, 'config': 1, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 1, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': None, 'exclude': None, 'disable_file_output': False, 'instance': None, 'init_params': {'instance': None}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:19,930:pynisher] call function
+[DEBUG] [2019-07-11 15:51:19,936:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:19,938:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:19,938:pynisher] return value: (None, 0)
+[INFO] [2019-07-11 15:51:19,945:AutoML(1):d74860caaa557f473ce23908ff7ba369] Finished creating dummy predictions.
+[DEBUG] [2019-07-11 15:51:20,202:autosklearn.util.backend] Created Configuration space file tmp/autosk_tmp/space.pcs
+[INFO] [2019-07-11 15:51:20,203:AutoML(1):d74860caaa557f473ce23908ff7ba369] Start Ensemble with 29.71sec time left
+[INFO] [2019-07-11 15:51:20,203:AutoML(1):d74860caaa557f473ce23908ff7ba369] Not starting ensemble builder because ensemble size is <= 0.
+[INFO] [2019-07-11 15:51:20,203:AutoML(1):d74860caaa557f473ce23908ff7ba369] Start SMAC with 29.71sec time left
+[INFO] [2019-07-11 15:51:20,205:smac.scenario.scenario.Scenario] Output to tmp/autosk_tmp/smac3-output
+[DEBUG] [2019-07-11 15:51:20,205:smac.scenario.scenario.Scenario] Scenario Options:
+[DEBUG] [2019-07-11 15:51:20,205:smac.scenario.scenario.Scenario] abort_on_first_run_crash = False
+[DEBUG] [2019-07-11 15:51:20,205:smac.scenario.scenario.Scenario] always_race_default = False
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] execdir = .
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] deterministic = True
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] intensification_percentage = 0.5
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] run_obj = quality
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] overall_obj = par10
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] cost_for_crash = 1.0
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] cutoff = 15.0
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] memory_limit = 1024
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] algo_runs_timelimit = inf
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] wallclock_limit = 23.712710857391357
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] ta_run_limit = inf
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] minR = 1
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] maxR = 2000
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] output_dir = tmp/autosk_tmp/smac3-output
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] input_psmac_dirs = tmp/autosk_tmp/smac3-output/run_*
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] shared_model = True
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] initial_incumbent = RANDOM
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] Output directory does not exist! Will be created.
+[DEBUG] [2019-07-11 15:51:20,206:smac.scenario.scenario.Scenario] Writing scenario-file to tmp/autosk_tmp/smac3-output/run_1/scenario.txt.
+[DEBUG] [2019-07-11 15:51:20,214:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:20,214:pynisher] Restricting your function to 15 seconds wall time.
+[DEBUG] [2019-07-11 15:51:20,214:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:20,215:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a5caf6d8>, 'config': Configuration:
   categorical_encoding:__choice__, Value: 'one_hot_encoding'
   categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'False'
-  classifier:__choice__, Value: 'decision_tree'
-  classifier:decision_tree:criterion, Value: 'gini'
-  classifier:decision_tree:max_depth_factor, Value: 1.8985072177197597
-  classifier:decision_tree:max_features, Constant: 1.0
-  classifier:decision_tree:max_leaf_nodes, Constant: 'None'
-  classifier:decision_tree:min_impurity_decrease, Constant: 0.0
-  classifier:decision_tree:min_samples_leaf, Value: 20
-  classifier:decision_tree:min_samples_split, Value: 14
-  classifier:decision_tree:min_weight_fraction_leaf, Constant: 0.0
   imputation:strategy, Value: 'mean'
   preprocessor:__choice__, Value: 'polynomial'
   preprocessor:polynomial:degree, Value: 2
   preprocessor:polynomial:include_bias, Value: 'True'
-  preprocessor:polynomial:interaction_only, Value: 'True'
+  preprocessor:polynomial:interaction_only, Value: 'False'
+  regressor:__choice__, Value: 'extra_trees'
+  regressor:extra_trees:bootstrap, Value: 'False'
+  regressor:extra_trees:criterion, Value: 'friedman_mse'
+  regressor:extra_trees:max_depth, Constant: 'None'
+  regressor:extra_trees:max_features, Value: 0.35163489765317213
+  regressor:extra_trees:max_leaf_nodes, Constant: 'None'
+  regressor:extra_trees:min_impurity_decrease, Constant: 0.0
+  regressor:extra_trees:min_samples_leaf, Value: 13
+  regressor:extra_trees:min_samples_split, Value: 16
+  regressor:extra_trees:n_estimators, Constant: 100
   rescaling:__choice__, Value: 'robust_scaler'
-  rescaling:robust_scaler:q_max, Value: 0.7469395719963916
-  rescaling:robust_scaler:q_min, Value: 0.10617266436842783
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 4, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:49,844:pynisher] call function
-[DEBUG] [2019-07-11 15:21:50,713:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:21:50,715:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:21:50,715:pynisher] return value: (None, 0)
-[DEBUG] [2019-07-11 15:21:50,724:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.213483, time: 0.878091, additional: {'duration': 0.8570563793182373, 'num_run': 4, 'train_loss': 0.18736141906873616, 'configuration_origin': 'Random Search'}
-[INFO] [2019-07-11 15:21:50,725:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.1303
-[INFO] [2019-07-11 15:21:50,725:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.1303
-[DEBUG] [2019-07-11 15:21:50,726:root] Remaining budget: 17.947366 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:21:50,726:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:21:50,726:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:21:50,726:smac.stats.stats.Stats] #Incumbent changed: 1
-[DEBUG] [2019-07-11 15:21:50,726:smac.stats.stats.Stats] #Target algorithm runs: 3 / inf
-[DEBUG] [2019-07-11 15:21:50,726:smac.stats.stats.Stats] Used wallclock time: 5.75 / 23.70 sec 
-[DEBUG] [2019-07-11 15:21:50,726:smac.stats.stats.Stats] Used target algorithm runtime: 3.95 / inf sec
-[DEBUG] [2019-07-11 15:21:50,727:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:21:50,727:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:21:50,727:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:21:50,727:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:21:50,738:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:21:50,746:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 12 observations
-[DEBUG] [2019-07-11 15:21:50,829:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 54 configurations. Computing the acquisition value for one configuration took 0.001006 seconds on average.
-[DEBUG] [2019-07-11 15:21:50,836:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:50,908:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 61 configurations. Computing the acquisition value for one configuration took 0.001005 seconds on average.
-[DEBUG] [2019-07-11 15:21:51,598:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.1240404799354827, 'Random Search (sorted)'], [array([0.12404048]), 'Local Search'], [0.12299058676507278, 'Random Search (sorted)'], [0.12299058676507278, 'Random Search (sorted)'], [0.12299058676507278, 'Random Search (sorted)'], [0.12299058676507278, 'Random Search (sorted)'], [0.12299058676507278, 'Random Search (sorted)'], [0.12299058676507278, 'Random Search (sorted)'], [0.12124342642897924, 'Random Search (sorted)'], [0.12124342642897924, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:21:51,610:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:51,610:pynisher] Restricting your function to 12 seconds wall time.
-[DEBUG] [2019-07-11 15:21:51,610:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:51,610:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0e99aae390>, 'config': Configuration:
-  balancing:strategy, Value: 'weighting'
-  categorical_encoding:__choice__, Value: 'no_encoding'
-  classifier:__choice__, Value: 'libsvm_svc'
-  classifier:libsvm_svc:C, Value: 44.33728422041094
-  classifier:libsvm_svc:coef0, Value: 0.8819500694375975
-  classifier:libsvm_svc:gamma, Value: 0.0477263769304141
-  classifier:libsvm_svc:kernel, Value: 'sigmoid'
-  classifier:libsvm_svc:max_iter, Constant: -1
-  classifier:libsvm_svc:shrinking, Value: 'False'
-  classifier:libsvm_svc:tol, Value: 1.6531870905351428e-05
-  imputation:strategy, Value: 'median'
-  preprocessor:__choice__, Value: 'select_rates'
-  preprocessor:select_rates:alpha, Value: 0.435512662979
-  preprocessor:select_rates:mode, Value: 'fpr'
-  preprocessor:select_rates:score_func, Value: 'f_classif'
-  rescaling:__choice__, Value: 'none'
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 5, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:51,615:pynisher] call function
-[DEBUG] [2019-07-11 15:21:52,204:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:21:52,206:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:21:52,206:pynisher] return value: (None, 0)
-[DEBUG] [2019-07-11 15:21:52,214:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.898876, time: 0.596526, additional: {'duration': 0.5759892463684082, 'num_run': 5, 'train_loss': 0.8991130820399114, 'configuration_origin': 'Random Search (sorted)'}
-[DEBUG] [2019-07-11 15:21:52,219:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:52,219:pynisher] Restricting your function to 11 seconds wall time.
-[DEBUG] [2019-07-11 15:21:52,219:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:52,219:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0eb7d4a3c8>, 'config': Configuration:
-  balancing:strategy, Value: 'weighting'
-  categorical_encoding:__choice__, Value: 'one_hot_encoding'
-  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.0002949872251193661
-  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
-  classifier:__choice__, Value: 'gradient_boosting'
-  classifier:gradient_boosting:criterion, Value: 'mse'
-  classifier:gradient_boosting:learning_rate, Value: 0.13588653866399011
-  classifier:gradient_boosting:loss, Constant: 'deviance'
-  classifier:gradient_boosting:max_depth, Value: 1
-  classifier:gradient_boosting:max_features, Value: 0.9229640169700271
-  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
-  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
-  classifier:gradient_boosting:min_samples_leaf, Value: 11
-  classifier:gradient_boosting:min_samples_split, Value: 2
-  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
-  classifier:gradient_boosting:n_estimators, Value: 171
-  classifier:gradient_boosting:subsample, Value: 0.7138568599236942
-  imputation:strategy, Value: 'median'
-  preprocessor:__choice__, Value: 'polynomial'
-  preprocessor:polynomial:degree, Value: 3
-  preprocessor:polynomial:include_bias, Value: 'True'
-  preprocessor:polynomial:interaction_only, Value: 'True'
-  rescaling:__choice__, Value: 'normalize'
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 6, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:52,222:pynisher] call function
-[DEBUG] [2019-07-11 15:21:52,593:pynisher] return value: (None, <class 'pynisher.limit_function_call.MemorylimitException'>)
-[DEBUG] [2019-07-11 15:21:53,602:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.MEMOUT: 5>, cost: 1.000000, time: 0.374434, additional: {'error': 'Memout (used more than 1024 MB).', 'configuration_origin': 'Random Search'}
-[INFO] [2019-07-11 15:21:53,603:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.1303
-[INFO] [2019-07-11 15:21:53,603:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.1303
-[DEBUG] [2019-07-11 15:21:53,604:root] Remaining budget: 15.069071 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] #Incumbent changed: 1
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] #Target algorithm runs: 5 / inf
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] Used wallclock time: 8.63 / 23.70 sec 
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] Used target algorithm runtime: 4.93 / inf sec
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:21:53,605:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:21:53,618:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:21:53,627:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 14 observations
-[DEBUG] [2019-07-11 15:21:53,653:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:53,679:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:53,730:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 64 configurations. Computing the acquisition value for one configuration took 0.001020 seconds on average.
-[DEBUG] [2019-07-11 15:21:53,792:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:53,832:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:53,841:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:53,921:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 156 configurations. Computing the acquisition value for one configuration took 0.001016 seconds on average.
-[DEBUG] [2019-07-11 15:21:54,625:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.12583790620088167, 'Random Search (sorted)'], [0.12583790620088167, 'Random Search (sorted)'], [0.12583790620088167, 'Random Search (sorted)'], [0.12583790620088167, 'Random Search (sorted)'], [array([[0.12583791]]), 'Local Search'], [array([[0.12583791]]), 'Local Search'], [0.12535863241972758, 'Random Search (sorted)'], [0.12535863241972758, 'Random Search (sorted)'], [0.12535863241972758, 'Random Search (sorted)'], [0.12535863241972758, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:21:54,636:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:54,636:pynisher] Restricting your function to 9 seconds wall time.
-[DEBUG] [2019-07-11 15:21:54,636:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:54,637:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0e995187f0>, 'config': Configuration:
-  balancing:strategy, Value: 'none'
-  categorical_encoding:__choice__, Value: 'no_encoding'
-  classifier:__choice__, Value: 'sgd'
-  classifier:sgd:alpha, Value: 0.012870796236550814
-  classifier:sgd:average, Value: 'True'
-  classifier:sgd:eta0, Value: 1.3653343866931814e-05
-  classifier:sgd:fit_intercept, Constant: 'True'
-  classifier:sgd:l1_ratio, Value: 0.001155067997768367
-  classifier:sgd:learning_rate, Value: 'constant'
-  classifier:sgd:loss, Value: 'perceptron'
-  classifier:sgd:penalty, Value: 'elasticnet'
-  classifier:sgd:tol, Value: 1.6969125360958332e-05
-  imputation:strategy, Value: 'most_frequent'
-  preprocessor:__choice__, Value: 'feature_agglomeration'
-  preprocessor:feature_agglomeration:affinity, Value: 'euclidean'
-  preprocessor:feature_agglomeration:linkage, Value: 'average'
-  preprocessor:feature_agglomeration:n_clusters, Value: 49
-  preprocessor:feature_agglomeration:pooling_func, Value: 'mean'
-  rescaling:__choice__, Value: 'none'
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 7, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:54,641:pynisher] call function
-[DEBUG] [2019-07-11 15:21:55,011:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:21:55,013:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:21:55,013:pynisher] return value: (None, 0)
-[DEBUG] [2019-07-11 15:21:55,021:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.049438, time: 0.378100, additional: {'duration': 0.3576645851135254, 'num_run': 7, 'train_loss': 0.024390243902439046, 'configuration_origin': 'Random Search (sorted)'}
-[INFO] [2019-07-11 15:21:55,022:smac.intensification.intensification.Intensifier] Challenger (0.0494) is better than incumbent (0.1303) on 1 runs.
-[INFO] [2019-07-11 15:21:55,022:smac.intensification.intensification.Intensifier] Challenger (0.0494) is better than incumbent (0.1303) on 1 runs.
-[INFO] [2019-07-11 15:21:55,022:smac.intensification.intensification.Intensifier] Changes in incumbent:
-[INFO] [2019-07-11 15:21:55,022:smac.intensification.intensification.Intensifier] Changes in incumbent:
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   balancing:strategy : 'weighting' -> 'none'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   balancing:strategy : 'weighting' -> 'none'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'gradient_boosting' -> 'sgd'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'gradient_boosting' -> 'sgd'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:alpha : None -> 0.012870796236550814
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:alpha : None -> 0.012870796236550814
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:average : None -> 'True'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:average : None -> 'True'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:eta0 : None -> 1.3653343866931814e-05
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:eta0 : None -> 1.3653343866931814e-05
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:fit_intercept : None -> 'True'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:fit_intercept : None -> 'True'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:l1_ratio : None -> 0.001155067997768367
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:l1_ratio : None -> 0.001155067997768367
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:learning_rate : None -> 'constant'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:learning_rate : None -> 'constant'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:loss : None -> 'perceptron'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:loss : None -> 'perceptron'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:penalty : None -> 'elasticnet'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:penalty : None -> 'elasticnet'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:tol : None -> 1.6969125360958332e-05
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   classifier:sgd:tol : None -> 1.6969125360958332e-05
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   imputation:strategy : 'mean' -> 'most_frequent'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   imputation:strategy : 'mean' -> 'most_frequent'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'select_percentile_classification' -> 'feature_agglomeration'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'select_percentile_classification' -> 'feature_agglomeration'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:feature_agglomeration:affinity : None -> 'euclidean'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:feature_agglomeration:affinity : None -> 'euclidean'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:feature_agglomeration:linkage : None -> 'average'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:feature_agglomeration:linkage : None -> 'average'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:feature_agglomeration:n_clusters : None -> 49
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:feature_agglomeration:n_clusters : None -> 49
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:feature_agglomeration:pooling_func : None -> 'mean'
-[INFO] [2019-07-11 15:21:55,023:smac.intensification.intensification.Intensifier]   preprocessor:feature_agglomeration:pooling_func : None -> 'mean'
-[INFO] [2019-07-11 15:21:55,024:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'standardize' -> 'none'
-[INFO] [2019-07-11 15:21:55,024:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'standardize' -> 'none'
-[DEBUG] [2019-07-11 15:21:55,028:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:55,028:pynisher] Restricting your function to 8 seconds wall time.
-[DEBUG] [2019-07-11 15:21:55,028:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:55,028:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0e99518390>, 'config': Configuration:
-  balancing:strategy, Value: 'none'
-  categorical_encoding:__choice__, Value: 'no_encoding'
-  classifier:__choice__, Value: 'xgradient_boosting'
-  classifier:xgradient_boosting:base_score, Constant: 0.5
-  classifier:xgradient_boosting:booster, Value: 'dart'
-  classifier:xgradient_boosting:colsample_bylevel, Value: 0.3632175825183708
-  classifier:xgradient_boosting:colsample_bytree, Value: 0.41405291514702636
-  classifier:xgradient_boosting:gamma, Constant: 0
-  classifier:xgradient_boosting:learning_rate, Value: 0.7566506788586189
-  classifier:xgradient_boosting:max_delta_step, Constant: 0
-  classifier:xgradient_boosting:max_depth, Value: 3
-  classifier:xgradient_boosting:min_child_weight, Value: 7
-  classifier:xgradient_boosting:n_estimators, Constant: 512
-  classifier:xgradient_boosting:normalize_type, Value: 'forest'
-  classifier:xgradient_boosting:rate_drop, Value: 0.15589873449752353
-  classifier:xgradient_boosting:reg_alpha, Value: 0.001938466500218825
-  classifier:xgradient_boosting:reg_lambda, Value: 1.8688381464866498e-05
-  classifier:xgradient_boosting:sample_type, Value: 'weighted'
-  classifier:xgradient_boosting:scale_pos_weight, Constant: 1
-  classifier:xgradient_boosting:subsample, Value: 0.44290986534568305
-  imputation:strategy, Value: 'most_frequent'
-  preprocessor:__choice__, Value: 'select_percentile_classification'
-  preprocessor:select_percentile_classification:percentile, Value: 77.64288194546593
-  preprocessor:select_percentile_classification:score_func, Value: 'mutual_info'
-  rescaling:__choice__, Value: 'minmax'
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 8, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:55,032:pynisher] call function
-[DEBUG] [2019-07-11 15:21:56,065:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:21:56,065:pynisher] return value: (None, 0)
-[DEBUG] [2019-07-11 15:21:56,073:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.CRASHED: 3>, cost: 1.000000, time: 1.038375, additional: {'traceback': 'Traceback (most recent call last):\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/__init__.py", line 30, in fit_predict_try_except_decorator\n    return ta(queue=queue, **kwargs)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/train_evaluator.py", line 648, in eval_holdout\n    evaluator.fit_predict_and_loss(iterative=iterative)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/train_evaluator.py", line 160, in fit_predict_and_loss\n    i, train_indices=train_split, test_indices=test_split\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/train_evaluator.py", line 406, in _partial_fit_and_predict\n    self.Y_train[train_indices])\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/abstract_evaluator.py", line 481, in _fit_and_suppress_warnings\n    model.fit(X, y)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/base.py", line 93, in fit\n    self.fit_estimator(X, y, **fit_params)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/base.py", line 110, in fit_estimator\n    self._final_estimator.fit(X, y, **fit_params)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/components/base.py", line 402, in fit\n    return self.choice.fit(X, y, **kwargs)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/components/base.py", line 158, in fit\n    X, y, n_iter=2, refit=True, sample_weight=sample_weight\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/components/classification/xgradient_boosting.py", line 169, in iterative_fit\n    verbose=False,\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/implementations/xgb.py", line 238, in fit\n    verbose_eval=verbose, xgb_model=xgb_model)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/implementations/xgb.py", line 516, in train\n    xgb_model=xgb_model, callbacks=callbacks)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/implementations/xgb.py", line 383, in _train_internal\n    bst.update(dtrain, i, obj)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/xgboost/core.py", line 1109, in update\n    dtrain.handle))\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/xgboost/core.py", line 176, in _check_call\n    raise XGBoostError(py_str(_LIB.XGBGetLastError()))\nxgboost.core.XGBoostError: Invalid Parameter format for seed expect int but value=\'None\'\n', 'error': 'XGBoostError("Invalid Parameter format for seed expect int but value=\'None\'",)', 'configuration_origin': 'Random Search'}
-[INFO] [2019-07-11 15:21:56,075:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.0494
-[INFO] [2019-07-11 15:21:56,075:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.0494
-[DEBUG] [2019-07-11 15:21:56,076:root] Remaining budget: 12.597485 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] #Incumbent changed: 2
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] #Target algorithm runs: 7 / inf
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] Used wallclock time: 11.10 / 23.70 sec 
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] Used target algorithm runtime: 6.34 / inf sec
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:21:56,076:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:21:56,077:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:21:56,091:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:21:56,102:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 16 observations
-[DEBUG] [2019-07-11 15:21:56,133:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:56,191:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 54 configurations. Computing the acquisition value for one configuration took 0.001015 seconds on average.
-[DEBUG] [2019-07-11 15:21:56,203:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:21:56,256:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 50 configurations. Computing the acquisition value for one configuration took 0.001017 seconds on average.
-[DEBUG] [2019-07-11 15:21:56,951:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)'], [0.08582033588857557, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:21:56,962:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:21:56,963:pynisher] Restricting your function to 6 seconds wall time.
-[DEBUG] [2019-07-11 15:21:56,963:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:21:56,963:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0eb7d4ae80>, 'config': Configuration:
-  balancing:strategy, Value: 'none'
+  rescaling:robust_scaler:q_max, Value: 0.972469944502846
+  rescaling:robust_scaler:q_min, Value: 0.11218021856331271
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 2, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:20,220:pynisher] call function
+[DEBUG] [2019-07-11 15:51:24,311:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:24,313:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:24,313:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:24,322:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.220935, time: 4.099573, additional: {'duration': 4.07478141784668, 'num_run': 2, 'train_loss': 0.09005735961255845, 'configuration_origin': 'Random initial design.'}
+[DEBUG] [2019-07-11 15:51:24,333:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:24,342:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 11 observations
+[DEBUG] [2019-07-11 15:51:24,413:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,485:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 93 configurations. Computing the acquisition value for one configuration took 0.001130 seconds on average.
+[DEBUG] [2019-07-11 15:51:24,505:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,509:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,569:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 57 configurations. Computing the acquisition value for one configuration took 0.001136 seconds on average.
+[DEBUG] [2019-07-11 15:51:24,572:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,608:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,646:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,704:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,785:smac.optimizer.ei_optimization.LocalSearch] Local search took 5 steps and looked at 157 configurations. Computing the acquisition value for one configuration took 0.001121 seconds on average.
+[DEBUG] [2019-07-11 15:51:24,790:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,802:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,862:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 53 configurations. Computing the acquisition value for one configuration took 0.001119 seconds on average.
+[DEBUG] [2019-07-11 15:51:24,869:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,880:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,912:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:24,938:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,000:smac.optimizer.ei_optimization.LocalSearch] Local search took 5 steps and looked at 100 configurations. Computing the acquisition value for one configuration took 0.001124 seconds on average.
+[DEBUG] [2019-07-11 15:51:25,007:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,020:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,064:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,158:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 114 configurations. Computing the acquisition value for one configuration took 0.001119 seconds on average.
+[DEBUG] [2019-07-11 15:51:25,164:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,180:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,208:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,239:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,266:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,292:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,391:smac.optimizer.ei_optimization.LocalSearch] Local search took 7 steps and looked at 166 configurations. Computing the acquisition value for one configuration took 0.001121 seconds on average.
+[DEBUG] [2019-07-11 15:51:25,396:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,405:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,430:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,483:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,542:smac.optimizer.ei_optimization.LocalSearch] Local search took 5 steps and looked at 103 configurations. Computing the acquisition value for one configuration took 0.001122 seconds on average.
+[DEBUG] [2019-07-11 15:51:25,548:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,556:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,633:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 64 configurations. Computing the acquisition value for one configuration took 0.001126 seconds on average.
+[DEBUG] [2019-07-11 15:51:25,662:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,667:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,736:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:25,809:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 126 configurations. Computing the acquisition value for one configuration took 0.001121 seconds on average.
+[DEBUG] [2019-07-11 15:51:26,435:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)'], [1.6543742879381078e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:26,438:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:26,438:pynisher] Restricting your function to 12 seconds wall time.
+[DEBUG] [2019-07-11 15:51:26,438:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:26,438:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a55ea828>, 'config': Configuration:
   categorical_encoding:__choice__, Value: 'one_hot_encoding'
   categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'False'
-  classifier:__choice__, Value: 'adaboost'
-  classifier:adaboost:algorithm, Value: 'SAMME.R'
-  classifier:adaboost:learning_rate, Value: 1.9502177694747658
-  classifier:adaboost:max_depth, Value: 9
-  classifier:adaboost:n_estimators, Value: 362
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'extra_trees_preproc_for_regression'
+  preprocessor:extra_trees_preproc_for_regression:bootstrap, Value: 'True'
+  preprocessor:extra_trees_preproc_for_regression:criterion, Value: 'friedman_mse'
+  preprocessor:extra_trees_preproc_for_regression:max_depth, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:max_features, Value: 0.5996018626510587
+  preprocessor:extra_trees_preproc_for_regression:max_leaf_nodes, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:min_samples_leaf, Value: 13
+  preprocessor:extra_trees_preproc_for_regression:min_samples_split, Value: 13
+  preprocessor:extra_trees_preproc_for_regression:min_weight_fraction_leaf, Constant: 0.0
+  preprocessor:extra_trees_preproc_for_regression:n_estimators, Constant: 100
+  regressor:__choice__, Value: 'ridge_regression'
+  regressor:ridge_regression:alpha, Value: 1.6649133415023938e-05
+  regressor:ridge_regression:fit_intercept, Constant: 'True'
+  regressor:ridge_regression:tol, Value: 0.0008109087144545056
+  rescaling:__choice__, Value: 'standardize'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 3, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:26,443:pynisher] call function
+[DEBUG] [2019-07-11 15:51:26,839:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:26,841:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:26,841:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:26,848:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.603098, time: 0.404393, additional: {'duration': 0.3817925453186035, 'num_run': 3, 'train_loss': 0.4934187081051844, 'configuration_origin': 'Random Search (sorted)'}
+[DEBUG] [2019-07-11 15:51:26,853:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:26,853:pynisher] Restricting your function to 12 seconds wall time.
+[DEBUG] [2019-07-11 15:51:26,853:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:26,854:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a55eab38>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'False'
   imputation:strategy, Value: 'median'
-  preprocessor:__choice__, Value: 'pca'
-  preprocessor:pca:keep_variance, Value: 0.7567038098328437
-  preprocessor:pca:whiten, Value: 'False'
-  rescaling:__choice__, Value: 'standardize'
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 9, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:21:56,967:pynisher] call function
-[DEBUG] [2019-07-11 15:22:01,468:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:22:01,470:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:22:01,470:pynisher] return value: (None, 0)
-[DEBUG] [2019-07-11 15:22:01,480:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.042697, time: 4.507787, additional: {'duration': 4.414390325546265, 'num_run': 9, 'train_loss': 0.0, 'configuration_origin': 'Random Search (sorted)'}
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier] Challenger (0.0427) is better than incumbent (0.0494) on 1 runs.
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier] Challenger (0.0427) is better than incumbent (0.0494) on 1 runs.
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier] Changes in incumbent:
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier] Changes in incumbent:
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   categorical_encoding:__choice__ : 'no_encoding' -> 'one_hot_encoding'
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   categorical_encoding:__choice__ : 'no_encoding' -> 'one_hot_encoding'
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   categorical_encoding:one_hot_encoding:use_minimum_fraction : None -> 'False'
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   categorical_encoding:one_hot_encoding:use_minimum_fraction : None -> 'False'
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'sgd' -> 'adaboost'
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'sgd' -> 'adaboost'
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   classifier:adaboost:algorithm : None -> 'SAMME.R'
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   classifier:adaboost:algorithm : None -> 'SAMME.R'
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   classifier:adaboost:learning_rate : None -> 1.9502177694747658
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   classifier:adaboost:learning_rate : None -> 1.9502177694747658
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   classifier:adaboost:max_depth : None -> 9
-[INFO] [2019-07-11 15:22:01,481:smac.intensification.intensification.Intensifier]   classifier:adaboost:max_depth : None -> 9
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   classifier:adaboost:n_estimators : None -> 362
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   classifier:adaboost:n_estimators : None -> 362
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   imputation:strategy : 'most_frequent' -> 'median'
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   imputation:strategy : 'most_frequent' -> 'median'
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'feature_agglomeration' -> 'pca'
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'feature_agglomeration' -> 'pca'
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   preprocessor:pca:keep_variance : None -> 0.7567038098328437
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   preprocessor:pca:keep_variance : None -> 0.7567038098328437
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   preprocessor:pca:whiten : None -> 'False'
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   preprocessor:pca:whiten : None -> 'False'
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'none' -> 'standardize'
-[INFO] [2019-07-11 15:22:01,482:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'none' -> 'standardize'
-[DEBUG] [2019-07-11 15:22:01,486:pynisher] Restricting your function to 1024 mb memory.
-[DEBUG] [2019-07-11 15:22:01,486:pynisher] Restricting your function to 2 seconds wall time.
-[DEBUG] [2019-07-11 15:22:01,486:pynisher] Allowing a grace period of 0 seconds.
-[DEBUG] [2019-07-11 15:22:01,486:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f0e99613e48>, 'config': Configuration:
-  balancing:strategy, Value: 'weighting'
-  categorical_encoding:__choice__, Value: 'no_encoding'
-  classifier:__choice__, Value: 'extra_trees'
-  classifier:extra_trees:bootstrap, Value: 'False'
-  classifier:extra_trees:criterion, Value: 'gini'
-  classifier:extra_trees:max_depth, Constant: 'None'
-  classifier:extra_trees:max_features, Value: 0.3744681205679864
-  classifier:extra_trees:max_leaf_nodes, Constant: 'None'
-  classifier:extra_trees:min_impurity_decrease, Constant: 0.0
-  classifier:extra_trees:min_samples_leaf, Value: 3
-  classifier:extra_trees:min_samples_split, Value: 18
-  classifier:extra_trees:min_weight_fraction_leaf, Constant: 0.0
-  classifier:extra_trees:n_estimators, Constant: 100
+  preprocessor:__choice__, Value: 'fast_ica'
+  preprocessor:fast_ica:algorithm, Value: 'parallel'
+  preprocessor:fast_ica:fun, Value: 'exp'
+  preprocessor:fast_ica:whiten, Value: 'False'
+  regressor:__choice__, Value: 'libsvm_svr'
+  regressor:libsvm_svr:C, Value: 15.730571498100009
+  regressor:libsvm_svr:degree, Value: 5
+  regressor:libsvm_svr:epsilon, Value: 0.09047553385161353
+  regressor:libsvm_svr:gamma, Value: 9.356233416532629e-05
+  regressor:libsvm_svr:kernel, Value: 'rbf'
+  regressor:libsvm_svr:max_iter, Constant: -1
+  regressor:libsvm_svr:shrinking, Value: 'True'
+  regressor:libsvm_svr:tol, Value: 0.0018973670101844525
+  rescaling:__choice__, Value: 'none'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 4, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:26,857:pynisher] call function
+[DEBUG] [2019-07-11 15:51:27,163:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:27,163:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:27,171:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.CRASHED: 3>, cost: 1.000000, time: 0.313047, additional: {'traceback': 'Traceback (most recent call last):\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/components/feature_preprocessing/fast_ica.py", line 41, in _fit\n    return self.preprocessor.fit_transform(X)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/sklearn/decomposition/fastica_.py", line 518, in fit_transform\n    return self._fit(X, compute_sources=True)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/sklearn/decomposition/fastica_.py", line 487, in _fit\n    compute_sources=compute_sources, return_n_iter=True)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/sklearn/decomposition/fastica_.py", line 340, in fastica\n    W, n_iter = _ica_par(X1, **kwargs)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/sklearn/decomposition/fastica_.py", line 110, in _ica_par\n    - g_wtx[:, np.newaxis] * W)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/sklearn/decomposition/fastica_.py", line 57, in _sym_decorrelation\n    s, u = linalg.eigh(np.dot(W, W.T))\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/scipy/linalg/decomp.py", line 374, in eigh\n    a1 = _asarray_validated(a, check_finite=check_finite)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/scipy/_lib/_util.py", line 239, in _asarray_validated\n    a = toarray(a)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/numpy/lib/function_base.py", line 498, in asarray_chkfinite\n    "array must not contain infs or NaNs")\nValueError: array must not contain infs or NaNs\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/__init__.py", line 30, in fit_predict_try_except_decorator\n    return ta(queue=queue, **kwargs)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/train_evaluator.py", line 648, in eval_holdout\n    evaluator.fit_predict_and_loss(iterative=iterative)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/train_evaluator.py", line 160, in fit_predict_and_loss\n    i, train_indices=train_split, test_indices=test_split\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/train_evaluator.py", line 406, in _partial_fit_and_predict\n    self.Y_train[train_indices])\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/evaluation/abstract_evaluator.py", line 481, in _fit_and_suppress_warnings\n    model.fit(X, y)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/base.py", line 92, in fit\n    X, fit_params = self.fit_transformer(X, y, **fit_params)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/base.py", line 102, in fit_transformer\n    Xt, fit_params = self._fit(X, y, **fit_params)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/sklearn/pipeline.py", line 213, in _fit\n    **fit_params_steps[name])\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/sklearn/externals/joblib/memory.py", line 362, in __call__\n    return self.func(*args, **kwargs)\n  File "/home/ubuntu/hyper/autosk/lib/python3.6/site-packages/sklearn/pipeline.py", line 583, in _fit_transform_one\n    res = transformer.fit(X, y, **fit_params).transform(X)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/components/base.py", line 402, in fit\n    return self.choice.fit(X, y, **kwargs)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/components/feature_preprocessing/fast_ica.py", line 49, in fit\n    self._fit(X)\n  File "/home/ubuntu/hyper/auto-sklearn/autosklearn/pipeline/components/feature_preprocessing/fast_ica.py", line 44, in _fit\n    raise ValueError("Bug in scikit-learn: https://github.com/scikit-learn/scikit-learn/pull/2738")\nValueError: Bug in scikit-learn: https://github.com/scikit-learn/scikit-learn/pull/2738\n', 'error': "ValueError('Bug in scikit-learn: https://github.com/scikit-learn/scikit-learn/pull/2738',)", 'configuration_origin': 'Random Search'}
+[DEBUG] [2019-07-11 15:51:27,174:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:27,174:pynisher] Restricting your function to 11 seconds wall time.
+[DEBUG] [2019-07-11 15:51:27,174:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:27,174:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a55ea860>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'False'
   imputation:strategy, Value: 'mean'
-  preprocessor:__choice__, Value: 'polynomial'
-  preprocessor:polynomial:degree, Value: 2
-  preprocessor:polynomial:include_bias, Value: 'False'
-  preprocessor:polynomial:interaction_only, Value: 'False'
+  preprocessor:__choice__, Value: 'extra_trees_preproc_for_regression'
+  preprocessor:extra_trees_preproc_for_regression:bootstrap, Value: 'True'
+  preprocessor:extra_trees_preproc_for_regression:criterion, Value: 'mae'
+  preprocessor:extra_trees_preproc_for_regression:max_depth, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:max_features, Value: 0.8520111281362427
+  preprocessor:extra_trees_preproc_for_regression:max_leaf_nodes, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:min_samples_leaf, Value: 13
+  preprocessor:extra_trees_preproc_for_regression:min_samples_split, Value: 17
+  preprocessor:extra_trees_preproc_for_regression:min_weight_fraction_leaf, Constant: 0.0
+  preprocessor:extra_trees_preproc_for_regression:n_estimators, Constant: 100
+  regressor:__choice__, Value: 'gradient_boosting'
+  regressor:gradient_boosting:learning_rate, Value: 0.04386181585669334
+  regressor:gradient_boosting:loss, Value: 'lad'
+  regressor:gradient_boosting:max_depth, Value: 10
+  regressor:gradient_boosting:max_features, Value: 0.8101995052651519
+  regressor:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  regressor:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  regressor:gradient_boosting:min_samples_leaf, Value: 2
+  regressor:gradient_boosting:min_samples_split, Value: 19
+  regressor:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  regressor:gradient_boosting:n_estimators, Value: 170
+  regressor:gradient_boosting:subsample, Value: 0.2746712017443299
   rescaling:__choice__, Value: 'standardize'
-, 'backend': <autosklearn.util.backend.Backend object at 0x7f0e99a80da0>, 'metric': accuracy, 'seed': 1, 'num_run': 10, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
-[DEBUG] [2019-07-11 15:22:01,490:pynisher] call function
-[DEBUG] [2019-07-11 15:22:02,451:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:22:02,453:pynisher] function returned properly: (None, 0)
-[DEBUG] [2019-07-11 15:22:02,453:pynisher] return value: (None, 0)
-[DEBUG] [2019-07-11 15:22:02,463:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.024719, time: 0.968316, additional: {'duration': 0.8877558708190918, 'num_run': 10, 'train_loss': 0.0022172949002217113, 'configuration_origin': 'Random Search'}
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier] Challenger (0.0247) is better than incumbent (0.0427) on 1 runs.
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier] Challenger (0.0247) is better than incumbent (0.0427) on 1 runs.
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier] Changes in incumbent:
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier] Changes in incumbent:
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier]   balancing:strategy : 'none' -> 'weighting'
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier]   balancing:strategy : 'none' -> 'weighting'
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier]   categorical_encoding:__choice__ : 'one_hot_encoding' -> 'no_encoding'
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier]   categorical_encoding:__choice__ : 'one_hot_encoding' -> 'no_encoding'
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'adaboost' -> 'extra_trees'
-[INFO] [2019-07-11 15:22:02,464:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'adaboost' -> 'extra_trees'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:bootstrap : None -> 'False'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:bootstrap : None -> 'False'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:criterion : None -> 'gini'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:criterion : None -> 'gini'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:max_depth : None -> 'None'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:max_depth : None -> 'None'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:max_features : None -> 0.3744681205679864
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:max_features : None -> 0.3744681205679864
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:max_leaf_nodes : None -> 'None'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:max_leaf_nodes : None -> 'None'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:min_impurity_decrease : None -> 0.0
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:min_impurity_decrease : None -> 0.0
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:min_samples_leaf : None -> 3
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:min_samples_leaf : None -> 3
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:min_samples_split : None -> 18
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:min_samples_split : None -> 18
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:min_weight_fraction_leaf : None -> 0.0
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:min_weight_fraction_leaf : None -> 0.0
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:n_estimators : None -> 100
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   classifier:extra_trees:n_estimators : None -> 100
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   imputation:strategy : 'median' -> 'mean'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   imputation:strategy : 'median' -> 'mean'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'pca' -> 'polynomial'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'pca' -> 'polynomial'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   preprocessor:polynomial:degree : None -> 2
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   preprocessor:polynomial:degree : None -> 2
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   preprocessor:polynomial:include_bias : None -> 'False'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   preprocessor:polynomial:include_bias : None -> 'False'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   preprocessor:polynomial:interaction_only : None -> 'False'
-[INFO] [2019-07-11 15:22:02,465:smac.intensification.intensification.Intensifier]   preprocessor:polynomial:interaction_only : None -> 'False'
-[INFO] [2019-07-11 15:22:02,466:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.0247
-[INFO] [2019-07-11 15:22:02,466:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.0247
-[DEBUG] [2019-07-11 15:22:02,468:root] Remaining budget: 6.205908 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] #Incumbent changed: 4
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] #Target algorithm runs: 9 / inf
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] Used wallclock time: 17.49 / 23.70 sec 
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] Used target algorithm runtime: 11.82 / inf sec
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:02,468:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:02,484:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:22:02,496:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 18 observations
-[DEBUG] [2019-07-11 15:22:02,532:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:02,549:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:02,603:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 62 configurations. Computing the acquisition value for one configuration took 0.001016 seconds on average.
-[DEBUG] [2019-07-11 15:22:02,636:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:02,654:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:02,690:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:02,745:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:02,810:smac.optimizer.ei_optimization.LocalSearch] Local search took 5 steps and looked at 167 configurations. Computing the acquisition value for one configuration took 0.001011 seconds on average.
-[DEBUG] [2019-07-11 15:22:03,572:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.08037586395155005, 'Random Search (sorted)'], [0.0798354450011267, 'Random Search (sorted)'], [0.0798354450011267, 'Random Search (sorted)'], [0.0798354450011267, 'Random Search (sorted)'], [0.07920250438309515, 'Random Search (sorted)'], [0.07920250438309515, 'Random Search (sorted)'], [0.07920250438309515, 'Random Search (sorted)'], [0.07918410045744313, 'Random Search (sorted)'], [0.07918410045744313, 'Random Search (sorted)'], [0.07914475709442294, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:22:03,583:root] Remaining budget: 5.090309 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:22:03,583:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:03,583:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:22:03,583:smac.stats.stats.Stats] #Incumbent changed: 4
-[DEBUG] [2019-07-11 15:22:03,583:smac.stats.stats.Stats] #Target algorithm runs: 9 / inf
-[DEBUG] [2019-07-11 15:22:03,583:smac.stats.stats.Stats] Used wallclock time: 18.61 / 23.70 sec 
-[DEBUG] [2019-07-11 15:22:03,584:smac.stats.stats.Stats] Used target algorithm runtime: 11.82 / inf sec
-[DEBUG] [2019-07-11 15:22:03,584:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:22:03,584:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:03,584:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:03,584:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:03,600:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:22:03,611:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 18 observations
-[DEBUG] [2019-07-11 15:22:03,638:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:03,644:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:03,649:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:03,692:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 40 configurations. Computing the acquisition value for one configuration took 0.001030 seconds on average.
-[DEBUG] [2019-07-11 15:22:03,696:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:03,703:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:03,715:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:03,771:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 59 configurations. Computing the acquisition value for one configuration took 0.001019 seconds on average.
-[DEBUG] [2019-07-11 15:22:04,471:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.08229742550409803, 'Random Search (sorted)'], [0.08229742550409803, 'Random Search (sorted)'], [0.08229742550409803, 'Random Search (sorted)'], [0.08229742550409803, 'Random Search (sorted)'], [0.08229742550409803, 'Random Search (sorted)'], [0.08229742550409803, 'Random Search (sorted)'], [0.08229742550409803, 'Random Search (sorted)'], [0.08227351327780943, 'Random Search (sorted)'], [0.08227351327780943, 'Random Search (sorted)'], [0.08227351327780943, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:22:04,481:root] Remaining budget: 4.192655 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] #Incumbent changed: 4
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] #Target algorithm runs: 9 / inf
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] Used wallclock time: 19.51 / 23.70 sec 
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] Used target algorithm runtime: 11.82 / inf sec
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:04,481:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:04,497:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:22:04,509:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 18 observations
-[DEBUG] [2019-07-11 15:22:04,581:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:04,641:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 80 configurations. Computing the acquisition value for one configuration took 0.001034 seconds on average.
-[DEBUG] [2019-07-11 15:22:04,646:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:04,650:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:04,685:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:04,740:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:04,760:smac.optimizer.ei_optimization.LocalSearch] Local search took 5 steps and looked at 90 configurations. Computing the acquisition value for one configuration took 0.001029 seconds on average.
-[DEBUG] [2019-07-11 15:22:05,465:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.08025007364811705, 'Random Search (sorted)'], [0.08025007364811705, 'Random Search (sorted)'], [0.08025007364811705, 'Random Search (sorted)'], [array([[0.08025007]]), 'Local Search'], [0.07898521926440955, 'Random Search (sorted)'], [0.07898521926440955, 'Random Search (sorted)'], [0.07896975647493248, 'Random Search (sorted)'], [0.07864514840323045, 'Random Search (sorted)'], [0.07863666698486077, 'Random Search (sorted)'], [0.07863666698486077, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:22:05,474:root] Remaining budget: 3.199289 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:22:05,474:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:05,474:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:22:05,474:smac.stats.stats.Stats] #Incumbent changed: 4
-[DEBUG] [2019-07-11 15:22:05,474:smac.stats.stats.Stats] #Target algorithm runs: 9 / inf
-[DEBUG] [2019-07-11 15:22:05,475:smac.stats.stats.Stats] Used wallclock time: 20.50 / 23.70 sec 
-[DEBUG] [2019-07-11 15:22:05,475:smac.stats.stats.Stats] Used target algorithm runtime: 11.82 / inf sec
-[DEBUG] [2019-07-11 15:22:05,475:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:22:05,475:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:05,475:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:05,475:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:05,491:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:22:05,503:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 18 observations
-[DEBUG] [2019-07-11 15:22:05,531:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,535:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,550:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,563:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,601:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,622:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,691:smac.optimizer.ei_optimization.LocalSearch] Local search took 7 steps and looked at 124 configurations. Computing the acquisition value for one configuration took 0.001029 seconds on average.
-[DEBUG] [2019-07-11 15:22:05,716:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,737:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,800:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,889:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:05,946:smac.optimizer.ei_optimization.LocalSearch] Local search took 5 steps and looked at 194 configurations. Computing the acquisition value for one configuration took 0.001031 seconds on average.
-[DEBUG] [2019-07-11 15:22:06,648:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.08365264619720866, 'Random Search (sorted)'], [array([[0.08365265]]), 'Local Search'], [0.08233159009921207, 'Random Search (sorted)'], [0.08187598604387344, 'Random Search (sorted)'], [0.08187598604387344, 'Random Search (sorted)'], [0.08187598604387344, 'Random Search (sorted)'], [0.08179092048479361, 'Random Search (sorted)'], [0.08177386513408441, 'Random Search (sorted)'], [0.08177386513408441, 'Random Search (sorted)'], [0.08118913834894037, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:22:06,657:root] Remaining budget: 2.016136 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] #Incumbent changed: 4
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] #Target algorithm runs: 9 / inf
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] Used wallclock time: 21.68 / 23.70 sec 
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] Used target algorithm runtime: 11.82 / inf sec
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:06,658:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:06,674:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:22:06,686:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 18 observations
-[DEBUG] [2019-07-11 15:22:06,717:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:06,774:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 50 configurations. Computing the acquisition value for one configuration took 0.001025 seconds on average.
-[DEBUG] [2019-07-11 15:22:06,777:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:06,844:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:06,895:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 94 configurations. Computing the acquisition value for one configuration took 0.001029 seconds on average.
-[DEBUG] [2019-07-11 15:22:07,590:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.08346521016111058, 'Random Search (sorted)'], [0.08346521016111058, 'Random Search (sorted)'], [array([[0.08346521]]), 'Local Search'], [0.08211831774115236, 'Random Search (sorted)'], [0.08037474013137144, 'Random Search (sorted)'], [0.07990973943635798, 'Random Search (sorted)'], [0.07990973943635798, 'Random Search (sorted)'], [0.07940283951708257, 'Random Search (sorted)'], [0.07940283951708257, 'Random Search (sorted)'], [0.07920160006506305, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:22:07,600:root] Remaining budget: 1.073603 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] #Incumbent changed: 4
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] #Target algorithm runs: 9 / inf
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] Used wallclock time: 22.62 / 23.70 sec 
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] Used target algorithm runtime: 11.82 / inf sec
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:07,600:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:07,616:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:22:07,628:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 18 observations
-[DEBUG] [2019-07-11 15:22:07,686:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:07,712:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 44 configurations. Computing the acquisition value for one configuration took 0.001031 seconds on average.
-[DEBUG] [2019-07-11 15:22:07,721:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:07,750:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:07,799:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 67 configurations. Computing the acquisition value for one configuration took 0.001020 seconds on average.
-[DEBUG] [2019-07-11 15:22:08,520:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.08463060959822764, 'Random Search (sorted)'], [0.08463060959822764, 'Random Search (sorted)'], [0.08463060959822764, 'Random Search (sorted)'], [0.08463060959822764, 'Random Search (sorted)'], [0.08463060959822764, 'Random Search (sorted)'], [0.08463060959822764, 'Random Search (sorted)'], [0.0837771341839599, 'Random Search (sorted)'], [0.0837771341839599, 'Random Search (sorted)'], [0.0837771341839599, 'Random Search (sorted)'], [0.0837771341839599, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:22:08,530:root] Remaining budget: 0.143977 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] Statistics:
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] #Incumbent changed: 4
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] #Target algorithm runs: 9 / inf
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] Used wallclock time: 23.55 / 23.70 sec 
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] Used target algorithm runtime: 11.82 / inf sec
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:08,530:smac.stats.stats.Stats] ##########################################################
-[DEBUG] [2019-07-11 15:22:08,546:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
-[DEBUG] [2019-07-11 15:22:08,558:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 18 observations
-[DEBUG] [2019-07-11 15:22:08,631:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 41 configurations. Computing the acquisition value for one configuration took 0.000998 seconds on average.
-[DEBUG] [2019-07-11 15:22:08,635:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:08,659:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:08,683:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
-[DEBUG] [2019-07-11 15:22:08,737:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 81 configurations. Computing the acquisition value for one configuration took 0.001014 seconds on average.
-[DEBUG] [2019-07-11 15:22:09,453:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.07751182753413935, 'Random Search (sorted)'], [0.07751182753413935, 'Random Search (sorted)'], [0.07751182753413935, 'Random Search (sorted)'], [0.07751182753413935, 'Random Search (sorted)'], [0.07751182753413935, 'Random Search (sorted)'], [array([0.07751183]), 'Local Search'], [0.0769194806487542, 'Random Search (sorted)'], [0.0769194806487542, 'Random Search (sorted)'], [0.0769194806487542, 'Random Search (sorted)'], [0.07663580150997862, 'Random Search (sorted)']]
-[DEBUG] [2019-07-11 15:22:09,462:root] Remaining budget: -0.788808 (wallclock), inf (ta costs), inf (target runs)
-[DEBUG] [2019-07-11 15:22:09,468:smac.stats.stats.Stats] Saving stats to tmp/autosk_tmp/smac3-output/run_1/stats.json
-[INFO] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] ##########################################################
-[INFO] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] Statistics:
-[INFO] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] #Incumbent changed: 4
-[INFO] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] #Target algorithm runs: 9 / inf
-[INFO] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] Used wallclock time: 24.49 / 23.70 sec 
-[INFO] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] Used target algorithm runtime: 11.82 / inf sec
-[DEBUG] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] Debug Statistics:
-[DEBUG] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] Average Configurations per Intensify: 2.00
-[DEBUG] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 2.00
-[INFO] [2019-07-11 15:22:09,469:smac.stats.stats.Stats] ##########################################################
-[INFO] [2019-07-11 15:22:09,469:smac.facade.smac_facade.SMAC] Final Incumbent: Configuration:
-  balancing:strategy, Value: 'weighting'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 5, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:27,178:pynisher] call function
+[DEBUG] [2019-07-11 15:51:28,502:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:28,504:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:28,504:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:28,512:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.249353, time: 1.332498, additional: {'duration': 1.301222801208496, 'num_run': 5, 'train_loss': 0.09485943081841275, 'configuration_origin': 'Random Search (sorted)'}
+[DEBUG] [2019-07-11 15:51:28,517:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:28,517:pynisher] Restricting your function to 10 seconds wall time.
+[DEBUG] [2019-07-11 15:51:28,517:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:28,517:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a55ead68>, 'config': Configuration:
   categorical_encoding:__choice__, Value: 'no_encoding'
-  classifier:__choice__, Value: 'extra_trees'
-  classifier:extra_trees:bootstrap, Value: 'False'
-  classifier:extra_trees:criterion, Value: 'gini'
-  classifier:extra_trees:max_depth, Constant: 'None'
-  classifier:extra_trees:max_features, Value: 0.3744681205679864
-  classifier:extra_trees:max_leaf_nodes, Constant: 'None'
-  classifier:extra_trees:min_impurity_decrease, Constant: 0.0
-  classifier:extra_trees:min_samples_leaf, Value: 3
-  classifier:extra_trees:min_samples_split, Value: 18
-  classifier:extra_trees:min_weight_fraction_leaf, Constant: 0.0
-  classifier:extra_trees:n_estimators, Constant: 100
+  imputation:strategy, Value: 'median'
+  preprocessor:__choice__, Value: 'extra_trees_preproc_for_regression'
+  preprocessor:extra_trees_preproc_for_regression:bootstrap, Value: 'True'
+  preprocessor:extra_trees_preproc_for_regression:criterion, Value: 'mse'
+  preprocessor:extra_trees_preproc_for_regression:max_depth, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:max_features, Value: 0.42500239580528
+  preprocessor:extra_trees_preproc_for_regression:max_leaf_nodes, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:min_samples_leaf, Value: 1
+  preprocessor:extra_trees_preproc_for_regression:min_samples_split, Value: 12
+  preprocessor:extra_trees_preproc_for_regression:min_weight_fraction_leaf, Constant: 0.0
+  preprocessor:extra_trees_preproc_for_regression:n_estimators, Constant: 100
+  regressor:__choice__, Value: 'xgradient_boosting'
+  regressor:xgradient_boosting:base_score, Constant: 0.5
+  regressor:xgradient_boosting:booster, Value: 'gbtree'
+  regressor:xgradient_boosting:colsample_bylevel, Value: 0.28022565170167407
+  regressor:xgradient_boosting:colsample_bytree, Value: 0.8665267827480949
+  regressor:xgradient_boosting:gamma, Constant: 0
+  regressor:xgradient_boosting:learning_rate, Value: 0.943565385091624
+  regressor:xgradient_boosting:max_delta_step, Constant: 0
+  regressor:xgradient_boosting:max_depth, Value: 1
+  regressor:xgradient_boosting:min_child_weight, Value: 13
+  regressor:xgradient_boosting:n_estimators, Constant: 512
+  regressor:xgradient_boosting:reg_alpha, Value: 3.080232962374673e-10
+  regressor:xgradient_boosting:reg_lambda, Value: 0.0038211318157333595
+  regressor:xgradient_boosting:scale_pos_weight, Constant: 1
+  regressor:xgradient_boosting:subsample, Value: 0.7609132709333437
+  rescaling:__choice__, Value: 'minmax'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 6, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:28,522:pynisher] call function
+[DEBUG] [2019-07-11 15:51:29,138:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:29,140:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:29,141:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:29,148:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.504970, time: 0.625600, additional: {'duration': 0.5997176170349121, 'num_run': 6, 'train_loss': 0.35931425529134164, 'configuration_origin': 'Random Search'}
+[INFO] [2019-07-11 15:51:29,150:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2209
+[INFO] [2019-07-11 15:51:29,150:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2209
+[DEBUG] [2019-07-11 15:51:29,151:root] Remaining budget: 14.770944 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:29,151:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:29,151:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:29,151:smac.stats.stats.Stats] #Incumbent changed: 0
+[DEBUG] [2019-07-11 15:51:29,151:smac.stats.stats.Stats] #Target algorithm runs: 5 / inf
+[DEBUG] [2019-07-11 15:51:29,151:smac.stats.stats.Stats] Used wallclock time: 8.94 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:29,151:smac.stats.stats.Stats] Used target algorithm runtime: 6.78 / inf sec
+[DEBUG] [2019-07-11 15:51:29,152:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:29,152:smac.stats.stats.Stats] Average Configurations per Intensify: 4.00
+[DEBUG] [2019-07-11 15:51:29,152:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 4.00
+[DEBUG] [2019-07-11 15:51:29,152:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:29,165:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:29,176:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 15 observations
+[DEBUG] [2019-07-11 15:51:29,222:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:29,278:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 58 configurations. Computing the acquisition value for one configuration took 0.001123 seconds on average.
+[DEBUG] [2019-07-11 15:51:29,320:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:29,385:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 78 configurations. Computing the acquisition value for one configuration took 0.001110 seconds on average.
+[DEBUG] [2019-07-11 15:51:29,397:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:29,474:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 66 configurations. Computing the acquisition value for one configuration took 0.001113 seconds on average.
+[DEBUG] [2019-07-11 15:51:30,103:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)'], [1.5288324273619704e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:30,115:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:30,115:pynisher] Restricting your function to 8 seconds wall time.
+[DEBUG] [2019-07-11 15:51:30,115:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:30,116:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a5caf7f0>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'kitchen_sinks'
+  preprocessor:kitchen_sinks:gamma, Value: 2.7006783971031862
+  preprocessor:kitchen_sinks:n_components, Value: 186
+  regressor:__choice__, Value: 'libsvm_svr'
+  regressor:libsvm_svr:C, Value: 4406.86210117436
+  regressor:libsvm_svr:degree, Value: 4
+  regressor:libsvm_svr:epsilon, Value: 0.1570910357801884
+  regressor:libsvm_svr:gamma, Value: 0.01849784780767081
+  regressor:libsvm_svr:kernel, Value: 'rbf'
+  regressor:libsvm_svr:max_iter, Constant: -1
+  regressor:libsvm_svr:shrinking, Value: 'False'
+  regressor:libsvm_svr:tol, Value: 0.09626298895215032
+  rescaling:__choice__, Value: 'normalize'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 7, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:30,120:pynisher] call function
+[DEBUG] [2019-07-11 15:51:31,463:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:31,465:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:31,465:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:31,473:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.168199, time: 1.350977, additional: {'duration': 1.329949140548706, 'num_run': 7, 'train_loss': 0.021263029278642875, 'configuration_origin': 'Random Search (sorted)'}
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier] Challenger (0.1682) is better than incumbent (0.2209) on 1 runs.
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier] Challenger (0.1682) is better than incumbent (0.2209) on 1 runs.
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier]   categorical_encoding:__choice__ : 'one_hot_encoding' -> 'no_encoding'
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier]   categorical_encoding:__choice__ : 'one_hot_encoding' -> 'no_encoding'
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier]   imputation:strategy : 'mean' -> 'most_frequent'
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier]   imputation:strategy : 'mean' -> 'most_frequent'
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'polynomial' -> 'kitchen_sinks'
+[INFO] [2019-07-11 15:51:31,474:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'polynomial' -> 'kitchen_sinks'
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   preprocessor:kitchen_sinks:gamma : None -> 2.7006783971031862
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   preprocessor:kitchen_sinks:gamma : None -> 2.7006783971031862
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   preprocessor:kitchen_sinks:n_components : None -> 186
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   preprocessor:kitchen_sinks:n_components : None -> 186
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:__choice__ : 'extra_trees' -> 'libsvm_svr'
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:__choice__ : 'extra_trees' -> 'libsvm_svr'
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:C : None -> 4406.86210117436
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:C : None -> 4406.86210117436
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:degree : None -> 4
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:degree : None -> 4
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:epsilon : None -> 0.1570910357801884
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:epsilon : None -> 0.1570910357801884
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:gamma : None -> 0.01849784780767081
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:gamma : None -> 0.01849784780767081
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:kernel : None -> 'rbf'
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:kernel : None -> 'rbf'
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:max_iter : None -> -1
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:max_iter : None -> -1
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:shrinking : None -> 'False'
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:shrinking : None -> 'False'
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:tol : None -> 0.09626298895215032
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   regressor:libsvm_svr:tol : None -> 0.09626298895215032
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'robust_scaler' -> 'normalize'
+[INFO] [2019-07-11 15:51:31,475:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'robust_scaler' -> 'normalize'
+[DEBUG] [2019-07-11 15:51:31,479:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:31,479:pynisher] Restricting your function to 7 seconds wall time.
+[DEBUG] [2019-07-11 15:51:31,479:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:31,480:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a5caf7f0>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'no_encoding'
   imputation:strategy, Value: 'mean'
-  preprocessor:__choice__, Value: 'polynomial'
-  preprocessor:polynomial:degree, Value: 2
-  preprocessor:polynomial:include_bias, Value: 'False'
-  preprocessor:polynomial:interaction_only, Value: 'False'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  regressor:__choice__, Value: 'adaboost'
+  regressor:adaboost:learning_rate, Value: 0.09106135205920475
+  regressor:adaboost:loss, Value: 'linear'
+  regressor:adaboost:max_depth, Value: 7
+  regressor:adaboost:n_estimators, Value: 100
+  rescaling:__choice__, Value: 'normalize'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 8, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:31,483:pynisher] call function
+[DEBUG] [2019-07-11 15:51:33,393:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:33,395:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:33,396:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:33,403:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.135983, time: 1.919132, additional: {'duration': 1.8936278820037842, 'num_run': 8, 'train_loss': 0.002310399047316558, 'configuration_origin': 'Random Search'}
+[INFO] [2019-07-11 15:51:33,404:smac.intensification.intensification.Intensifier] Challenger (0.1360) is better than incumbent (0.1682) on 1 runs.
+[INFO] [2019-07-11 15:51:33,404:smac.intensification.intensification.Intensifier] Challenger (0.1360) is better than incumbent (0.1682) on 1 runs.
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   imputation:strategy : 'most_frequent' -> 'mean'
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   imputation:strategy : 'most_frequent' -> 'mean'
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'kitchen_sinks' -> 'no_preprocessing'
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   preprocessor:__choice__ : 'kitchen_sinks' -> 'no_preprocessing'
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:__choice__ : 'libsvm_svr' -> 'adaboost'
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:__choice__ : 'libsvm_svr' -> 'adaboost'
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:adaboost:learning_rate : None -> 0.09106135205920475
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:adaboost:learning_rate : None -> 0.09106135205920475
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:adaboost:loss : None -> 'linear'
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:adaboost:loss : None -> 'linear'
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:adaboost:max_depth : None -> 7
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:adaboost:max_depth : None -> 7
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:adaboost:n_estimators : None -> 100
+[INFO] [2019-07-11 15:51:33,405:smac.intensification.intensification.Intensifier]   regressor:adaboost:n_estimators : None -> 100
+[INFO] [2019-07-11 15:51:33,406:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.1360
+[INFO] [2019-07-11 15:51:33,406:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.1360
+[DEBUG] [2019-07-11 15:51:33,407:root] Remaining budget: 10.514980 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] #Incumbent changed: 2
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] #Target algorithm runs: 7 / inf
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] Used wallclock time: 13.20 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] Used target algorithm runtime: 10.05 / inf sec
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:33,407:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.60
+[DEBUG] [2019-07-11 15:51:33,408:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:33,423:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:33,435:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 17 observations
+[DEBUG] [2019-07-11 15:51:33,517:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:33,577:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:33,614:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 114 configurations. Computing the acquisition value for one configuration took 0.001134 seconds on average.
+[DEBUG] [2019-07-11 15:51:33,627:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:33,705:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:33,769:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:33,817:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 145 configurations. Computing the acquisition value for one configuration took 0.001142 seconds on average.
+[DEBUG] [2019-07-11 15:51:33,862:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:33,927:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 80 configurations. Computing the acquisition value for one configuration took 0.001134 seconds on average.
+[DEBUG] [2019-07-11 15:51:34,561:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)'], [1.5127826082621095e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:34,573:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:34,573:pynisher] Restricting your function to 4 seconds wall time.
+[DEBUG] [2019-07-11 15:51:34,573:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:34,573:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a5caf6d8>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  regressor:__choice__, Value: 'k_nearest_neighbors'
+  regressor:k_nearest_neighbors:n_neighbors, Value: 9
+  regressor:k_nearest_neighbors:p, Value: 2
+  regressor:k_nearest_neighbors:weights, Value: 'uniform'
+  rescaling:__choice__, Value: 'standardize'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 9, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:34,578:pynisher] call function
+[DEBUG] [2019-07-11 15:51:35,056:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:35,058:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:35,058:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:35,067:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.132066, time: 0.485381, additional: {'duration': 0.46431899070739746, 'num_run': 9, 'train_loss': 0.06878392515407694, 'configuration_origin': 'Random Search (sorted)'}
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier] Challenger (0.1321) is better than incumbent (0.1360) on 1 runs.
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier] Challenger (0.1321) is better than incumbent (0.1360) on 1 runs.
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   imputation:strategy : 'mean' -> 'most_frequent'
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   imputation:strategy : 'mean' -> 'most_frequent'
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   regressor:__choice__ : 'adaboost' -> 'k_nearest_neighbors'
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   regressor:__choice__ : 'adaboost' -> 'k_nearest_neighbors'
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   regressor:k_nearest_neighbors:n_neighbors : None -> 9
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   regressor:k_nearest_neighbors:n_neighbors : None -> 9
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   regressor:k_nearest_neighbors:p : None -> 2
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   regressor:k_nearest_neighbors:p : None -> 2
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   regressor:k_nearest_neighbors:weights : None -> 'uniform'
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   regressor:k_nearest_neighbors:weights : None -> 'uniform'
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'normalize' -> 'standardize'
+[INFO] [2019-07-11 15:51:35,068:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'normalize' -> 'standardize'
+[DEBUG] [2019-07-11 15:51:35,073:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:35,073:pynisher] Restricting your function to 3 seconds wall time.
+[DEBUG] [2019-07-11 15:51:35,073:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:35,073:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a5b6a198>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.030013631466478247
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'random_trees_embedding'
+  preprocessor:random_trees_embedding:bootstrap, Value: 'False'
+  preprocessor:random_trees_embedding:max_depth, Value: 5
+  preprocessor:random_trees_embedding:max_leaf_nodes, Constant: 'None'
+  preprocessor:random_trees_embedding:min_samples_leaf, Value: 13
+  preprocessor:random_trees_embedding:min_samples_split, Value: 13
+  preprocessor:random_trees_embedding:min_weight_fraction_leaf, Constant: 1.0
+  preprocessor:random_trees_embedding:n_estimators, Value: 86
+  regressor:__choice__, Value: 'sgd'
+  regressor:sgd:alpha, Value: 0.001708792608457297
+  regressor:sgd:average, Value: 'True'
+  regressor:sgd:epsilon, Value: 0.0020940147769126414
+  regressor:sgd:eta0, Value: 7.122712957689305e-05
+  regressor:sgd:fit_intercept, Constant: 'True'
+  regressor:sgd:l1_ratio, Value: 8.172335641200126e-07
+  regressor:sgd:learning_rate, Value: 'constant'
+  regressor:sgd:loss, Value: 'huber'
+  regressor:sgd:penalty, Value: 'elasticnet'
+  regressor:sgd:tol, Value: 0.002026970981893754
+  rescaling:__choice__, Value: 'none'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 10, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:35,077:pynisher] call function
+[DEBUG] [2019-07-11 15:51:35,533:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:35,535:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:35,535:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:35,544:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.999960, time: 0.465328, additional: {'duration': 0.4424266815185547, 'num_run': 10, 'train_loss': 0.9996005598902876, 'configuration_origin': 'Random Search'}
+[DEBUG] [2019-07-11 15:51:35,547:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:35,547:pynisher] Restricting your function to 3 seconds wall time.
+[DEBUG] [2019-07-11 15:51:35,547:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:35,547:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a576da20>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'extra_trees_preproc_for_regression'
+  preprocessor:extra_trees_preproc_for_regression:bootstrap, Value: 'False'
+  preprocessor:extra_trees_preproc_for_regression:criterion, Value: 'mae'
+  preprocessor:extra_trees_preproc_for_regression:max_depth, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:max_features, Value: 0.19868820310842944
+  preprocessor:extra_trees_preproc_for_regression:max_leaf_nodes, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:min_samples_leaf, Value: 12
+  preprocessor:extra_trees_preproc_for_regression:min_samples_split, Value: 16
+  preprocessor:extra_trees_preproc_for_regression:min_weight_fraction_leaf, Constant: 0.0
+  preprocessor:extra_trees_preproc_for_regression:n_estimators, Constant: 100
+  regressor:__choice__, Value: 'k_nearest_neighbors'
+  regressor:k_nearest_neighbors:n_neighbors, Value: 22
+  regressor:k_nearest_neighbors:p, Value: 2
+  regressor:k_nearest_neighbors:weights, Value: 'uniform'
+  rescaling:__choice__, Value: 'minmax'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 11, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:35,552:pynisher] call function
+[DEBUG] [2019-07-11 15:51:36,288:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:36,290:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:36,290:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:36,299:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.167569, time: 0.743272, additional: {'duration': 0.7219960689544678, 'num_run': 11, 'train_loss': 0.11926054894404703, 'configuration_origin': 'Random Search (sorted)'}
+[INFO] [2019-07-11 15:51:36,300:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.1321
+[INFO] [2019-07-11 15:51:36,300:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.1321
+[DEBUG] [2019-07-11 15:51:36,302:root] Remaining budget: 7.620482 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] #Incumbent changed: 3
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] #Target algorithm runs: 10 / inf
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] Used wallclock time: 16.09 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] Used target algorithm runtime: 11.74 / inf sec
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.48
+[DEBUG] [2019-07-11 15:51:36,302:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:36,319:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:36,334:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 20 observations
+[DEBUG] [2019-07-11 15:51:36,377:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:36,428:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 50 configurations. Computing the acquisition value for one configuration took 0.001115 seconds on average.
+[DEBUG] [2019-07-11 15:51:36,436:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:36,510:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 60 configurations. Computing the acquisition value for one configuration took 0.001119 seconds on average.
+[DEBUG] [2019-07-11 15:51:36,524:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:36,608:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 73 configurations. Computing the acquisition value for one configuration took 0.001124 seconds on average.
+[DEBUG] [2019-07-11 15:51:37,273:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)'], [1.4792448349035446e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:37,284:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:37,285:pynisher] Restricting your function to 1 seconds wall time.
+[DEBUG] [2019-07-11 15:51:37,285:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:37,285:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a5cafba8>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'False'
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'kitchen_sinks'
+  preprocessor:kitchen_sinks:gamma, Value: 0.15807758269323643
+  preprocessor:kitchen_sinks:n_components, Value: 133
+  regressor:__choice__, Value: 'sgd'
+  regressor:sgd:alpha, Value: 2.706018136341523e-07
+  regressor:sgd:average, Value: 'False'
+  regressor:sgd:epsilon, Value: 0.00012063688339905531
+  regressor:sgd:eta0, Value: 0.0015911526245575357
+  regressor:sgd:fit_intercept, Constant: 'True'
+  regressor:sgd:l1_ratio, Value: 0.12996850152189796
+  regressor:sgd:learning_rate, Value: 'constant'
+  regressor:sgd:loss, Value: 'huber'
+  regressor:sgd:penalty, Value: 'elasticnet'
+  regressor:sgd:tol, Value: 9.9295972233736e-05
+  rescaling:__choice__, Value: 'minmax'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 12, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:37,289:pynisher] call function
+[DEBUG] [2019-07-11 15:51:37,607:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:37,609:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:37,609:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:37,617:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 1.000271, time: 0.325890, additional: {'duration': 0.30588698387145996, 'num_run': 12, 'train_loss': 0.9999653314979315, 'configuration_origin': 'Random Search (sorted)'}
+[DEBUG] [2019-07-11 15:51:37,622:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-07-11 15:51:37,622:pynisher] Restricting your function to 1 seconds wall time.
+[DEBUG] [2019-07-11 15:51:37,622:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-07-11 15:51:37,622:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7fc0a5caf0f0>, 'config': Configuration:
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'False'
+  imputation:strategy, Value: 'median'
+  preprocessor:__choice__, Value: 'extra_trees_preproc_for_regression'
+  preprocessor:extra_trees_preproc_for_regression:bootstrap, Value: 'False'
+  preprocessor:extra_trees_preproc_for_regression:criterion, Value: 'mse'
+  preprocessor:extra_trees_preproc_for_regression:max_depth, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:max_features, Value: 0.9452132626636655
+  preprocessor:extra_trees_preproc_for_regression:max_leaf_nodes, Constant: 'None'
+  preprocessor:extra_trees_preproc_for_regression:min_samples_leaf, Value: 17
+  preprocessor:extra_trees_preproc_for_regression:min_samples_split, Value: 11
+  preprocessor:extra_trees_preproc_for_regression:min_weight_fraction_leaf, Constant: 0.0
+  preprocessor:extra_trees_preproc_for_regression:n_estimators, Constant: 100
+  regressor:__choice__, Value: 'libsvm_svr'
+  regressor:libsvm_svr:C, Value: 1447.0941103819143
+  regressor:libsvm_svr:coef0, Value: 0.01805038876087095
+  regressor:libsvm_svr:degree, Value: 4
+  regressor:libsvm_svr:epsilon, Value: 0.5220119902046274
+  regressor:libsvm_svr:gamma, Value: 0.00012880414501637182
+  regressor:libsvm_svr:kernel, Value: 'poly'
+  regressor:libsvm_svr:max_iter, Constant: -1
+  regressor:libsvm_svr:shrinking, Value: 'False'
+  regressor:libsvm_svr:tol, Value: 0.04075161363235762
+  rescaling:__choice__, Value: 'minmax'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7fc0c3f763c8>, 'metric': r2, 'seed': 1, 'num_run': 13, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}', 'init_params': {'instance': '{"task_id": "d74860caaa557f473ce23908ff7ba369"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-07-11 15:51:37,626:pynisher] call function
+[DEBUG] [2019-07-11 15:51:38,087:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:38,089:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-07-11 15:51:38,089:pynisher] return value: (None, 0)
+[DEBUG] [2019-07-11 15:51:38,097:AutoMLSMBO(1)::d74860caaa557f473ce23908ff7ba369] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.999645, time: 0.468366, additional: {'duration': 0.44469451904296875, 'num_run': 13, 'train_loss': 0.999197206636923, 'configuration_origin': 'Random Search'}
+[DEBUG] [2019-07-11 15:51:38,101:root] Remaining budget: 5.820765 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:38,101:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:38,101:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:38,102:smac.stats.stats.Stats] #Incumbent changed: 3
+[DEBUG] [2019-07-11 15:51:38,102:smac.stats.stats.Stats] #Target algorithm runs: 12 / inf
+[DEBUG] [2019-07-11 15:51:38,102:smac.stats.stats.Stats] Used wallclock time: 17.89 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:38,102:smac.stats.stats.Stats] Used target algorithm runtime: 12.53 / inf sec
+[DEBUG] [2019-07-11 15:51:38,102:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:38,102:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:38,102:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.48
+[DEBUG] [2019-07-11 15:51:38,102:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:38,120:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:38,136:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 22 observations
+[DEBUG] [2019-07-11 15:51:38,225:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 41 configurations. Computing the acquisition value for one configuration took 0.001119 seconds on average.
+[DEBUG] [2019-07-11 15:51:38,293:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 52 configurations. Computing the acquisition value for one configuration took 0.001118 seconds on average.
+[DEBUG] [2019-07-11 15:51:38,383:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 68 configurations. Computing the acquisition value for one configuration took 0.001116 seconds on average.
+[DEBUG] [2019-07-11 15:51:39,016:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)'], [1.461490977661332e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:39,029:root] Remaining budget: 4.893323 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] #Incumbent changed: 3
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] #Target algorithm runs: 12 / inf
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] Used wallclock time: 18.82 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] Used target algorithm runtime: 12.53 / inf sec
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.48
+[DEBUG] [2019-07-11 15:51:39,029:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:39,048:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:39,064:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 22 observations
+[DEBUG] [2019-07-11 15:51:39,177:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 59 configurations. Computing the acquisition value for one configuration took 0.001138 seconds on average.
+[DEBUG] [2019-07-11 15:51:39,198:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:39,262:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 58 configurations. Computing the acquisition value for one configuration took 0.001144 seconds on average.
+[DEBUG] [2019-07-11 15:51:39,319:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:39,346:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:39,358:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:39,457:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 137 configurations. Computing the acquisition value for one configuration took 0.001138 seconds on average.
+[DEBUG] [2019-07-11 15:51:40,079:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)'], [1.532501913961003e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:40,090:root] Remaining budget: 3.832521 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] #Incumbent changed: 3
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] #Target algorithm runs: 12 / inf
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] Used wallclock time: 19.88 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] Used target algorithm runtime: 12.53 / inf sec
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.48
+[DEBUG] [2019-07-11 15:51:40,090:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:40,109:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:40,125:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 22 observations
+[DEBUG] [2019-07-11 15:51:40,163:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:40,197:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:40,262:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:40,328:smac.optimizer.ei_optimization.LocalSearch] Local search took 4 steps and looked at 129 configurations. Computing the acquisition value for one configuration took 0.001127 seconds on average.
+[DEBUG] [2019-07-11 15:51:40,337:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:40,383:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:40,459:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 96 configurations. Computing the acquisition value for one configuration took 0.001129 seconds on average.
+[DEBUG] [2019-07-11 15:51:40,491:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:40,497:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:40,545:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 61 configurations. Computing the acquisition value for one configuration took 0.001134 seconds on average.
+[DEBUG] [2019-07-11 15:51:41,163:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.55234854198036e+22, 'Random Search (sorted)'], [1.55234854198036e+22, 'Random Search (sorted)'], [1.55234854198036e+22, 'Random Search (sorted)'], [1.55234854198036e+22, 'Random Search (sorted)'], [array([[1.55234854e+22]]), 'Local Search'], [1.5514035259336718e+22, 'Random Search (sorted)'], [1.5514035259336718e+22, 'Random Search (sorted)'], [1.5514035259336718e+22, 'Random Search (sorted)'], [1.5402010132471095e+22, 'Random Search (sorted)'], [1.5402010132471095e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:41,174:root] Remaining budget: 2.748247 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] #Incumbent changed: 3
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] #Target algorithm runs: 12 / inf
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] Used wallclock time: 20.96 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] Used target algorithm runtime: 12.53 / inf sec
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.48
+[DEBUG] [2019-07-11 15:51:41,174:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:41,193:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:41,210:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 22 observations
+[DEBUG] [2019-07-11 15:51:41,296:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 39 configurations. Computing the acquisition value for one configuration took 0.001149 seconds on average.
+[DEBUG] [2019-07-11 15:51:41,366:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 52 configurations. Computing the acquisition value for one configuration took 0.001140 seconds on average.
+[DEBUG] [2019-07-11 15:51:41,463:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 72 configurations. Computing the acquisition value for one configuration took 0.001141 seconds on average.
+[DEBUG] [2019-07-11 15:51:42,128:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)'], [1.509820903161997e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:42,138:root] Remaining budget: 1.784172 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] #Incumbent changed: 3
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] #Target algorithm runs: 12 / inf
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] Used wallclock time: 21.93 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] Used target algorithm runtime: 12.53 / inf sec
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.48
+[DEBUG] [2019-07-11 15:51:42,138:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:42,157:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:42,173:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 22 observations
+[DEBUG] [2019-07-11 15:51:42,219:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:42,278:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 52 configurations. Computing the acquisition value for one configuration took 0.001136 seconds on average.
+[DEBUG] [2019-07-11 15:51:42,310:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:42,382:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 76 configurations. Computing the acquisition value for one configuration took 0.001127 seconds on average.
+[DEBUG] [2019-07-11 15:51:42,410:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:42,427:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:42,453:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:42,459:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:42,529:smac.optimizer.ei_optimization.LocalSearch] Local search took 5 steps and looked at 107 configurations. Computing the acquisition value for one configuration took 0.001129 seconds on average.
+[DEBUG] [2019-07-11 15:51:43,156:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)'], [1.546122342701948e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:43,166:root] Remaining budget: 0.756570 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] #Incumbent changed: 3
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] #Target algorithm runs: 12 / inf
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] Used wallclock time: 22.96 / 23.71 sec 
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] Used target algorithm runtime: 12.53 / inf sec
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.48
+[DEBUG] [2019-07-11 15:51:43,166:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-07-11 15:51:43,185:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-07-11 15:51:43,201:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 22 observations
+[DEBUG] [2019-07-11 15:51:43,300:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 52 configurations. Computing the acquisition value for one configuration took 0.001120 seconds on average.
+[DEBUG] [2019-07-11 15:51:43,315:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:43,352:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 37 configurations. Computing the acquisition value for one configuration took 0.001126 seconds on average.
+[DEBUG] [2019-07-11 15:51:43,357:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:43,389:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-07-11 15:51:43,440:smac.optimizer.ei_optimization.LocalSearch] Local search took 3 steps and looked at 64 configurations. Computing the acquisition value for one configuration took 0.001117 seconds on average.
+[DEBUG] [2019-07-11 15:51:44,072:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)'], [1.5586030496476427e+22, 'Random Search (sorted)']]
+[DEBUG] [2019-07-11 15:51:44,082:root] Remaining budget: -0.159828 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-07-11 15:51:44,088:smac.stats.stats.Stats] Saving stats to tmp/autosk_tmp/smac3-output/run_1/stats.json
+[INFO] [2019-07-11 15:51:44,088:smac.stats.stats.Stats] ##########################################################
+[INFO] [2019-07-11 15:51:44,088:smac.stats.stats.Stats] Statistics:
+[INFO] [2019-07-11 15:51:44,088:smac.stats.stats.Stats] #Incumbent changed: 3
+[INFO] [2019-07-11 15:51:44,089:smac.stats.stats.Stats] #Target algorithm runs: 12 / inf
+[INFO] [2019-07-11 15:51:44,089:smac.stats.stats.Stats] Used wallclock time: 23.88 / 23.71 sec 
+[INFO] [2019-07-11 15:51:44,089:smac.stats.stats.Stats] Used target algorithm runtime: 12.53 / inf sec
+[DEBUG] [2019-07-11 15:51:44,089:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-07-11 15:51:44,089:smac.stats.stats.Stats] Average Configurations per Intensify: 3.00
+[DEBUG] [2019-07-11 15:51:44,089:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 3.48
+[INFO] [2019-07-11 15:51:44,089:smac.stats.stats.Stats] ##########################################################
+[INFO] [2019-07-11 15:51:44,089:smac.facade.smac_facade.SMAC] Final Incumbent: Configuration:
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  regressor:__choice__, Value: 'k_nearest_neighbors'
+  regressor:k_nearest_neighbors:n_neighbors, Value: 9
+  regressor:k_nearest_neighbors:p, Value: 2
+  regressor:k_nearest_neighbors:weights, Value: 'uniform'
   rescaling:__choice__, Value: 'standardize'
 
-[WARNING] [2019-07-11 15:22:09,487:autosklearn.util.backend] Directory tmp/autosk_tmp/.auto-sklearn/ensembles does not exist
-[DEBUG] [2019-07-11 15:22:09,488:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
-[DEBUG] [2019-07-11 15:22:09,490:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[WARNING] [2019-07-11 15:51:44,110:autosklearn.util.backend] Directory tmp/autosk_tmp/.auto-sklearn/ensembles does not exist
+[DEBUG] [2019-07-11 15:51:44,111:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-07-11 15:51:44,112:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'

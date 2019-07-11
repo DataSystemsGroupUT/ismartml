@@ -27,7 +27,7 @@ for dir_ in [tmp_folder, output_folder]:
 
 
 def get_spawn_classifier(X_train, y_train):
-    def spawn_classifier(seed, dataset_name=None):
+    def spawn_classifier(seed, time, dataset_name=None):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -75,7 +75,7 @@ def get_spawn_classifier(X_train, y_train):
 
 
 def get_spawn_regressor(X_train, y_train):
-    def spawn_regressor(seed, dataset_name=None):
+    def spawn_regressor(seed, time,dataset_name=None):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -119,30 +119,33 @@ def get_spawn_regressor(X_train, y_train):
         )
         automl.fit(X_train, y_train, dataset_name=dataset_name)
         #print(automl.cv_results_)
+        return automl.cv_results_
+
     return spawn_regressor
 
 
-def main(path):
 
+
+def run_task(path,task,time,interval=3):
+
+    results=[]
     data=np.load(path)
     X=data[:,:-1]
     y=data[:,-1]
     #X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
     X_train, X_test, y_train, y_test = \
         sklearn.model_selection.train_test_split(X, y, random_state=1)
+    
+    if task=="classification":
+        spawn_classifier = get_spawn_classifier(X_train, y_train)
+    elif task=="regression":
+        spawn_classifier = get_spawn_regressor(X_train, y_train)
 
-    processes = []
-    spawn_classifier = get_spawn_classifier(X_train, y_train)
-    for i in range(4):  # set this at roughly half of your cores
-        #p = multiprocessing.Process(
-        #    target=spawn_classifier,
-        #    args=(i, 'breast_cancer'),
-        #)
-        #p.start()
-        #processes.append(p)
-    #for p in processes:
-        #p.join()
-        spawn_classifier(i)
+    for i in range(interval): 
+        results.append(spawn_classifier(i,time))
+    
+   return results 
+    
     """
     print('Starting to build an ensemble!')
     automl = AutoSklearnClassifier(
@@ -176,4 +179,4 @@ def main(path):
     """
 
 if __name__ == '__main__':
-    main("../digits_c.np.npy")
+    run_task("../digits_c.np.npy","regression",30)
