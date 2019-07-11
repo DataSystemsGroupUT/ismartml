@@ -11,6 +11,8 @@ import sklearn.metrics
 from autosklearn.metrics import accuracy
 from autosklearn.classification import AutoSklearnClassifier
 from autosklearn.constants import MULTICLASS_CLASSIFICATION
+import numpy as np
+
 
 tmp_folder = '/tmp/autosklearn_parallel_2_example_tmp'
 output_folder = '/tmp/autosklearn_parallel_2_example_out'
@@ -67,12 +69,16 @@ def get_spawn_classifier(X_train, y_train):
             smac_scenario_args=smac_scenario_args,
         )
         automl.fit(X_train, y_train, dataset_name=dataset_name)
+        print(automl.cv_results_)
     return spawn_classifier
 
 
-def main():
+def main(path):
 
-    X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
+    data=np.load(path)
+    X=data[:,:-1]
+    y=data[:,-1]
+    #X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
     X_train, X_test, y_train, y_test = \
         sklearn.model_selection.train_test_split(X, y, random_state=1)
 
@@ -118,8 +124,7 @@ def main():
     predictions = automl.predict(X_test)
     print(automl.show_models())
     print("Accuracy score", sklearn.metrics.accuracy_score(y_test, predictions))
-    print(automl.cv_results_)
 
 
 if __name__ == '__main__':
-    main()
+    main("../digits_c.np.npy")
