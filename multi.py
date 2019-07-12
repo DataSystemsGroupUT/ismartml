@@ -127,8 +127,10 @@ def get_spawn_regressor(X_train, y_train):
 
 
 
-def run_task(path,task,time,interval=3):
+def run_task(path,task,time,period):
 
+    interval=time//period
+    extra=time%period
     results=[]
     data=np.load(path)
     X=data[:,:-1]
@@ -144,6 +146,8 @@ def run_task(path,task,time,interval=3):
 
     for i in range(interval): 
         #results.append(spawn_classifier(i,time))
+        results.append(spawn_estimator(i,time))
+    if extra >=30:
         results.append(spawn_estimator(i,time))
     return results[-1]
     

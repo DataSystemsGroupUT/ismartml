@@ -28,6 +28,7 @@ def upload_file():
             return redirect(request.url)
         file = request.files['file']
         time = request.form['time']
+        period = request.form['period']
         task = request.form['task']
 
         if file.filename == '':
@@ -38,6 +39,7 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             session['filename']=filename
             session['time']=time
+            session['period']=period
             session['task']=task
             #flash('File successfully uploaded')
             #outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -59,8 +61,9 @@ def running():
 def run_optimize():
     filename=session.get('filename', 'not set')
     time=int(session.get('time', 'not set'))
+    period=int(session.get('period', 'not set'))
     task=session.get('task', 'not set')
-    results=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,time)
+    results=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,time,period)
     #flash(results)
     #session['results']=results
     #df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
