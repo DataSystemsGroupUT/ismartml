@@ -144,13 +144,17 @@ def run_task(path,task,time,period):
     elif task=="regression":
         spawn_estimator = get_spawn_regressor(X_train, y_train)
 
+    return spawn_estimator
+
+    """
     for i in range(interval): 
         #results.append(spawn_classifier(i,time))
         results.append(spawn_estimator(i,time))
     if extra >=30:
         results.append(spawn_estimator(i,time))
     return results[-1]
-    
+    """
+
     """
     print('Starting to build an ensemble!')
     automl = AutoSklearnClassifier(

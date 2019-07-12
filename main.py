@@ -63,10 +63,19 @@ def run_optimize():
     time=int(session.get('time', 'not set'))
     period=int(session.get('period', 'not set'))
     task=session.get('task', 'not set')
-    results=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,time,period)
+    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,time,period)
+    results=estimator(0,time)
     #flash(results)
     #session['results']=results
     #df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
+    
+    df=pd.DataFrame(data=results)
+    return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
+
+
+@app.route('/progress')
+def progress():
+    results=estimator(0,time)
     df=pd.DataFrame(data=results)
     return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
 
