@@ -127,10 +127,10 @@ def get_spawn_regressor(X_train, y_train):
 
 
 
-def run_task(path,task,time,period):
+def run_task(path,task):
 
-    interval=time//period
-    extra=time%period
+    #interval=time//period
+    #extra=time%period
     results=[]
     data=np.load(path)
     X=data[:,:-1]

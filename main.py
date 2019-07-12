@@ -59,25 +59,45 @@ def running():
 
 @app.route('/run_optimize')
 def run_optimize():
+    session["turn"]=0
     filename=session.get('filename', 'not set')
     time=int(session.get('time', 'not set'))
     period=int(session.get('period', 'not set'))
     task=session.get('task', 'not set')
-    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,time,period)
+    iters=time//period
+    extra=time%period
+    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task)
     results=estimator(0,time)
+    
+    session["iters"]=iters
+    session["extra"]=extra
+    
+    
     #flash(results)
     #session['results']=results
     #df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     
-    df=pd.DataFrame(data=results)
-    return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
+    #df=pd.DataFrame(data=results)
+    #return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
+    return render_template('progress.html',task=task,time=time)
 
 
 @app.route('/progress')
 def progress():
-    results=estimator(0,time)
-    df=pd.DataFrame(data=results)
-    return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
+    turn=int(session.get('turn', 'not set'))
+    time=int(session.get('time', 'not set'))
+    task=session.get('task', 'not set')
+    iters=int(session.get('iters', 'not set'))
+    extra=int(session.get('extra', 'not set'))
+    filename=session.get('filename', 'not set')
+    session["turn"]=turn+1
+    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task)
+    results=estimator(turn,time)
+    #df=pd.DataFrame(data=results)
+    #return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
+    if(turn>iters):
+        return "done"
+    return render_template('progress.html',task=task,time=time,turn=turn)
 
 
 app.run(host='0.0.0.0', port=8080,debug=True)

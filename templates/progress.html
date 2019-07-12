@@ -1,0 +1,17 @@
+<html>
+    <head>
+	<title>Running</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(function () { 
+                //$("#content").load("/run_optimize"); 
+		window.location.replace("/progress");
+            });
+        </script>
+    </head>
+    <body>
+	    <div id="content">
+		    <h1>Running {{task}} task for {{time}} seconds...{{turn}}</h1>
+	    </div>
+    </body>
+</html>
