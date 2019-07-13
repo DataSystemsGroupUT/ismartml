@@ -75,11 +75,14 @@ def run_optimize():
     
     #flash(results)
     #session['results']=results
-    #df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
-    
+    df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
+    print("len:",len(df))
+    col_names=["score","params"]
+    res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     #df=pd.DataFrame(data=results)
     #return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
-    return render_template('progress.html',task=task,time=time)
+    return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
+    #return render_template('progress.html',task=task,time=time)
 
 
 @app.route('/progress')
