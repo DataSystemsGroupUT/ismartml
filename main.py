@@ -59,7 +59,8 @@ def running():
 
 @app.route('/run_optimize')
 def run_optimize():
-    session["turn"]=0
+    turn=0
+    session["turn"]=turn
     filename=session.get('filename', 'not set')
     time=int(session.get('time', 'not set'))
     period=int(session.get('period', 'not set'))
@@ -81,7 +82,7 @@ def run_optimize():
     #df=pd.DataFrame(data=results)
     #return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
     
-    return render_template("progress.html",task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
+    return render_template("progress.html",turn=turn,iters=iters,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
     #return render_template('progress.html',task=task,time=time)
     #return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
 
@@ -94,7 +95,8 @@ def progress():
     iters=int(session.get('iters', 'not set'))
     extra=int(session.get('extra', 'not set'))
     filename=session.get('filename', 'not set')
-    session["turn"]=turn+1
+    turn+=1
+    session["turn"]=turn
     print("turn: ", turn)
     print("iter: ", iters)
     print("tunr > iter: ",turn>iters)
@@ -103,11 +105,10 @@ def progress():
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["score","params"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
-    if(turn>iters):
-        print("tick")
+    if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
-        return render_template("progress.html",task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("progress.html",turn=turn,iters=iters,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
 
 
 app.run(host='0.0.0.0', port=8080,debug=True)
