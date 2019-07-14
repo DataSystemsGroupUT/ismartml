@@ -124,18 +124,32 @@ def get_spawn_regressor(X_train, y_train):
 
     return spawn_regressor
 
+def process_data(path,data_type):
+    if(data_type=="numpy"):
+        data=np.load(path)
+        X=data[:,:-1]
+        y=data[:,-1]
+    elif(data_type=="csv"):
+        data=np.genfromtxt(path,skip_header=1,delimiter=",")
+        X=data[:,:-1]
+        y=data[:,-1]
+    else:
+        X=None
+        y=None
+    return X,y
 
 
-
-def run_task(path,task):
+def run_task(path,task,data_type):
 
     #interval=time//period
     #extra=time%period
     results=[]
-    data=np.load(path)
-    X=data[:,:-1]
-    y=data[:,-1]
+    #data=np.load(path)
+    #X=data[:,:-1]
+    #y=data[:,-1]
     #X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
+    X,y=process_data(path,data_type)
+    
     X_train, X_test, y_train, y_test = \
         sklearn.model_selection.train_test_split(X, y, random_state=1)
     

@@ -10,7 +10,7 @@ from multi import run_task
 
 
 #ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-ALLOWED_EXTENSIONS = set(["npy"])
+ALLOWED_EXTENSIONS = set(["npy","csv"])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -30,6 +30,7 @@ def upload_file():
         time = request.form['time']
         period = request.form['period']
         task = request.form['task']
+        data_type = request.form['data_type']
 
         if file.filename == '':
             flash('No file selected for uploading')
@@ -41,6 +42,7 @@ def upload_file():
             session['time']=time
             session['period']=period
             session['task']=task
+            session['data_type']=data_type
             #flash('File successfully uploaded')
             #outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #flash(outp)
@@ -69,9 +71,10 @@ def run_optimize():
     time=int(session.get('time', 'not set'))
     period=int(session.get('period', 'not set'))
     task=session.get('task', 'not set')
+    data_type=session.get('data_type', 'not set')
     iters=time//period
     extra=time%period
-    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task)
+    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
     results=estimator(0,time)
     
     session["iters"]=iters
@@ -99,10 +102,11 @@ def progress():
     iters=int(session.get('iters', 'not set'))
     extra=int(session.get('extra', 'not set'))
     filename=session.get('filename', 'not set')
+    data_type=session.get('data_type', 'not set')
     turn+=1
     session["turn"]=turn
     print("tunr > iter: ",turn>iters)
-    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task)
+    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
     print("turn: ",turn)
     results=estimator(turn,time)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
