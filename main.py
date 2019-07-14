@@ -53,9 +53,13 @@ def upload_file():
 
 @app.route('/running')
 def running():
+    time=int(session.get('time', 'not set'))
+    period=int(session.get('period', 'not set'))
+    iters=time//period
+    extra=time%period
     time=session.get('time', 'not set')
     task=session.get('task', 'not set')
-    return render_template('running.html',task=task,time=time)
+    return render_template('running.html',task=task,time=time,iters=iters)
 
 @app.route('/run_optimize')
 def run_optimize():
@@ -97,15 +101,14 @@ def progress():
     filename=session.get('filename', 'not set')
     turn+=1
     session["turn"]=turn
-    print("turn: ", turn)
-    print("iter: ", iters)
     print("tunr > iter: ",turn>iters)
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task)
+    print("turn: ",turn)
     results=estimator(turn,time)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["score","params"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
-    if(turn>=iters):
+    if(turn>=iters-1):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
         return render_template("progress.html",turn=turn,iters=iters,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
