@@ -20,7 +20,7 @@ def allowed_file(filename):
     
 @app.route('/')
 def upload_form():
-    return render_template('upload.html', CLASSIFIERS=CLASSIFIERS)
+    return render_template('upload.html', CLASSIFIERS=CLASSIFIERS,REGRESSORS=REGRESSORS)
 
 @app.route('/', methods=['POST'])
 def upload_file():

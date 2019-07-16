@@ -26,7 +26,16 @@
 	    		<label>{{cl}}</label>
 		{% endfor %}
 		</p>
-	    	<p>Enter Time Budget in seconds (minimum 30)</p>
+	    	<p>
+		{% for rg in REGRESSORS %}
+	    		<input type="checkbox" name="classifier_ls" value="{{rg}}">
+	    		<label>{{rg}}</label>
+		{% endfor %}
+		</p>
+
+		
+		
+		<p>Enter Time Budget in seconds (minimum 30)</p>
 	    	<p>	
 			<input type="text"  name="time" required>
 		</p>
