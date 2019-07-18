@@ -39,6 +39,10 @@ def upload_file():
         else:
             search_space= request.form.getlist("regressor_ls")
 
+        if(int(time)<30):
+            return "Time budget must be at least 30 seconds"
+        if(int(period)<30):
+            return "Update period must be at least 30 seconds"
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
