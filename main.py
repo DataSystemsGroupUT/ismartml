@@ -34,6 +34,10 @@ def upload_file():
         period = request.form['period']
         task = request.form['task']
         data_type = request.form['data_type']
+        if(task=="classification"):
+            search_space= request.form.getlist("classifier_ls")
+        else:
+            search_space= request.form.getlist("regressor_ls")
 
         if file.filename == '':
             flash('No file selected for uploading')
@@ -46,6 +50,7 @@ def upload_file():
             session['period']=period
             session['task']=task
             session['data_type']=data_type
+            session["search_space"]=search_space
             #flash('File successfully uploaded')
             #outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #flash(outp)
@@ -75,10 +80,11 @@ def run_optimize():
     period=int(session.get('period', 'not set'))
     task=session.get('task', 'not set')
     data_type=session.get('data_type', 'not set')
+    search_space=session.get('search_space', 'not set')
     iters=time//period
     extra=time%period
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
-    results=estimator(0,time)
+    results=estimator(0,time,search_space)
     
     session["iters"]=iters
     session["extra"]=extra
@@ -106,12 +112,13 @@ def progress():
     extra=int(session.get('extra', 'not set'))
     filename=session.get('filename', 'not set')
     data_type=session.get('data_type', 'not set')
+    search_space=session.get('search_space', 'not set')
     turn+=1
     session["turn"]=turn
     print("tunr > iter: ",turn>iters)
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
     print("turn: ",turn)
-    results=estimator(turn,time)
+    results=estimator(turn,time,search_space)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["score","params"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]

@@ -45,7 +45,7 @@
 		<div id="cl_div" style="display:none">
 		<p>
 		{% for cl in CLASSIFIERS %}
-	    		<input type="checkbox" name="classifier_ls" value="{{cl}}">
+	    		<input type="checkbox" name="classifier_ls" value="{{cl}}" checked>
 	    		<label>{{cl}}</label>
 		{% endfor %}
 		</p>
@@ -53,7 +53,7 @@
 		<div id="rg_div" style="display:none">
 	    	<p>
 		{% for rg in REGRESSORS %}
-	    		<input type="checkbox" name="classifier_ls" value="{{rg}}">
+	    		<input type="checkbox" name="regressor_ls" value="{{rg}}" checked>
 	    		<label>{{rg}}</label>
 		{% endfor %}
 		</p>
