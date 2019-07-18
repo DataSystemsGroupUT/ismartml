@@ -13,7 +13,7 @@ from multi import run_task
 ALLOWED_EXTENSIONS = set(["npy","csv"])
 
 CLASSIFIERS=["adaboost","bernoulli_nb","decision_tree", "extra_trees","gaussian_nb", "gradient_boosting","k_nearest_neighbors", "lda","liblinear_svc","libsvm_svc"," 	multinomial_nb","passive_aggressive","qda","random_forest","sgd","xgradient_boosting"]
-REGRESSORS=["adaboost","ard_regression","decision_tree", "extra_trees","gaussian_process", "gradient_boosting","k_nearest_neighbors","liblinear_svr","libsvm_svr","qda","random_forest","sgd","xgradient_boosting"]
+REGRESSORS=["adaboost","ard_regression","decision_tree", "extra_trees","gaussian_process", "gradient_boosting","k_nearest_neighbors","liblinear_svr","libsvm_svr","random_forest","sgd","xgradient_boosting"]
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -97,8 +97,10 @@ def run_optimize():
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     #df=pd.DataFrame(data=results)
     #return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
-    
-    return render_template("progress.html",turn=turn,iters=iters,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
+    if iters<=1:
+        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
+    else:
+        return render_template("progress.html",turn=turn,iters=iters,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
     #return render_template('progress.html',task=task,time=time)
     #return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
 
@@ -115,9 +117,7 @@ def progress():
     search_space=session.get('search_space', 'not set')
     turn+=1
     session["turn"]=turn
-    print("tunr > iter: ",turn>iters)
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
-    print("turn: ",turn)
     results=estimator(turn,time,search_space)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["score","params"]
