@@ -39,10 +39,10 @@
     <dl>
 		<p>Select Task</p>
 		<p>
-		    <input type="radio" name="task" onclick ="show_cl();"  value="classification" required checked="checked"> Classification
+		    <input type="radio" name="task" onclick ="show_cl();"  value="classification" required > Classification
 		    <input type="radio" name="task" onclick="show_rg();" value="regression"> Regression
 		</p>
-		<div id="cl_div">
+		<div id="cl_div" style="display:none">
 		<p>
 		{% for cl in CLASSIFIERS %}
 	    		<input type="checkbox" name="classifier_ls" value="{{cl}}">
