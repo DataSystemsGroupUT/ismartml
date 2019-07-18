@@ -3,15 +3,18 @@
 	<title>Autosklearn</title>
 	<script type="text/javascript">
 
-	function show1(){
-	  document.getElementById('div1').style.display ='none';
+	function show_cl(){
+	  document.getElementById('cl_div').style.display ='block';
+	  document.getElementById('rg_div').style.display ='none';
 	}
-	function show2(){
-	  document.getElementById('div1').style.display = 'block';
+	function show_rg(){
+	  document.getElementById('rg_div').style.display = 'block';
+	  document.getElementById('cl_div').style.display = 'none';
 	}
-</script>
-</head>
+	</script>
 
+</head>
+<body>
 <p>
 	{% with messages = get_flashed_messages() %}
 	  {% if messages %}
@@ -27,10 +30,10 @@
     <dl>
 		<p>Select Task</p>
 		<p>
-		    <input type="radio" name="task" onclick ="show1();"  value="classification" required> Classification
-		    <input type="radio" name="task" onclick="show2();" value="regression"> Regression
+		    <input type="radio" name="task" onclick ="show_cl();"  value="classification" required> Classification
+		    <input type="radio" name="task" onclick="show_rg();" value="regression"> Regression
 		</p>
-		<div id="div1">
+		<div id="cl_div">
 		<p>
 		{% for cl in CLASSIFIERS %}
 	    		<input type="checkbox" name="classifier_ls" value="{{cl}}">
@@ -38,7 +41,7 @@
 		{% endfor %}
 		</p>
 		</div>
-		<div id="div2">
+		<div id="rg_div">
 	    	<p>
 		{% for rg in REGRESSORS %}
 	    		<input type="checkbox" name="classifier_ls" value="{{rg}}">
@@ -71,4 +74,5 @@
     <p>
 		<input type="submit" value="Start">
 	</p>
+</body>
 </form>
