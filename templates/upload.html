@@ -12,6 +12,15 @@
 	  document.getElementById('cl_div').style.display = 'none';
 	}
 	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+	$(window).bind("pageshow", function() {
+	    var form = $('form'); 
+	    // let the browser natively reset defaults
+	    form[0].reset();
+	});
+        </script>
+
 
 </head>
 <body>
