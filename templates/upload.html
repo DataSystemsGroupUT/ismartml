@@ -37,14 +37,6 @@
 </p>
 <form method="post" action="/" enctype="multipart/form-data">
     <dl>
-	    	<div>
-		<p>Select Preprocessors</p>
-		{% for pr in PREPROCESSORS %}
-	    		<input type="checkbox" name="prep_ls" value="{{pr}}" checked>
-	    		<label>{{pr}}</label>
-		{% endfor %}
-
-		</div>
 		<p>Select Task</p>
 		<p>
 		    <input type="radio" name="task" onclick ="show_cl();"  value="classification" required > Classification
@@ -58,6 +50,14 @@
 	    		<label>{{cl}}</label>
 		{% endfor %}
 		</p>
+		<p>Select Preprocessors</p>
+		<p>
+		{% for pr in PREPROCESSORS_CL %}
+	    		<input type="checkbox" name="prep_cl" value="{{pr}}" checked>
+	    		<label>{{pr}}</label>
+		{% endfor %}
+		</p>
+
 		</div>
 		<div id="rg_div" style="display:none">
 		<p>Select Regressors</p>
@@ -67,6 +67,14 @@
 	    		<label>{{rg}}</label>
 		{% endfor %}
 		</p>
+		<p>Select Preprocessors</p>
+		<p>
+		{% for pr in PREPROCESSORS_RG %}
+	    		<input type="checkbox" name="prep_rg" value="{{pr}}" checked>
+	    		<label>{{pr}}</label>
+		{% endfor %}
+		</p>
+
 		</div>
 
 		

@@ -14,14 +14,15 @@ ALLOWED_EXTENSIONS = set(["npy","csv"])
 
 CLASSIFIERS=["adaboost","bernoulli_nb","decision_tree", "extra_trees","gaussian_nb", "gradient_boosting","k_nearest_neighbors", "lda","liblinear_svc","libsvm_svc","multinomial_nb","passive_aggressive","qda","random_forest","sgd","xgradient_boosting"]
 REGRESSORS=["adaboost","ard_regression","decision_tree", "extra_trees","gaussian_process", "gradient_boosting","k_nearest_neighbors","liblinear_svr","libsvm_svr","random_forest","sgd","xgradient_boosting"]
-PREPROCESSORS=["densifie","extra_trees_preproc_for_classification","extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","no_preprocessing","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
+PREPROCESSORS_CL=["densifier","extra_trees_preproc_for_classification","extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","no_preprocessing","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
+PREPROCESSORS_RG=["densifier","extra_trees_preproc_for_classification","extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","no_preprocessing","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
     
 @app.route('/')
 def upload_form():
-    return render_template('upload.html', CLASSIFIERS=CLASSIFIERS,REGRESSORS=REGRESSORS,PREPROCESSORS=PREPROCESSORS)
+    return render_template('upload.html', CLASSIFIERS=CLASSIFIERS,REGRESSORS=REGRESSORS,PREPROCESSORS_CL=PREPROCESSORS_CL,PREPROCESSORS_RG=PREPROCESSORS_RG)
 
 @app.route('/', methods=['POST'])
 def upload_file():
@@ -35,6 +36,7 @@ def upload_file():
         period = request.form['period']
         task = request.form['task']
         data_type = request.form['data_type']
+        prep_space= request.form.getlist("prep_ls")
         if(task=="classification"):
             search_space= request.form.getlist("classifier_ls")
         else:
@@ -56,6 +58,7 @@ def upload_file():
             session['task']=task
             session['data_type']=data_type
             session["search_space"]=search_space
+            session["prep_space"]=prep_space
             #flash('File successfully uploaded')
             #outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #flash(outp)
@@ -86,10 +89,11 @@ def run_optimize():
     task=session.get('task', 'not set')
     data_type=session.get('data_type', 'not set')
     search_space=session.get('search_space', 'not set')
+    prep_space=session.get('prep_space', 'not set')
     iters=time//period
     extra=time%period
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
-    results=estimator(0,time,search_space)
+    results=estimator(0,time,search_space,prep_space)
     
     session["iters"]=iters
     session["extra"]=extra
@@ -120,10 +124,11 @@ def progress():
     filename=session.get('filename', 'not set')
     data_type=session.get('data_type', 'not set')
     search_space=session.get('search_space', 'not set')
+    prep_space=session.get('prep_space', 'not set')
     turn+=1
     session["turn"]=turn
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
-    results=estimator(turn,time,search_space)
+    results=estimator(turn,time,search_space,prep_space)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["score","params"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
