@@ -14,6 +14,7 @@ ALLOWED_EXTENSIONS = set(["npy","csv"])
 
 CLASSIFIERS=["adaboost","bernoulli_nb","decision_tree", "extra_trees","gaussian_nb", "gradient_boosting","k_nearest_neighbors", "lda","liblinear_svc","libsvm_svc","multinomial_nb","passive_aggressive","qda","random_forest","sgd","xgradient_boosting"]
 REGRESSORS=["adaboost","ard_regression","decision_tree", "extra_trees","gaussian_process", "gradient_boosting","k_nearest_neighbors","liblinear_svr","libsvm_svr","random_forest","sgd","xgradient_boosting"]
+PREPROCESSORS=["densifie","extra_trees_preproc_for_classification","extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","no_preprocessing","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
