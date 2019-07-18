@@ -30,7 +30,7 @@
     <dl>
 		<p>Select Task</p>
 		<p>
-		    <input type="radio" name="task" onclick ="show_cl();"  value="classification" required> Classification
+		    <input type="radio" name="task" onclick ="show_cl();"  value="classification" required checked="checked"> Classification
 		    <input type="radio" name="task" onclick="show_rg();" value="regression"> Regression
 		</p>
 		<div id="cl_div">
@@ -41,7 +41,7 @@
 		{% endfor %}
 		</p>
 		</div>
-		<div id="rg_div">
+		<div id="rg_div" style="display:none">
 	    	<p>
 		{% for rg in REGRESSORS %}
 	    		<input type="checkbox" name="classifier_ls" value="{{rg}}">
