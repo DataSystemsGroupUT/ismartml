@@ -46,14 +46,14 @@
 		<p>Select Classifiers</p>
 		<p>
 		{% for cl in CLASSIFIERS %}
-	    		<input type="checkbox" name="classifier_ls" value="{{cl}}" checked>
+	    		<input type="checkbox" name="classifier_ls" value="{{cl}}" checked > 
 	    		<label>{{cl}}</label>
 		{% endfor %}
 		</p>
 		<p>Select Preprocessors</p>
 		<p>
 		{% for pr in PREPROCESSORS_CL %}
-	    		<input type="checkbox" name="prep_cl" value="{{pr}}" checked>
+	    		<input type="checkbox" name="prep_cl" value="{{pr}}" checked >
 	    		<label>{{pr}}</label>
 		{% endfor %}
 		</p>
@@ -63,14 +63,14 @@
 		<p>Select Regressors</p>
 	    	<p>
 		{% for rg in REGRESSORS %}
-	    		<input type="checkbox" name="regressor_ls" value="{{rg}}" checked>
+	    		<input type="checkbox" name="regressor_ls" value="{{rg}}" checked >
 	    		<label>{{rg}}</label>
 		{% endfor %}
 		</p>
 		<p>Select Preprocessors</p>
 		<p>
 		{% for pr in PREPROCESSORS_RG %}
-	    		<input type="checkbox" name="prep_rg" value="{{pr}}" checked>
+	    		<input type="checkbox" name="prep_rg" value="{{pr}}" checked  >
 	    		<label>{{pr}}</label>
 		{% endfor %}
 		</p>
