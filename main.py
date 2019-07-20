@@ -112,6 +112,7 @@ def run_optimize():
     prep_space=session.get('prep_space', 'not set')
     iters=time//period
     extra=time%period
+    format_period=format_time(period)
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
     results=estimator(0,time,search_space,prep_space)
     
@@ -129,7 +130,7 @@ def run_optimize():
     if iters<=1:
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
     #return render_template('progress.html',task=task,time=time)
     #return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
 
@@ -140,11 +141,13 @@ def progress():
     time=int(session.get('time', 'not set'))
     task=session.get('task', 'not set')
     iters=int(session.get('iters', 'not set'))
+    period=int(session.get('period', 'not set'))
     extra=int(session.get('extra', 'not set'))
     filename=session.get('filename', 'not set')
     data_type=session.get('data_type', 'not set')
     search_space=session.get('search_space', 'not set')
     prep_space=session.get('prep_space', 'not set')
+    format_period=format_time(period)
     turn+=1
     session["turn"]=turn
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
@@ -155,7 +158,7 @@ def progress():
     if(turn>=iters-1):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
 
 
 @app.route('/test')
