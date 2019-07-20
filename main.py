@@ -156,6 +156,12 @@ def progress():
         return render_template("progress.html",turn=turn,iters=iters,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
 
 
+@app.route('/test')
+def test():
+    return render_template('test.html', start_total="Jul 20, 2019 15:30:25")
+
+
+
 app.run(host='0.0.0.0', port=8080,debug=True)
 
 

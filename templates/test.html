@@ -1,17 +1,36 @@
-<html>
-    <head>
-	<title>Running</title>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $(function () { 
-                //$("#content").load("/run_optimize"); 
-		window.location.replace("/run_optimize");
-            });
-        </script>
-    </head>
-    <body>
-	    <div id="content">
-		    <h1>Running {{task}} task for {{time}} seconds...</h1>
-	    </div>
-    </body>
-</html>
+
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<style> 
+p { 
+  text-align: center; 
+  font-size: 60px; 
+} 
+</style> 
+</head> 
+<body> 
+<p id="demo"></p> 
+<script> 
+//var deadline = new Date("Jul 20, 2019 15:37:25").getTime(); 
+//var deadline = new Date({{start_total|tojson}}).getTime(); 
+var t=0;
+var x = setInterval(function() { 
+//var now = new Date().getTime(); 
+t+=1; 
+var days = Math.floor(t / ( 60 * 60 * 24)); 
+var hours = Math.floor((t%(60 * 60 * 24))/( 60 * 60)); 
+var minutes = Math.floor((t % (60 * 60)) / ( 60)); 
+var seconds = Math.floor((t % ( 60)) ); 
+document.getElementById("demo").innerHTML = days + "d "  
++ hours + "h " + minutes + "m " + seconds + "s "; 
+    if (t < 0) { 
+        clearInterval(x); 
+        document.getElementById("demo").innerHTML = "EXPIRED"; 
+    } 
+}, 1000); 
+</script> 
+  
+</body> 
+</html> 
+
