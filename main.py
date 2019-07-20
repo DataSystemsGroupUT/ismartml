@@ -55,6 +55,8 @@ def upload_file():
             return "Time budget must be at least 30 seconds"
         if(int(period)<30):
             return "Update period must be at least 30 seconds"
+        if(int(period)>int(time)):
+            return "Update period can't be larger than total time budget"
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
