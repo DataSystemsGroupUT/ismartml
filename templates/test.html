@@ -22,8 +22,25 @@ var days = Math.floor(t / ( 60 * 60 * 24));
 var hours = Math.floor((t%(60 * 60 * 24))/( 60 * 60)); 
 var minutes = Math.floor((t % (60 * 60)) / ( 60)); 
 var seconds = Math.floor((t % ( 60)) ); 
+
+if(minutes<1){
+document.getElementById("demo").innerHTML = 
+		 seconds + "s "; 
+}
+
+else if(hours<1){
+document.getElementById("demo").innerHTML =  
+		 minutes + "m " + seconds + "s "; 
+}
+
+else if(days<1){
+document.getElementById("demo").innerHTML =   
+		 hours + "h " + minutes + "m " + seconds + "s "; 
+}
+else{
 document.getElementById("demo").innerHTML = days + "d "  
-+ hours + "h " + minutes + "m " + seconds + "s "; 
+		+ hours + "h " + minutes + "m " + seconds + "s "; 
+}
     if (t < 0) { 
         clearInterval(x); 
         document.getElementById("demo").innerHTML = "EXPIRED"; 
