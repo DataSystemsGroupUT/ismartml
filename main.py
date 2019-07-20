@@ -7,6 +7,7 @@ from flask import Flask, flash, request, redirect, render_template, url_for, ses
 from werkzeug.utils import secure_filename
 import shutil
 from multi import run_task
+from extras import format_time
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
 
@@ -95,7 +96,8 @@ def running():
     extra=time%period
     time=session.get('time', 'not set')
     task=session.get('task', 'not set')
-    return render_template('running.html',task=task,time=time,iters=iters)
+    format_period=format_time(period)
+    return render_template('running.html',task=task,time=time,iters=iters,PERIOD=format_period)
 
 @app.route('/run_optimize')
 def run_optimize():
