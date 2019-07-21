@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 </head>
 <body>
+<form id="model_form" method="get" action="/test"></form>
 <table>
     <tr>
         {% for col in column_names %}
@@ -15,9 +16,9 @@
     {% for row in row_data %}
     <tr>
         {% for col, row_ in zip(column_names, row) %}
-        {% if col == link_column %}
+        {% if col == "Details" %}
         <td>
-            <button type="submit" value={{ row_ }} name="person_id" form="patient_form" class="patient_button">
+            <button type="submit" value={{row_ }} name="person_id" form="model_form" class="model_button">
                 {{ row_ }}
             </button>
         </td>

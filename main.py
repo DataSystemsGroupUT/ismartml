@@ -123,9 +123,9 @@ def run_optimize():
     #flash(results)
     #session['results']=results
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
-    col_names=["Score","Estimator","Preprocessing"]
+    col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
-    res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"]] for row in res_list]
+    res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
     #res_list=list(map(list, zip(*res_list)))
     #res_list=[res_list[0],res_list[1]["classifier:__choice__"],res_list[1]["preprocessor:__choice__"]]
     
@@ -167,7 +167,8 @@ def progress():
 
 @app.route('/test')
 def test():
-    return render_template('test.html', start_total="Jul 20, 2019 15:30:25")
+    #return render_template('test.html', start_total="Jul 20, 2019 15:30:25")
+    return "test"
 
 
 
