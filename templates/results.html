@@ -13,11 +13,12 @@
         {% endfor %}
     </tr>
     {% for row in row_data %}
+    {% set outer_loop = loop %}
     <tr>
         {% for col, row_ in zip(column_names, row) %}
         {% if col == "Details" %}
         <td>
-            <button type="button" value={{row_ }} name="person_id" onclick="window.open('{{ url_for( 'test' ) }}');">
+            <button type="button" value={{row_ }} name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+ outer_loop.index0|string }}');">
                 {{ row_ }}
             </button>
         </td>

@@ -126,6 +126,7 @@ def run_optimize():
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+    session["results"]=res_list
     #res_list=list(map(list, zip(*res_list)))
     #res_list=[res_list[0],res_list[1]["classifier:__choice__"],res_list[1]["preprocessor:__choice__"]]
     
@@ -157,8 +158,10 @@ def progress():
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
     results=estimator(turn,time,search_space,prep_space)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
-    col_names=["score","params"]
+    col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
+    session["results"]=res_list
+    res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
     if(turn>=iters-1):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
@@ -170,6 +173,13 @@ def test():
     #return render_template('test.html', start_total="Jul 20, 2019 15:30:25")
     return "test"
 
+
+@app.route('/model')
+def view_model():
+    #return render_template('test.html', start_total="Jul 20, 2019 15:30:25")
+    res_list=session.get('results', 'not set')
+    model = request.args.get('model', default = 0, type = int)
+    return str(res_list[model])
 
 
 app.run(host='0.0.0.0', port=8080,debug=True)

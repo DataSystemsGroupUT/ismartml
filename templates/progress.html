@@ -55,9 +55,9 @@
 	    {% for row in row_data %}
 	    <tr>
 		{% for col, row_ in zip(column_names, row) %}
-		{% if col == link_column %}
+		{% if col == "Details" %}
 		<td>
-		    <button type="submit" value={{ row_ }} name="person_id" form="patient_form" class="patient_button">
+            	<button type="button" value={{row_ }} name="person_id" onclick="window.open('{{ url_for( 'view_model' ) }}');">
 			{{ row_ }}
 		    </button>
 		</td>
