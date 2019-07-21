@@ -123,8 +123,12 @@ def run_optimize():
     #flash(results)
     #session['results']=results
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
-    col_names=["score","params"]
+    col_names=["Score","Estimator","Preprocessing"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
+    res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"]] for row in res_list]
+    #res_list=list(map(list, zip(*res_list)))
+    #res_list=[res_list[0],res_list[1]["classifier:__choice__"],res_list[1]["preprocessor:__choice__"]]
+    
     #df=pd.DataFrame(data=results)
     #return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
     if iters<=1:
