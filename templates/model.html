@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
+</head>
+
+<body>
+<table>
+	<tr>
+		<td>Score</td>
+		<td>{{model[0]}}</td>
+	</tr>
+
+ {% for key in model[1].keys() %}
+     <tr>
+	     <td>{{key}}</td>
+	    <td>{{ model[1][key] }}</td>
+    </tr>
+ {% endfor %}
+</table>
+</body>
+</html>

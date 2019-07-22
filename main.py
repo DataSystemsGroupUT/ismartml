@@ -20,9 +20,9 @@ CLASSIFIERS=["adaboost","bernoulli_nb","decision_tree", "extra_trees","gaussian_
 
 REGRESSORS=["adaboost","ard_regression","decision_tree", "extra_trees","gaussian_process", "gradient_boosting","k_nearest_neighbors","liblinear_svr","libsvm_svr","random_forest","sgd","xgradient_boosting"]
 
-PREPROCESSORS_CL=["extra_trees_preproc_for_classification","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","no_preprocessing","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
+PREPROCESSORS_CL=["no_preprocessing","extra_trees_preproc_for_classification","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
 
-PREPROCESSORS_RG=["extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","no_preprocessing","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
+PREPROCESSORS_RG=["no_preprocessing","extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
 
 #PREPROCESSORS_RG=["densifier","extra_trees_preproc_for_classification","extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","no_preprocessing","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
 
@@ -125,8 +125,11 @@ def run_optimize():
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
-    res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
     session["results"]=res_list
+    if(task=="classification"):
+        res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+    else:
+        res_list=[[row[0],row[1]["regressor:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
     #res_list=list(map(list, zip(*res_list)))
     #res_list=[res_list[0],res_list[1]["classifier:__choice__"],res_list[1]["preprocessor:__choice__"]]
     
@@ -161,7 +164,10 @@ def progress():
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     session["results"]=res_list
-    res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+    if(task=="classification"):
+        res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+    else:
+        res_list=[[row[0],row[1]["regressor:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
     if(turn>=iters-1):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
@@ -178,8 +184,9 @@ def test():
 def view_model():
     #return render_template('test.html', start_total="Jul 20, 2019 15:30:25")
     res_list=session.get('results', 'not set')
-    model = request.args.get('model', default = 0, type = int)
-    return str(res_list[model])
+    index = request.args.get('model', default = 0, type = int)
+    model=res_list[index]
+    return render_template("model.html",model=model)
 
 
 app.run(host='0.0.0.0', port=8080,debug=True)
