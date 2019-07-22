@@ -24,7 +24,6 @@ PREPROCESSORS_CL=["no_preprocessing","extra_trees_preproc_for_classification","f
 
 PREPROCESSORS_RG=["no_preprocessing","extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
 
-#PREPROCESSORS_RG=["densifier","extra_trees_preproc_for_classification","extra_trees_preproc_for_regression","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","no_preprocessing","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -37,6 +36,7 @@ def upload_form():
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
+        values={}
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
@@ -64,18 +64,16 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            session['filename']=filename
-            session['time']=time
-            session['period']=period
-            session['task']=task
-            session['data_type']=data_type
-            session["search_space"]=search_space
-            session["prep_space"]=prep_space
-            #flash('File successfully uploaded')
-            #outp=classification_task(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #flash(outp)
-            #return redirect(url_for(".running",filename=filename))
 
+            values['filename']=filename
+            values['time']=int(time)
+            values['period']=int(period)
+            values['task']=task
+            values['data_type']=data_type
+            values["search_space"]=search_space
+            values["prep_space"]=prep_space
+            values["turn"]=0
+            session["values"]=values
             for dir_ in [tmp_folder, output_folder]:
                 try:
                     shutil.rmtree(dir_)
@@ -90,104 +88,74 @@ def upload_file():
 
 @app.route('/running')
 def running():
-    time=int(session.get('time', 'not set'))
-    period=int(session.get('period', 'not set'))
-    iters=time//period
-    extra=time%period
-    time=session.get('time', 'not set')
-    task=session.get('task', 'not set')
-    format_period=format_time(period)
-    return render_template('running.html',task=task,time=time,iters=iters,PERIOD=format_period)
+    values=session.get('values', 'not set')
+    iters=values["time"]//values["period"]
+    extra=values["time"]%values["period"]
+    format_period=format_time(values["period"])
+    return render_template('running.html',task=values["task"],time=values["time"],iters=iters,PERIOD=format_period)
 
 @app.route('/run_optimize')
 def run_optimize():
-    turn=0
-    session["turn"]=turn
-    filename=session.get('filename', 'not set')
-    time=int(session.get('time', 'not set'))
-    period=int(session.get('period', 'not set'))
-    task=session.get('task', 'not set')
-    data_type=session.get('data_type', 'not set')
-    search_space=session.get('search_space', 'not set')
-    prep_space=session.get('prep_space', 'not set')
-    iters=time//period
-    extra=time%period
-    format_period=format_time(period)
-    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
-    results=estimator(0,time,search_space,prep_space)
-    
-    session["iters"]=iters
-    session["extra"]=extra
-    
-    
-    #flash(results)
-    #session['results']=results
+    values=session.get('values', 'not set')
+    iters=values["time"]//values["period"]
+    extra=values["time"]%values["period"]
+    format_period=format_time(values["period"])
+    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"])
+    results=estimator(0,values["period"],values["search_space"],values["prep_space"])
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     session["results"]=res_list
-    if(task=="classification"):
+    
+    if(values["task"]=="classification"):
         res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
     else:
         res_list=[[row[0],row[1]["regressor:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
-    #res_list=list(map(list, zip(*res_list)))
-    #res_list=[res_list[0],res_list[1]["classifier:__choice__"],res_list[1]["preprocessor:__choice__"]]
-    
-    #df=pd.DataFrame(data=results)
-    #return render_template("results.html",column_names=df.columns.values, row_data=list(df.values.tolist()),zip=zip)
     if iters<=1:
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
-    #return render_template('progress.html',task=task,time=time)
-    #return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("progress.html",turn=values["turn"],iters=iters,PERIOD=format_period,task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip)
 
 
 @app.route('/progress')
 def progress():
-    turn=int(session.get('turn', 'not set'))
-    time=int(session.get('time', 'not set'))
-    task=session.get('task', 'not set')
-    iters=int(session.get('iters', 'not set'))
-    period=int(session.get('period', 'not set'))
-    extra=int(session.get('extra', 'not set'))
-    filename=session.get('filename', 'not set')
-    data_type=session.get('data_type', 'not set')
-    search_space=session.get('search_space', 'not set')
-    prep_space=session.get('prep_space', 'not set')
-    format_period=format_time(period)
-    turn+=1
-    session["turn"]=turn
-    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], filename),task,data_type)
-    results=estimator(turn,time,search_space,prep_space)
+    values=session.get('values', 'not set')
+    iters=values["time"]//values["period"]
+    extra=values["time"]%values["period"]
+    format_period=format_time(values["period"])
+    
+    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"])
+    print("time: ",values["time"])
+    results=estimator(values["turn"]+1,values["period"],values["search_space"],values["prep_space"])
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     session["results"]=res_list
-    if(task=="classification"):
+    print(values["turn"])
+    values["turn"]=values["turn"]+1
+    print(values["turn"])
+    session["values"]=values
+    if(values["task"]=="classification"):
         res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
     else:
         res_list=[[row[0],row[1]["regressor:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
-    if(turn>=iters-1):
+    if(values["turn"]>=iters-1):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,task=task,time=time,column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("progress.html",turn=values["turn"],iters=iters,PERIOD=format_period,task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip)
 
 
 @app.route('/test')
 def test():
-    #return render_template('test.html', start_total="Jul 20, 2019 15:30:25")
     return "test"
 
 
 @app.route('/model')
 def view_model():
-    #return render_template('test.html', start_total="Jul 20, 2019 15:30:25")
     res_list=session.get('results', 'not set')
     index = request.args.get('model', default = 0, type = int)
     model=res_list[index]
     return render_template("model.html",model=model)
-
 
 app.run(host='0.0.0.0', port=8080,debug=True)
 
