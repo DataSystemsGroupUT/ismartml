@@ -73,7 +73,6 @@ def upload_file():
             values['data_type']=data_type
             values["search_space"]=search_space
             values["prep_space"]=prep_space
-            values["turn"]=0
             session["values"]=values
             for dir_ in [tmp_folder, output_folder]:
                 try:
@@ -97,13 +96,15 @@ def running():
 
 @app.route('/progress')
 def progress():
+    turn = request.args.get('iter', default = 0, type = int)
+    print("turn",turn)
     values=session.get('values', 'not set')
     iters=values["time"]//values["period"]
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
     
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"])
-    results=estimator(values["turn"],values["period"],values["search_space"],values["prep_space"])
+    results=estimator(turn,values["period"],values["search_space"],values["prep_space"])
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
@@ -111,16 +112,15 @@ def progress():
     filehandler = open("tmp/results.p", 'wb') 
     pickle.dump(res_list, filehandler)
     
-    values["turn"]=values["turn"]+1
-    session["values"]=values
+    turn+=+1
     if(values["task"]=="classification"):
         res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
     else:
         res_list=[[row[0],row[1]["regressor:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
-    if(values["turn"]>=iters):
+    if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
-        return render_template("progress.html",turn=values["turn"],iters=iters,PERIOD=format_period,task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip)
 
 
 @app.route('/test')
