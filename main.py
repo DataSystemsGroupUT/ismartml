@@ -6,6 +6,7 @@ from app import app
 from flask import Flask, flash, request, redirect, render_template, url_for, session
 from werkzeug.utils import secure_filename
 import shutil
+import pickle
 from multi import run_task
 from extras import format_time
 tmp_folder = 'tmp/autosk_tmp'
@@ -105,7 +106,9 @@ def run_optimize():
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
-    session["results"]=res_list
+    #session["results"]=res_list
+    filehandler = open("tmp/results.p", 'wb') 
+    pickle.dump(res_list, filehandler)
     
     if(values["task"]=="classification"):
         res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
@@ -130,7 +133,10 @@ def progress():
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
-    session["results"]=res_list
+    #session["results"]=res_list
+    filehandler = open("tmp/results.p", 'wb') 
+    pickle.dump(res_list, filehandler)
+    
     print(values["turn"])
     values["turn"]=values["turn"]+1
     print(values["turn"])
@@ -152,7 +158,10 @@ def test():
 
 @app.route('/model')
 def view_model():
-    res_list=session.get('results', 'not set')
+    #res_list=session.get('results', 'not set')
+    filehandler = open("tmp/results.p", 'rb') 
+    res_list=pickle.load(filehandler)
+    
     index = request.args.get('model', default = 0, type = int)
     model=res_list[index]
     return render_template("model.html",model=model)
