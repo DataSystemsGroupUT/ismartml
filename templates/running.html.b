@@ -1,7 +1,6 @@
-{% extends "base.html" %}
-{% block title %}Running{% endblock %}
-{% block head %}
-    	{{ super() }}
+<html>
+    <head>
+	<title>Running</title>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
             $(function () { 
@@ -39,8 +38,9 @@
 	}
 	}, 1000); 
 	</script> 
-{% endblock %}
-{% block content %}
+	 
+    </head>
+    <body>
 	    <div id="content">
 		    <h1>Running {{task}} task for {{time}} seconds... 1/{{iters}}</h1>
 		    <h1><span>Current Period: </span><span id="timer"></span><span>/{{PERIOD}}</span></h1>
@@ -48,4 +48,5 @@
                 Cancel
             </button>
 	    </div>
-{% endblock %}
+    </body>
+</html>
