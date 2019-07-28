@@ -127,6 +127,18 @@ def progress():
 def test():
     return "test"
 
+@app.route('/stop')
+def stop():
+    values=session.get('values', 'not set')
+    filehandler = open("tmp/results.p", 'rb') 
+    res_list=pickle.load(filehandler)
+    col_names=["Score","Estimator","Preprocessing","Details"]
+    if(values["task"]=="classification"):
+        res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+    else:
+        res_list=[[row[0],row[1]["regressor:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+    return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
+
 
 @app.route('/model')
 def view_model():

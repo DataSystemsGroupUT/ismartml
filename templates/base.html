@@ -1,5 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
 <html>
     <head>
+	{% block head %}
 	<title>Running</title>
     	<link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -39,15 +42,12 @@
 	}
 	}, 1000); 
 	</script> 
-	 
+    {% endblock %}	 
     </head>
     <body>
 	    <div id="content">
 		    <h1>Running {{task}} task for {{time}} seconds... {{turn+1}}/{{iters}}</h1>
 		    <h1><span>Current Period: </span><span id="timer"></span><span>/{{PERIOD}}</span></h1>
-            <button type="button" value=Stop name="Stop" onclick="window.location.replace('{{ url_for( 'stop' )}}');">
-                Stop
-            </button>
 	    </div>
 	<table>
 	    <tr>
