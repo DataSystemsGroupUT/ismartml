@@ -44,6 +44,9 @@
 	    <div id="content">
 		    <h1>Running {{task}} task for {{time}} seconds... 1/{{iters}}</h1>
 		    <h1><span>Current Period: </span><span id="timer"></span><span>/{{PERIOD}}</span></h1>
+            <button type="button" value=Cancel name="Cancel" onclick="window.location.replace('{{ url_for( 'upload_file' )}}');">
+                Cancel
+            </button>
 	    </div>
     </body>
 </html>
