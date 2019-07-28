@@ -125,7 +125,7 @@ def progress():
 
 @app.route('/test')
 def test():
-    return "test"
+    return render_template("test.html")
 
 @app.route('/stop')
 def stop():
