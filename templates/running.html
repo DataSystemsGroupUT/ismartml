@@ -66,9 +66,11 @@
 	    <div id="content">
 		    <h1>Running {{task}} task for {{time}} seconds... {{turn+1}}/{{iters}}</h1>
 		    <h1><span>Current Period: </span><span id="timer"></span><span>/{{PERIOD}}</span></h1>
+		    </p>
 		    <div id="progress1">
   		    <div id="bar1"></div>
                     </div>
+		    </p>
 		    {% block stop_button %}
 		    <button type="button" class="btn btn-primary" value=Cancel name="Cancel" onclick="window.location.replace('{{ url_for( 'upload_file' )}}');">
                     Cancel
