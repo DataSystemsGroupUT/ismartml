@@ -13,7 +13,7 @@
         {% for col, row_ in zip(column_names, row) %}
         {% if col == "Details" %}
         <td>
-            <button type="button" value={{row_ }} name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+ outer_loop.index0|string }}');">
+            <button type="button" class="btn btn-primary" value={{row_ }} name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+ outer_loop.index0|string }}');">
                 {{ row_ }}
             </button>
         </td>

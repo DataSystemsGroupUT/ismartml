@@ -3,7 +3,7 @@
 	    <div id="content">
 		    <h1>Running {{task}} task for {{time}} seconds... {{turn+1}}/{{iters}}</h1>
 		    <h1><span>Current Period: </span><span id="timer"></span><span>/{{PERIOD}}</span></h1>
-            <button type="button" value=Stop name="Stop" onclick="window.location.replace('{{ url_for( 'stop' )}}');">
+            <button type="button" class="btn btn-primary" value=Stop name="Stop" onclick="window.location.replace('{{ url_for( 'stop' )}}');">
                 Stop
             </button>
 	    </div>
@@ -19,7 +19,7 @@
 		{% for col, row_ in zip(column_names, row) %}
 		{% if col == "Details" %}
 		<td>
-            	<button type="button" value={{row_ }} name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+ outer_loop.index0|string }}');">
+            	<button type="button" class="btn btn-primary "value={{row_ }} name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+ outer_loop.index0|string }}');">
 			{{ row_ }}
 		    </button>
 		</td>
