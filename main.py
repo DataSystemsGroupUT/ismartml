@@ -92,7 +92,7 @@ def running():
     iters=values["time"]//values["period"]
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
-    return render_template('running.html',turn=0,task=values["task"],time=values["time"],iters=iters,PERIOD=format_period)
+    return render_template('running.html',turn=0,task=values["task"],time=values["time"],iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"])
 
 @app.route('/progress')
 def progress():

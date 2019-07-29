@@ -11,7 +11,11 @@
         </script>
 	<script> 
 	var t=0;
+	console.log("aaaaaaaaaaa")
+	var per={{RAW_PERIOD|int}}
+	console.log(per)
 	var x = setInterval(function() { 
+  	var elem = document.getElementById("bar1");   
 	//var now = new Date().getTime(); 
 	t+=1; 
 	var days = Math.floor(t / ( 60 * 60 * 24)); 
@@ -19,6 +23,8 @@
 	var minutes = Math.floor((t % (60 * 60)) / ( 60)); 
 	var seconds = Math.floor((t % ( 60)) ); 
 
+	elem.style.width = Math.floor(100*(seconds/per)) + '%'; 
+	
 	if(minutes<1){
 	document.getElementById("timer").innerHTML = 
 			 seconds + "s "; 
@@ -39,11 +45,32 @@
 	}
 	}, 1000); 
 	</script> 
+	
+<script>
+function move() {
+  var elem = document.getElementById("bar1");   
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
+</script>
+
+
 {% endblock %}
 {% block content %}
 	    <div id="content">
 		    <h1>Running {{task}} task for {{time}} seconds... 1/{{iters}}</h1>
 		    <h1><span>Current Period: </span><span id="timer"></span><span>/{{PERIOD}}</span></h1>
+		    <div id="progress1">
+  		    <div id="bar1"></div>
+                    </div>
             <button type="button" class="btn btn-primary" value=Cancel name="Cancel" onclick="window.location.replace('{{ url_for( 'upload_file' )}}');">
                 Cancel
             </button>

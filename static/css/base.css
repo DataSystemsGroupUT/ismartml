@@ -17,4 +17,13 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+#progress1 {
+  width: 100%;
+  background-color: grey;
+}
 
+#bar1 {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}
