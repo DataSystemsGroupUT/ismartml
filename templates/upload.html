@@ -21,6 +21,14 @@
 	    form[0].reset();
 	});
         </script>
+
+	<script type="text/javascript">
+
+	$(document).on('change', '.custom-file-input', function (event) {
+    		$(this).next('.custom-file-label').html(event.target.files[0].name);
+		})
+        </script>
+
 {% endblock %}
 
 {% block content %}
@@ -96,8 +104,13 @@
 	    	<p>Upload Dataset </p>
 		
 		<p>
-		  <div class="form-group">
-			<input type="file" name="file" class="form-control-file" autocomplete="off" required>
+
+		  <div class="form-group w-25">
+		  <div class="custom-file">
+			    <input type="file" name="file" class="custom-file-input" id="inputDataset" required>
+			        <label class="custom-file-label" for="inputDataset">Choose file</label>
+
+		  </div>
 		  </div>
 		</p>
     </dl>
