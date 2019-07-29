@@ -1,5 +1,5 @@
 #main_content{
- margin: 0 10% 0 10%;
+ margin: 1% 5% 1% 5%;
 }
 table {
     font-family: arial, sans-serif;
@@ -16,3 +16,5 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+
