@@ -1,34 +1,12 @@
 {% extends "running.html" %}
 {% block content %}
-	    <div id="content">
-		    <h1>Running {{task}} task for {{time}} seconds... {{turn+1}}/{{iters}}</h1>
-		    <h1><span>Current Period: </span><span id="timer"></span><span>/{{PERIOD}}</span></h1>
-            <button type="button" class="btn btn-primary" value=Stop name="Stop" onclick="window.location.replace('{{ url_for( 'stop' )}}');">
-                Stop
-            </button>
-	    </div>
-	<table>
-	    <tr>
-		{% for col in column_names %}
-		<th>{{col}}</th>
-		{% endfor %}
-	    </tr>
-	    {% for row in row_data %}
-    	    {% set outer_loop = loop %}
-	    <tr>
-		{% for col, row_ in zip(column_names, row) %}
-		{% if col == "Details" %}
-		<td>
-            	<button type="button" class="btn btn-primary "value={{row_ }} name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+ outer_loop.index0|string }}');">
-			{{ row_ }}
-		    </button>
-		</td>
-		{% else %}
-		<td>{{row_}}</td>
-		{% endif %}
-		{% endfor %}
-	    </tr>
-	    {% endfor %}
+<div id="content">
+    <h1>Running {{task}} task for {{time}} seconds... {{turn+1}}/{{iters}}</h1>
+    <h1><span>Current Period: </span><span id="timer"></span><span>/{{PERIOD}}</span></h1>
+<button type="button" class="btn btn-primary" value=Stop name="Stop" onclick="window.location.replace('{{ url_for( 'stop' )}}');">
+	Stop
+</button>
+</div>
+{% include "base_results.html" %}
 
-	</table>
 {% endblock %}

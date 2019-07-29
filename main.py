@@ -120,7 +120,7 @@ def progress():
     if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip)
 
 
 @app.route('/test')
