@@ -11,9 +11,7 @@
         </script>
 	<script> 
 	var t=0;
-	console.log("aaaaaaaaaaa")
 	var per={{RAW_PERIOD|int}}
-	console.log(per)
 	var x = setInterval(function() { 
   	var elem = document.getElementById("bar1");   
 	//var now = new Date().getTime(); 
@@ -45,22 +43,22 @@
 	}
 	}, 1000); 
 	</script> 
-	
-<script>
-function move() {
-  var elem = document.getElementById("bar1");   
-  var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++; 
-      elem.style.width = width + '%'; 
-    }
-  }
-}
-</script>
+		
+	<script>
+	function move() {
+	  var elem = document.getElementById("bar1");   
+	  var width = 1;
+	  var id = setInterval(frame, 10);
+	  function frame() {
+	    if (width >= 100) {
+	      clearInterval(id);
+	    } else {
+	      width++; 
+	      elem.style.width = width + '%'; 
+	    }
+	  }
+	}
+	</script>
 
 
 {% endblock %}
@@ -71,8 +69,10 @@ function move() {
 		    <div id="progress1">
   		    <div id="bar1"></div>
                     </div>
-            <button type="button" class="btn btn-primary" value=Cancel name="Cancel" onclick="window.location.replace('{{ url_for( 'upload_file' )}}');">
-                Cancel
-            </button>
-	    </div>
+		    {% block stop_button %}
+		    <button type="button" class="btn btn-primary" value=Cancel name="Cancel" onclick="window.location.replace('{{ url_for( 'upload_file' )}}');">
+                    Cancel
+                   </button>
+		   {% endblock %}
+	           </div>
 {% endblock %}
