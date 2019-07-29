@@ -1,11 +1,6 @@
-<!doctype html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Results</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Results{% endblock %}
+{% block content %}
 <table>
     <tr>
         {% for col in column_names %}
@@ -30,6 +25,4 @@
     {% endfor %}
 
 </table>
-
-</body>
-</html>
+{% endblock %}

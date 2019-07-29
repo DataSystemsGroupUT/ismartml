@@ -1,10 +1,6 @@
-<html>
-<head>
-	<title>Model</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
-</head>
-
-<body>
+{% extends "base.html" %}
+{% block title %}Model{% endblock %}
+{% block content %}
 <table>
 	<tr>
 		<td>Score</td>
@@ -18,5 +14,4 @@
     </tr>
  {% endfor %}
 </table>
-</body>
-</html>
+{% endblock %}
