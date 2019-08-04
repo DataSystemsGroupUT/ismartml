@@ -453,10 +453,12 @@ def  extractMetaFeatures(dataset, file, classCol = None):
     
     return  meta_features
 
-def get_meta(file):
-    dataset=np.load(file)
-    dataset=pd.DataFrame(dataset)
-    #dataset = pd.read_csv(file, index_col=None, header=0)
+def get_meta(file,data_type):
+    if(data_type=="numpy"):
+        dataset=np.load(file)
+        dataset=pd.DataFrame(dataset)
+    elif data_type =="csv":
+        dataset = pd.read_csv(file, index_col=None, header=0)
     return extractMetaFeatures(dataset, file)
 
 

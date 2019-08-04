@@ -156,7 +156,7 @@ def test_p():
 
             #return redirect('/running')
             #os.path.join(app.config['UPLOAD_FOLDER'], values["filename"])
-            meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
             
             return str(predict_meta(meta[1:]))
 
