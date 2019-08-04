@@ -1,6 +1,49 @@
 {% extends "base.html" %}
-{% block title %}Potato{% endblock %}
-{% block content %}
-<h1>haha</h1>
+{% block title %}Autosklearn{% endblock %}
+{% block head %}
+    	{{ super() }}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+	$(window).bind("pageshow", function() {
+	    var form = $('form'); 
+	    // let the browser natively reset defaults
+	    form[0].reset();
+	});
+        </script>
+
+	<script type="text/javascript">
+
+	$(document).on('change', '.custom-file-input', function (event) {
+    		$(this).next('.custom-file-label').html(event.target.files[0].name);
+		})
+        </script>
+
 {% endblock %}
 
+{% block content %}
+<form method="post" action="/test" enctype="multipart/form-data">
+    <dl>		
+	    	<p>Select Dataset Format</p>
+		<p>
+		    <input type="radio" name="data_type" value="csv" required> CSV
+		    <input type="radio" name="data_type" value="numpy"> Numpy Array
+		</p>
+	
+	    	<p>Upload Dataset </p>
+		
+		<p>
+
+		  <div class="form-group w-25">
+		  <div class="custom-file">
+			    <input type="file" name="file" class="custom-file-input" id="inputDataset" required>
+			        <label class="custom-file-label" for="inputDataset">Choose file</label>
+
+		  </div>
+		  </div>
+		</p>
+    </dl>
+    <p>
+		<button type="submit" class="btn btn-primary">Start</button>
+	</p>
+</form>
+{% endblock %}

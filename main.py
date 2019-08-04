@@ -127,6 +127,43 @@ def progress():
 def test():
     return render_template("test.html")
 
+@app.route('/test', methods=['POST'])
+def test_p():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        #task = request.form['task']
+        data_type = request.form['data_type']
+        
+
+        if file.filename == '':
+            flash('No file selected for uploading')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            for dir_ in [tmp_folder, output_folder]:
+                try:
+                    shutil.rmtree(dir_)
+                except OSError:
+                    pass
+
+            #return redirect('/running')
+            return "aaaaaaaaaaaaa"
+
+     
+
+
+        else:
+            flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
+            return redirect(request.url)
+
+
+
 @app.route('/stop')
 def stop():
     values=session.get('values', 'not set')
