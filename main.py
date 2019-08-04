@@ -30,24 +30,73 @@ PREPROCESSORS_RG=["no_preprocessing","extra_trees_preproc_for_regression","fast_
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-    
+
+
+
 @app.route('/')
-def upload_form():
-    return render_template('upload.html', CLASSIFIERS=CLASSIFIERS,REGRESSORS=REGRESSORS,PREPROCESSORS_CL=PREPROCESSORS_CL,PREPROCESSORS_RG=PREPROCESSORS_RG)
+def test():
+    return render_template("index.html")
 
 @app.route('/', methods=['POST'])
-def upload_file():
+def test_p():
     if request.method == 'POST':
         # check if the post request has the file part
-        values={}
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
+        #task = request.form['task']
+        data_type = request.form['data_type']
+        
+
+        if file.filename == '':
+            flash('No file selected for uploading')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            for dir_ in [tmp_folder, output_folder]:
+                try:
+                    shutil.rmtree(dir_)
+                except OSError:
+                    pass
+            meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
+            rec=predict_meta(meta[1:])
+            session["filename"]=filename
+            session["data_type"]=data_type
+            session["rec"]=rec
+            return redirect('/params')
+            #os.path.join(app.config['UPLOAD_FOLDER'], values["filename"])
+            
+            #return str(predict_meta(meta[1:]))
+
+     
+
+
+        else:
+            flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
+            return redirect(request.url)
+
+
+
+
+
+@app.route('/params')
+def upload_form():
+    rec=session.get("rec","not set")
+    return render_template('upload.html', CLASSIFIERS=CLASSIFIERS,REGRESSORS=REGRESSORS,PREPROCESSORS_CL=PREPROCESSORS_CL,PREPROCESSORS_RG=PREPROCESSORS_RG, REC=rec)
+
+@app.route('/params', methods=['POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        values={}
         time = request.form['time']
         period = request.form['period']
         task = request.form['task']
-        data_type = request.form['data_type']
+        data_type=session.get('data_type', 'not set')
+        filename=session.get("filename","not set")
         if(task=="classification"):
             search_space= request.form.getlist("classifier_ls")
             prep_space= request.form.getlist("prep_cl")
@@ -61,31 +110,18 @@ def upload_file():
             return "Update period must be at least 30 seconds"
         if(int(period)>int(time)):
             return "Update period can't be larger than total time budget"
-        if file.filename == '':
-            flash('No file selected for uploading')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-            values['filename']=filename
-            values['time']=int(time)
-            values['period']=int(period)
-            values['task']=task
-            values['data_type']=data_type
-            values["search_space"]=search_space
-            values["prep_space"]=prep_space
-            session["values"]=values
-            for dir_ in [tmp_folder, output_folder]:
-                try:
-                    shutil.rmtree(dir_)
-                except OSError:
-                    pass
+        values['filename']=filename
+        values['time']=int(time)
+        values['period']=int(period)
+        values['task']=task
+        values['data_type']=data_type
+        values["search_space"]=search_space
+        values["prep_space"]=prep_space
+        session["values"]=values
 
-            return redirect('/running')
-        else:
-            flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
-            return redirect(request.url)
+        print("do this")
+        return redirect('/running')
 
 
 @app.route('/running')
@@ -123,50 +159,6 @@ def progress():
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
         return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip)
-
-
-@app.route('/test')
-def test():
-    return render_template("test.html")
-
-@app.route('/test', methods=['POST'])
-def test_p():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        #task = request.form['task']
-        data_type = request.form['data_type']
-        
-
-        if file.filename == '':
-            flash('No file selected for uploading')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-            for dir_ in [tmp_folder, output_folder]:
-                try:
-                    shutil.rmtree(dir_)
-                except OSError:
-                    pass
-
-            #return redirect('/running')
-            #os.path.join(app.config['UPLOAD_FOLDER'], values["filename"])
-            meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
-            
-            return str(predict_meta(meta[1:]))
-
-     
-
-
-        else:
-            flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
-            return redirect(request.url)
-
 
 
 @app.route('/stop')
