@@ -34,11 +34,11 @@ def allowed_file(filename):
 
 
 @app.route('/')
-def test():
+def start():
     return render_template("index.html")
 
 @app.route('/', methods=['POST'])
-def test_p():
+def start_p():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -83,12 +83,12 @@ def test_p():
 
 
 @app.route('/params')
-def upload_form():
+def params():
     rec=session.get("rec","not set")
     return render_template('upload.html', CLASSIFIERS=CLASSIFIERS,REGRESSORS=REGRESSORS,PREPROCESSORS_CL=PREPROCESSORS_CL,PREPROCESSORS_RG=PREPROCESSORS_RG, REC=rec)
 
 @app.route('/params', methods=['POST'])
-def upload_file():
+def params_p():
     if request.method == 'POST':
         # check if the post request has the file part
         values={}
