@@ -10,6 +10,7 @@ import pickle
 from multi import run_task
 from extras import format_time
 from extract import get_meta
+from predict_meta import predict_meta
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
 
@@ -156,7 +157,8 @@ def test_p():
             #return redirect('/running')
             #os.path.join(app.config['UPLOAD_FOLDER'], values["filename"])
             meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return str(meta[1:])
+            
+            return str(predict_meta(meta[1:]))
 
      
 
