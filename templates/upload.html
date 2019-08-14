@@ -2,17 +2,6 @@
 {% block title %}Autosklearn{% endblock %}
 {% block head %}
     	{{ super() }}
-	<script type="text/javascript">
-
-	function show_cl(){
-	  document.getElementById('cl_div').style.display ='block';
-	  document.getElementById('rg_div').style.display ='none';
-	}
-	function show_rg(){
-	  document.getElementById('rg_div').style.display = 'block';
-	  document.getElementById('cl_div').style.display = 'none';
-	}
-	</script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
 	$(window).bind("pageshow", function() {
@@ -31,16 +20,11 @@
 	    	<h1>
 			Meta Data Reccomendation: {{REC}}
 		</h1>
-		<p>Select Task</p>
-		<p>
-		    <input type="radio" name="task" onclick ="show_cl();"  value="classification" required > Classification
-		    <input type="radio" name="task" onclick="show_rg();" value="regression"> Regression
-		</p>
-		<div id="cl_div" style="display:none">
+		<div id="cl_div" >
 		<p>Select Classifiers</p>
 		<p>
 		<div class="form-check">
-		{% for cl in CLASSIFIERS %}
+		{% for cl in ESTIMATORS %}
 	    		<input type="checkbox" name="classifier_ls" value="{{cl}}" checked > 
 	    		<label>{{cl}}</label>
 		{% endfor %}
@@ -49,34 +33,12 @@
 		<p>Select Preprocessors</p>
 		<p>
 		<div class="form-check">
-		{% for pr in PREPROCESSORS_CL %}
+		{% for pr in PREPROCESSORS %}
 	    		<input type="checkbox" name="prep_cl" value="{{pr}}" checked >
 	    		<label>{{pr}}</label>
 		{% endfor %}
 		</div>
 		</p>
-
-		</div>
-		<div id="rg_div" style="display:none">
-		<p>Select Regressors</p>
-	    	<p>
-		<div class="form-check">
-		{% for rg in REGRESSORS %}
-	    		<input type="checkbox" name="regressor_ls" value="{{rg}}" checked >
-	    		<label>{{rg}}</label>
-		{% endfor %}
-		</div>
-		</p>
-		<p>Select Preprocessors</p>
-		<p>
-		<div class="form-check">
-		{% for pr in PREPROCESSORS_RG %}
-	    		<input type="checkbox" name="prep_rg" value="{{pr}}" checked  >
-	    		<label>{{pr}}</label>
-		{% endfor %}
-		</div>
-		</p>
-
 		</div>
 
 		

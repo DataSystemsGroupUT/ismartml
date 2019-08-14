@@ -47,6 +47,7 @@ def start_p():
         file = request.files['file']
         #task = request.form['task']
         data_type = request.form['data_type']
+        task = request.form['task']
         
 
         if file.filename == '':
@@ -66,6 +67,7 @@ def start_p():
             session["filename"]=filename
             session["data_type"]=data_type
             session["rec"]=rec
+            session["task"]=task
             return redirect('/params')
             #os.path.join(app.config['UPLOAD_FOLDER'], values["filename"])
             
@@ -85,7 +87,14 @@ def start_p():
 @app.route('/params')
 def params():
     rec=session.get("rec","not set")
-    return render_template('upload.html', CLASSIFIERS=CLASSIFIERS,REGRESSORS=REGRESSORS,PREPROCESSORS_CL=PREPROCESSORS_CL,PREPROCESSORS_RG=PREPROCESSORS_RG, REC=rec)
+    task=session.get("task","not set")
+    if task=="classification":
+        ESTIMATORS=CLASSIFIERS
+        PREPROCESSORS=PREPROCESSORS_CL
+    else:
+        ESTIMATORS=REGRESSORS
+        PREPROCESSORS=PREPROCESSORS_RG
+    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, REC=rec)
 
 @app.route('/params', methods=['POST'])
 def params_p():
@@ -94,9 +103,9 @@ def params_p():
         values={}
         time = request.form['time']
         period = request.form['period']
-        task = request.form['task']
         data_type=session.get('data_type', 'not set')
         filename=session.get("filename","not set")
+        task=session.get("task","not set")
         if(task=="classification"):
             search_space= request.form.getlist("classifier_ls")
             prep_space= request.form.getlist("prep_cl")
