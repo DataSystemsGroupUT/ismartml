@@ -62,8 +62,10 @@ def start_p():
                     shutil.rmtree(dir_)
                 except OSError:
                     pass
-            meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
-            rec=predict_meta(meta[1:])
+            rec=None
+            if task=="classification":
+                meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
+                rec=predict_meta(meta[1:])
             session["filename"]=filename
             session["data_type"]=data_type
             session["rec"]=rec
