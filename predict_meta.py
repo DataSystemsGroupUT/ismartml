@@ -1,4 +1,5 @@
 from sklearn.preprocessing import MinMaxScaler
+import numpy as np
 from joblib import dump, load
 
 
@@ -21,5 +22,7 @@ def predict_meta(meta):
     scaler=load(Scaler)
     X=scaler.transform(meta.reshape(1,-1))
     outp=model.predict(X)
-    return classes[outp[0]][8:]
+    srt=np.argsort(model.predict_proba(X)[0])[::-1]
+    ress=[srt,[classes[i][8:] for i in srt]]
+    return ress 
 
