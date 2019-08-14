@@ -25,7 +25,7 @@
 		<p>
 		<div class="form-check">
 		{% for cl in ESTIMATORS %}
-	    		<input type="checkbox" name="classifier_ls" value="{{cl}}" checked > 
+	    		<input type="checkbox" name="estim_ls" value="{{cl}}" checked > 
 	    		<label>{{cl}}</label>
 		{% endfor %}
 		</div>
@@ -34,7 +34,7 @@
 		<p>
 		<div class="form-check">
 		{% for pr in PREPROCESSORS %}
-	    		<input type="checkbox" name="prep_cl" value="{{pr}}" checked >
+	    		<input type="checkbox" name="prep_ls" value="{{pr}}" checked >
 	    		<label>{{pr}}</label>
 		{% endfor %}
 		</div>

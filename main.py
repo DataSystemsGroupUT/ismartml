@@ -108,12 +108,8 @@ def params_p():
         data_type=session.get('data_type', 'not set')
         filename=session.get("filename","not set")
         task=session.get("task","not set")
-        if(task=="classification"):
-            search_space= request.form.getlist("classifier_ls")
-            prep_space= request.form.getlist("prep_cl")
-        else:
-            search_space= request.form.getlist("regressor_ls")
-            prep_space= request.form.getlist("prep_rg")
+        search_space= request.form.getlist("estim_ls")
+        prep_space= request.form.getlist("prep_ls")
 
         if(int(time)<30):
             return "Time budget must be at least 30 seconds"
