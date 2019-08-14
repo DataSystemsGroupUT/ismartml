@@ -65,7 +65,7 @@ def start_p():
             rec=None
             if task=="classification":
                 meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
-                rec=predict_meta(meta[1:])[1][0]
+                rec=predict_meta(meta[1:])[0][0]
             session["filename"]=filename
             session["data_type"]=data_type
             session["rec"]=rec

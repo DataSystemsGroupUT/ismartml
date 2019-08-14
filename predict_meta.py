@@ -21,8 +21,8 @@ def predict_meta(meta):
     model=load(Model)
     scaler=load(Scaler)
     X=scaler.transform(meta.reshape(1,-1))
-    outp=model.predict(X)
-    srt=np.argsort(model.predict_proba(X)[0])[::-1]
-    ress=[srt,[classes[i][8:] for i in srt]]
+    outp=model.predict_proba(X)[0]
+    srt=np.argsort(outp)[::-1]
+    ress=[[classes[i][8:] for i in srt],srt,outp]
     return ress 
 
