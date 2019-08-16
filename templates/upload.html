@@ -17,19 +17,17 @@
 {% block content %}
 <form method="post" action="/params" enctype="multipart/form-data">
     <dl>
-	    	<div id="meta_data" class="w-50">
-	    	<h1>
-			Meta Data Reccomendation: {{REC}}
-		</h1>
-		{% include "base_results.html" %}
-		</div>
+	    	<div class="row">
+				<div class="col">
 		<div id="cl_div" >
 		<p>Select Classifiers</p>
 		<p>
 		<div class="form-check">
 		{% for cl in ESTIMATORS %}
+			<nobr>
 	    		<input type="checkbox" name="estim_ls" value="{{cl}}" checked > 
 	    		<label>{{cl}}</label>
+			</nobr>
 		{% endfor %}
 		</div>
 		</p>
@@ -37,14 +35,29 @@
 		<p>
 		<div class="form-check">
 		{% for pr in PREPROCESSORS %}
-	    		<input type="checkbox" name="prep_ls" value="{{pr}}" checked >
+	    		<nobr>
+			<input type="checkbox" name="prep_ls" value="{{pr}}" checked >
 	    		<label>{{pr}}</label>
+			</nobr>
 		{% endfor %}
 		</div>
 		</p>
 		</div>
-
+		</div>
 		
+		<div class="col">
+	    	<div id="meta_data" >
+	    	<h1>
+			Meta Data Reccomendation: {{REC}}
+		</h1>
+		{% include "base_results.html" %}
+		</div>
+		</div>
+
+	
+
+
+		</div>	
 		
 		<p>Enter Time Budget in seconds (minimum 30)</p>
 	    	<p>	
