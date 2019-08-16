@@ -18,7 +18,7 @@
 <form method="post" action="/params" enctype="multipart/form-data">
     <dl>
 	    	<div class="row">
-				<div class="col">
+		<div class="col-8" style="padding-right:20px; border-right: 1px solid #ccc;">
 		<div id="cl_div" >
 		<p>Select Classifiers</p>
 		<p>
@@ -26,7 +26,7 @@
 		{% for cl in ESTIMATORS %}
 			<nobr>
 	    		<input type="checkbox" name="estim_ls" value="{{cl}}" checked > 
-	    		<label>{{cl}}</label>
+	    		<label>{{cl}} &nbsp; &nbsp; </label>
 			</nobr>
 		{% endfor %}
 		</div>
@@ -37,7 +37,7 @@
 		{% for pr in PREPROCESSORS %}
 	    		<nobr>
 			<input type="checkbox" name="prep_ls" value="{{pr}}" checked >
-	    		<label>{{pr}}</label>
+			<label>{{pr}} &nbsp; &nbsp; </label>
 			</nobr>
 		{% endfor %}
 		</div>
@@ -53,9 +53,6 @@
 		{% include "base_results.html" %}
 		</div>
 		</div>
-
-	
-
 
 		</div>	
 		
