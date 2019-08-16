@@ -62,7 +62,7 @@ def start_p():
                     shutil.rmtree(dir_)
                 except OSError:
                     pass
-            rec=None
+            rec=[]
             if task=="classification":
                 meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
                 rec=predict_meta(meta[1:])
@@ -91,14 +91,14 @@ def params():
     rec=session.get("rec","not set")
     task=session.get("task","not set")
     column_names=["Classifier","Score"]
-    rec=[x for x in rec if x[1]!=0]
     if task=="classification":
+        rec=[x for x in rec if x[1]!=0]
         ESTIMATORS=CLASSIFIERS
         PREPROCESSORS=PREPROCESSORS_CL
     else:
         ESTIMATORS=REGRESSORS
         PREPROCESSORS=PREPROCESSORS_RG
-    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip)
+    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task)
 
 @app.route('/params', methods=['POST'])
 def params_p():
