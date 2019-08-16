@@ -90,13 +90,14 @@ def start_p():
 def params():
     rec=session.get("rec","not set")
     task=session.get("task","not set")
+    column_names=["Classifier","Score"]
     if task=="classification":
         ESTIMATORS=CLASSIFIERS
         PREPROCESSORS=PREPROCESSORS_CL
     else:
         ESTIMATORS=REGRESSORS
         PREPROCESSORS=PREPROCESSORS_RG
-    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, REC=rec)
+    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip)
 
 @app.route('/params', methods=['POST'])
 def params_p():
