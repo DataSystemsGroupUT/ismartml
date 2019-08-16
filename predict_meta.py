@@ -23,6 +23,8 @@ def predict_meta(meta):
     X=scaler.transform(meta.reshape(1,-1))
     outp=model.predict_proba(X)[0]
     srt=np.argsort(outp)[::-1]
-    ress=[[classes[i][8:] for i in srt],srt,outp]
+    #ress=[[classes[i][8:] for i in srt],srt,outp]
+    ress=[[float(outp[i]),int(srt[i]),classes[srt[i]][8:]] for i in range(len(srt))]
+    print(ress)
     return ress 
 
