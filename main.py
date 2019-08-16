@@ -91,6 +91,7 @@ def params():
     rec=session.get("rec","not set")
     task=session.get("task","not set")
     column_names=["Classifier","Score"]
+    rec=[x for x in rec if x[1]!=0]
     if task=="classification":
         ESTIMATORS=CLASSIFIERS
         PREPROCESSORS=PREPROCESSORS_CL

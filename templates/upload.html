@@ -17,10 +17,12 @@
 {% block content %}
 <form method="post" action="/params" enctype="multipart/form-data">
     <dl>
+	    	<div id="meta_data" class="w-50">
 	    	<h1>
 			Meta Data Reccomendation: {{REC}}
 		</h1>
 		{% include "base_results.html" %}
+		</div>
 		<div id="cl_div" >
 		<p>Select Classifiers</p>
 		<p>
