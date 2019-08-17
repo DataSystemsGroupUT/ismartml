@@ -46,6 +46,12 @@ def start_p():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            
+            if(data_type=="numpy" and filename[-3:]!="npy"):
+                return "Wrong file extension (expected .npy)"
+            if(data_type=="csv" and (filename[-3:]!="csv" and filename[-3:]!="CSV")):
+                return "Wrong file extension (expected .csv)"
+
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             for dir_ in [tmp_folder, output_folder]:
