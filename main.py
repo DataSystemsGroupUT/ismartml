@@ -120,6 +120,11 @@ def params_p():
             return "Update period must be at least 30 seconds"
         if(int(period)>int(time)):
             return "Update period can't be larger than total time budget"
+        if(not search_space):
+            return "You must select at least 1 estimator"
+        if(not prep_space):
+            return "You must select at least 1 preprocessor"
+
 
         values['filename']=filename
         values['time']=int(time)
