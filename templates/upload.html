@@ -15,8 +15,21 @@
 
 
 	<script>
-	function toggle(source) {
+	//toggle all
+	function toggle_est(source) {
 	    var checkboxes = document.querySelectorAll('div.estm input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
+
+	<script>
+	//toggle all
+	function toggle_pre(source) {
+	    var checkboxes = document.querySelectorAll('div.prep input[type="checkbox"]');
 	    for (var i = 0; i < checkboxes.length; i++) {
 		if (checkboxes[i] != source)
 		    checkboxes[i].checked = source.checked;
@@ -27,6 +40,7 @@
 
 
 	<script>
+	//checkbox checker, not using now
 	$(document).ready(function(){
     		var requiredCheckboxes = $('.cl-checkbox :checkbox[required]');
     		requiredCheckboxes.change(function(){
@@ -51,7 +65,7 @@
 		<div class="col-8" >
 		<div id="cl_div" >
 		<h4><p>Select Classifiers</p></h4>
-		<input type="button" onclick="toggle(this);" />Check all?<br />
+		<input type="checkbox" onclick="toggle_est(this);" />&nbsp; Toggle all<br />
 		<p>
 		<div class="form-check estm">
 		{% for cl in ESTIMATORS[0] %}
@@ -68,8 +82,9 @@
 		</div>
 		</p>
 		<h4><p>Select Preprocessors</p></h4>
+		<input type="checkbox" onclick="toggle_pre(this);" />&nbsp; Toggle all<br />
 		<p>
-		<div class="form-check" >
+		<div class="form-check prep" >
 		{% for pr in PREPROCESSORS[0] %}
 	    		<nobr>
 			{% if pr == "no_preprocessing" %}
