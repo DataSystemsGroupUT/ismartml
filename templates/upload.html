@@ -14,7 +14,7 @@
 	
 	<script>
 
-	$(function(){
+	$(document).ready(function(){
     		var requiredCheckboxes = $('.cl-checkbox :checkbox[required]');
     		requiredCheckboxes.change(function(){
         		if(requiredCheckboxes.is(':checked')) {
@@ -28,7 +28,7 @@
 	
 	<script>
 
-	$(function(){
+	$(document).ready(function(){
     		var requiredCheckboxes = $('.pr-checkbox :checkbox[required]');
     		requiredCheckboxes.change(function(){
         		if(requiredCheckboxes.is(':checked')) {
@@ -52,13 +52,14 @@
 		<div id="cl_div" >
 		<p>Select Classifiers</p>
 		<p>
-		<div class="form-check cl-checkbox">
+		<div class="form-check">
 		{% for cl in ESTIMATORS[0] %}
 			<nobr>
-	    		<input type="checkbox" name="estim_ls" value="{{cl}}" required > 
 			{%if loop.index0 in BOLD_CL %}
+	    		<input type="checkbox" name="estim_ls" value="{{cl}}" checked > 
 			<strong><label>{{ESTIMATORS[1][loop.index0]}} &nbsp; &nbsp; </label></strong>
 			{% else %}
+	    		<input type="checkbox" name="estim_ls" value="{{cl}}" > 
 	    		<label>{{ESTIMATORS[1][loop.index0]}} &nbsp; &nbsp;  </label>
 			{% endif %}
 			</nobr>
@@ -67,10 +68,14 @@
 		</p>
 		<p>Select Preprocessors</p>
 		<p>
-		<div class="form-check pr-checkbox" >
+		<div class="form-check" >
 		{% for pr in PREPROCESSORS[0] %}
 	    		<nobr>
-			<input type="checkbox" name="prep_ls" value="{{pr}}" required >
+			{% if pr == "no_preprocessing" %}
+			<input type="checkbox" name="prep_ls" value="{{pr}}" checked >
+			{% else %}
+			<input type="checkbox" name="prep_ls" value="{{pr}}"  >
+			{% endif %}
 			<label>{{PREPROCESSORS[1][loop.index0]}} &nbsp; &nbsp; </label>
 			</nobr>
 		{% endfor %}
