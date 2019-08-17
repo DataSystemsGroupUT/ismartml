@@ -84,7 +84,7 @@ def params():
     column_names=["Classifier","Score"]
     bolds=[]
     if task=="classification":
-        rec=[x for x in rec if x[1]!=0]
+        rec=[x for x in rec if x[1]!=0] #remove predicions with 0 score from results
         #get bold indexes for recomended classifiers
         rec_t=list(map(list, zip(*rec)))
         for cl in CLASSIFIERS_DISP:

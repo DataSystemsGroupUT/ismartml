@@ -26,7 +26,11 @@
 		{% for cl in ESTIMATORS[0] %}
 			<nobr>
 	    		<input type="checkbox" name="estim_ls" value="{{cl}}" checked > 
-	    		<label>{{ESTIMATORS[1][loop.index0]}} &nbsp; &nbsp; </label>
+			{%if loop.index0 in BOLD_CL %}
+			<strong><label>{{ESTIMATORS[1][loop.index0]}} &nbsp; &nbsp; </label></strong>
+			{% else %}
+	    		<label>{{ESTIMATORS[1][loop.index0]}} &nbsp; &nbsp;  </label>
+			{% endif %}
 			</nobr>
 		{% endfor %}
 		</div>
