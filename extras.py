@@ -2,11 +2,11 @@
 
 CLASSIFIERS=["adaboost","bernoulli_nb","decision_tree", "extra_trees","gaussian_nb", "gradient_boosting","k_nearest_neighbors", "lda","liblinear_svc","libsvm_svc","multinomial_nb","passive_aggressive","qda","random_forest","sgd","xgradient_boosting"]
 
-CLASSIFIERS_DISP=["Adaboost","Bernoulli NB","Decision Tree", "Extra Trees","Gaussian NB", "Gradient Boosting","K Nearest Neighbors", "LDA","Liblinear SVC","Libsvm SVC","Multinomial NB","Passive Aggressive","QDA","Random Forest","SGD","XGradient Boosting"]
+CLASSIFIERS_DISP=["AdaBoost","Bernoulli NB","Decision Tree", "Extra Trees","Gaussian NB", "Gradient Boosting","K Nearest Neighbors", "LDA","Liblinear SVC","Libsvm SVC","Multinomial NB","Passive Aggressive","QDA","Random Forest","SGD","XGradient Boosting"]
 
 REGRESSORS=["adaboost","ard_regression","decision_tree", "extra_trees","gaussian_process", "gradient_boosting","k_nearest_neighbors","liblinear_svr","libsvm_svr","random_forest","sgd","xgradient_boosting"]
 
-REGRESSORS_DISP=["Adaboost","ARD Regression","Decision Tree", "Extra Trees","Gaussian Process", "Gradient Boosting","K Nearest Neighbors","Liblinear SVR","Libsvm SVR","Random Forest","SGD","XGradient Boosting"]
+REGRESSORS_DISP=["AdaBoost","ARD","Decision Tree", "Extra Trees","Gaussian Process", "Gradient Boosting","K Nearest Neighbors","Liblinear SVR","Libsvm SVR","Random Forest","SGD","XGradient Boosting"]
 
 PREPROCESSORS_CL=["no_preprocessing","extra_trees_preproc_for_classification","fast_ica","feature_agglomeration","kernel_pca","kitchen_sinks","liblinear_svc_preprocessor","nystroem_sampler","pca","polynomial","random_trees_embedding","select_percentile_classification","select_percentile_regression","select_rates","truncatedSVD"]
 

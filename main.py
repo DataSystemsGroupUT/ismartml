@@ -82,14 +82,24 @@ def params():
     rec=session.get("rec","not set")
     task=session.get("task","not set")
     column_names=["Classifier","Score"]
+    bolds=[]
     if task=="classification":
         rec=[x for x in rec if x[1]!=0]
+        #get bold indexes for recomended classifiers
+        rec_t=list(map(list, zip(*rec)))
+        for cl in CLASSIFIERS_DISP:
+            if cl in rec_t[0]:
+                bolds.append(CLASSIFIERS_DISP.index(cl))
+            elif cl[-3:] == "SVC":
+                if "SVC" in rec_t[0]:
+                    bolds.append(CLASSIFIERS_DISP.index(cl))
+        #Get corect lists for this task
         ESTIMATORS=[CLASSIFIERS, CLASSIFIERS_DISP]
         PREPROCESSORS=[PREPROCESSORS_CL, PREPROCESSORS_CL_DISP] 
     else:
         ESTIMATORS=[REGRESSORS, REGRESSORS_DISP]
         PREPROCESSORS=[PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
-    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task)
+    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds)
 
 @app.route('/params', methods=['POST'])
 def params_p():
