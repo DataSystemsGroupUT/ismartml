@@ -84,11 +84,11 @@ def params():
     column_names=["Classifier","Score"]
     if task=="classification":
         rec=[x for x in rec if x[1]!=0]
-        ESTIMATORS=CLASSIFIERS
-        PREPROCESSORS=PREPROCESSORS_CL
+        ESTIMATORS=[CLASSIFIERS, CLASSIFIERS_DISP]
+        PREPROCESSORS=[PREPROCESSORS_CL, PREPROCESSORS_CL_DISP] 
     else:
-        ESTIMATORS=REGRESSORS
-        PREPROCESSORS=PREPROCESSORS_RG
+        ESTIMATORS=[REGRESSORS, REGRESSORS_DISP]
+        PREPROCESSORS=[PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
     return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task)
 
 @app.route('/params', methods=['POST'])

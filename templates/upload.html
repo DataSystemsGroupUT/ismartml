@@ -23,10 +23,10 @@
 		<p>Select Classifiers</p>
 		<p>
 		<div class="form-check">
-		{% for cl in ESTIMATORS %}
+		{% for cl in ESTIMATORS[0] %}
 			<nobr>
 	    		<input type="checkbox" name="estim_ls" value="{{cl}}" checked > 
-	    		<label>{{cl}} &nbsp; &nbsp; </label>
+	    		<label>{{ESTIMATORS[1][loop.index0]}} &nbsp; &nbsp; </label>
 			</nobr>
 		{% endfor %}
 		</div>
@@ -34,10 +34,10 @@
 		<p>Select Preprocessors</p>
 		<p>
 		<div class="form-check">
-		{% for pr in PREPROCESSORS %}
+		{% for pr in PREPROCESSORS[0] %}
 	    		<nobr>
 			<input type="checkbox" name="prep_ls" value="{{pr}}" checked >
-			<label>{{pr}} &nbsp; &nbsp; </label>
+			<label>{{PREPROCESSORS[1][loop.index0]}} &nbsp; &nbsp; </label>
 			</nobr>
 		{% endfor %}
 		</div>
