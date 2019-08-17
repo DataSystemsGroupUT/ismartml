@@ -1,4 +1,5 @@
 
+
 CLASSIFIERS=["adaboost","bernoulli_nb","decision_tree", "extra_trees","gaussian_nb", "gradient_boosting","k_nearest_neighbors", "lda","liblinear_svc","libsvm_svc","multinomial_nb","passive_aggressive","qda","random_forest","sgd","xgradient_boosting"]
 
 CLASSIFIERS_DISP=["Adaboost","Bernoulli NB","Decision Tree", "Extra Trees","Gaussian NB", "Gradient Boosting","K Nearest Neighbors", "LDA","Liblinear SVC","Libsvm SVC","Multinomial NB","Passive Aggressive","QDA","Random Forest","SGD","XGradient Boosting"]

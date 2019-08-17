@@ -21,14 +21,24 @@ classes=['K Nearest Neighbors',
        'Gaussian Process',
        'Decision Tree', 'Random Forest',
        'AdaBoost', 'Gaussian NB',
-       'Quadratic Discriminant Analysis',
+       'QDA',
        'Gradient Boosting',
-       'Linear Discriminant Analysis', 'Perceptron',
+       'LDA', 'Perceptron',
        'Logistic Regression', 'Complement NB',
        'SVC']
 
 
 
+excluded=['Gaussian Process','Perceptron', 'Logistic Regression', 'Complement NB']
+
+def filter_excluded(ls):
+    res=[]
+    for ent in ls:
+        if ent[0] in excluded:
+            res.append([ent[0],float(0)])
+        else:
+            res.append(ent)
+    return res
 
 def predict_meta(meta):
     model=load(Model)
@@ -37,5 +47,6 @@ def predict_meta(meta):
     outp=model.predict_proba(X)[0]
     srt=np.argsort(outp)[::-1]
     ress=[[classes[srt[i]],float(outp[srt[i]])] for i in range(len(srt))]
+    ress=filter_excluded(ress) #comment this out to get full results
     return ress 
 
