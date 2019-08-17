@@ -50,7 +50,7 @@
 	    	<div class="row">
 		<div class="col-8" >
 		<div id="cl_div" >
-		<p>Select Classifiers</p>
+		<h4><p>Select Classifiers</p></h4>
 		<p>
 		<div class="form-check">
 		{% for cl in ESTIMATORS[0] %}
@@ -66,7 +66,7 @@
 		{% endfor %}
 		</div>
 		</p>
-		<p>Select Preprocessors</p>
+		<h4><p>Select Preprocessors</p></h4>
 		<p>
 		<div class="form-check" >
 		{% for pr in PREPROCESSORS[0] %}
@@ -87,9 +87,9 @@
 		{% if TASK=="classification" %}
 		<div class="col"  style="padding-right:20px; border-left: 1px solid #ccc;">
 	    	<div id="meta_data" >
-	    	<h1>
+	    	<h3>
 			Meta Data Reccomendation: {{REC}}
-		</h1>
+		</h3>
 		{% include "base_results.html" %}
 		</div>
 		</div>
@@ -97,13 +97,13 @@
 
 		</div>	
 		
-		<p>Enter Time Budget in seconds (minimum 30)</p>
+		<h4><p>Enter Time Budget in seconds (minimum 30)</p></h4>
 	    	<p>	
 		      <div class="form-group w-25">
 			<input type="text" class="form-control" name="time" required>
 		      </div>
 		</p>
-	    	<p>Enter Update Period in seconds (minimum 30)</p>
+		<h4><p>Enter Update Period in seconds (minimum 30)</p></h4>
 	    	<p>	
 		      <div class="form-group w-25">
 			<input type="text"class="form-control"  name="period" required>
