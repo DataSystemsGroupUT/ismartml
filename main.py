@@ -152,9 +152,9 @@ def progress():
     
     turn+=+1
     if(values["task"]=="classification"):
-        res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
     else:
-        res_list=[[row[0],row[1]["regressor:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
     if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
@@ -168,9 +168,9 @@ def stop():
     res_list=pickle.load(filehandler)
     col_names=["Score","Estimator","Preprocessing","Details"]
     if(values["task"]=="classification"):
-        res_list=[[row[0],row[1]["classifier:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
     else:
-        res_list=[[row[0],row[1]["regressor:__choice__"],row[1]["preprocessor:__choice__"],"view"] for row in res_list]
+        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
     return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
 
 

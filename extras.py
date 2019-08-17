@@ -15,6 +15,20 @@ PREPROCESSORS_RG=["no_preprocessing","extra_trees_preproc_for_regression","fast_
 
 PREPROCESSORS_RG_DISP=["No Preprocessing","Extra Trees Preprocessor","Fast ICA","Feature Agglomeration","Kernel PCA","Kitchen Sinks","Liblinear SVC Preprocessor","Nystroem Sampler","PCA","Polynomial","Random Trees Embedding","Select Percentile Classification","Select Percentile Regression","Select Rates","Truncated SVD"]
 
+def format_ls(ls,val):
+    if(ls=="cl"):
+        rs = CLASSIFIERS_DISP[CLASSIFIERS.index(val)]
+    elif(ls=="rg"):
+        rs = REGRESSORS_DISP[REGRESSORS.index(val)]
+    elif(ls=="cp"):
+        rs = PREPROCESSORS_CL_DISP[PREPROCESSORS_CL.index(val)]
+    elif(ls=="rp"):
+        rs = PREPROCESSORS_RG_DISP[PREPROCESSORS_RG.index(val)]
+    else:
+        rs ="wrong argument"
+    return rs
+
+
 
 
 def format_time(secs):
