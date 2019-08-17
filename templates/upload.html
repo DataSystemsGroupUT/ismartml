@@ -4,12 +4,42 @@
     	{{ super() }}
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
+	//clears page cache
 	$(window).bind("pageshow", function() {
 	    var form = $('form'); 
 	    // let the browser natively reset defaults
 	    form[0].reset();
-	});
+	}); 
         </script>
+	
+	<script>
+
+	$(function(){
+    		var requiredCheckboxes = $('.cl-checkbox :checkbox[required]');
+    		requiredCheckboxes.change(function(){
+        		if(requiredCheckboxes.is(':checked')) {
+            			requiredCheckboxes.removeAttr('required');
+       			 } else {
+            			requiredCheckboxes.attr('required', 'required');
+        		}
+    		});
+	});
+	</script>
+	
+	<script>
+
+	$(function(){
+    		var requiredCheckboxes = $('.pr-checkbox :checkbox[required]');
+    		requiredCheckboxes.change(function(){
+        		if(requiredCheckboxes.is(':checked')) {
+            			requiredCheckboxes.removeAttr('required');
+       			 } else {
+            			requiredCheckboxes.attr('required', 'required');
+        		}
+    		});
+	});
+	</script>
+
 
 
 {% endblock %}
@@ -22,10 +52,10 @@
 		<div id="cl_div" >
 		<p>Select Classifiers</p>
 		<p>
-		<div class="form-check">
+		<div class="form-check cl-checkbox">
 		{% for cl in ESTIMATORS[0] %}
 			<nobr>
-	    		<input type="checkbox" name="estim_ls" value="{{cl}}" checked > 
+	    		<input type="checkbox" name="estim_ls" value="{{cl}}" required > 
 			{%if loop.index0 in BOLD_CL %}
 			<strong><label>{{ESTIMATORS[1][loop.index0]}} &nbsp; &nbsp; </label></strong>
 			{% else %}
@@ -37,10 +67,10 @@
 		</p>
 		<p>Select Preprocessors</p>
 		<p>
-		<div class="form-check">
+		<div class="form-check pr-checkbox" >
 		{% for pr in PREPROCESSORS[0] %}
 	    		<nobr>
-			<input type="checkbox" name="prep_ls" value="{{pr}}" checked >
+			<input type="checkbox" name="prep_ls" value="{{pr}}" required >
 			<label>{{PREPROCESSORS[1][loop.index0]}} &nbsp; &nbsp; </label>
 			</nobr>
 		{% endfor %}
