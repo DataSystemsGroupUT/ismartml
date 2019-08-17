@@ -11,9 +11,22 @@
 	    form[0].reset();
 	}); 
         </script>
-	
-	<script>
 
+
+
+	<script>
+	function toggle(source) {
+	    var checkboxes = document.querySelectorAll('div.estm input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
+
+
+	<script>
 	$(document).ready(function(){
     		var requiredCheckboxes = $('.cl-checkbox :checkbox[required]');
     		requiredCheckboxes.change(function(){
@@ -26,19 +39,6 @@
 	});
 	</script>
 	
-	<script>
-
-	$(document).ready(function(){
-    		var requiredCheckboxes = $('.pr-checkbox :checkbox[required]');
-    		requiredCheckboxes.change(function(){
-        		if(requiredCheckboxes.is(':checked')) {
-            			requiredCheckboxes.removeAttr('required');
-       			 } else {
-            			requiredCheckboxes.attr('required', 'required');
-        		}
-    		});
-	});
-	</script>
 
 
 
@@ -51,8 +51,9 @@
 		<div class="col-8" >
 		<div id="cl_div" >
 		<h4><p>Select Classifiers</p></h4>
+		<input type="button" onclick="toggle(this);" />Check all?<br />
 		<p>
-		<div class="form-check">
+		<div class="form-check estm">
 		{% for cl in ESTIMATORS[0] %}
 			<nobr>
 			{%if loop.index0 in BOLD_CL %}
