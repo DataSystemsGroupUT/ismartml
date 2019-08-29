@@ -51,7 +51,7 @@ def get_spawn_classifier(X_train, y_train):
         # models.
         # 3. all instances of the AutoSklearnClassifier must have a different seed!
         automl = AutoSklearnClassifier(
-            time_left_for_this_task=30,
+            time_left_for_this_task=time,
             # sec., how long should this seed fit process run
             per_run_time_limit=15,
             # sec., each model may only take this long before it's killed
@@ -102,7 +102,7 @@ def get_spawn_regressor(X_train, y_train):
         # models.
         # 3. all instances of the AutoSklearnClassifier must have a different seed!
         automl = AutoSklearnRegressor(
-            time_left_for_this_task=30,
+            time_left_for_this_task=time,
             # sec., how long should this seed fit process run
             per_run_time_limit=15,
             # sec., each model may only take this long before it's killed
