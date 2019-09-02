@@ -1,6 +1,16 @@
 #main_content{
  margin: 1% 5% 1% 5%;
 }
+
+#header_bar{
+ margin: 1% 5% 1% 5%;
+}
+
+#banner{ 
+max-width: 100%; height: auto; 
+}
+
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
