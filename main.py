@@ -11,6 +11,7 @@ from multi import run_task
 from extras import *
 from extract import get_meta
 from predict_meta import predict_meta
+from utils import *
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
 
@@ -23,9 +24,11 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-
 @app.route('/')
 def start():
+    if not os.path.exists("data/hash_list.txt"):
+        os.mknod("data/hash_list.txt")
+
     return render_template("index.html")
 
 @app.route('/', methods=['POST'])
@@ -53,6 +56,10 @@ def start_p():
                 return "Wrong file extension (expected .csv)"
 
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            with open("data/hash_list.txt","a") as f:
+                f.write(checksum+"\n")
+
 
             for dir_ in [tmp_folder, output_folder]:
                 try:
