@@ -1,4 +1,5 @@
 from hashlib import md5
+import pandas as pd
 
 def hash_file(path):
     chk= md5()
@@ -6,4 +7,9 @@ def hash_file(path):
         for chunk in iter(lambda: f.read(4096), b""):
             chk.update(chunk)
     return chk.hexdigest()
+
+def return_cols(path):
+    data=pd.read_csv(path)
+    return data.columns
+
 

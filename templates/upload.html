@@ -37,6 +37,17 @@
 	}
 	</script>
 
+	<script>
+	//toggle all
+	function toggle_features(source) {
+	    var checkboxes = document.querySelectorAll('div.features input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
 
 
 	<script>
@@ -97,6 +108,20 @@
 		{% endfor %}
 		</div>
 		</p>
+
+		<h4><p>Select Features</p></h4>
+		<input type="checkbox" checked onclick="toggle_features(this);" />&nbsp; Toggle all<br />
+		<p>
+		<div class="form-check features" >
+		{% for ft in FEATURES %}
+	    		<nobr>
+			<input type="checkbox" name="features_ls" value="{{ft}}" checked >
+			<label>{{ft}} &nbsp; &nbsp; </label>
+			</nobr>
+		{% endfor %}
+		</div>
+		</p>
+	
 		
 		<h4><p>Select Metric</p></h4>
 		<p>

@@ -96,6 +96,13 @@ def params():
     task=session.get("task","not set")
     column_names=["Classifier","Score"]
     bolds=[]
+    
+    #load dataset and get features
+    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    features=return_cols(path)
+
+
+    ##Configure for Task
     if task=="classification":
         rec=[x for x in rec if x[1]!=0] #remove predicions with 0 score from results
         #get bold indexes for recomended classifiers
@@ -114,7 +121,7 @@ def params():
         ESTIMATORS=[REGRESSORS, REGRESSORS_DISP]
         PREPROCESSORS=[PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
         METRICS=METRICS_RG_DISP
-    return render_template('upload.html', METRICS=METRICS,ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds)
+    return render_template('upload.html', METRICS=METRICS,ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds, FEATURES=features)
 
 @app.route('/params', methods=['POST'])
 def params_p():
