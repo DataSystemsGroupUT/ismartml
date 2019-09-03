@@ -57,8 +57,14 @@ def start_p():
 
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            with open("data/hash_list.txt","a") as f:
-                f.write(checksum+"\n")
+            
+            with open("data/hash_list.txt","r") as f:
+                lines=f.readlines()
+
+            if(checksum+"\n" not in lines):
+                print("Noet here")
+                with open("data/hash_list.txt","a") as f:
+                    f.write(checksum+"\n")
 
 
             for dir_ in [tmp_folder, output_folder]:
