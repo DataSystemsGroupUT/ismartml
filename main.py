@@ -100,7 +100,7 @@ def params():
     #load dataset and get features
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     features=return_cols(path)
-    session["features"]=list(features)
+    #session["features"]=list(features)
     
 
 
@@ -135,8 +135,9 @@ def params_p():
         #discard feuatres
 
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-        features=session.get("features","not set")
+        features = request.form.getlist("features_ls")
         new_data=select_cols(path,features)
+        new_data.to_csv(path)
 
 
         #
@@ -196,6 +197,8 @@ def progress():
     format_period=format_time(values["period"])
     metric=gen_metric(values["task"],values["metric"])
     
+    features=return_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))
+    print(features)
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"])
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
