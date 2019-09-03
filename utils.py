@@ -12,4 +12,8 @@ def return_cols(path):
     data=pd.read_csv(path)
     return data.columns
 
+def select_cols(path,cols):
+    data=pd.read_csv(path)
+    return data[data.columns.intersection(cols)]
+
 

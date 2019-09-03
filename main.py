@@ -100,6 +100,9 @@ def params():
     #load dataset and get features
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     features=return_cols(path)
+    session["features"]=list(features)
+    
+
 
 
     ##Configure for Task
@@ -127,6 +130,17 @@ def params():
 def params_p():
     if request.method == 'POST':
         # check if the post request has the file part
+        
+        
+        #discard feuatres
+
+        path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+        features=session.get("features","not set")
+        new_data=select_cols(path,features)
+
+
+        #
+        
         values={}
         time = request.form['time']
         period = request.form['period']
