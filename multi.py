@@ -28,7 +28,7 @@ for dir_ in [tmp_folder, output_folder]:
 
 
 def get_spawn_classifier(X_train, y_train):
-    def spawn_classifier(seed, time, search_space,prep_space,dataset_name=None,metric=metrics.accuracy):
+    def spawn_classifier(seed, time, search_space,prep_space,metric,dataset_name=None):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -79,7 +79,7 @@ def get_spawn_classifier(X_train, y_train):
 
 
 def get_spawn_regressor(X_train, y_train):
-    def spawn_regressor(seed, time,search_space,prep_space,dataset_name=None,metric=metrics.accuracy):
+    def spawn_regressor(seed, time,search_space,prep_space,metric,dataset_name=None ):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This

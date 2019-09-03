@@ -169,7 +169,7 @@ def progress():
     metric=gen_metric(values["task"],values["metric"])
     
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"])
-    results=estimator(turn,values["period"],values["search_space"],values["prep_space"])
+    results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
