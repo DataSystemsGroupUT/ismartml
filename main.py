@@ -102,10 +102,12 @@ def params():
         #Get corect lists for this task
         ESTIMATORS=[CLASSIFIERS, CLASSIFIERS_DISP]
         PREPROCESSORS=[PREPROCESSORS_CL, PREPROCESSORS_CL_DISP] 
+        METRICS=METRICS_CL_DISP
     else:
         ESTIMATORS=[REGRESSORS, REGRESSORS_DISP]
         PREPROCESSORS=[PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
-    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds)
+        METRICS=METRICS_RG_DISP
+    return render_template('upload.html', METRICS=METRICS,ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds)
 
 @app.route('/params', methods=['POST'])
 def params_p():
@@ -119,6 +121,8 @@ def params_p():
         task=session.get("task","not set")
         search_space= request.form.getlist("estim_ls")
         prep_space= request.form.getlist("prep_ls")
+        
+        metric = request.form['metric']
 
         if(int(time)<30):
             return "Time budget must be at least 30 seconds"
@@ -139,6 +143,7 @@ def params_p():
         values['data_type']=data_type
         values["search_space"]=search_space
         values["prep_space"]=prep_space
+        values["metric"]=metric
         session["values"]=values
 
         print("do this")
@@ -161,6 +166,7 @@ def progress():
     iters=values["time"]//values["period"]
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
+    metric=gen_metric(values["task"],values["metric"])
     
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"])
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"])

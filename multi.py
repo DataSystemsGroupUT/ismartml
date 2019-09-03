@@ -9,6 +9,7 @@ import sklearn.datasets
 import sklearn.metrics
 
 from autosklearn.metrics import accuracy
+from autosklearn import metrics
 from autosklearn.classification import AutoSklearnClassifier
 from autosklearn.regression import AutoSklearnRegressor
 from autosklearn.constants import MULTICLASS_CLASSIFICATION
@@ -27,7 +28,7 @@ for dir_ in [tmp_folder, output_folder]:
 
 
 def get_spawn_classifier(X_train, y_train):
-    def spawn_classifier(seed, time, search_space,prep_space,dataset_name=None):
+    def spawn_classifier(seed, time, search_space,prep_space,dataset_name=None,metric=metrics.accuracy):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -71,14 +72,14 @@ def get_spawn_classifier(X_train, y_train):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, dataset_name=dataset_name)
+        automl.fit(X_train, y_train, metric = metric,dataset_name=dataset_name)
         #print(automl.cv_results_)
         return automl.cv_results_
     return spawn_classifier
 
 
 def get_spawn_regressor(X_train, y_train):
-    def spawn_regressor(seed, time,search_space,prep_space,dataset_name=None):
+    def spawn_regressor(seed, time,search_space,prep_space,dataset_name=None,metric=metrics.accuracy):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -122,7 +123,7 @@ def get_spawn_regressor(X_train, y_train):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, dataset_name=dataset_name)
+        automl.fit(X_train, y_train, metric=metric, dataset_name=dataset_name)
         #print(automl.cv_results_)
         return automl.cv_results_
 
