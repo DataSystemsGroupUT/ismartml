@@ -73,7 +73,7 @@
 <form method="post" action="/features" enctype="multipart/form-data">
     <dl>
 	    	<div class="row">
-		<div class="col-8" >
+		<div  >
 		<div id="cl_div" >
 		<h4><p>Select Features</p></h4>
 		<input type="checkbox" checked onclick="toggle_features(this);" />&nbsp; Toggle all<br />
@@ -82,7 +82,7 @@
 		{% for ft in FEATURES %}
 	    		<nobr>
 			<input type="checkbox" name="features_ls" value="{{ft}}" checked >
-			<label>{{ft}}<img height=200  src="static/images/figs/{{loop.index0}}.png"> &nbsp; &nbsp; </label>
+			<label><img width=250  src="static/images/figs/{{loop.index0}}.png"><figcaption>{{ft}}</figcaption> &nbsp; &nbsp; </label>
 			</nobr>
 		{% endfor %}
 		</div>
