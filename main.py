@@ -189,6 +189,20 @@ def params_p():
         return redirect('/running')
 
 
+
+@app.route('/features')
+def features():
+    return render_template("features.html")
+
+@app.route('/params', methods=['POST'])
+def params_p():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        return redirect('/running')
+ 
+
+
+
 @app.route('/running')
 def running():
     values=session.get('values', 'not set')
