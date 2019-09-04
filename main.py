@@ -108,10 +108,11 @@ def params():
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     features=return_cols(path)
     new_data=select_cols(path,features)
+
     #session["features"]=list(features)
     
-    plt.hist(new_data.iloc[:,-1])
-    plt.savefig("static/images/fig.png")
+    #plt.hist(new_data.iloc[:,-1])
+    #plt.savefig("static/images/fig.png")
 
 
 
@@ -148,7 +149,7 @@ def params_p():
         features = request.form.getlist("features_ls")
         new_data=select_cols(path,features)
         new_data.to_csv(path)
-        plt.savefig("tmp/fig.png")
+        #plt.savefig("tmp/fig.png")
 
 
         #
@@ -186,20 +187,27 @@ def params_p():
         values["metric"]=metric
         session["values"]=values
 
-        return redirect('/running')
+        return redirect('/features')
 
 
 
 @app.route('/features')
-def features():
-    return render_template("features.html")
+def featur_pg():
+    values=session.get('values', 'not set')
+    features=return_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))
+    new_data=select_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),features)
+    for i in range(len(features)):
+        plt.clf()
+        new_data[features[i]].hist()
+        plt.savefig("static/images/figs/"+str(i))
+    return render_template("features.html", FEATURES=features)
 
-@app.route('/params', methods=['POST'])
-def params_p():
+@app.route('/features', methods=['POST'])
+def feature_pgr():
     if request.method == 'POST':
         # check if the post request has the file part
         return redirect('/running')
- 
+    
 
 
 
@@ -222,7 +230,6 @@ def progress():
     metric=gen_metric(values["task"],values["metric"])
     
     features=return_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))
-    print(features)
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"])
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
