@@ -107,8 +107,11 @@ def params():
     #load dataset and get features
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     features=return_cols(path)
+    new_data=select_cols(path,features)
     #session["features"]=list(features)
     
+    plt.hist(new_data.iloc[:,-1])
+    plt.savefig("static/images/fig.png")
 
 
 
@@ -145,8 +148,7 @@ def params_p():
         features = request.form.getlist("features_ls")
         new_data=select_cols(path,features)
         new_data.to_csv(path)
-        plt.hist(new_data.iloc[:,-1])
-        plt.savefig("fig.png")
+        plt.savefig("tmp/fig.png")
 
 
         #

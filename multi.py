@@ -144,7 +144,7 @@ def process_data(path,data_type):
     return X,y
 
 
-def run_task(path,task,data_type, test_split=20):
+def run_task(path,task,data_type, test_split=0.1):
 
     #interval=time//period
     #extra=time%period
@@ -157,11 +157,8 @@ def run_task(path,task,data_type, test_split=20):
     
     
     X_train, X_test, y_train, y_test = \
-        sklearn.model_selection.train_test_split(X, y, random_state=1)
+        sklearn.model_selection.train_test_split(X, y,test_size=0.3 ,random_state=1)
     
-    print(X.shape)
-    print(X_train.shape)
-    print(X_test.shape)
     
     if task=="classification":
         spawn_estimator = get_spawn_classifier(X_train, y_train, X_test=X_test, y_test=y_test)
