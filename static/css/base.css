@@ -10,6 +10,10 @@
 max-width: 100%; height: auto; 
 }
 
+figcaption {
+	border: 1px dotted blue;
+	text-align: center;
+	}
 
 table {
     font-family: arial, sans-serif;

@@ -81,8 +81,8 @@
 		<div class="form-check features" >
 		{% for ft in FEATURES %}
 	    		<nobr>
-			<input type="checkbox" name="features_ls" value="{{ft}}" checked >
-			<label><img width=250  src="static/images/figs/{{loop.index0}}.png"><figcaption>{{ft}}</figcaption> &nbsp; &nbsp; </label>
+			<label><img width=250  src="static/images/figs/{{loop.index0}}.png"><figcaption><input type="checkbox" name="features_ls" value="{{ft}}" checked >
+{{ft}}</figcaption> &nbsp; &nbsp; </label>
 			</nobr>
 		{% endfor %}
 		</div>
