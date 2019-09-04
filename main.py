@@ -12,6 +12,8 @@ from extras import *
 from extract import get_meta
 from predict_meta import predict_meta
 from utils import *
+import matplotlib.pyplot as plt
+
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
 
@@ -62,7 +64,6 @@ def start_p():
                 lines=f.readlines()
 
             if(checksum+"\n" not in lines):
-                print("Noet here")
                 with open("data/hash_list.txt","a") as f:
                     f.write(checksum+"\n")
 
@@ -144,6 +145,8 @@ def params_p():
         features = request.form.getlist("features_ls")
         new_data=select_cols(path,features)
         new_data.to_csv(path)
+        plt.hist(new_data.iloc[:,-1])
+        plt.savefig("fig.png")
 
 
         #
@@ -181,7 +184,6 @@ def params_p():
         values["metric"]=metric
         session["values"]=values
 
-        print("do this")
         return redirect('/running')
 
 
@@ -247,6 +249,11 @@ def view_model():
     index = request.args.get('model', default = 0, type = int)
     model=res_list[index]
     return render_template("model.html",model=model)
+
+
+@app.route("/test")
+def test():
+    return render_template("test.html")
 
 app.run(host='0.0.0.0', port=8080,debug=True)
 
