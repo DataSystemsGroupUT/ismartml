@@ -27,7 +27,7 @@ for dir_ in [tmp_folder, output_folder]:
         pass
 
 
-def get_spawn_classifier(X_train, y_train):
+def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
     def spawn_classifier(seed, time, search_space,prep_space,metric,dataset_name=None):
         """Spawn a subprocess.
 
@@ -72,13 +72,13 @@ def get_spawn_classifier(X_train, y_train):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, metric = metric,dataset_name=dataset_name)
+        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test, metric = metric,dataset_name=dataset_name)
         #print(automl.cv_results_)
         return automl.cv_results_
     return spawn_classifier
 
 
-def get_spawn_regressor(X_train, y_train):
+def get_spawn_regressor(X_train, y_train, X_test=None, y_test=None):
     def spawn_regressor(seed, time,search_space,prep_space,metric,dataset_name=None ):
         """Spawn a subprocess.
 
@@ -123,7 +123,7 @@ def get_spawn_regressor(X_train, y_train):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, metric=metric, dataset_name=dataset_name)
+        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test,metric=metric, dataset_name=dataset_name)
         #print(automl.cv_results_)
         return automl.cv_results_
 
@@ -144,7 +144,7 @@ def process_data(path,data_type):
     return X,y
 
 
-def run_task(path,task,data_type):
+def run_task(path,task,data_type, test_split=20):
 
     #interval=time//period
     #extra=time%period
@@ -155,13 +155,18 @@ def run_task(path,task,data_type):
     #X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
     X,y=process_data(path,data_type)
     
+    
     X_train, X_test, y_train, y_test = \
         sklearn.model_selection.train_test_split(X, y, random_state=1)
     
+    print(X.shape)
+    print(X_train.shape)
+    print(X_test.shape)
+    
     if task=="classification":
-        spawn_estimator = get_spawn_classifier(X_train, y_train)
+        spawn_estimator = get_spawn_classifier(X_train, y_train, X_test=X_test, y_test=y_test)
     elif task=="regression":
-        spawn_estimator = get_spawn_regressor(X_train, y_train)
+        spawn_estimator = get_spawn_regressor(X_train, y_train, X_test=X_test, y_test=y_test)
 
     return spawn_estimator
 
