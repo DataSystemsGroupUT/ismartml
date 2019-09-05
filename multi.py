@@ -138,9 +138,11 @@ def process_data(path,data_type,target_ft):
     elif(data_type=="csv"):
         #data=np.genfromtxt(path,skip_header=1,delimiter=",")
         data=pd.read_csv(path)
-        data=data.to_numpy()
-        X=data[:,:-1]
-        y=data[:,-1]
+        X=data.loc[:,data.columns!=target_ft].to_numpy()
+        y=data.loc[:,target_ft].to_numpy()
+        #data=data.to_numpy()
+        #X=data[:,:-1]
+        #y=data[:,-1]
     else:
         X=None
         y=None
