@@ -81,7 +81,7 @@ def start_p():
             session["data_type"]=data_type
             session["rec"]=rec
             session["task"]=task
-            return redirect('/params')
+            return redirect('/features')
             #os.path.join(app.config['UPLOAD_FOLDER'], values["filename"])
             
             #return str(predict_meta(meta[1:]))
@@ -94,6 +94,30 @@ def start_p():
             return redirect(request.url)
 
 
+@app.route('/features')
+def featur_pg():
+    values=session.get('values', 'not set')
+    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    #features = request.form.getlist("features_ls")
+    features=return_cols(path)
+    new_data=select_cols(path,features)
+    for i in range(len(features)):
+        plt.clf()
+        new_data[features[i]].hist()
+        plt.savefig("static/images/figs/"+str(i))
+    return render_template("features.html", FEATURES=features)
+
+@app.route('/features', methods=['POST'])
+def feature_pgr():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        features = request.form.getlist("features_ls")
+        path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+        new_data=select_cols(path,features)
+        new_data.to_csv(path)
+        return redirect('/params')
+    
+
 
 
 
@@ -105,9 +129,6 @@ def params():
     bolds=[]
     
     #load dataset and get features
-    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-    features=return_cols(path)
-    new_data=select_cols(path,features)
 
     #session["features"]=list(features)
     
@@ -135,7 +156,7 @@ def params():
         ESTIMATORS=[REGRESSORS, REGRESSORS_DISP]
         PREPROCESSORS=[PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
         METRICS=METRICS_RG_DISP
-    return render_template('upload.html', METRICS=METRICS,ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds, FEATURES=features)
+    return render_template('upload.html', METRICS=METRICS,ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds)
 
 @app.route('/params', methods=['POST'])
 def params_p():
@@ -145,10 +166,6 @@ def params_p():
         
         #discard feuatres
 
-        path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-        features = request.form.getlist("features_ls")
-        new_data=select_cols(path,features)
-        new_data.to_csv(path)
         #plt.savefig("tmp/fig.png")
 
 
@@ -187,27 +204,9 @@ def params_p():
         values["metric"]=metric
         session["values"]=values
 
-        return redirect('/features')
-
-
-
-@app.route('/features')
-def featur_pg():
-    values=session.get('values', 'not set')
-    features=return_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))
-    new_data=select_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),features)
-    for i in range(len(features)):
-        plt.clf()
-        new_data[features[i]].hist()
-        plt.savefig("static/images/figs/"+str(i))
-    return render_template("features.html", FEATURES=features)
-
-@app.route('/features', methods=['POST'])
-def feature_pgr():
-    if request.method == 'POST':
-        # check if the post request has the file part
         return redirect('/running')
-    
+
+
 
 
 
