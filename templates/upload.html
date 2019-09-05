@@ -109,19 +109,7 @@
 		</div>
 		</p>
 
-		<h4><p>Select Features</p></h4>
-		<input type="checkbox" checked onclick="toggle_features(this);" />&nbsp; Toggle all<br />
-		<p>
-		<div class="form-check features" >
-		{% for ft in FEATURES %}
-	    		<nobr>
-			<input type="checkbox" name="features_ls" value="{{ft}}" checked >
-			<label>{{ft}} &nbsp; &nbsp; </label>
-			</nobr>
-		{% endfor %}
-		</div>
-		</p>
-	
+
 		
 		<h4><p>Select Metric</p></h4>
 		<p>
@@ -154,18 +142,6 @@
 
 		</div>	
 		
-		<h4><p>Enter Time Budget in seconds (minimum 30)</p></h4>
-	    	<p>	
-		      <div class="form-group w-25">
-			<input type="text" class="form-control" name="time" required>
-		      </div>
-		</p>
-		<h4><p>Enter Update Period in seconds (minimum 30)</p></h4>
-	    	<p>	
-		      <div class="form-group w-25">
-			<input type="text"class="form-control"  name="period" required>
-		      </div>
-		</p>
     </dl>
     <p>
 		<button type="submit" class="btn btn-primary">Next</button>

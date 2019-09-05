@@ -172,8 +172,6 @@ def params_p():
         #
         
         values={}
-        time = request.form['time']
-        period = request.form['period']
         data_type=session.get('data_type', 'not set')
         filename=session.get("filename","not set")
         task=session.get("task","not set")
@@ -182,12 +180,6 @@ def params_p():
         
         metric = request.form['metric']
 
-        if(int(time)<30):
-            return "Time budget must be at least 30 seconds"
-        if(int(period)<30):
-            return "Update period must be at least 30 seconds"
-        if(int(period)>int(time)):
-            return "Update period can't be larger than total time budget"
         if(not search_space):
             return "You must select at least 1 estimator"
         if(not prep_space):
@@ -195,8 +187,6 @@ def params_p():
 
 
         values['filename']=filename
-        values['time']=int(time)
-        values['period']=int(period)
         values['task']=task
         values['data_type']=data_type
         values["search_space"]=search_space
