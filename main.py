@@ -153,12 +153,10 @@ def params():
         #Get corect lists for this task
         ESTIMATORS=[CLASSIFIERS, CLASSIFIERS_DISP]
         PREPROCESSORS=[PREPROCESSORS_CL, PREPROCESSORS_CL_DISP] 
-        METRICS=METRICS_CL_DISP
     else:
         ESTIMATORS=[REGRESSORS, REGRESSORS_DISP]
         PREPROCESSORS=[PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
-        METRICS=METRICS_RG_DISP
-    return render_template('upload.html', METRICS=METRICS,ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds)
+    return render_template('upload.html', ESTIMATORS=ESTIMATORS,PREPROCESSORS=PREPROCESSORS, column_names=column_names,row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds)
 
 @app.route('/params', methods=['POST'])
 def params_p():
@@ -180,7 +178,6 @@ def params_p():
         search_space= request.form.getlist("estim_ls")
         prep_space= request.form.getlist("prep_ls")
         
-        metric = request.form['metric']
 
         if(not search_space):
             return "You must select at least 1 estimator"
@@ -193,7 +190,6 @@ def params_p():
         values['data_type']=data_type
         values["search_space"]=search_space
         values["prep_space"]=prep_space
-        values["metric"]=metric
         session["values"]=values
 
         return redirect('/budget')
@@ -223,7 +219,6 @@ def budget_p():
         data_type=session.get('data_type', 'not set')
         filename=session.get("filename","not set")
         task=session.get("task","not set")
-        
         metric = request.form['metric']
 
         if(int(time)<30):
