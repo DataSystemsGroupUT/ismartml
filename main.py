@@ -112,6 +112,7 @@ def feature_pgr():
     if request.method == 'POST':
         # check if the post request has the file part
         target_ft = request.form['target_ft']
+        session["target_ft"]=target_ft
         features = request.form.getlist("features_ls")
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,features)
@@ -256,13 +257,14 @@ def progress():
     turn = request.args.get('iter', default = 0, type = int)
     print("turn",turn)
     values=session.get('values', 'not set')
+    target_ft=session.get('target_ft', 'not set')
     iters=values["time"]//values["period"]
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
     metric=gen_metric(values["task"],values["metric"])
     
     features=return_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))
-    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"])
+    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"],target_ft)
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]

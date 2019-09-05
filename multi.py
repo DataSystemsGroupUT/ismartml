@@ -14,6 +14,7 @@ from autosklearn.classification import AutoSklearnClassifier
 from autosklearn.regression import AutoSklearnRegressor
 from autosklearn.constants import MULTICLASS_CLASSIFICATION
 import numpy as np
+import pandas as pd
 
 
 tmp_folder = 'tmp/autosk_tmp'
@@ -129,13 +130,15 @@ def get_spawn_regressor(X_train, y_train, X_test=None, y_test=None):
 
     return spawn_regressor
 
-def process_data(path,data_type):
+def process_data(path,data_type,target_ft):
     if(data_type=="numpy"):
         data=np.load(path)
         X=data[:,:-1]
         y=data[:,-1]
     elif(data_type=="csv"):
-        data=np.genfromtxt(path,skip_header=1,delimiter=",")
+        #data=np.genfromtxt(path,skip_header=1,delimiter=",")
+        data=pd.read_csv(path)
+        data=data.to_numpy()
         X=data[:,:-1]
         y=data[:,-1]
     else:
@@ -144,7 +147,7 @@ def process_data(path,data_type):
     return X,y
 
 
-def run_task(path,task,data_type, test_split=0.1):
+def run_task(path,task,data_type, target_ft,test_split=0.1):
 
     #interval=time//period
     #extra=time%period
@@ -153,7 +156,7 @@ def run_task(path,task,data_type, test_split=0.1):
     #X=data[:,:-1]
     #y=data[:,-1]
     #X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
-    X,y=process_data(path,data_type)
+    X,y=process_data(path,data_type,target_ft)
     
     
     X_train, X_test, y_train, y_test = \
