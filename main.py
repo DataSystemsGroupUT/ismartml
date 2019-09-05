@@ -204,8 +204,50 @@ def params_p():
         values["metric"]=metric
         session["values"]=values
 
-        return redirect('/running')
+        return redirect('/budget')
 
+
+@app.route('/budget')
+def budget():
+    task=session.get("task","not set")
+    
+    ##Configure for Task
+    if task=="classification":
+        METRICS=METRICS_CL_DISP
+    else:
+        METRICS=METRICS_RG_DISP
+    return render_template('budget.html', METRICS=METRICS, zip=zip, TASK=task)
+
+@app.route('/budget', methods=['POST'])
+def budget_p():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        
+        
+        
+        values=session.get('values', 'not set')
+        time = request.form['time']
+        period = request.form['period']
+        data_type=session.get('data_type', 'not set')
+        filename=session.get("filename","not set")
+        task=session.get("task","not set")
+        
+        metric = request.form['metric']
+
+        if(int(time)<30):
+            return "Time budget must be at least 30 seconds"
+        if(int(period)<30):
+            return "Update period must be at least 30 seconds"
+        if(int(period)>int(time)):
+            return "Update period can't be larger than total time budget"
+
+
+        values['time']=int(time)
+        values['period']=int(period)
+        values["metric"]=metric
+        session["values"]=values
+
+        return redirect('/running')
 
 
 
