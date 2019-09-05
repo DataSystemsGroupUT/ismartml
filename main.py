@@ -111,6 +111,7 @@ def featur_pg():
 def feature_pgr():
     if request.method == 'POST':
         # check if the post request has the file part
+        target_ft = request.form['target_ft']
         features = request.form.getlist("features_ls")
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,features)

@@ -71,11 +71,24 @@
 
 {% block content %}
 <form method="post" action="/features" enctype="multipart/form-data">
-    <dl>
+    <dl>	
+		<h4><p>Select Targer Class</p></h4>
+		<p>
+		<div class="form-radio">
+		{% for ft in FEATURES %}
+			<nobr>
+			<input type="radio" name="target_ft" value="{{ft}}" required>
+			<label>{{ft}} &nbsp; &nbsp; </label>
+			</nobr>
+		{% endfor %}
+		</div>
+		</p>
+	
+
 	    	<div class="row">
 		<div  >
 		<div id="cl_div" >
-		<h4><p>Select Features</p></h4>
+		<h4><p>Select Features To Keep</p></h4>
 		<input type="checkbox" checked onclick="toggle_features(this);" />&nbsp; Toggle all<br />
 		<p>
 		<div class="form-check features" >
