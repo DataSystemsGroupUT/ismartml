@@ -17,20 +17,16 @@ import matplotlib.pyplot as plt
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
 
-
-
 #ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 ALLOWED_EXTENSIONS = set(["npy","csv"])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
 @app.route('/')
 def start():
     if not os.path.exists("data/hash_list.txt"):
         os.mknod("data/hash_list.txt")
-
     return render_template("index.html")
 
 @app.route('/', methods=['POST'])
@@ -41,33 +37,24 @@ def start_p():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        #task = request.form['task']
         data_type = request.form['data_type']
         task = request.form['task']
-        
-
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            
             if(data_type=="numpy" and filename[-3:]!="npy"):
                 return "Wrong file extension (expected .npy)"
             if(data_type=="csv" and (filename[-3:]!="csv" and filename[-3:]!="CSV")):
                 return "Wrong file extension (expected .csv)"
-
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            
             with open("data/hash_list.txt","r") as f:
                 lines=f.readlines()
-
             if(checksum+"\n" not in lines):
                 with open("data/hash_list.txt","a") as f:
                     f.write(checksum+"\n")
-
-
             for dir_ in [tmp_folder, output_folder]:
                 try:
                     shutil.rmtree(dir_)
@@ -82,17 +69,9 @@ def start_p():
             session["rec"]=rec
             session["task"]=task
             return redirect('/features')
-            #os.path.join(app.config['UPLOAD_FOLDER'], values["filename"])
-            
-            #return str(predict_meta(meta[1:]))
-
-     
-
-
         else:
             flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
             return redirect(request.url)
-
 
 @app.route('/features')
 def featur_pg():
@@ -119,26 +98,12 @@ def feature_pgr():
         new_data.to_csv(path)
         return redirect('/params')
     
-
-
-
-
 @app.route('/params')
 def params():
     rec=session.get("rec","not set")
     task=session.get("task","not set")
     column_names=["Classifier","Score"]
     bolds=[]
-    
-    #load dataset and get features
-
-    #session["features"]=list(features)
-    
-    #plt.hist(new_data.iloc[:,-1])
-    #plt.savefig("static/images/fig.png")
-
-
-
     ##Configure for Task
     if task=="classification":
         rec=[x for x in rec if x[1]!=0] #remove predicions with 0 score from results
@@ -161,29 +126,17 @@ def params():
 @app.route('/params', methods=['POST'])
 def params_p():
     if request.method == 'POST':
-        # check if the post request has the file part
-        
-        
-        #discard feuatres
-
-        #plt.savefig("tmp/fig.png")
-
-
-        #
-        
         values={}
         data_type=session.get('data_type', 'not set')
         filename=session.get("filename","not set")
         task=session.get("task","not set")
         search_space= request.form.getlist("estim_ls")
         prep_space= request.form.getlist("prep_ls")
-        
 
         if(not search_space):
             return "You must select at least 1 estimator"
         if(not prep_space):
             return "You must select at least 1 preprocessor"
-
 
         values['filename']=filename
         values['task']=task
@@ -194,11 +147,9 @@ def params_p():
 
         return redirect('/budget')
 
-
 @app.route('/budget')
 def budget():
     task=session.get("task","not set")
-    
     ##Configure for Task
     if task=="classification":
         METRICS=METRICS_CL_DISP
@@ -209,10 +160,6 @@ def budget():
 @app.route('/budget', methods=['POST'])
 def budget_p():
     if request.method == 'POST':
-        # check if the post request has the file part
-        
-        
-        
         values=session.get('values', 'not set')
         time = request.form['time']
         period = request.form['period']
@@ -228,16 +175,12 @@ def budget_p():
         if(int(period)>int(time)):
             return "Update period can't be larger than total time budget"
 
-
         values['time']=int(time)
         values['period']=int(period)
         values["metric"]=metric
         session["values"]=values
 
         return redirect('/running')
-
-
-
 
 @app.route('/running')
 def running():
@@ -257,17 +200,14 @@ def progress():
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
     metric=gen_metric(values["task"],values["metric"])
-    
     features=return_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"],target_ft)
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
-    #session["results"]=res_list
     filehandler = open("tmp/results.p", 'wb') 
     pickle.dump(res_list, filehandler)
-    
     turn+=+1
     if(values["task"]=="classification"):
         res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
@@ -294,19 +234,15 @@ def stop():
 
 @app.route('/model')
 def view_model():
-    #res_list=session.get('results', 'not set')
     filehandler = open("tmp/results.p", 'rb') 
     res_list=pickle.load(filehandler)
-    
     index = request.args.get('model', default = 0, type = int)
     model=res_list[index]
     return render_template("model.html",model=model)
 
-
 @app.route("/test")
 def test():
     return render_template("test.html")
-
 
 @app.after_request
 def add_header(r):
@@ -315,7 +251,6 @@ def add_header(r):
     r.headers["Expires"] = "0"
     r.headers['Cache-Control'] = 'public, max-age=0'
     return r
-
 
 app.run(host='0.0.0.0', port=8080,debug=True)
 
