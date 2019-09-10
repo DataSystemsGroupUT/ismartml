@@ -238,6 +238,7 @@ def view_model():
     res_list=pickle.load(filehandler)
     index = request.args.get('model', default = 0, type = int)
     model=res_list[index]
+    print(model)
     return render_template("model.html",model=model)
 
 @app.route("/test")
