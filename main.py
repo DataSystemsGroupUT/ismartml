@@ -203,6 +203,24 @@ def running():
     if reuse=="yes":
         if os.path.exists("tmp_runs/{}".format(checksum)):
             shutil.copytree("tmp_runs/{}".format(checksum),"tmp/autosk_tmp")
+            #modify space.pcs
+            olds=[]
+            #path="tmp/autosk_tmp/smac3-output/run_0.OLD/configspace.pcs"
+            path="tmp/autosk_tmp/space.pcs"
+            with open(path,"r") as f:
+                lines=f.readlines()
+                "classifier:__choice__ {decision_tree, gradient_boosting, random_forest} [random_forest]"
+                pre="classifier:__choice__ {"
+                for line in lines:
+                    if "classifier:__choice__ {" in line:
+                        olds=[ar.strip() for ar in line[len(pre):].split("}")[0].split(",")]
+            
+            for param in values["search_space"]:
+                if param not in olds:
+                    olds.append(param)
+            values["search_space"]=olds
+            session["values"]=values
+
 
 
 
