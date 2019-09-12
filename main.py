@@ -184,7 +184,7 @@ def running():
 
 
     #check dataset checksum and lookup
-    checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))+"_"+target_ft
+    checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))+"_"+target_ft+"_"+values["task"]+"_"+values["metric"]
     session["checksum"]=checksum
     with open("data/hash_list.txt","r") as f:
         lines=f.readlines()
