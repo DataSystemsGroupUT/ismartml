@@ -159,6 +159,7 @@ def budget_p():
         filename=session.get("filename","not set")
         task=session.get("task","not set")
         metric = request.form['metric']
+        reuse = request.form['reuse']
 
         if(int(time)<30):
             return "Time budget must be at least 30 seconds"
@@ -171,6 +172,7 @@ def budget_p():
         values['period']=int(period)
         values["metric"]=metric
         session["values"]=values
+        session["reuse"]=reuse
 
         return redirect('/running')
 
@@ -181,6 +183,7 @@ def running():
     iters=values["time"]//values["period"]
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
+    reuse=session.get('reuse', 'not set')
 
 
     #check dataset checksum and lookup
@@ -197,7 +200,7 @@ def running():
         except OSError:
             pass
     #copy tmp to run on it
-    if True:
+    if reuse=="yes":
         if os.path.exists("tmp_runs/{}".format(checksum)):
             shutil.copytree("tmp_runs/{}".format(checksum),"tmp/autosk_tmp")
 
