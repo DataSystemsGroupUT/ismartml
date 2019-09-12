@@ -1,0 +1,2345 @@
+[DEBUG] [2019-09-12 11:52:26,262:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:26,262:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[INFO] [2019-09-12 11:52:26,263:AutoML(0):2e5099f5887666b2676b2e854c1ab708] Starting to create dummy predictions.
+[DEBUG] [2019-09-12 11:52:26,268:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:26,268:pynisher] Restricting your function to 30 seconds wall time.
+[DEBUG] [2019-09-12 11:52:26,268:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:26,268:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8f755fa358>, 'config': 1, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 1, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': None, 'exclude': None, 'disable_file_output': False, 'instance': None, 'init_params': {'instance': None}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:26,283:pynisher] call function
+[DEBUG] [2019-09-12 11:52:26,300:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:26,332:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-09-12 11:52:26,332:pynisher] return value: (None, 0)
+[INFO] [2019-09-12 11:52:26,357:AutoML(0):2e5099f5887666b2676b2e854c1ab708] Finished creating dummy predictions.
+[DEBUG] [2019-09-12 11:52:26,861:autosklearn.util.backend] Created Configuration space file tmp/autosk_tmp/space.pcs
+[INFO] [2019-09-12 11:52:26,862:AutoML(0):2e5099f5887666b2676b2e854c1ab708] Start Ensemble with 29.37sec time left
+[INFO] [2019-09-12 11:52:26,862:AutoML(0):2e5099f5887666b2676b2e854c1ab708] Not starting ensemble builder because ensemble size is <= 0.
+[INFO] [2019-09-12 11:52:26,865:AutoML(0):2e5099f5887666b2676b2e854c1ab708] Start SMAC with 29.37sec time left
+[INFO] [2019-09-12 11:52:26,866:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Metadata directory: /home/shota/server/src/auto-sklearn/autosklearn/metalearning/files/accuracy_binary.classification_dense
+[WARNING] [2019-09-12 11:52:26,870:autosklearn.metalearning.input.aslib_simple] Not found: /home/shota/server/src/auto-sklearn/autosklearn/metalearning/files/accuracy_binary.classification_dense/ground_truth.arff (maybe you want to add it)
+[WARNING] [2019-09-12 11:52:26,870:autosklearn.metalearning.input.aslib_simple] Not found: /home/shota/server/src/auto-sklearn/autosklearn/metalearning/files/accuracy_binary.classification_dense/citation.bib (maybe you want to add it)
+[WARNING] [2019-09-12 11:52:26,870:autosklearn.metalearning.input.aslib_simple] Not found: /home/shota/server/src/auto-sklearn/autosklearn/metalearning/files/accuracy_binary.classification_dense/cv.arff (maybe you want to add it)
+[DEBUG] [2019-09-12 11:52:27,079:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees_preproc_for_classification' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,097:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'select_percentile_classification' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,097:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,098:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'adaboost' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,098:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc_preprocessor' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,098:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,098:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,098:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'select_percentile_classification' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,099:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc_preprocessor' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,105:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,105:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,106:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,106:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'select_rates' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,107:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,111:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees_preproc_for_classification' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,128:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'passive_aggressive' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,128:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,128:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'passive_aggressive' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,128:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,129:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,129:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'adaboost' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,129:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,132:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc_preprocessor' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,155:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,155:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Tried to specify unknown hyperparameter classifier:decision_tree:max_depth
+[DEBUG] [2019-09-12 11:52:27,155:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'select_percentile_classification' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,155:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,155:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'fast_ica' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,155:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,155:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'passive_aggressive' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,156:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'select_rates' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,156:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,156:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,156:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'k_nearest_neighbors' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,157:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,157:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,158:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,164:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,172:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,173:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'select_percentile_classification' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,179:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'passive_aggressive' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,179:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,179:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'gaussian_nb' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,179:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,179:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'lda' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,179:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'adaboost' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,180:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'k_nearest_neighbors' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,180:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'qda' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,180:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,181:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'k_nearest_neighbors' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,181:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,182:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'k_nearest_neighbors' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,182:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,187:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'select_percentile_classification' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,194:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'lda' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,194:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'lda' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,195:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,195:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'passive_aggressive' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,196:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc_preprocessor' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,197:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,202:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'k_nearest_neighbors' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,209:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,209:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,211:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,217:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,223:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'feature_agglomeration' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,223:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'k_nearest_neighbors' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,224:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'libsvm_svc' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,224:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'feature_agglomeration' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,225:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,227:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc_preprocessor' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,231:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'qda' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,232:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'sgd' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,232:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc_preprocessor' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,233:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'polynomial' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,233:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc_preprocessor' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,233:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'extra_trees' (type '<class 'str'>') for hyperparameter 'classifier:__choice__, Type: Categorical, Choices: {decision_tree, gradient_boosting, random_forest}, Default: random_forest' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,234:autosklearn.metalearning.metalearning.meta_base] Error reading configurations: Trying to set illegal value 'liblinear_svc_preprocessor' (type '<class 'str'>') for hyperparameter 'preprocessor:__choice__, Type: Categorical, Choices: {no_preprocessing}, Default: no_preprocessing' (default-value has type '<class 'str'>').
+[DEBUG] [2019-09-12 11:52:27,234:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:27,234:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Restricting your function to 7 seconds wall time.
+[DEBUG] [2019-09-12 11:52:27,234:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Allowing a grace period of 30 seconds.
+[DEBUG] [2019-09-12 11:52:27,235:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Function called with argument: (), {}
+[DEBUG] [2019-09-12 11:52:27,250:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] call function
+[INFO] [2019-09-12 11:52:27,254:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Start calculating metafeatures for 2e5099f5887666b2676b2e854c1ab708
+[INFO] [2019-09-12 11:52:27,254:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: ClassEntropy
+[INFO] [2019-09-12 11:52:27,257:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumSymbols
+[INFO] [2019-09-12 11:52:27,257:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SymbolsSum
+[INFO] [2019-09-12 11:52:27,258:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SymbolsSTD
+[INFO] [2019-09-12 11:52:27,258:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SymbolsMean
+[INFO] [2019-09-12 11:52:27,258:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SymbolsMax
+[INFO] [2019-09-12 11:52:27,258:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SymbolsMin
+[INFO] [2019-09-12 11:52:27,259:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: ClassOccurences
+[INFO] [2019-09-12 11:52:27,263:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: ClassProbabilitySTD
+[INFO] [2019-09-12 11:52:27,263:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: ClassProbabilityMean
+[INFO] [2019-09-12 11:52:27,263:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: ClassProbabilityMax
+[INFO] [2019-09-12 11:52:27,264:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: ClassProbabilityMin
+[INFO] [2019-09-12 11:52:27,264:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: InverseDatasetRatio
+[INFO] [2019-09-12 11:52:27,264:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: DatasetRatio
+[INFO] [2019-09-12 11:52:27,264:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: RatioNominalToNumerical
+[INFO] [2019-09-12 11:52:27,264:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: RatioNumericalToNominal
+[INFO] [2019-09-12 11:52:27,265:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumberOfCategoricalFeatures
+[INFO] [2019-09-12 11:52:27,265:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumberOfNumericFeatures
+[INFO] [2019-09-12 11:52:27,265:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: MissingValues
+[INFO] [2019-09-12 11:52:27,265:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumberOfMissingValues
+[INFO] [2019-09-12 11:52:27,265:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumberOfFeaturesWithMissingValues
+[INFO] [2019-09-12 11:52:27,265:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumberOfInstancesWithMissingValues
+[INFO] [2019-09-12 11:52:27,266:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumberOfFeatures
+[INFO] [2019-09-12 11:52:27,266:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumberOfClasses
+[INFO] [2019-09-12 11:52:27,267:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: NumberOfInstances
+[INFO] [2019-09-12 11:52:27,267:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: LogInverseDatasetRatio
+[INFO] [2019-09-12 11:52:27,267:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: LogDatasetRatio
+[INFO] [2019-09-12 11:52:27,267:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: PercentageOfMissingValues
+[INFO] [2019-09-12 11:52:27,267:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: PercentageOfFeaturesWithMissingValues
+[INFO] [2019-09-12 11:52:27,267:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: PercentageOfInstancesWithMissingValues
+[INFO] [2019-09-12 11:52:27,268:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: LogNumberOfFeatures
+[INFO] [2019-09-12 11:52:27,268:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: LogNumberOfInstances
+[INFO] [2019-09-12 11:52:27,268:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Calculating Metafeatures (categorical attributes) took  0.01
+[DEBUG] [2019-09-12 11:52:27,268:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] function returned properly: (Metafeatures for dataset 2e5099f5887666b2676b2e854c1ab708
+  ClassEntropy: 0.7703000054202644
+  SymbolsSum: 0.0
+  SymbolsSTD: 0
+  SymbolsMean: 0
+  SymbolsMax: 0
+  SymbolsMin: 0
+  ClassProbabilitySTD: 0.27437858508604207
+  ClassProbabilityMean: 0.5
+  ClassProbabilityMax: 0.7743785850860421
+  ClassProbabilityMin: 0.22562141491395793
+  InverseDatasetRatio: 104.6
+  DatasetRatio: 0.009560229445506692
+  RatioNominalToNumerical: 0.0
+  RatioNumericalToNominal: 0.0
+  NumberOfCategoricalFeatures: 0
+  NumberOfNumericFeatures: 5
+  NumberOfMissingValues: 0.0
+  NumberOfFeaturesWithMissingValues: 0.0
+  NumberOfInstancesWithMissingValues: 0.0
+  NumberOfFeatures: 5.0
+  NumberOfClasses: 2.0
+  NumberOfInstances: 523.0
+  LogInverseDatasetRatio: 4.650143551630823
+  LogDatasetRatio: -4.650143551630823
+  PercentageOfMissingValues: 0.0
+  PercentageOfFeaturesWithMissingValues: 0.0
+  PercentageOfInstancesWithMissingValues: 0.0
+  LogNumberOfFeatures: 1.6094379124341003
+  LogNumberOfInstances: 6.259581464064923
+, 0)
+[DEBUG] [2019-09-12 11:52:27,268:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] return value: (Metafeatures for dataset 2e5099f5887666b2676b2e854c1ab708
+  ClassEntropy: 0.7703000054202644
+  SymbolsSum: 0.0
+  SymbolsSTD: 0
+  SymbolsMean: 0
+  SymbolsMax: 0
+  SymbolsMin: 0
+  ClassProbabilitySTD: 0.27437858508604207
+  ClassProbabilityMean: 0.5
+  ClassProbabilityMax: 0.7743785850860421
+  ClassProbabilityMin: 0.22562141491395793
+  InverseDatasetRatio: 104.6
+  DatasetRatio: 0.009560229445506692
+  RatioNominalToNumerical: 0.0
+  RatioNumericalToNominal: 0.0
+  NumberOfCategoricalFeatures: 0
+  NumberOfNumericFeatures: 5
+  NumberOfMissingValues: 0.0
+  NumberOfFeaturesWithMissingValues: 0.0
+  NumberOfInstancesWithMissingValues: 0.0
+  NumberOfFeatures: 5.0
+  NumberOfClasses: 2.0
+  NumberOfInstances: 523.0
+  LogInverseDatasetRatio: 4.650143551630823
+  LogDatasetRatio: -4.650143551630823
+  PercentageOfMissingValues: 0.0
+  PercentageOfFeaturesWithMissingValues: 0.0
+  PercentageOfInstancesWithMissingValues: 0.0
+  LogNumberOfFeatures: 1.6094379124341003
+  LogNumberOfInstances: 6.259581464064923
+, 0)
+[DEBUG] [2019-09-12 11:52:27,282:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:27,283:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Restricting your function to 6 seconds wall time.
+[DEBUG] [2019-09-12 11:52:27,283:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Allowing a grace period of 30 seconds.
+[DEBUG] [2019-09-12 11:52:27,283:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Function called with argument: (), {}
+[DEBUG] [2019-09-12 11:52:27,293:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] call function
+[INFO] [2019-09-12 11:52:27,298:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: LandmarkRandomNodeLearner
+[INFO] [2019-09-12 11:52:27,310:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: Skewnesses
+[INFO] [2019-09-12 11:52:27,312:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SkewnessSTD
+[INFO] [2019-09-12 11:52:27,313:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SkewnessMean
+[INFO] [2019-09-12 11:52:27,313:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SkewnessMax
+[INFO] [2019-09-12 11:52:27,313:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: SkewnessMin
+[INFO] [2019-09-12 11:52:27,314:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: Kurtosisses
+[INFO] [2019-09-12 11:52:27,316:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: KurtosisSTD
+[INFO] [2019-09-12 11:52:27,321:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: KurtosisMean
+[INFO] [2019-09-12 11:52:27,321:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: KurtosisMax
+[INFO] [2019-09-12 11:52:27,322:autosklearn.metalearning.metafeatures.metafeatures] 2e5099f5887666b2676b2e854c1ab708: Going to calculate: KurtosisMin
+[INFO] [2019-09-12 11:52:27,322:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Calculating Metafeatures (encoded attributes) took  0.03sec
+[DEBUG] [2019-09-12 11:52:27,322:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] function returned properly: (Metafeatures for dataset 2e5099f5887666b2676b2e854c1ab708
+  LandmarkRandomNodeLearner: 0.7744244286974586
+  SkewnessSTD: 1.201252322088082
+  SkewnessMean: 1.7595009775769355
+  SkewnessMax: 2.976170709162244
+  SkewnessMin: 0.020593016292091613
+  KurtosisSTD: 6.510799240717334
+  KurtosisMean: 7.160360084257876
+  KurtosisMax: 13.200962064483598
+  KurtosisMin: -1.1682446562381736
+, 0)
+[DEBUG] [2019-09-12 11:52:27,322:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] return value: (Metafeatures for dataset 2e5099f5887666b2676b2e854c1ab708
+  LandmarkRandomNodeLearner: 0.7744244286974586
+  SkewnessSTD: 1.201252322088082
+  SkewnessMean: 1.7595009775769355
+  SkewnessMax: 2.976170709162244
+  SkewnessMin: 0.020593016292091613
+  KurtosisSTD: 6.510799240717334
+  KurtosisMean: 7.160360084257876
+  KurtosisMax: 13.200962064483598
+  KurtosisMin: -1.1682446562381736
+, 0)
+[INFO] [2019-09-12 11:52:27,347:autosklearn.metalearning.metalearning.meta_base] Going to use the following metafeature subset: ['ClassEntropy', 'SymbolsSum', 'SymbolsSTD', 'SymbolsMean', 'SymbolsMax', 'SymbolsMin', 'ClassProbabilitySTD', 'ClassProbabilityMean', 'ClassProbabilityMax', 'ClassProbabilityMin', 'InverseDatasetRatio', 'DatasetRatio', 'RatioNominalToNumerical', 'RatioNumericalToNominal', 'NumberOfCategoricalFeatures', 'NumberOfNumericFeatures', 'NumberOfMissingValues', 'NumberOfFeaturesWithMissingValues', 'NumberOfInstancesWithMissingValues', 'NumberOfFeatures', 'NumberOfClasses', 'NumberOfInstances', 'LogInverseDatasetRatio', 'LogDatasetRatio', 'PercentageOfMissingValues', 'PercentageOfFeaturesWithMissingValues', 'PercentageOfInstancesWithMissingValues', 'LogNumberOfFeatures', 'LogNumberOfInstances', 'LandmarkRandomNodeLearner', 'SkewnessSTD', 'SkewnessMean', 'SkewnessMax', 'SkewnessMin', 'KurtosisSTD', 'KurtosisMean', 'KurtosisMax', 'KurtosisMin']
+[WARNING] [2019-09-12 11:52:27,372:autosklearn.metalearning.mismbo] binary.classification
+[INFO] [2019-09-12 11:52:27,372:autosklearn.metalearning.mismbo] Reading meta-data took  0.00 seconds
+[WARNING] [2019-09-12 11:52:27,439:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Could not find runs for instance 2119
+[WARNING] [2019-09-12 11:52:27,454:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Could not find runs for instance 75154
+[WARNING] [2019-09-12 11:52:27,456:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Could not find runs for instance 75168
+[WARNING] [2019-09-12 11:52:27,471:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Could not find runs for instance 75230
+[WARNING] [2019-09-12 11:52:27,645:autosklearn.metalearning.metalearning.kNearestDatasets.kND] Found no best configuration for instance 2119
+[WARNING] [2019-09-12 11:52:27,645:autosklearn.metalearning.metalearning.kNearestDatasets.kND] Found no best configuration for instance 75168
+[WARNING] [2019-09-12 11:52:27,645:autosklearn.metalearning.metalearning.kNearestDatasets.kND] Found no best configuration for instance 75230
+[WARNING] [2019-09-12 11:52:27,645:autosklearn.metalearning.metalearning.kNearestDatasets.kND] Found no best configuration for instance 75154
+[WARNING] [2019-09-12 11:52:27,645:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 54 not found
+[INFO] [2019-09-12 11:52:27,645:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75143 0.5470347932337549 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,645:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75099 0.8401783037686048 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,646:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 261 0.8546130692093437 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,646:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75227 0.938222508207548 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,646:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 108 not found
+[INFO] [2019-09-12 11:52:27,646:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75179 1.1736521349372535 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,646:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75124 1.175907962622068 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,646:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75233 1.1775229849639346 Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.010000000000000004
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'gradient_boosting'
+  classifier:gradient_boosting:criterion, Value: 'mse'
+  classifier:gradient_boosting:learning_rate, Value: 0.051832615669195795
+  classifier:gradient_boosting:loss, Constant: 'deviance'
+  classifier:gradient_boosting:max_depth, Value: 6
+  classifier:gradient_boosting:max_features, Value: 0.8807456180216267
+  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  classifier:gradient_boosting:min_samples_leaf, Value: 7
+  classifier:gradient_boosting:min_samples_split, Value: 19
+  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  classifier:gradient_boosting:n_estimators, Value: 366
+  classifier:gradient_boosting:subsample, Value: 0.7314831276137047
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,646:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75092 1.1952003565499858 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 44 not found
+[INFO] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75222 1.2581466480229042 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 111 not found
+[WARNING] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 8 not found
+[INFO] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75093 1.341030198012597 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75129 1.4552983823887489 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 69 not found
+[INFO] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75174 1.4986000389396472 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,647:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 34 not found
+[INFO] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75182 1.561672621160578 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 97 not found
+[WARNING] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 41 not found
+[INFO] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75112 1.625640966797884 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75095 1.6713049556657502 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 57 not found
+[INFO] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 2123 1.701034948797492 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75225 1.7212638651667436 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 127 not found
+[WARNING] [2019-09-12 11:52:27,648:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 13 not found
+[WARNING] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 22 not found
+[WARNING] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 84 not found
+[INFO] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75185 1.850217565577453 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 49 not found
+[INFO] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 2117 1.96152114457903 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 98 not found
+[WARNING] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 48 not found
+[WARNING] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 28 not found
+[WARNING] [2019-09-12 11:52:27,649:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 85 not found
+[INFO] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75163 2.1072064524414187 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 275 2.143866604380281 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 18 not found
+[WARNING] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 43 not found
+[WARNING] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 45 not found
+[WARNING] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 77 not found
+[INFO] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75097 2.1892579684473263 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 68 not found
+[INFO] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75210 2.202267937834655 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,650:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75113 2.2150719394643317 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,651:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75100 2.2349944105199793 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,651:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 24 not found
+[WARNING] [2019-09-12 11:52:27,651:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 62 not found
+[WARNING] [2019-09-12 11:52:27,651:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 106 not found
+[WARNING] [2019-09-12 11:52:27,651:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 82 not found
+[WARNING] [2019-09-12 11:52:27,651:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 40 not found
+[INFO] [2019-09-12 11:52:27,651:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 260 2.3201686138036455 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 2350 2.3469607709471703 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75128 2.3640582301343827 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 78 not found
+[WARNING] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 19 not found
+[INFO] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75133 2.4170292004311102 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 121 not found
+[WARNING] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 107 not found
+[INFO] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75237 2.5125603677762154 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,652:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 254 2.537250226782923 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75142 2.8412023435354574 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'False'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.9260795160807372
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 17
+  classifier:random_forest:min_samples_split, Value: 7
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'minmax'
+
+[WARNING] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 112 not found
+[WARNING] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 42 not found
+[INFO] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75191 2.929836078276085 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.00012586572428922356
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5240592829918601
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 10
+  classifier:random_forest:min_samples_split, Value: 16
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'normalize'
+
+[WARNING] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 124 not found
+[INFO] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75221 3.003800012824313 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 6 not found
+[WARNING] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 92 not found
+[WARNING] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 123 not found
+[INFO] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 2120 3.106592660582585 Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.00011717632475982631
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'gradient_boosting'
+  classifier:gradient_boosting:criterion, Value: 'friedman_mse'
+  classifier:gradient_boosting:learning_rate, Value: 0.045388141846341344
+  classifier:gradient_boosting:loss, Constant: 'deviance'
+  classifier:gradient_boosting:max_depth, Value: 10
+  classifier:gradient_boosting:max_features, Value: 0.29161769341843435
+  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  classifier:gradient_boosting:min_samples_leaf, Value: 20
+  classifier:gradient_boosting:min_samples_split, Value: 2
+  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  classifier:gradient_boosting:n_estimators, Value: 278
+  classifier:gradient_boosting:subsample, Value: 0.7912571599269661
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,653:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 99 not found
+[INFO] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75189 3.2243863337163186 Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.41094614430753584
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5686453602598863
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75248 3.316464571156038 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 47 not found
+[WARNING] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 4 not found
+[INFO] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75217 3.5555336118478476 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75244 3.6343963130552384 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 35 not found
+[INFO] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75240 3.7304791248143427 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,654:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 114 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 70 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 89 not found
+[INFO] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75127 4.095570508773664 Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.002615346832354839
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'entropy'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.7884268823432835
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 20
+  classifier:random_forest:min_samples_split, Value: 15
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'quantile_transformer'
+  rescaling:quantile_transformer:n_quantiles, Value: 1000
+  rescaling:quantile_transformer:output_distribution, Value: 'uniform'
+
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 74 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 67 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 88 not found
+[INFO] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75116 4.145410893783735 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 95 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 11 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 103 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 87 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 125 not found
+[WARNING] [2019-09-12 11:52:27,655:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 52 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 65 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 9 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 7 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 60 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 39 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 71 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 119 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 46 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 26 not found
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 12 not found
+[INFO] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75120 5.009659876997251 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 236 5.096641798952961 Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.03644212536682547
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'gradient_boosting'
+  classifier:gradient_boosting:criterion, Value: 'friedman_mse'
+  classifier:gradient_boosting:learning_rate, Value: 0.059656714779183606
+  classifier:gradient_boosting:loss, Constant: 'deviance'
+  classifier:gradient_boosting:max_depth, Value: 8
+  classifier:gradient_boosting:max_features, Value: 0.4858133247974158
+  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  classifier:gradient_boosting:min_samples_leaf, Value: 14
+  classifier:gradient_boosting:min_samples_split, Value: 7
+  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  classifier:gradient_boosting:n_estimators, Value: 480
+  classifier:gradient_boosting:subsample, Value: 0.5726186552917335
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'robust_scaler'
+  rescaling:robust_scaler:q_max, Value: 0.75
+  rescaling:robust_scaler:q_min, Value: 0.15318294164619112
+
+[WARNING] [2019-09-12 11:52:27,656:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 29 not found
+[WARNING] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 20 not found
+[WARNING] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 51 not found
+[INFO] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75181 5.409937285706983 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 30 not found
+[WARNING] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 80 not found
+[INFO] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75202 5.53127014499343 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 73 not found
+[INFO] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75250 5.6744762658085275 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 27 not found
+[WARNING] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 118 not found
+[WARNING] [2019-09-12 11:52:27,657:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 75 not found
+[WARNING] [2019-09-12 11:52:27,658:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 33 not found
+[INFO] [2019-09-12 11:52:27,658:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75188 6.482220371844575 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,658:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 2 not found
+[INFO] [2019-09-12 11:52:27,658:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75106 8.42249277630292 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[WARNING] [2019-09-12 11:52:27,658:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 128 not found
+[WARNING] [2019-09-12 11:52:27,658:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] Configuration 66 not found
+[INFO] [2019-09-12 11:52:27,658:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75105 8.745259129391338 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[INFO] [2019-09-12 11:52:27,658:autosklearn.metalearning.optimizers.metalearn_optimizer.metalearner] 75132 11.16087547602849 Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,659:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Initial Configurations: (25)
+[DEBUG] [2019-09-12 11:52:27,659:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,659:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,659:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,659:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,659:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,659:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,660:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.010000000000000004
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'gradient_boosting'
+  classifier:gradient_boosting:criterion, Value: 'mse'
+  classifier:gradient_boosting:learning_rate, Value: 0.051832615669195795
+  classifier:gradient_boosting:loss, Constant: 'deviance'
+  classifier:gradient_boosting:max_depth, Value: 6
+  classifier:gradient_boosting:max_features, Value: 0.8807456180216267
+  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  classifier:gradient_boosting:min_samples_leaf, Value: 7
+  classifier:gradient_boosting:min_samples_split, Value: 19
+  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  classifier:gradient_boosting:n_estimators, Value: 366
+  classifier:gradient_boosting:subsample, Value: 0.7314831276137047
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,660:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,660:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,660:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,660:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,660:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,660:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,661:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,661:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,661:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,661:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,661:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,661:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,661:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,662:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,662:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,662:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,662:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,662:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+
+[DEBUG] [2019-09-12 11:52:27,662:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Looking for initial configurations took  0.29sec
+[INFO] [2019-09-12 11:52:27,662:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Time left for 2e5099f5887666b2676b2e854c1ab708 after finding initial configurations: 27.57sec
+[INFO] [2019-09-12 11:52:27,663:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Metafeatures for dataset 2e5099f5887666b2676b2e854c1ab708
+  ClassEntropy: 0.7703000054202644
+  SymbolsSum: 0.0
+  SymbolsSTD: 0
+  SymbolsMean: 0
+  SymbolsMax: 0
+  SymbolsMin: 0
+  ClassProbabilitySTD: 0.27437858508604207
+  ClassProbabilityMean: 0.5
+  ClassProbabilityMax: 0.7743785850860421
+  ClassProbabilityMin: 0.22562141491395793
+  InverseDatasetRatio: 104.6
+  DatasetRatio: 0.009560229445506692
+  RatioNominalToNumerical: 0.0
+  RatioNumericalToNominal: 0.0
+  NumberOfCategoricalFeatures: 0
+  NumberOfNumericFeatures: 5
+  NumberOfMissingValues: 0.0
+  NumberOfFeaturesWithMissingValues: 0.0
+  NumberOfInstancesWithMissingValues: 0.0
+  NumberOfFeatures: 5.0
+  NumberOfClasses: 2.0
+  NumberOfInstances: 523.0
+  LogInverseDatasetRatio: 4.650143551630823
+  LogDatasetRatio: -4.650143551630823
+  PercentageOfMissingValues: 0.0
+  PercentageOfFeaturesWithMissingValues: 0.0
+  PercentageOfInstancesWithMissingValues: 0.0
+  LogNumberOfFeatures: 1.6094379124341003
+  LogNumberOfInstances: 6.259581464064923
+  LandmarkRandomNodeLearner: 0.7744244286974586
+  SkewnessSTD: 1.201252322088082
+  SkewnessMean: 1.7595009775769355
+  SkewnessMax: 2.976170709162244
+  SkewnessMin: 0.020593016292091613
+  KurtosisSTD: 6.510799240717334
+  KurtosisMean: 7.160360084257876
+  KurtosisMax: 13.200962064483598
+  KurtosisMin: -1.1682446562381736
+
+[INFO] [2019-09-12 11:52:27,683:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] ['233', '236', '242', '244', '246', '248', '251', '252', '253', '254', '258', '260', '261', '262', '266', '273', '275', '288', '2117', '2119', '2120', '2122', '2123', '2350', '3043', '75090', '75092', '75093', '75095', '75096', '75097', '75098', '75099', '75100', '75101', '75103', '75105', '75106', '75107', '75108', '75109', '75110', '75112', '75113', '75114', '75115', '75116', '75117', '75119', '75120', '75121', '75123', '75124', '75125', '75126', '75127', '75128', '75129', '75132', '75133', '75134', '75139', '75141', '75142', '75143', '75146', '75148', '75150', '75153', '75154', '75156', '75157', '75159', '75161', '75163', '75166', '75168', '75169', '75171', '75172', '75173', '75174', '75175', '75176', '75177', '75178', '75179', '75181', '75182', '75184', '75185', '75187', '75188', '75189', '75191', '75192', '75193', '75195', '75196', '75197', '75198', '75201', '75202', '75203', '75205', '75207', '75210', '75212', '75213', '75215', '75217', '75219', '75221', '75222', '75223', '75225', '75226', '75227', '75230', '75231', '75232', '75233', '75234', '75235', '75236', '75237', '75239', '75240', '75243', '75244', '75248', '75249', '75250', '2e5099f5887666b2676b2e854c1ab708']
+[INFO] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] Output to tmp/autosk_tmp/smac3-output
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] Scenario Options:
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] abort_on_first_run_crash = False
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] always_race_default = False
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] execdir = .
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] deterministic = True
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] intensification_percentage = 0.5
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] run_obj = quality
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] overall_obj = par10
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] cost_for_crash = 1.0
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] cutoff = 15.0
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] memory_limit = 1024
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] algo_runs_timelimit = inf
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] wallclock_limit = 22.549984216690063
+[DEBUG] [2019-09-12 11:52:27,686:smac.scenario.scenario.Scenario] ta_run_limit = inf
+[DEBUG] [2019-09-12 11:52:27,687:smac.scenario.scenario.Scenario] minR = 1
+[DEBUG] [2019-09-12 11:52:27,687:smac.scenario.scenario.Scenario] maxR = 2000
+[DEBUG] [2019-09-12 11:52:27,687:smac.scenario.scenario.Scenario] output_dir = tmp/autosk_tmp/smac3-output
+[DEBUG] [2019-09-12 11:52:27,687:smac.scenario.scenario.Scenario] input_psmac_dirs = tmp/autosk_tmp/smac3-output/run_*
+[DEBUG] [2019-09-12 11:52:27,687:smac.scenario.scenario.Scenario] shared_model = True
+[DEBUG] [2019-09-12 11:52:27,687:smac.scenario.scenario.Scenario] initial_incumbent = DEFAULT
+[DEBUG] [2019-09-12 11:52:27,688:smac.scenario.scenario.Scenario] Output directory does not exist! Will be created.
+[DEBUG] [2019-09-12 11:52:27,688:smac.scenario.scenario.Scenario] Writing scenario-file to tmp/autosk_tmp/smac3-output/run_0/scenario.txt.
+[DEBUG] [2019-09-12 11:52:27,697:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:27,697:pynisher] Restricting your function to 15 seconds wall time.
+[DEBUG] [2019-09-12 11:52:27,697:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:27,698:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8f74c3be48>, 'config': Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.01
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'True'
+  classifier:random_forest:criterion, Value: 'gini'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.5
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 1
+  classifier:random_forest:min_samples_split, Value: 2
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 2, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {'preprocessor': ['no_preprocessing'], 'classifier': ['decision_tree', 'gradient_boosting', 'random_forest']}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}', 'init_params': {'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:27,709:pynisher] call function
+[DEBUG] [2019-09-12 11:52:28,557:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:28,598:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-09-12 11:52:28,598:pynisher] return value: (None, 0)
+[DEBUG] [2019-09-12 11:52:28,614:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.260116, time: 0.901738, additional: {'duration': 0.8031527996063232, 'num_run': 2, 'train_loss': 0.0, 'test_loss': 0.23555555555555552, 'configuration_origin': 'Initial design'}
+[DEBUG] [2019-09-12 11:52:28,616:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:28,616:pynisher] Restricting your function to 15 seconds wall time.
+[DEBUG] [2019-09-12 11:52:28,616:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:28,616:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8f74c3bb38>, 'config': Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.010000000000000004
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'gradient_boosting'
+  classifier:gradient_boosting:criterion, Value: 'mse'
+  classifier:gradient_boosting:learning_rate, Value: 0.051832615669195795
+  classifier:gradient_boosting:loss, Constant: 'deviance'
+  classifier:gradient_boosting:max_depth, Value: 6
+  classifier:gradient_boosting:max_features, Value: 0.8807456180216267
+  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  classifier:gradient_boosting:min_samples_leaf, Value: 7
+  classifier:gradient_boosting:min_samples_split, Value: 19
+  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  classifier:gradient_boosting:n_estimators, Value: 366
+  classifier:gradient_boosting:subsample, Value: 0.7314831276137047
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'standardize'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 3, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {'preprocessor': ['no_preprocessing'], 'classifier': ['decision_tree', 'gradient_boosting', 'random_forest']}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}', 'init_params': {'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:28,627:pynisher] call function
+[DEBUG] [2019-09-12 11:52:30,258:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:30,296:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-09-12 11:52:30,296:pynisher] return value: (None, 0)
+[DEBUG] [2019-09-12 11:52:30,317:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.248555, time: 1.682693, additional: {'duration': 1.5528216361999512, 'num_run': 3, 'train_loss': 0.0028571428571428914, 'test_loss': 0.29333333333333333, 'configuration_origin': 'Initial design'}
+[INFO] [2019-09-12 11:52:30,318:smac.intensification.intensification.Intensifier] Challenger (0.2486) is better than incumbent (0.2601) on 1 runs.
+[INFO] [2019-09-12 11:52:30,318:smac.intensification.intensification.Intensifier] Challenger (0.2486) is better than incumbent (0.2601) on 1 runs.
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   balancing:strategy : 'none' -> 'weighting'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   balancing:strategy : 'none' -> 'weighting'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   categorical_encoding:one_hot_encoding:minimum_fraction : 0.01 -> 0.010000000000000004
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   categorical_encoding:one_hot_encoding:minimum_fraction : 0.01 -> 0.010000000000000004
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'random_forest' -> 'gradient_boosting'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'random_forest' -> 'gradient_boosting'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:criterion : None -> 'mse'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:criterion : None -> 'mse'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:learning_rate : None -> 0.051832615669195795
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:learning_rate : None -> 0.051832615669195795
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:loss : None -> 'deviance'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:loss : None -> 'deviance'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_depth : None -> 6
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_depth : None -> 6
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_features : None -> 0.8807456180216267
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_features : None -> 0.8807456180216267
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_leaf_nodes : None -> 'None'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:max_leaf_nodes : None -> 'None'
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_impurity_decrease : None -> 0.0
+[INFO] [2019-09-12 11:52:30,319:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_impurity_decrease : None -> 0.0
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_samples_leaf : None -> 7
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_samples_leaf : None -> 7
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_samples_split : None -> 19
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_samples_split : None -> 19
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_weight_fraction_leaf : None -> 0.0
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:min_weight_fraction_leaf : None -> 0.0
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:n_estimators : None -> 366
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:n_estimators : None -> 366
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:subsample : None -> 0.7314831276137047
+[INFO] [2019-09-12 11:52:30,320:smac.intensification.intensification.Intensifier]   classifier:gradient_boosting:subsample : None -> 0.7314831276137047
+[INFO] [2019-09-12 11:52:30,322:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2486
+[INFO] [2019-09-12 11:52:30,322:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2486
+[DEBUG] [2019-09-12 11:52:30,323:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-09-12 11:52:30,324:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 2 observations
+[DEBUG] [2019-09-12 11:52:30,445:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 46 configurations. Computing the acquisition value for one configuration took 0.001997 seconds on average.
+[DEBUG] [2019-09-12 11:52:30,492:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 30 configurations. Computing the acquisition value for one configuration took 0.001227 seconds on average.
+[DEBUG] [2019-09-12 11:52:31,652:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)'], [0.00042950863362221036, 'Random Search (sorted)']]
+[DEBUG] [2019-09-12 11:52:31,673:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:31,674:pynisher] Restricting your function to 13 seconds wall time.
+[DEBUG] [2019-09-12 11:52:31,674:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:31,674:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8f74c2deb8>, 'config': Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  classifier:__choice__, Value: 'gradient_boosting'
+  classifier:gradient_boosting:criterion, Value: 'mse'
+  classifier:gradient_boosting:learning_rate, Value: 0.46084501374094994
+  classifier:gradient_boosting:loss, Constant: 'deviance'
+  classifier:gradient_boosting:max_depth, Value: 7
+  classifier:gradient_boosting:max_features, Value: 0.18341927398335964
+  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  classifier:gradient_boosting:min_samples_leaf, Value: 13
+  classifier:gradient_boosting:min_samples_split, Value: 14
+  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  classifier:gradient_boosting:n_estimators, Value: 468
+  classifier:gradient_boosting:subsample, Value: 0.6753462864525389
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'none'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 4, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {'preprocessor': ['no_preprocessing'], 'classifier': ['decision_tree', 'gradient_boosting', 'random_forest']}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}', 'init_params': {'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:31,688:pynisher] call function
+[DEBUG] [2019-09-12 11:52:33,991:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:34,010:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-09-12 11:52:34,010:pynisher] return value: (None, 0)
+[DEBUG] [2019-09-12 11:52:34,025:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.283237, time: 2.337158, additional: {'duration': 2.222356081008911, 'num_run': 4, 'train_loss': 0.0, 'test_loss': 0.2533333333333333, 'configuration_origin': 'Random Search (sorted)'}
+[DEBUG] [2019-09-12 11:52:34,045:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:34,045:pynisher] Restricting your function to 11 seconds wall time.
+[DEBUG] [2019-09-12 11:52:34,045:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:34,045:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8f74c0e358>, 'config': Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  classifier:__choice__, Value: 'gradient_boosting'
+  classifier:gradient_boosting:criterion, Value: 'friedman_mse'
+  classifier:gradient_boosting:learning_rate, Value: 0.14860939283072466
+  classifier:gradient_boosting:loss, Constant: 'deviance'
+  classifier:gradient_boosting:max_depth, Value: 5
+  classifier:gradient_boosting:max_features, Value: 0.5337768589176647
+  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  classifier:gradient_boosting:min_samples_leaf, Value: 4
+  classifier:gradient_boosting:min_samples_split, Value: 14
+  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  classifier:gradient_boosting:n_estimators, Value: 227
+  classifier:gradient_boosting:subsample, Value: 0.7439170489397553
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'robust_scaler'
+  rescaling:robust_scaler:q_max, Value: 0.941149714844548
+  rescaling:robust_scaler:q_min, Value: 0.2861266575707492
+, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 5, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {'preprocessor': ['no_preprocessing'], 'classifier': ['decision_tree', 'gradient_boosting', 'random_forest']}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}', 'init_params': {'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:34,056:pynisher] call function
+[DEBUG] [2019-09-12 11:52:35,511:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:35,531:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-09-12 11:52:35,531:pynisher] return value: (None, 0)
+[DEBUG] [2019-09-12 11:52:35,545:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.265896, time: 1.488149, additional: {'duration': 1.4208214282989502, 'num_run': 5, 'train_loss': 0.0, 'test_loss': 0.27555555555555555, 'configuration_origin': 'Random Search'}
+[INFO] [2019-09-12 11:52:35,547:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2486
+[INFO] [2019-09-12 11:52:35,547:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2486
+[DEBUG] [2019-09-12 11:52:35,549:root] Remaining budget: 14.692990 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] #Incumbent changed: 0
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] #Target algorithm runs: 4 / inf
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] Used wallclock time: 7.86 / 22.55 sec 
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] Used target algorithm runtime: 6.41 / inf sec
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] Average Configurations per Intensify: 1.50
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 1.20
+[DEBUG] [2019-09-12 11:52:35,549:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:35,558:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-09-12 11:52:35,560:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 4 observations
+[DEBUG] [2019-09-12 11:52:35,637:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 30 configurations. Computing the acquisition value for one configuration took 0.001826 seconds on average.
+[DEBUG] [2019-09-12 11:52:35,724:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 41 configurations. Computing the acquisition value for one configuration took 0.001526 seconds on average.
+[DEBUG] [2019-09-12 11:52:36,560:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)'], [0.0005405721035542483, 'Random Search (sorted)']]
+[DEBUG] [2019-09-12 11:52:36,585:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:36,586:pynisher] Restricting your function to 8 seconds wall time.
+[DEBUG] [2019-09-12 11:52:36,586:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:36,586:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8f74c7de48>, 'config': Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  classifier:__choice__, Value: 'decision_tree'
+  classifier:decision_tree:criterion, Value: 'gini'
+  classifier:decision_tree:max_depth_factor, Value: 0.4403969875795546
+  classifier:decision_tree:max_features, Constant: 1.0
+  classifier:decision_tree:max_leaf_nodes, Constant: 'None'
+  classifier:decision_tree:min_impurity_decrease, Constant: 0.0
+  classifier:decision_tree:min_samples_leaf, Value: 3
+  classifier:decision_tree:min_samples_split, Value: 5
+  classifier:decision_tree:min_weight_fraction_leaf, Constant: 0.0
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'minmax'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 6, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {'preprocessor': ['no_preprocessing'], 'classifier': ['decision_tree', 'gradient_boosting', 'random_forest']}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}', 'init_params': {'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:36,599:pynisher] call function
+[DEBUG] [2019-09-12 11:52:37,222:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:37,268:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-09-12 11:52:37,269:pynisher] return value: (None, 0)
+[DEBUG] [2019-09-12 11:52:37,337:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.225434, time: 0.683991, additional: {'duration': 0.5960221290588379, 'num_run': 6, 'train_loss': 0.22571428571428576, 'test_loss': 0.2666666666666667, 'configuration_origin': 'Random Search (sorted)'}
+[INFO] [2019-09-12 11:52:37,342:smac.intensification.intensification.Intensifier] Challenger (0.2254) is better than incumbent (0.2486) on 1 runs.
+[INFO] [2019-09-12 11:52:37,342:smac.intensification.intensification.Intensifier] Challenger (0.2254) is better than incumbent (0.2486) on 1 runs.
+[INFO] [2019-09-12 11:52:37,342:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-09-12 11:52:37,342:smac.intensification.intensification.Intensifier] Changes in incumbent:
+[INFO] [2019-09-12 11:52:37,343:smac.intensification.intensification.Intensifier]   balancing:strategy : 'weighting' -> 'none'
+[INFO] [2019-09-12 11:52:37,343:smac.intensification.intensification.Intensifier]   balancing:strategy : 'weighting' -> 'none'
+[INFO] [2019-09-12 11:52:37,343:smac.intensification.intensification.Intensifier]   categorical_encoding:__choice__ : 'one_hot_encoding' -> 'no_encoding'
+[INFO] [2019-09-12 11:52:37,343:smac.intensification.intensification.Intensifier]   categorical_encoding:__choice__ : 'one_hot_encoding' -> 'no_encoding'
+[INFO] [2019-09-12 11:52:37,343:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'gradient_boosting' -> 'decision_tree'
+[INFO] [2019-09-12 11:52:37,343:smac.intensification.intensification.Intensifier]   classifier:__choice__ : 'gradient_boosting' -> 'decision_tree'
+[INFO] [2019-09-12 11:52:37,343:smac.intensification.intensification.Intensifier]   classifier:decision_tree:criterion : None -> 'gini'
+[INFO] [2019-09-12 11:52:37,343:smac.intensification.intensification.Intensifier]   classifier:decision_tree:criterion : None -> 'gini'
+[INFO] [2019-09-12 11:52:37,347:smac.intensification.intensification.Intensifier]   classifier:decision_tree:max_depth_factor : None -> 0.4403969875795546
+[INFO] [2019-09-12 11:52:37,347:smac.intensification.intensification.Intensifier]   classifier:decision_tree:max_depth_factor : None -> 0.4403969875795546
+[INFO] [2019-09-12 11:52:37,348:smac.intensification.intensification.Intensifier]   classifier:decision_tree:max_features : None -> 1.0
+[INFO] [2019-09-12 11:52:37,348:smac.intensification.intensification.Intensifier]   classifier:decision_tree:max_features : None -> 1.0
+[INFO] [2019-09-12 11:52:37,348:smac.intensification.intensification.Intensifier]   classifier:decision_tree:max_leaf_nodes : None -> 'None'
+[INFO] [2019-09-12 11:52:37,348:smac.intensification.intensification.Intensifier]   classifier:decision_tree:max_leaf_nodes : None -> 'None'
+[INFO] [2019-09-12 11:52:37,348:smac.intensification.intensification.Intensifier]   classifier:decision_tree:min_impurity_decrease : None -> 0.0
+[INFO] [2019-09-12 11:52:37,348:smac.intensification.intensification.Intensifier]   classifier:decision_tree:min_impurity_decrease : None -> 0.0
+[INFO] [2019-09-12 11:52:37,349:smac.intensification.intensification.Intensifier]   classifier:decision_tree:min_samples_leaf : None -> 3
+[INFO] [2019-09-12 11:52:37,349:smac.intensification.intensification.Intensifier]   classifier:decision_tree:min_samples_leaf : None -> 3
+[INFO] [2019-09-12 11:52:37,349:smac.intensification.intensification.Intensifier]   classifier:decision_tree:min_samples_split : None -> 5
+[INFO] [2019-09-12 11:52:37,349:smac.intensification.intensification.Intensifier]   classifier:decision_tree:min_samples_split : None -> 5
+[INFO] [2019-09-12 11:52:37,349:smac.intensification.intensification.Intensifier]   classifier:decision_tree:min_weight_fraction_leaf : None -> 0.0
+[INFO] [2019-09-12 11:52:37,349:smac.intensification.intensification.Intensifier]   classifier:decision_tree:min_weight_fraction_leaf : None -> 0.0
+[INFO] [2019-09-12 11:52:37,349:smac.intensification.intensification.Intensifier]   imputation:strategy : 'mean' -> 'most_frequent'
+[INFO] [2019-09-12 11:52:37,349:smac.intensification.intensification.Intensifier]   imputation:strategy : 'mean' -> 'most_frequent'
+[INFO] [2019-09-12 11:52:37,350:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'standardize' -> 'minmax'
+[INFO] [2019-09-12 11:52:37,350:smac.intensification.intensification.Intensifier]   rescaling:__choice__ : 'standardize' -> 'minmax'
+[DEBUG] [2019-09-12 11:52:37,360:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:37,360:pynisher] Restricting your function to 7 seconds wall time.
+[DEBUG] [2019-09-12 11:52:37,360:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:37,361:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8f74c7dc88>, 'config': Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  classifier:__choice__, Value: 'decision_tree'
+  classifier:decision_tree:criterion, Value: 'entropy'
+  classifier:decision_tree:max_depth_factor, Value: 1.079270847148317
+  classifier:decision_tree:max_features, Constant: 1.0
+  classifier:decision_tree:max_leaf_nodes, Constant: 'None'
+  classifier:decision_tree:min_impurity_decrease, Constant: 0.0
+  classifier:decision_tree:min_samples_leaf, Value: 4
+  classifier:decision_tree:min_samples_split, Value: 13
+  classifier:decision_tree:min_weight_fraction_leaf, Constant: 0.0
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'normalize'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 7, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {'preprocessor': ['no_preprocessing'], 'classifier': ['decision_tree', 'gradient_boosting', 'random_forest']}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}', 'init_params': {'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:37,385:pynisher] call function
+[DEBUG] [2019-09-12 11:52:38,522:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:38,559:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-09-12 11:52:38,559:pynisher] return value: (None, 0)
+[DEBUG] [2019-09-12 11:52:38,588:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.502890, time: 1.198453, additional: {'duration': 1.1158549785614014, 'num_run': 7, 'train_loss': 0.39142857142857146, 'test_loss': 0.45777777777777773, 'configuration_origin': 'Random Search'}
+[INFO] [2019-09-12 11:52:38,590:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2254
+[INFO] [2019-09-12 11:52:38,590:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2254
+[DEBUG] [2019-09-12 11:52:38,592:root] Remaining budget: 11.649621 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-09-12 11:52:38,592:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:38,592:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-09-12 11:52:38,592:smac.stats.stats.Stats] #Incumbent changed: 1
+[DEBUG] [2019-09-12 11:52:38,592:smac.stats.stats.Stats] #Target algorithm runs: 6 / inf
+[DEBUG] [2019-09-12 11:52:38,592:smac.stats.stats.Stats] Used wallclock time: 10.90 / 22.55 sec 
+[DEBUG] [2019-09-12 11:52:38,593:smac.stats.stats.Stats] Used target algorithm runtime: 8.29 / inf sec
+[DEBUG] [2019-09-12 11:52:38,593:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-09-12 11:52:38,593:smac.stats.stats.Stats] Average Configurations per Intensify: 1.67
+[DEBUG] [2019-09-12 11:52:38,593:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 1.36
+[DEBUG] [2019-09-12 11:52:38,593:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:38,607:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-09-12 11:52:38,617:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 6 observations
+[DEBUG] [2019-09-12 11:52:38,761:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 49 configurations. Computing the acquisition value for one configuration took 0.002084 seconds on average.
+[DEBUG] [2019-09-12 11:52:38,843:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 24 configurations. Computing the acquisition value for one configuration took 0.002422 seconds on average.
+[DEBUG] [2019-09-12 11:52:40,140:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)'], [0.009604334102086986, 'Random Search (sorted)']]
+[DEBUG] [2019-09-12 11:52:40,166:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:40,166:pynisher] Restricting your function to 5 seconds wall time.
+[DEBUG] [2019-09-12 11:52:40,166:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:40,167:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8f9619bf28>, 'config': Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  classifier:__choice__, Value: 'gradient_boosting'
+  classifier:gradient_boosting:criterion, Value: 'mse'
+  classifier:gradient_boosting:learning_rate, Value: 0.5689926051279232
+  classifier:gradient_boosting:loss, Constant: 'deviance'
+  classifier:gradient_boosting:max_depth, Value: 3
+  classifier:gradient_boosting:max_features, Value: 0.5709766921251473
+  classifier:gradient_boosting:max_leaf_nodes, Constant: 'None'
+  classifier:gradient_boosting:min_impurity_decrease, Constant: 0.0
+  classifier:gradient_boosting:min_samples_leaf, Value: 19
+  classifier:gradient_boosting:min_samples_split, Value: 7
+  classifier:gradient_boosting:min_weight_fraction_leaf, Constant: 0.0
+  classifier:gradient_boosting:n_estimators, Value: 203
+  classifier:gradient_boosting:subsample, Value: 0.9139507524185648
+  imputation:strategy, Value: 'mean'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'normalize'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 8, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {'preprocessor': ['no_preprocessing'], 'classifier': ['decision_tree', 'gradient_boosting', 'random_forest']}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}', 'init_params': {'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:40,178:pynisher] call function
+[DEBUG] [2019-09-12 11:52:42,346:autosklearn.util.backend] _make_internals_directory: [Errno 17] File exists: 'tmp/autosk_tmp/.auto-sklearn'
+[DEBUG] [2019-09-12 11:52:42,381:pynisher] function returned properly: (None, 0)
+[DEBUG] [2019-09-12 11:52:42,381:pynisher] return value: (None, 0)
+[DEBUG] [2019-09-12 11:52:42,413:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Return: Status: <StatusType.SUCCESS: 1>, cost: 0.294798, time: 2.218974, additional: {'duration': 2.1091983318328857, 'num_run': 8, 'train_loss': 0.0028571428571428914, 'test_loss': 0.28888888888888886, 'configuration_origin': 'Random Search (sorted)'}
+[DEBUG] [2019-09-12 11:52:42,432:pynisher] Restricting your function to 1024 mb memory.
+[DEBUG] [2019-09-12 11:52:42,432:pynisher] Restricting your function to 2 seconds wall time.
+[DEBUG] [2019-09-12 11:52:42,432:pynisher] Allowing a grace period of 0 seconds.
+[DEBUG] [2019-09-12 11:52:42,432:pynisher] Function called with argument: (), {'queue': <multiprocessing.queues.Queue object at 0x7f8faa62c0b8>, 'config': Configuration:
+  balancing:strategy, Value: 'weighting'
+  categorical_encoding:__choice__, Value: 'one_hot_encoding'
+  categorical_encoding:one_hot_encoding:minimum_fraction, Value: 0.05596199888727203
+  categorical_encoding:one_hot_encoding:use_minimum_fraction, Value: 'True'
+  classifier:__choice__, Value: 'random_forest'
+  classifier:random_forest:bootstrap, Value: 'False'
+  classifier:random_forest:criterion, Value: 'entropy'
+  classifier:random_forest:max_depth, Constant: 'None'
+  classifier:random_forest:max_features, Value: 0.32451554977307584
+  classifier:random_forest:max_leaf_nodes, Constant: 'None'
+  classifier:random_forest:min_impurity_decrease, Constant: 0.0
+  classifier:random_forest:min_samples_leaf, Value: 12
+  classifier:random_forest:min_samples_split, Value: 8
+  classifier:random_forest:min_weight_fraction_leaf, Constant: 0.0
+  classifier:random_forest:n_estimators, Constant: 100
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'none'
+, 'backend': <autosklearn.util.backend.Backend object at 0x7f8f7555d940>, 'metric': accuracy, 'seed': 0, 'num_run': 9, 'all_scoring_functions': False, 'output_y_hat_optimization': True, 'include': {'preprocessor': ['no_preprocessing'], 'classifier': ['decision_tree', 'gradient_boosting', 'random_forest']}, 'exclude': {}, 'disable_file_output': False, 'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}', 'init_params': {'instance': '{"task_id": "2e5099f5887666b2676b2e854c1ab708"}'}, 'resampling_strategy': 'holdout', 'resampling_strategy_args': {}}
+[DEBUG] [2019-09-12 11:52:42,455:pynisher] call function
+[DEBUG] [2019-09-12 11:52:45,468:AutoMLSMBO(0)::2e5099f5887666b2676b2e854c1ab708] Return: Status: <StatusType.TIMEOUT: 2>, cost: 1.000000, time: 2.004317, additional: {'error': 'Timeout', 'configuration_origin': 'Random Search'}
+[INFO] [2019-09-12 11:52:45,469:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2254
+[INFO] [2019-09-12 11:52:45,469:smac.intensification.intensification.Intensifier] Updated estimated cost of incumbent on 1 runs: 0.2254
+[DEBUG] [2019-09-12 11:52:45,472:root] Remaining budget: 4.769514 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-09-12 11:52:45,472:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:45,472:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-09-12 11:52:45,472:smac.stats.stats.Stats] #Incumbent changed: 1
+[DEBUG] [2019-09-12 11:52:45,472:smac.stats.stats.Stats] #Target algorithm runs: 8 / inf
+[DEBUG] [2019-09-12 11:52:45,472:smac.stats.stats.Stats] Used wallclock time: 17.78 / 22.55 sec 
+[DEBUG] [2019-09-12 11:52:45,473:smac.stats.stats.Stats] Used target algorithm runtime: 12.52 / inf sec
+[DEBUG] [2019-09-12 11:52:45,473:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-09-12 11:52:45,473:smac.stats.stats.Stats] Average Configurations per Intensify: 1.75
+[DEBUG] [2019-09-12 11:52:45,473:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 1.49
+[DEBUG] [2019-09-12 11:52:45,473:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:45,488:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-09-12 11:52:45,493:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 8 observations
+[DEBUG] [2019-09-12 11:52:45,588:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 24 configurations. Computing the acquisition value for one configuration took 0.002786 seconds on average.
+[DEBUG] [2019-09-12 11:52:45,805:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 30 configurations. Computing the acquisition value for one configuration took 0.005647 seconds on average.
+[DEBUG] [2019-09-12 11:52:46,843:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)'], [0.04060082936962361, 'Random Search (sorted)']]
+[DEBUG] [2019-09-12 11:52:46,874:root] Remaining budget: 3.367949 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] #Incumbent changed: 1
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] #Target algorithm runs: 8 / inf
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] Used wallclock time: 19.18 / 22.55 sec 
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] Used target algorithm runtime: 12.52 / inf sec
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] Average Configurations per Intensify: 1.75
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 1.49
+[DEBUG] [2019-09-12 11:52:46,874:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:46,890:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-09-12 11:52:46,897:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 8 observations
+[DEBUG] [2019-09-12 11:52:46,959:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 24 configurations. Computing the acquisition value for one configuration took 0.001786 seconds on average.
+[DEBUG] [2019-09-12 11:52:47,030:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 30 configurations. Computing the acquisition value for one configuration took 0.001925 seconds on average.
+[DEBUG] [2019-09-12 11:52:48,157:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)'], [0.047656186655989044, 'Random Search (sorted)']]
+[DEBUG] [2019-09-12 11:52:48,192:root] Remaining budget: 2.049818 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] #Incumbent changed: 1
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] #Target algorithm runs: 8 / inf
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] Used wallclock time: 20.50 / 22.55 sec 
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] Used target algorithm runtime: 12.52 / inf sec
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] Average Configurations per Intensify: 1.75
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 1.49
+[DEBUG] [2019-09-12 11:52:48,192:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:48,213:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-09-12 11:52:48,231:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 8 observations
+[DEBUG] [2019-09-12 11:52:48,351:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 49 configurations. Computing the acquisition value for one configuration took 0.001590 seconds on average.
+[DEBUG] [2019-09-12 11:52:48,450:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 30 configurations. Computing the acquisition value for one configuration took 0.002825 seconds on average.
+[DEBUG] [2019-09-12 11:52:49,773:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)'], [0.04682199278914555, 'Random Search (sorted)']]
+[DEBUG] [2019-09-12 11:52:49,796:root] Remaining budget: 0.445581 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-09-12 11:52:49,797:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] Statistics:
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] #Incumbent changed: 1
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] #Target algorithm runs: 8 / inf
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] Used wallclock time: 22.11 / 22.55 sec 
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] Used target algorithm runtime: 12.52 / inf sec
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] Average Configurations per Intensify: 1.75
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 1.49
+[DEBUG] [2019-09-12 11:52:49,803:smac.stats.stats.Stats] ##########################################################
+[DEBUG] [2019-09-12 11:52:49,820:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Transform runhistory into X,y format
+[DEBUG] [2019-09-12 11:52:49,825:smac.runhistory.runhistory2epm.RunHistory2EPM4Cost] Converted 8 observations
+[DEBUG] [2019-09-12 11:52:49,940:smac.optimizer.ei_optimization.LocalSearch] Local search took 1 steps and looked at 30 configurations. Computing the acquisition value for one configuration took 0.002367 seconds on average.
+[DEBUG] [2019-09-12 11:52:49,957:smac.optimizer.ei_optimization.LocalSearch] Switch to one of the neighbors
+[DEBUG] [2019-09-12 11:52:50,119:smac.optimizer.ei_optimization.LocalSearch] Local search took 2 steps and looked at 47 configurations. Computing the acquisition value for one configuration took 0.002620 seconds on average.
+[DEBUG] [2019-09-12 11:52:51,689:smac.optimizer.ei_optimization.InterleavedLocalAndRandomSearch] First 10 acq func (origin) values of selected configurations: [[0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)'], [0.04745361729630764, 'Random Search (sorted)']]
+[DEBUG] [2019-09-12 11:52:51,742:root] Remaining budget: -1.500349 (wallclock), inf (ta costs), inf (target runs)
+[DEBUG] [2019-09-12 11:52:51,779:smac.stats.stats.Stats] Saving stats to tmp/autosk_tmp/smac3-output/run_0/stats.json
+[INFO] [2019-09-12 11:52:51,780:smac.stats.stats.Stats] ##########################################################
+[INFO] [2019-09-12 11:52:51,780:smac.stats.stats.Stats] Statistics:
+[INFO] [2019-09-12 11:52:51,781:smac.stats.stats.Stats] #Incumbent changed: 1
+[INFO] [2019-09-12 11:52:51,782:smac.stats.stats.Stats] #Target algorithm runs: 8 / inf
+[INFO] [2019-09-12 11:52:51,782:smac.stats.stats.Stats] Used wallclock time: 24.09 / 22.55 sec 
+[INFO] [2019-09-12 11:52:51,782:smac.stats.stats.Stats] Used target algorithm runtime: 12.52 / inf sec
+[DEBUG] [2019-09-12 11:52:51,787:smac.stats.stats.Stats] Debug Statistics:
+[DEBUG] [2019-09-12 11:52:51,787:smac.stats.stats.Stats] Average Configurations per Intensify: 1.75
+[DEBUG] [2019-09-12 11:52:51,787:smac.stats.stats.Stats] Exponential Moving Average of Configurations per Intensify: 1.49
+[INFO] [2019-09-12 11:52:51,788:smac.stats.stats.Stats] ##########################################################
+[INFO] [2019-09-12 11:52:51,788:smac.facade.smac_facade.SMAC] Final Incumbent: Configuration:
+  balancing:strategy, Value: 'none'
+  categorical_encoding:__choice__, Value: 'no_encoding'
+  classifier:__choice__, Value: 'decision_tree'
+  classifier:decision_tree:criterion, Value: 'gini'
+  classifier:decision_tree:max_depth_factor, Value: 0.4403969875795546
+  classifier:decision_tree:max_features, Constant: 1.0
+  classifier:decision_tree:max_leaf_nodes, Constant: 'None'
+  classifier:decision_tree:min_impurity_decrease, Constant: 0.0
+  classifier:decision_tree:min_samples_leaf, Value: 3
+  classifier:decision_tree:min_samples_split, Value: 5
+  classifier:decision_tree:min_weight_fraction_leaf, Constant: 0.0
+  imputation:strategy, Value: 'most_frequent'
+  preprocessor:__choice__, Value: 'no_preprocessing'
+  rescaling:__choice__, Value: 'minmax'
+
+[WARNING] [2019-09-12 11:52:51,825:autosklearn.util.backend] Directory tmp/autosk_tmp/.auto-sklearn/ensembles does not exist

@@ -49,17 +49,9 @@ def start_p():
             if(data_type=="csv" and (filename[-3:]!="csv" and filename[-3:]!="CSV")):
                 return "Wrong file extension (expected .csv)"
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            with open("data/hash_list.txt","r") as f:
-                lines=f.readlines()
-            if(checksum+"\n" not in lines):
-                with open("data/hash_list.txt","a") as f:
-                    f.write(checksum+"\n")
-            for dir_ in [tmp_folder, output_folder]:
-                try:
-                    shutil.rmtree(dir_)
-                except OSError:
-                    pass
+            
+
+
             rec=[]
             if task=="classification":
                 meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
@@ -167,6 +159,7 @@ def budget_p():
         filename=session.get("filename","not set")
         task=session.get("task","not set")
         metric = request.form['metric']
+        reuse = request.form['reuse']
 
         if(int(time)<30):
             return "Time budget must be at least 30 seconds"
@@ -179,15 +172,40 @@ def budget_p():
         values['period']=int(period)
         values["metric"]=metric
         session["values"]=values
+        session["reuse"]=reuse
 
         return redirect('/running')
 
 @app.route('/running')
 def running():
     values=session.get('values', 'not set')
+    target_ft=session.get('target_ft', 'not set')
     iters=values["time"]//values["period"]
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
+    reuse=session.get('reuse', 'not set')
+
+
+    #check dataset checksum and lookup
+    checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))+"_"+target_ft+"_"+values["task"]+"_"+values["metric"]
+    session["checksum"]=checksum
+    with open("data/hash_list.txt","r") as f:
+        lines=f.readlines()
+    if(checksum+"\n" not in lines):
+        with open("data/hash_list.txt","a") as f:
+            f.write(checksum+"\n")
+    for dir_ in [tmp_folder, output_folder]:
+        try:
+            shutil.rmtree(dir_)
+        except OSError:
+            pass
+    #copy tmp to run on it
+    if reuse=="yes":
+        if os.path.exists("tmp_runs/{}".format(checksum)):
+            shutil.copytree("tmp_runs/{}".format(checksum),"tmp/autosk_tmp")
+
+
+
     return render_template('running.html',turn=0,task=values["task"],time=values["time"],iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"])
 
 @app.route('/progress')
@@ -196,6 +214,7 @@ def progress():
     print("turn",turn)
     values=session.get('values', 'not set')
     target_ft=session.get('target_ft', 'not set')
+    checksum=session.get('checksum', 'not set')
     iters=values["time"]//values["period"]
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
@@ -209,6 +228,11 @@ def progress():
     filehandler = open("tmp/results.p", 'wb') 
     pickle.dump(res_list, filehandler)
     turn+=+1
+    #copy tmp files to save for later
+    if os.path.exists("tmp_runs/{}".format(checksum)):
+        shutil.rmtree("tmp_runs/{}".format(checksum))
+    shutil.copytree("tmp/autosk_tmp","tmp_runs/{}".format(checksum))
+    #
     if(values["task"]=="classification"):
         res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
     else:

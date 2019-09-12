@@ -1,0 +1,57 @@
+balancing:strategy {none, weighting} [none]
+categorical_encoding:__choice__ {no_encoding, one_hot_encoding} [one_hot_encoding]
+classifier:__choice__ {decision_tree, qda, random_forest} [random_forest]
+imputation:strategy {mean, median, most_frequent} [mean]
+preprocessor:__choice__ {no_preprocessing} [no_preprocessing]
+rescaling:__choice__ {minmax, none, normalize, quantile_transformer, robust_scaler, standardize} [standardize]
+categorical_encoding:one_hot_encoding:use_minimum_fraction {True, False} [True]
+classifier:decision_tree:criterion {gini, entropy} [gini]
+classifier:decision_tree:max_depth_factor [0.0, 2.0] [0.5]
+classifier:decision_tree:max_features {1.0} [1.0]
+classifier:decision_tree:max_leaf_nodes {None} [None]
+classifier:decision_tree:min_impurity_decrease {0.0} [0.0]
+classifier:decision_tree:min_samples_leaf [1, 20] [1]i
+classifier:decision_tree:min_samples_split [2, 20] [2]i
+classifier:decision_tree:min_weight_fraction_leaf {0.0} [0.0]
+classifier:qda:reg_param [0.0, 1.0] [0.0]
+classifier:random_forest:bootstrap {True, False} [True]
+classifier:random_forest:criterion {gini, entropy} [gini]
+classifier:random_forest:max_depth {None} [None]
+classifier:random_forest:max_features [0.0, 1.0] [0.5]
+classifier:random_forest:max_leaf_nodes {None} [None]
+classifier:random_forest:min_impurity_decrease {0.0} [0.0]
+classifier:random_forest:min_samples_leaf [1, 20] [1]i
+classifier:random_forest:min_samples_split [2, 20] [2]i
+classifier:random_forest:min_weight_fraction_leaf {0.0} [0.0]
+classifier:random_forest:n_estimators {100} [100]
+rescaling:quantile_transformer:n_quantiles [10, 2000] [1000]i
+rescaling:quantile_transformer:output_distribution {uniform, normal} [uniform]
+rescaling:robust_scaler:q_max [0.7, 0.999] [0.75]
+rescaling:robust_scaler:q_min [0.001, 0.3] [0.25]
+categorical_encoding:one_hot_encoding:minimum_fraction [0.0001, 0.5] [0.01]l
+
+categorical_encoding:one_hot_encoding:use_minimum_fraction | categorical_encoding:__choice__ in {one_hot_encoding}
+classifier:decision_tree:criterion | classifier:__choice__ in {decision_tree}
+classifier:decision_tree:max_depth_factor | classifier:__choice__ in {decision_tree}
+classifier:decision_tree:max_features | classifier:__choice__ in {decision_tree}
+classifier:decision_tree:max_leaf_nodes | classifier:__choice__ in {decision_tree}
+classifier:decision_tree:min_impurity_decrease | classifier:__choice__ in {decision_tree}
+classifier:decision_tree:min_samples_leaf | classifier:__choice__ in {decision_tree}
+classifier:decision_tree:min_samples_split | classifier:__choice__ in {decision_tree}
+classifier:decision_tree:min_weight_fraction_leaf | classifier:__choice__ in {decision_tree}
+classifier:qda:reg_param | classifier:__choice__ in {qda}
+classifier:random_forest:bootstrap | classifier:__choice__ in {random_forest}
+classifier:random_forest:criterion | classifier:__choice__ in {random_forest}
+classifier:random_forest:max_depth | classifier:__choice__ in {random_forest}
+classifier:random_forest:max_features | classifier:__choice__ in {random_forest}
+classifier:random_forest:max_leaf_nodes | classifier:__choice__ in {random_forest}
+classifier:random_forest:min_impurity_decrease | classifier:__choice__ in {random_forest}
+classifier:random_forest:min_samples_leaf | classifier:__choice__ in {random_forest}
+classifier:random_forest:min_samples_split | classifier:__choice__ in {random_forest}
+classifier:random_forest:min_weight_fraction_leaf | classifier:__choice__ in {random_forest}
+classifier:random_forest:n_estimators | classifier:__choice__ in {random_forest}
+rescaling:quantile_transformer:n_quantiles | rescaling:__choice__ in {quantile_transformer}
+rescaling:quantile_transformer:output_distribution | rescaling:__choice__ in {quantile_transformer}
+rescaling:robust_scaler:q_max | rescaling:__choice__ in {robust_scaler}
+rescaling:robust_scaler:q_min | rescaling:__choice__ in {robust_scaler}
+categorical_encoding:one_hot_encoding:minimum_fraction | categorical_encoding:one_hot_encoding:use_minimum_fraction in {True}
