@@ -229,6 +229,8 @@ def progress():
     pickle.dump(res_list, filehandler)
     turn+=+1
     #copy tmp files to save for later
+    #filehandler = open("tmp/autosk_tmp/spaces.p", 'wb') 
+    #pickle.dump([values["search_space"],values["prep_space"]],filehandler)
     if os.path.exists("tmp_runs/{}".format(checksum)):
         shutil.rmtree("tmp_runs/{}".format(checksum))
     shutil.copytree("tmp/autosk_tmp","tmp_runs/{}".format(checksum))
