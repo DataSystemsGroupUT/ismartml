@@ -177,13 +177,14 @@ def budget_p():
 @app.route('/running')
 def running():
     values=session.get('values', 'not set')
+    target_ft=session.get('target_ft', 'not set')
     iters=values["time"]//values["period"]
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
 
 
     #check dataset checksum and lookup
-    checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))
+    checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))+"_"+target_ft
     session["checksum"]=checksum
     with open("data/hash_list.txt","r") as f:
         lines=f.readlines()
