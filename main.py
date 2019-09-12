@@ -196,6 +196,10 @@ def running():
             shutil.rmtree(dir_)
         except OSError:
             pass
+    #copy tmp to run on it
+    if True:
+        if os.path.exists("tmp_runs/{}".format(checksum)):
+            shutil.copytree("tmp_runs/{}".format(checksum),"tmp/autosk_tmp")
 
 
 
