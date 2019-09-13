@@ -37,7 +37,8 @@ def start_p():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        data_type = request.form['data_type']
+        #data_type = request.form['data_type']
+        data_type="csv"
         task = request.form['task']
         if file.filename == '':
             flash('No file selected for uploading')
