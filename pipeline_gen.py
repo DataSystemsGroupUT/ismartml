@@ -98,7 +98,7 @@ def build_preprocessor_cl(param_dict):
 
 def adaboost_cl(params):
     max_depth=params.pop("max_depth")
-    params["base_estimator"]="DecisionTreeClassifier(max_depth={})".format(max_depth)
+    params["base_estimator"]=DecisionTreeClassifier(max_depth=max_depth)
     cl=AdaBoostClassifier(**params)
     return cl
 
