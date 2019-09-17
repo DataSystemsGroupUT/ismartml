@@ -213,7 +213,7 @@ def process_dict(dict):
 # In[9]:
 
 
-res=[0.7976878612716763, {'balancing:strategy': 'none', 'categorical_encoding:__choice__': 'one_hot_encoding', 'classifier:__choice__': 'decision_tree', 'imputation:strategy': 'mean', 'preprocessor:__choice__': 'pca', 'rescaling:__choice__': 'standardize', 'categorical_encoding:one_hot_encoding:use_minimum_fraction': 'False', 'classifier:decision_tree:criterion': 'entropy', 'classifier:decision_tree:max_depth_factor': 1.18671200497328, 'classifier:decision_tree:max_features': 1.0, 'classifier:decision_tree:max_leaf_nodes': 'None', 'classifier:decision_tree:min_impurity_decrease': 0.0, 'classifier:decision_tree:min_samples_leaf': 1, 'classifier:decision_tree:min_samples_split': 2, 'classifier:decision_tree:min_weight_fraction_leaf': 0.0, 'preprocessor:pca:keep_variance': 0.9572746131543354, 'preprocessor:pca:whiten': 'True'}]
+#res=[0.7976878612716763, {'balancing:strategy': 'none', 'categorical_encoding:__choice__': 'one_hot_encoding', 'classifier:__choice__': 'decision_tree', 'imputation:strategy': 'mean', 'preprocessor:__choice__': 'pca', 'rescaling:__choice__': 'standardize', 'categorical_encoding:one_hot_encoding:use_minimum_fraction': 'False', 'classifier:decision_tree:criterion': 'entropy', 'classifier:decision_tree:max_depth_factor': 1.18671200497328, 'classifier:decision_tree:max_features': 1.0, 'classifier:decision_tree:max_leaf_nodes': 'None', 'classifier:decision_tree:min_impurity_decrease': 0.0, 'classifier:decision_tree:min_samples_leaf': 1, 'classifier:decision_tree:min_samples_split': 2, 'classifier:decision_tree:min_weight_fraction_leaf': 0.0, 'preprocessor:pca:keep_variance': 0.9572746131543354, 'preprocessor:pca:whiten': 'True'}]
 
 
 # In[83]:

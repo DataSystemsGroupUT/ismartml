@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Model{% endblock %}
 {% block content %}
+<button type="button" class="btn btn-primary" value="Generate Model"  name="generate" onclick="window.open('{{ url_for( 'generate_model' )+"?model="+ model_index|string}}');">Generate Model</button>
 <table>
 	<tr>
 		<td>Score</td>

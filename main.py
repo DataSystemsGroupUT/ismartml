@@ -7,12 +7,14 @@ from flask import Flask, flash, request, redirect, render_template, url_for, ses
 from werkzeug.utils import secure_filename
 import shutil
 import pickle
-from multi import run_task
+from multi import run_task, process_data
 from extras import *
 from extract import get_meta
 from predict_meta import predict_meta
 from utils import *
 import matplotlib.pyplot as plt
+import pipeline_gen
+from sklearn.pipeline import Pipeline
 
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
@@ -284,7 +286,23 @@ def view_model():
     index = request.args.get('model', default = 0, type = int)
     model=res_list[index]
     print(model)
-    return render_template("model.html",model=model)
+    return render_template("model.html",model=model,model_index=index)
+ 
+@app.route("/generate_model")
+def generate_model():
+    values=session.get('values', 'not set')
+    target_ft=session.get('target_ft', 'not set')
+    target_ft=session.get('target_ft', 'not set')
+    index = request.args.get('model', default = 0, type = int)
+    filehandler = open("tmp/results.p", 'rb') 
+    res_list=pickle.load(filehandler)
+    arg_dict=res_list[index][1]
+    param_dict=pipeline_gen.process_dict(arg_dict)
+    pipe=Pipeline(([("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]))
+    X,y=process_data(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),"csv",target_ft)
+    pipe.fit(X,y)
+    return render_template("test.html")
+
 
 @app.route("/test")
 def test():
