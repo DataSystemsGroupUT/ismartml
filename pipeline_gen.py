@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[88]:
+# In[31]:
 
 
 from sklearn.decomposition import FastICA, PCA
@@ -10,7 +10,7 @@ from sklearn.svm import LinearSVC
 from sklearn.preprocessing import PolynomialFeatures
 
 
-# In[2]:
+# In[45]:
 
 
 from sklearn.ensemble import AdaBoostClassifier,ExtraTreesClassifier, GradientBoostingClassifier,RandomForestClassifier
@@ -20,9 +20,12 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.svm import LinearSVC, SVC
 from sklearn.linear_model import PassiveAggressiveClassifier,SGDClassifier
+from autosklearn.pipeline.components.feature_preprocessing.liblinear_svc_preprocessor import LibLinear_Preprocessor 
+from autosklearn.pipeline.components.classification.liblinear_svc import LibLinear_SVC
+from autosklearn.pipeline.components.classification.libsvm_svc import LibSVM_SVC
 
 
-# In[ ]:
+# In[33]:
 
 
 import pandas as pd
@@ -31,7 +34,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 
-# In[3]:
+# In[34]:
 
 
 def fast_ica(params):
@@ -47,7 +50,8 @@ def no_preprocessing(params):
     return pr
 
 def liblinear_svc_preprocessor(params):
-    pr=LinearSVC(**params)
+    #pr=LinearSVC(**params)
+    pr=LibLinear_Preprocessor(**params)
     return pr
 
 def polynomial(params):
@@ -93,7 +97,7 @@ def build_preprocessor_cl(param_dict):
     #        return pca(params)
 
 
-# In[4]:
+# In[35]:
 
 
 def adaboost_cl(params):
@@ -132,11 +136,13 @@ def lda_cl(params):
     return cl
 
 def liblinear_svc_cl(params):
-    cl=LinearSVC(**params)
+    #cl=LinearSVC(**params)
+    cl=LibLinear_SVC(**params)
     return cl
 
 def libsvm_svc_cl(params):
-    cl=SVC(**params)
+    #cl=SVC(**params)
+    cl=LibSVM_SVC(**params)
     return cl
 
 def qda_cl(params):
@@ -200,7 +206,7 @@ def build_classifier(param_dict):
         return None
 
 
-# In[82]:
+# In[36]:
 
 
 def process_dict(dict):
@@ -210,62 +216,33 @@ def process_dict(dict):
     return dict
 
 
-# In[9]:
+# In[37]:
 
 
 #res=[0.7976878612716763, {'balancing:strategy': 'none', 'categorical_encoding:__choice__': 'one_hot_encoding', 'classifier:__choice__': 'decision_tree', 'imputation:strategy': 'mean', 'preprocessor:__choice__': 'pca', 'rescaling:__choice__': 'standardize', 'categorical_encoding:one_hot_encoding:use_minimum_fraction': 'False', 'classifier:decision_tree:criterion': 'entropy', 'classifier:decision_tree:max_depth_factor': 1.18671200497328, 'classifier:decision_tree:max_features': 1.0, 'classifier:decision_tree:max_leaf_nodes': 'None', 'classifier:decision_tree:min_impurity_decrease': 0.0, 'classifier:decision_tree:min_samples_leaf': 1, 'classifier:decision_tree:min_samples_split': 2, 'classifier:decision_tree:min_weight_fraction_leaf': 0.0, 'preprocessor:pca:keep_variance': 0.9572746131543354, 'preprocessor:pca:whiten': 'True'}]
+#res=[0.7630057803468208, {'balancing:strategy': 'none', 'categorical_encoding:__choice__': 'one_hot_encoding', 'classifier:__choice__': 'adaboost', 'imputation:strategy': 'mean', 'preprocessor:__choice__': 'fast_ica', 'rescaling:__choice__': 'robust_scaler', 'categorical_encoding:one_hot_encoding:use_minimum_fraction': 'False', 'classifier:adaboost:algorithm': 'SAMME', 'classifier:adaboost:learning_rate': 0.4391375941344922, 'classifier:adaboost:max_depth': 3, 'classifier:adaboost:n_estimators': 386, 'preprocessor:fast_ica:algorithm': 'deflation', 'preprocessor:fast_ica:fun': 'cube', 'preprocessor:fast_ica:whiten': 'False', 'rescaling:robust_scaler:q_max': 0.7439738358430176, 'rescaling:robust_scaler:q_min': 0.20581080574615793}]
 
 
-# In[83]:
-
-
-"""
-pipeline_obj = Pipeline([
-    ('scaler', StandardScaler()),
-    ('svm',SVC())
-])
-"""
-#param_dict=process_dict(res[1])
-#pipe=Pipeline(([("preprocessor",build_preprocessor_cl(param_dict)),("classifeir",build_classifier(param_dict))]))
-
-
-# In[84]:
-
-
-#dt=pd.read_csv("blood.csv")
-#features=dt.columns[1:-1]
-#target=dt.columns[-1]
-
-
-# In[85]:
-
-
-#X=dt[features]
-#y=dt[target]
-
-
-# In[86]:
-
-
-#pipe.fit(X,y)
-
-
-# In[87]:
-
-
-#from nyoka import skl_to_pmml
-
-
-#features=[""]
-#target=[""]
-#skl_to_pmml(pipe,features,target,"svc_pmml.pmml")
-
-
-# In[ ]:
-
-
-
-
+# """
+# pipeline_obj = Pipeline([
+#     ('scaler', StandardScaler()),
+#     ('svm',SVC())
+# ])
+# """
+# param_dict=process_dict(res[1])
+# pipe=Pipeline(([("preprocessor",build_preprocessor_cl(param_dict)),("classifeir",build_classifier(param_dict))]))
+# dt=pd.read_csv("blood.csv")
+# features=dt.columns[1:-1]
+# target=dt.columns[-1]
+# X=dt[features]
+# y=dt[target]
+# pipe.fit(X,y)
+# from nyoka import skl_to_pmml
+# 
+# 
+# #features=[""]
+# #target=[""]
+# skl_to_pmml(pipe,features,target,"svc_pmml.pmml")
 
 # In[ ]:
 
