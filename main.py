@@ -3,7 +3,7 @@ import os
 import urllib.request
 import pandas as pd
 from app import app
-from flask import Flask, flash, request, redirect, render_template, url_for, session
+from flask import Flask, flash, request, redirect, render_template, url_for, session, send_from_directory
 from werkzeug.utils import secure_filename
 import shutil
 import pickle
@@ -15,6 +15,7 @@ from utils import *
 import matplotlib.pyplot as plt
 import pipeline_gen
 from sklearn.pipeline import Pipeline
+from joblib import dump, load
 
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
@@ -244,7 +245,7 @@ def progress():
     estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"],target_ft)
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
-    col_names=["Score","Estimator","Preprocessing","Details"]
+    col_names=["Score","Estimator","Preprocessing","Details","Download"]
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     filehandler = open("tmp/results.p", 'wb') 
     pickle.dump(res_list, filehandler)
@@ -257,9 +258,9 @@ def progress():
     shutil.copytree("tmp/autosk_tmp","tmp_runs/{}".format(checksum))
     #
     if(values["task"]=="classification"):
-        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
+        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
     else:
-        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
+        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
     if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
@@ -271,11 +272,11 @@ def stop():
     values=session.get('values', 'not set')
     filehandler = open("tmp/results.p", 'rb') 
     res_list=pickle.load(filehandler)
-    col_names=["Score","Estimator","Preprocessing","Details"]
+    col_names=["Score","Estimator","Preprocessing","Details","Download"]
     if(values["task"]=="classification"):
-        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
+        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
     else:
-        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
+        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
     return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
 
 
@@ -301,7 +302,9 @@ def generate_model():
     pipe=Pipeline(([("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]))
     X,y=process_data(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),"csv",target_ft)
     pipe.fit(X,y)
-    return render_template("test.html")
+    dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
+    #return render_template("test.html")
+    return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
 
 
 @app.route("/test")

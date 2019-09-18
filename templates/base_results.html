@@ -11,10 +11,12 @@
         {% for col, row_ in zip(column_names, row) %}
         {% if col == "Details" %}
         <td>
-            <button type="button" class="btn btn-primary" value={{row_ }} name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+ outer_loop.index0|string }}');">
-                {{ row_ }}
-            </button>
-        </td>
+		<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+ outer_loop.index0|string }}');">View</button>
+	</td>
+	{% elif col =="Download"%}			
+	<td>
+		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'generate_model' )+"?model="+ outer_loop.index0|string }}');">Generate</button>
+	</td>
         {% else %}
         <td>{{row_}}</td>
         {% endif %}
