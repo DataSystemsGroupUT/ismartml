@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import pipeline_gen
 from sklearn.pipeline import Pipeline
 from joblib import dump, load
+from nyoka import skl_to_pmml
 
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
@@ -303,8 +304,29 @@ def generate_model():
     X,y=process_data(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),"csv",target_ft)
     pipe.fit(X,y)
     dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
-    #return render_template("test.html")
+    filehandler = open("tmp_files/model_{}.pickle".format(str(index)), 'wb')
+    pickle.dump(pipe, filehandler)
+    return render_template("download.html",index=index)
+
+
+@app.route('/download_joblib')
+def download_joblib():
+    index = request.args.get('model', default = 0, type = int)
     return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
+
+@app.route('/download_pickle')
+def download_pickle():
+    index = request.args.get('model', default = 0, type = int)
+    return send_from_directory("tmp_files",'model_{}.pickle'.format(str(index)), as_attachment=True)
+
+
+
+@app.route('/download_pmml')
+def download_pmml():
+    index = request.args.get('model', default = 0, type = int)
+    skl_to_pmml(pipe,features,target,"tmp_files/model_{}.pmml".format(index))
+    return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
+
 
 
 @app.route("/test")
