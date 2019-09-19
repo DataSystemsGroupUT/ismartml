@@ -114,8 +114,9 @@ def target_class():
     plt.clf()
     data[target_ft].hist()
     plt.savefig("static/images/figs/target")
-    ratio=[True if (min(data[target_ft].value_counts())/max(data[target_ft].value_counts()))<0.6 else False]
-    return render_template("target.html",ratio=ratio,METRICS=METRICS)
+    ratio=[True if (min(data[target_ft].value_counts())/max(data[target_ft].value_counts()))<0.6 else False][0]
+    pre_metric=["F1" if ratio else "Accuracy" ][0]
+    return render_template("target.html",ratio=ratio,METRICS=METRICS,pre_metric=pre_metric)
 
 @app.route('/target_class', methods=['POST'])
 def target_class_r():

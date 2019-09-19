@@ -80,8 +80,13 @@
 		<div class="form-radio">
 		{% for mt in METRICS %}
 			<nobr>
+			{% if mt==pre_metric %}
+			<input type="radio" name="metric" value="{{mt}}" required checked>
+			<label>{{mt}} &nbsp; &nbsp; </label>
+		 	{% else %}	
 			<input type="radio" name="metric" value="{{mt}}" required>
 			<label>{{mt}} &nbsp; &nbsp; </label>
+			{% endif %}
 			</nobr>
 		{% endfor %}
 		</div>
