@@ -211,6 +211,7 @@ def running():
             shutil.copytree("tmp_runs/{}".format(checksum),"tmp/autosk_tmp")
             #modify space.pcs
             olds=[]
+            old_pres=[]
             #path="tmp/autosk_tmp/smac3-output/run_0.OLD/configspace.pcs"
             path="tmp/autosk_tmp/space.pcs"
             with open(path,"r") as f:
@@ -220,11 +221,22 @@ def running():
                 for line in lines:
                     if "classifier:__choice__ {" in line:
                         olds=[ar.strip() for ar in line[len(pre):].split("}")[0].split(",")]
+                    elif "preprocessor:__choice__ {" in line:
+                        old_pres=[ar.strip() for ar in line[len("preprocessor:__choice__ {"):].split("}")[0].split(",")]
+
+                        
+
             
             for param in values["search_space"]:
                 if param not in olds:
                     olds.append(param)
+
+            for param in values["prep_space"]:
+                if param not in old_pres:
+                    old_pres.append(param)
+
             values["search_space"]=olds
+            values["prep_space"]=old_pres
             session["values"]=values
 
 
