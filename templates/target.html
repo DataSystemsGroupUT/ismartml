@@ -72,6 +72,8 @@
 {% block content %}
 <form method="post" action="/target_class" enctype="multipart/form-data">
 			<img width=700  src="static/images/figs/target.png"><figcaption>Target Class</figcaption>
+			<p> Imbalanced Dataset: {{ratio|string}}
+			</p>
     <p>
 		<button type="submit" class="btn btn-primary">Next</button>
 	</p>

@@ -107,7 +107,8 @@ def target_class():
     plt.clf()
     data[target_ft].hist()
     plt.savefig("static/images/figs/target")
-    return render_template("target.html")
+    ratio=[True if (min(data[target_ft].value_counts())/max(data[target_ft].value_counts()))<0.6 else False]
+    return render_template("target.html",ratio=ratio)
 
 @app.route('/target_class', methods=['POST'])
 def target_class_r():
@@ -115,14 +116,6 @@ def target_class_r():
         # check if the post request has the file part
         return redirect('/params')
     
-
-
-
-
-
-
-
-
 
 @app.route('/params')
 def params():
