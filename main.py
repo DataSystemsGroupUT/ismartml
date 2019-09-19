@@ -36,6 +36,7 @@ def start():
 @app.route('/', methods=['POST'])
 def start_p():
     if request.method == 'POST':
+        values={}
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
@@ -99,6 +100,12 @@ def feature_pgr():
 
 @app.route('/target_class')
 def target_class():
+    task=session.get("task","not set")
+    ##Configure for Task
+    if task=="classification":
+        METRICS=METRICS_CL_DISP
+    else:
+        METRICS=METRICS_RG_DISP
     values=session.get('values', 'not set')
     target_ft=session.get('target_ft', 'not set')
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
@@ -108,12 +115,17 @@ def target_class():
     data[target_ft].hist()
     plt.savefig("static/images/figs/target")
     ratio=[True if (min(data[target_ft].value_counts())/max(data[target_ft].value_counts()))<0.6 else False]
-    return render_template("target.html",ratio=ratio)
+    return render_template("target.html",ratio=ratio,METRICS=METRICS)
 
 @app.route('/target_class', methods=['POST'])
 def target_class_r():
     if request.method == 'POST':
         # check if the post request has the file part
+        values=session.get('values', 'not set')
+        metric = request.form['metric']
+        values["metric"]=metric
+        print(values)
+        session["values"]=values
         return redirect('/params')
     
 
@@ -145,7 +157,7 @@ def params():
 @app.route('/params', methods=['POST'])
 def params_p():
     if request.method == 'POST':
-        values={}
+        values=session.get('values', 'not set')
         data_type=session.get('data_type', 'not set')
         filename=session.get("filename","not set")
         task=session.get("task","not set")
@@ -170,11 +182,7 @@ def params_p():
 def budget():
     task=session.get("task","not set")
     ##Configure for Task
-    if task=="classification":
-        METRICS=METRICS_CL_DISP
-    else:
-        METRICS=METRICS_RG_DISP
-    return render_template('budget.html', METRICS=METRICS, zip=zip, TASK=task)
+    return render_template('budget.html',  zip=zip, TASK=task)
 
 @app.route('/budget', methods=['POST'])
 def budget_p():
@@ -185,7 +193,6 @@ def budget_p():
         data_type=session.get('data_type', 'not set')
         filename=session.get("filename","not set")
         task=session.get("task","not set")
-        metric = request.form['metric']
         reuse = request.form['reuse']
 
         if(int(time)<30):
@@ -197,7 +204,6 @@ def budget_p():
 
         values['time']=int(time)
         values['period']=int(period)
-        values["metric"]=metric
         session["values"]=values
         session["reuse"]=reuse
 
