@@ -90,6 +90,7 @@ def feature_pgr():
         target_ft = request.form['target_ft']
         session["target_ft"]=target_ft
         features = request.form.getlist("features_ls")
+        session["features"]=features
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,features)
         new_data.to_csv(path)
@@ -294,7 +295,8 @@ def view_model():
 def generate_model():
     values=session.get('values', 'not set')
     target_ft=session.get('target_ft', 'not set')
-    target_ft=session.get('target_ft', 'not set')
+    features=session.get('features', 'not set')
+    features.remove(target_ft)
     index = request.args.get('model', default = 0, type = int)
     filehandler = open("tmp/results.p", 'rb') 
     res_list=pickle.load(filehandler)
@@ -306,6 +308,10 @@ def generate_model():
     dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
     filehandler = open("tmp_files/model_{}.pickle".format(str(index)), 'wb')
     pickle.dump(pipe, filehandler)
+    #try:
+    #skl_to_pmml(pipe,features,target_ft,"tmp_files/model_{}.pmml".format(index))
+    #except:
+    #    open("tmp_files/model_{}.pmml".format(index), 'a').close()
     return render_template("download.html",index=index)
 
 
@@ -324,8 +330,9 @@ def download_pickle():
 @app.route('/download_pmml')
 def download_pmml():
     index = request.args.get('model', default = 0, type = int)
-    skl_to_pmml(pipe,features,target,"tmp_files/model_{}.pmml".format(index))
-    return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
+    if os.path.getsize("tmp_files/model_{}.pmml".format(index))>0:
+        return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
+    return "This pipeline is not supported for pmml. Try joblib/pickle"
 
 
 
