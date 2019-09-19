@@ -94,8 +94,36 @@ def feature_pgr():
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,features)
         new_data.to_csv(path)
+        return redirect('/target_class')
+    
+
+@app.route('/target_class')
+def target_class():
+    values=session.get('values', 'not set')
+    target_ft=session.get('target_ft', 'not set')
+    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    data=pd.read_csv(path)
+    #features = request.form.getlist("features_ls")
+    plt.clf()
+    data[target_ft].hist()
+    plt.savefig("static/images/figs/target")
+    return render_template("target.html")
+
+@app.route('/target_class', methods=['POST'])
+def target_class_r():
+    if request.method == 'POST':
+        # check if the post request has the file part
         return redirect('/params')
     
+
+
+
+
+
+
+
+
+
 @app.route('/params')
 def params():
     rec=session.get("rec","not set")

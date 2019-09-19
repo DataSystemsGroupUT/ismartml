@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Autosklearn{% endblock %}
+{% block head %}
+    	{{ super() }}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+	//clears page cache
+	$(window).bind("pageshow", function() {
+	    var form = $('form'); 
+	    // let the browser natively reset defaults
+	    form[0].reset();
+	}); 
+        </script>
+
+
+
+	<script>
+	//toggle all
+	function toggle_est(source) {
+	    var checkboxes = document.querySelectorAll('div.estm input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
+
+	<script>
+	//toggle all
+	function toggle_pre(source) {
+	    var checkboxes = document.querySelectorAll('div.prep input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
+	<script>
+	//toggle all
+	function toggle_features(source) {
+	    var checkboxes = document.querySelectorAll('div.features input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
+
+
+	<script>
+	//checkbox checker, not using now
+	$(document).ready(function(){
+    		var requiredCheckboxes = $('.cl-checkbox :checkbox[required]');
+    		requiredCheckboxes.change(function(){
+        		if(requiredCheckboxes.is(':checked')) {
+            			requiredCheckboxes.removeAttr('required');
+       			 } else {
+            			requiredCheckboxes.attr('required', 'required');
+        		}
+    		});
+	});
+	</script>
+	
+
+
+
+{% endblock %}
+
+{% block content %}
+<form method="post" action="/target_class" enctype="multipart/form-data">
+			<img width=700  src="static/images/figs/target.png"><figcaption>Target Class</figcaption>
+    <p>
+		<button type="submit" class="btn btn-primary">Next</button>
+	</p>
+</form>
+
+{% endblock %}
