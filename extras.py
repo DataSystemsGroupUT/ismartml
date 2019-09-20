@@ -24,6 +24,33 @@ METRICS_CL_DISP=["Accuracy","F1","Precision","Recall"]
 
 METRICS_RG_DISP=["R2","Mean Squared Error","Mean Absolute Error","Median Absolute Error"]
 
+CLASSIFIERS=["adaboost","bernoulli_nb","decision_tree", "extra_trees","gaussian_nb", "gradient_boosting","k_nearest_neighbors", "lda","liblinear_svc","libsvm_svc","multinomial_nb","passive_aggressive","qda","random_forest","sgd"]
+
+
+
+ESTIMATOR_TIMES={'Adjusted SVM': 0.07594684791087697,
+         'Linear SVM': 0.036905399905705766,
+
+'liblinear_svc': 0.07594684791087697,
+'libsvm_svc': 0.07594684791087697,
+'sgd': 0.07594684791087697,
+'passive_agressive': 0.07594684791087697,
+    
+
+        'random_forest': 0.005704711340354813,
+           'k_nearest_neightbors': 0.27603989952945424,
+            'decision_tree': 0.0006857563445533376,
+             'adaboost': 0.008235442340735408,
+              'Naive Bayes': 0.0001938958234472096,
+              
+              'bernoulli_nb': 0.0001938958234472096,
+              'gaussian_nb': 0.0001938958234472096,
+              'multinomial_nb': 0.0001938958234472096,
+              
+              'lda': 0.004516812286156457,
+                'qda': 0.005043238462350772,
+                 'gradient_boosting': 0.5271939275232157,
+                  'logistic_regression': 0.059534068533149326}
 
 def gen_metric(task, metrics_choice):
     if task=="classification":

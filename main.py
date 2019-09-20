@@ -200,6 +200,11 @@ def params_p():
 @app.route('/budget')
 def budget():
     task=session.get("task","not set")
+    values=session.get('values', 'not set')
+    for each in values["search_space"]:
+        if each in ESTIMATOR_TIMES.keys():
+            print(each)
+
     ##Configure for Task
     return render_template('budget.html',  zip=zip, TASK=task)
 
