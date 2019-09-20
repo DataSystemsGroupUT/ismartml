@@ -15,7 +15,8 @@ from predict_meta import predict_meta
 from utils_local import *
 import matplotlib.pyplot as plt
 import pipeline_gen
-from sklearn.pipeline import Pipeline
+#from sklearn.pipeline import Pipeline #original pipline
+from imblearn.pipeline import Pipeline #smote pipeline
 from joblib import dump, load
 from nyoka import skl_to_pmml
 import numpy as np
@@ -135,6 +136,7 @@ def target_class_r():
         print(features)
         #features.remove(target_ft)
         #feature dropping can be brought here for better perforamnce
+        session["smote"]=smote
         if smote == "yes":
             path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
             X,y=process_data(path,"csv",target_ft)
@@ -352,6 +354,7 @@ def view_model():
 @app.route("/generate_model")
 def generate_model():
     values=session.get('values', 'not set')
+    smote=session.get('smote', 'not set')
     target_ft=session.get('target_ft', 'not set')
     features=session.get('features', 'not set')
     print(features)
@@ -362,7 +365,11 @@ def generate_model():
     res_list=pickle.load(filehandler)
     arg_dict=res_list[index][1]
     param_dict=pipeline_gen.process_dict(arg_dict)
-    pipe=Pipeline(([("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]))
+    pipeline_params=[("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]
+    if smote =="yes":
+        pipeline_params.insert(0,("smote",SMOTE(random_state=42)))
+        
+    pipe=Pipeline(pipeline_params)
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     X,y=process_data(path,"csv",target_ft)
     pipe.fit(X,y)
