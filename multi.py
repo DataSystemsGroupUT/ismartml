@@ -143,6 +143,8 @@ def process_data(path,data_type,target_ft):
         #data=data.to_numpy()
         #X=data[:,:-1]
         #y=data[:,-1]
+        print(data.columns)
+        print(X.shape,y.shape)
     else:
         X=None
         y=None

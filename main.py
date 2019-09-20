@@ -1,4 +1,5 @@
 import os
+from imblearn.over_sampling import SMOTE
 #import magic
 import urllib.request
 import pandas as pd
@@ -11,12 +12,13 @@ from multi import run_task, process_data
 from extras import *
 from extract import get_meta
 from predict_meta import predict_meta
-from utils import *
+from utils_local import *
 import matplotlib.pyplot as plt
 import pipeline_gen
 from sklearn.pipeline import Pipeline
 from joblib import dump, load
 from nyoka import skl_to_pmml
+import numpy as np
 
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
@@ -110,6 +112,7 @@ def target_class():
     target_ft=session.get('target_ft', 'not set')
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     data=pd.read_csv(path)
+    print(path)
     #features = request.form.getlist("features_ls")
     plt.clf()
     data[target_ft].hist()
@@ -125,8 +128,19 @@ def target_class_r():
         values=session.get('values', 'not set')
         metric = request.form['metric']
         values["metric"]=metric
-        print(values)
         session["values"]=values
+        target_ft=session.get('target_ft', 'not set')
+        features=session.get('features', 'not set')
+        features.remove(target_ft)
+        #feature dropping can be brought here for better perforamnce
+        path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+        print(path)
+        X,y=process_data(path,"csv",target_ft)
+        sm = SMOTE(random_state=42)
+        X_res, y_res = sm.fit_resample(X, y)
+        print(X.shape, y.shape)
+        print(X_res.shape, y_res.shape)
+        pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
         return redirect('/params')
     
 
@@ -170,7 +184,6 @@ def params_p():
         if(not prep_space):
             return "You must select at least 1 preprocessor"
 
-        values['filename']=filename
         values['task']=task
         values['data_type']=data_type
         values["search_space"]=search_space
@@ -221,7 +234,8 @@ def running():
 
 
     #check dataset checksum and lookup
-    checksum=hash_file(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))+"_"+target_ft+"_"+values["task"]+"_"+values["metric"]
+    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    checksum=hash_file(path)+"_"+target_ft+"_"+values["task"]+"_"+values["metric"]
     session["checksum"]=checksum
     with open("data/hash_list.txt","r") as f:
         lines=f.readlines()
@@ -283,8 +297,9 @@ def progress():
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
     metric=gen_metric(values["task"],values["metric"])
-    features=return_cols(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]))
-    estimator=run_task(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),values["task"],values["data_type"],target_ft)
+    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    features=return_cols(path)
+    estimator=run_task(path,values["task"],values["data_type"],target_ft)
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     col_names=["Score","Estimator","Preprocessing","Details","Download"]
@@ -343,7 +358,7 @@ def generate_model():
     arg_dict=res_list[index][1]
     param_dict=pipeline_gen.process_dict(arg_dict)
     pipe=Pipeline(([("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]))
-    X,y=process_data(os.path.join(app.config['UPLOAD_FOLDER'], values["filename"]),"csv",target_ft)
+    X,y=process_data(os.path.join(path),"csv",target_ft)
     pipe.fit(X,y)
     dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
     filehandler = open("tmp_files/model_{}.pickle".format(str(index)), 'wb')
