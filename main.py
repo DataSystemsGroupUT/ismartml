@@ -96,7 +96,7 @@ def feature_pgr():
         session["features"]=features
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,features)
-        new_data.to_csv(path)
+        new_data.to_csv(path,index=False)
         return redirect('/target_class')
     
 
