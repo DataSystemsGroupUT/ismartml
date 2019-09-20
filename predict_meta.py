@@ -7,6 +7,9 @@ from joblib import dump, load
 Model="fr.joblib"
 Scaler="scaler.joblib"
 
+
+Time_Model="time_predict.joblib"
+
 classes_og=['sklearn.KNeighborsClassifier',
        'sklearn.GaussianProcessClassifier',
        'sklearn.DecisionTreeClassifier', 'sklearn.RandomForestClassifier',
@@ -49,4 +52,10 @@ def predict_meta(meta):
     ress=[[classes[srt[i]],float(outp[srt[i]])] for i in range(len(srt))]
     ress=filter_excluded(ress) #comment this out to get full results
     return ress 
+
+def predict_time(meta):
+    model=load(Time_Model)
+    X=meta.reshape(1,-1)
+    outp=model.predict(X)
+    return outp
 

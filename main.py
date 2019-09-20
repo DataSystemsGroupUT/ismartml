@@ -11,7 +11,7 @@ import pickle
 from multi import run_task, process_data
 from extras import *
 from extract import get_meta
-from predict_meta import predict_meta
+from predict_meta import predict_meta, predict_time
 from utils_local import *
 import matplotlib.pyplot as plt
 import pipeline_gen
@@ -201,12 +201,22 @@ def params_p():
 def budget():
     task=session.get("task","not set")
     values=session.get('values', 'not set')
+    total_pred_time=0
+    filename=session.get("filename","not set")
+    meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),'csv')
+    time_pred=predict_time(meta[1:])
+    print(time_pred)
     for each in values["search_space"]:
         if each in ESTIMATOR_TIMES.keys():
-            print(each)
+            tm=ESTIMATOR_TIMES[each]
+            total_pred_time+=tm*(time_pred)
+
+
+    print(total_pred_time)
+
 
     ##Configure for Task
-    return render_template('budget.html',  zip=zip, TASK=task)
+    return render_template('budget.html',  zip=zip, TASK=task, PRED_TIME=total_pred_time)
 
 @app.route('/budget', methods=['POST'])
 def budget_p():
