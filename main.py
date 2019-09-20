@@ -93,9 +93,10 @@ def feature_pgr():
         target_ft = request.form['target_ft']
         session["target_ft"]=target_ft
         features = request.form.getlist("features_ls")
+        features.remove(target_ft)
         session["features"]=features
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-        new_data=select_cols(path,features)
+        new_data=select_cols(path,list(features)+[target_ft])
         new_data.to_csv(path,index=False)
         return redirect('/target_class')
     
@@ -112,7 +113,6 @@ def target_class():
     target_ft=session.get('target_ft', 'not set')
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     data=pd.read_csv(path)
-    print(path)
     #features = request.form.getlist("features_ls")
     plt.clf()
     data[target_ft].hist()
@@ -131,16 +131,14 @@ def target_class_r():
         session["values"]=values
         target_ft=session.get('target_ft', 'not set')
         features=session.get('features', 'not set')
-        features.remove(target_ft)
+        print(features)
+        #features.remove(target_ft)
         #feature dropping can be brought here for better perforamnce
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-        print(path)
-        X,y=process_data(path,"csv",target_ft)
-        sm = SMOTE(random_state=42)
-        X_res, y_res = sm.fit_resample(X, y)
-        print(X.shape, y.shape)
-        print(X_res.shape, y_res.shape)
-        pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
+        #X,y=process_data(path,"csv",target_ft)
+        #sm = SMOTE(random_state=42)
+        #X_res, y_res = sm.fit_resample(X, y)
+        #pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
         return redirect('/params')
     
 
@@ -351,14 +349,17 @@ def generate_model():
     values=session.get('values', 'not set')
     target_ft=session.get('target_ft', 'not set')
     features=session.get('features', 'not set')
-    features.remove(target_ft)
+    print(features)
+    print(target_ft)
+    #features.remove(target_ft)
     index = request.args.get('model', default = 0, type = int)
     filehandler = open("tmp/results.p", 'rb') 
     res_list=pickle.load(filehandler)
     arg_dict=res_list[index][1]
     param_dict=pipeline_gen.process_dict(arg_dict)
     pipe=Pipeline(([("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]))
-    X,y=process_data(os.path.join(path),"csv",target_ft)
+    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    X,y=process_data(path,"csv",target_ft)
     pipe.fit(X,y)
     dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
     filehandler = open("tmp_files/model_{}.pickle".format(str(index)), 'wb')

@@ -10,7 +10,7 @@ def hash_file(path):
 
 def return_cols(path):
     data=pd.read_csv(path)
-    return list(data.columns)[1:]
+    return list(data.columns)
 
 def select_cols(path,cols):
     data=pd.read_csv(path)
