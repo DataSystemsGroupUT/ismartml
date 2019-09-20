@@ -127,6 +127,7 @@ def target_class_r():
         # check if the post request has the file part
         values=session.get('values', 'not set')
         metric = request.form['metric']
+        smote = request.form['smote']
         values["metric"]=metric
         session["values"]=values
         target_ft=session.get('target_ft', 'not set')
@@ -134,11 +135,15 @@ def target_class_r():
         print(features)
         #features.remove(target_ft)
         #feature dropping can be brought here for better perforamnce
-        path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-        #X,y=process_data(path,"csv",target_ft)
-        #sm = SMOTE(random_state=42)
-        #X_res, y_res = sm.fit_resample(X, y)
-        #pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
+        if smote == "yes":
+            path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+            X,y=process_data(path,"csv",target_ft)
+            print("Original:", X.shape, y.shape)
+            sm = SMOTE(random_state=42)
+            X_res, y_res = sm.fit_resample(X, y)
+            print("New:", X_res.shape, y_res.shape)
+            new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
+            new_data.to_csv(path,index=False)
         return redirect('/params')
     
 
