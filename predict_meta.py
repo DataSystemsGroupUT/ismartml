@@ -8,7 +8,7 @@ Model="fr.joblib"
 Scaler="scaler.joblib"
 
 
-Time_Model="time_predict.joblib"
+Time_Model="adaboost.joblib"
 
 classes_og=['sklearn.KNeighborsClassifier',
        'sklearn.GaussianProcessClassifier',
@@ -54,8 +54,12 @@ def predict_meta(meta):
     return ress 
 
 def predict_time(meta):
-    model=load(Time_Model)
-    X=meta.reshape(1,-1)
-    outp=model.predict(X)
+
+    #model=load(Time_Model)
+    #X=meta[[0,2]].reshape(1,-1)
+    #outp=model.predict(X)
+    #print(meta)
+    print(meta[0],meta[2])
+    outp=meta[0]*meta[2]/200
     return outp
 

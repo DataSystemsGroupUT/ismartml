@@ -422,7 +422,7 @@ def  extractMetaFeatures(dataset, file, classCol = None):
     
         
     y=target_variable
-    print(y.nunique())
+    #print(y.nunique())
     
     X = dataset
     X = pd.get_dummies(X)
@@ -459,7 +459,8 @@ def get_meta(file,data_type):
         dataset=pd.DataFrame(dataset)
     elif data_type =="csv":
         dataset = pd.read_csv(file, index_col=None, header=0)
-    return extractMetaFeatures(dataset, file)
+    return (np.array(extractMetaFeatures(dataset, file)[1:],dtype='float'))
+    #return extractMetaFeatures(dataset, file)[1:]
 
 
 if __name__ == "__main__":
@@ -468,5 +469,5 @@ if __name__ == "__main__":
     dataset=np.load("uploads/digits_c.npy")
     dataset=pd.DataFrame(dataset)
     #dataset = pd.read_csv(file, index_col=None, header=0)
-    print(extractMetaFeatures(dataset, file))
+    print(np.array(extractMetaFeatures(dataset, file)[1:],dtype='float'))
 

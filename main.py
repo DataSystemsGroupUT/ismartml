@@ -64,7 +64,7 @@ def start_p():
             rec=[]
             if task=="classification":
                 meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
-                rec=predict_meta(meta[1:])
+                rec=predict_meta(meta)
             session["filename"]=filename
             session["data_type"]=data_type
             session["rec"]=rec
@@ -133,17 +133,14 @@ def target_class_r():
         session["values"]=values
         target_ft=session.get('target_ft', 'not set')
         features=session.get('features', 'not set')
-        print(features)
         #features.remove(target_ft)
         #feature dropping can be brought here for better perforamnce
         session["smote"]=smote
         if smote == "yes":
             path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
             X,y=process_data(path,"csv",target_ft)
-            print("Original:", X.shape, y.shape)
             sm = SMOTE(random_state=42)
             X_res, y_res = sm.fit_resample(X, y)
-            print("New:", X_res.shape, y_res.shape)
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
             new_data.to_csv(path,index=False)
         return redirect('/params')
@@ -204,14 +201,14 @@ def budget():
     total_pred_time=0
     filename=session.get("filename","not set")
     meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),'csv')
-    time_pred=predict_time(meta[1:])
+    time_pred=predict_time(meta)
     print(time_pred)
     for each in values["search_space"]:
         if each in ESTIMATOR_TIMES.keys():
             tm=ESTIMATOR_TIMES[each]
-            total_pred_time+=tm*(time_pred)
+            total_pred_time+=0.2*(time_pred)
 
-
+    #total_pred_time=time_pred
     print(total_pred_time)
 
 
