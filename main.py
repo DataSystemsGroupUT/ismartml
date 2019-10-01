@@ -392,7 +392,14 @@ def generate_model():
     #skl_to_pmml(pipe,features,target_ft,"tmp_files/model_{}.pmml".format(index))
     #except:
     #    open("tmp_files/model_{}.pmml".format(index), 'a').close()
-    return render_template("download.html",index=index)
+    cl=param_dict["classifier:__choice__"]
+    importance=(pipeline_gen.get_importance(pipe,cl))
+    #[print(features[i],importance[i]) for i in range(len(features))]
+    column_names=["Feature","Importance"]
+    imps=[[features[i],importance[i]] for i in range(len(features))]
+    imps=sorted(imps,key=lambda l:l[1],reverse=True)
+
+    return render_template("download.html",index=index,column_names=column_names,row_data=imps, zip=zip)
 
 
 @app.route('/download_joblib')

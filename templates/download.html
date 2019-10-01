@@ -6,4 +6,5 @@
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_pickle' )+"?model="+index|string }}');">Download .pickle</button>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_joblib' )+"?model="+index|string }}');">Download .joblib</button>
 		<!-- <button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_pmml' )+"?model="+index|string }}');">Download .pmml</button> -->
+{% include "base_results.html" %}
 {% endblock %}

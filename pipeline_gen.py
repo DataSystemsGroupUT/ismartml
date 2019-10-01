@@ -216,6 +216,27 @@ def process_dict(dict):
     return dict
 
 
+
+
+def get_importance(pipe,cl):
+    trees=["decision_tree","random_forest","extra_trees","adaboost"]
+    linear=["libsvm_svc"]
+    if cl in trees:
+        return pipe.steps[1][1].feature_importances_
+    if cl in linear:
+        try:
+            return pipe.steps[1][1].feature_importances_
+        except:
+            return "Only avilable for linear kernel"
+
+
+
+
+
+
+
+
+
 # In[37]:
 
 
