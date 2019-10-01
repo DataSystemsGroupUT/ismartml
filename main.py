@@ -66,6 +66,7 @@ def start_p():
                 meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
                 rec=predict_meta(meta)
             session["filename"]=filename
+	    session["values"]=values
             session["data_type"]=data_type
             session["rec"]=rec
             session["task"]=task
