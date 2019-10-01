@@ -219,7 +219,7 @@ def process_dict(dict):
 
 
 def get_importance(pipe,cl):
-    trees=["decision_tree","random_forest","extra_trees","adaboost"]
+    trees=["gradient_boosting","decision_tree","random_forest","extra_trees","adaboost"]
     linear=["libsvm_svc"]
     if cl in trees:
         return pipe.steps[1][1].feature_importances_
