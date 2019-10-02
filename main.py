@@ -66,7 +66,7 @@ def start_p():
                 meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
                 rec=predict_meta(meta)
             session["filename"]=filename
-	    session["values"]=values
+            session["values"]=values
             session["data_type"]=data_type
             session["rec"]=rec
             session["task"]=task
@@ -395,12 +395,15 @@ def generate_model():
     #    open("tmp_files/model_{}.pmml".format(index), 'a').close()
     cl=param_dict["classifier:__choice__"]
     importance=(pipeline_gen.get_importance(pipe,cl))
+    if len(importance)>0:
     #[print(features[i],importance[i]) for i in range(len(features))]
-    column_names=["Feature","Importance"]
-    imps=[[features[i],importance[i]] for i in range(len(features))]
-    imps=sorted(imps,key=lambda l:l[1],reverse=True)
+    	imps=[[features[i],importance[i]] for i in range(len(features))]
+    	imps=sorted(imps,key=lambda l:l[1],reverse=True)
+    else:
+        imps=[]
 
-    return render_template("download.html",index=index,column_names=column_names,row_data=imps, zip=zip)
+    column_names=["Feature","Importance"]
+    return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, zip=zip)
 
 
 @app.route('/download_joblib')

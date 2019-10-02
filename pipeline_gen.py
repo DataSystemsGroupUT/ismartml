@@ -227,7 +227,8 @@ def get_importance(pipe,cl):
         try:
             return pipe.steps[1][1].feature_importances_
         except:
-            return "Only avilable for linear kernel"
+            pass
+    return []
 
 
 
