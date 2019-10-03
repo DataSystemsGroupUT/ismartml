@@ -65,6 +65,7 @@ def start_p():
             if task=="classification":
                 meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
                 rec=predict_meta(meta)
+            values['task']=task
             session["filename"]=filename
             session["values"]=values
             session["data_type"]=data_type
@@ -121,7 +122,7 @@ def target_class():
     plt.savefig("static/images/figs/target")
     ratio=[True if (min(data[target_ft].value_counts())/max(data[target_ft].value_counts()))<0.6 else False][0]
     pre_metric=["F1" if ratio else "Accuracy" ][0]
-    return render_template("target.html",ratio=ratio,METRICS=METRICS,pre_metric=pre_metric)
+    return render_template("target.html",TASK=values["task"],ratio=ratio,METRICS=METRICS,pre_metric=pre_metric)
 
 @app.route('/target_class', methods=['POST'])
 def target_class_r():
@@ -129,7 +130,13 @@ def target_class_r():
         # check if the post request has the file part
         values=session.get('values', 'not set')
         metric = request.form['metric']
-        smote = request.form['smote']
+        
+        if values["task"]=="classification":
+            smote = request.form['smote']
+        else:
+            smote = "no"
+        
+
         values["metric"]=metric
         session["values"]=values
         target_ft=session.get('target_ft', 'not set')
@@ -144,6 +151,7 @@ def target_class_r():
             X_res, y_res = sm.fit_resample(X, y)
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
             new_data.to_csv(path,index=False)
+        print(smote)
         return redirect('/params')
     
 
@@ -187,7 +195,6 @@ def params_p():
         if(not prep_space):
             return "You must select at least 1 preprocessor"
 
-        values['task']=task
         values['data_type']=data_type
         values["search_space"]=search_space
         values["prep_space"]=prep_space

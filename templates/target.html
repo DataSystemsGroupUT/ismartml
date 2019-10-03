@@ -93,6 +93,7 @@
 		</p>
 
 	
+		{% if TASK=="classification" %}
 		<h4><p>Use SMOTE(for imbalanced dataset)</p></h4>
 		<p>
 		<div class="form-radio">
@@ -103,12 +104,10 @@
 		</div>
 		</p>
 
-
-		
-
-			<img width=700  src="static/images/figs/target.png"><figcaption>Target Class</figcaption>
 			<p> Imbalanced Dataset: {{ratio|string}}
 			</p>
+		{% endif %}
+			<img width=700  src="static/images/figs/target.png"><figcaption>Target Class</figcaption>
     <p>
 		<button type="submit" class="btn btn-primary">Next</button>
 	</p>
