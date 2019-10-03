@@ -10,8 +10,12 @@
 max-width: 100%; height: auto; 
 }
 
-figcaption {
+.feature_cap {
 	border: 1px dotted blue;
+	text-align: center;
+	}
+
+.target_cap {
 	text-align: center;
 	}
 
@@ -50,7 +54,10 @@ tr:nth-child(even) {
 	width:25%
 }
 .target_plt{
-	width:80%
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 85%;
 }
 
 
