@@ -47,8 +47,12 @@ tr:nth-child(even) {
 }
 
 .feature_plt_label{
-	width:30%
+	width:25%
 }
+.target_plt{
+	width:80%
+}
+
 
 body {
 //color: #93a1a1;

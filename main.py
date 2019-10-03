@@ -86,7 +86,7 @@ def featur_pg():
     for i in range(len(features)):
         plt.clf()
         new_data[features[i]].hist()
-        plt.savefig("static/images/figs/"+str(i))
+        plt.savefig("static/images/figs/"+str(i),bbox_inches="tight",transparent=True)
     return render_template("features.html", FEATURES=features)
 
 @app.route('/features', methods=['POST'])
@@ -119,7 +119,7 @@ def target_class():
     #features = request.form.getlist("features_ls")
     plt.clf()
     data[target_ft].hist()
-    plt.savefig("static/images/figs/target")
+    plt.savefig("static/images/figs/target",bbox_inches="tight",transparent=True)
     ratio=[True if (min(data[target_ft].value_counts())/max(data[target_ft].value_counts()))<0.6 else False][0]
     pre_metric=["F1" if ratio else "Accuracy" ][0]
     return render_template("target.html",TASK=values["task"],ratio=ratio,METRICS=METRICS,pre_metric=pre_metric)
