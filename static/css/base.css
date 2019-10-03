@@ -42,6 +42,13 @@ tr:nth-child(even) {
   background-color: green;
 }
 
+.feature_plt{
+	width:100%
+}
+
+.feature_plt_label{
+	width:30%
+}
 
 body {
 //color: #93a1a1;
