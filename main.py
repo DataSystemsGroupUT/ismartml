@@ -226,7 +226,7 @@ def budget():
 
 
     ##Configure for Task
-    return render_template('budget.html',  zip=zip, TASK=task, PRED_TIME=total_pred_time)
+    return render_template('budget.html',  zip=zip, TASK=task, PRED_TIME=int(total_pred_time))
 
 @app.route('/budget', methods=['POST'])
 def budget_p():
