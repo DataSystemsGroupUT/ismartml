@@ -410,7 +410,7 @@ def generate_model():
     #except:
     #    open("tmp_files/model_{}.pmml".format(index), 'a').close()
     cl=param_dict["classifier:__choice__"]
-    importance=(pipeline_gen.get_importance(pipe,cl))
+    importance=(pipeline_gen.get_importance(pipe,cl,smote))
     if len(importance)>0:
     #[print(features[i],importance[i]) for i in range(len(features))]
     	imps=[[features[i],importance[i]] for i in range(len(features))]
