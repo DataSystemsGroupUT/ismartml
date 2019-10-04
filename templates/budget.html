@@ -6,7 +6,7 @@
         <script>
 	//clears page cache
 	$(window).bind("pageshow", function() {
-	    var form = $('form'); 
+	    var /orm = $('form'); 
 	    // let the browser natively reset defaults
 	    form[0].reset();
 	}); 
@@ -70,7 +70,7 @@
 {% endblock %}
 
 {% block content %}
-<form method="post" action="/budget" enctype="multipart/form-data">
+<form method="post" action="/iautosklearn/budget" enctype="multipart/form-data">
     <dl>
 	    	<div class="row">
 		<div class="col-8" >

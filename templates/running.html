@@ -6,7 +6,7 @@
         <script>
             $(function () { 
                 //$("#content").load("/run_optimize"); 
-		    window.location.replace("/progress?iter={{turn}}");
+		    window.location.replace("/iautosklearn/progress?iter={{turn}}");
             });
         </script>
 	<script> 
@@ -72,7 +72,7 @@
                     </div>
 		    </p>
 		    {% block stop_button %}
-		    <button type="button" class="btn btn-primary" value=Cancel name="Cancel" onclick="window.location.replace('{{ url_for( 'start' )}}');">
+		    <button type="button" class="btn btn-primary" value=Cancel name="Cancel" onclick="window.location.replace('/iautosklearn{{ url_for( 'start' )}}');">
                     Cancel
                    </button>
 		   {% endblock %}

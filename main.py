@@ -71,7 +71,7 @@ def start_p():
             session["data_type"]=data_type
             session["rec"]=rec
             session["task"]=task
-            return redirect('/features')
+            return redirect('/iautosklearn/features')
         else:
             flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
             return redirect(request.url)
@@ -101,7 +101,7 @@ def feature_pgr():
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,list(features)+[target_ft])
         new_data.to_csv(path,index=False)
-        return redirect('/target_class')
+        return redirect('/iautosklearn/target_class')
     
 
 @app.route('/target_class')
@@ -152,7 +152,7 @@ def target_class_r():
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
             new_data.to_csv(path,index=False)
         print(smote)
-        return redirect('/params')
+        return redirect('/iautosklearn/params')
     
 
 @app.route('/params')
@@ -200,7 +200,7 @@ def params_p():
         values["prep_space"]=prep_space
         session["values"]=values
 
-        return redirect('/budget')
+        return redirect('/iautosklearn/budget')
 
 @app.route('/budget')
 def budget():
@@ -246,7 +246,7 @@ def budget_p():
         session["values"]=values
         session["reuse"]=reuse
 
-        return redirect('/running')
+        return redirect('/iautosklearn/running')
 
 @app.route('/running')
 def running():
@@ -450,7 +450,7 @@ def add_header(r):
     r.headers['Cache-Control'] = 'public, max-age=0'
     return r
 
-app.run(host='0.0.0.0', port=8080,debug=True)
+app.run(host='0.0.0.0', port=80,debug=True)
 
 
 
