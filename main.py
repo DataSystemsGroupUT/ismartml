@@ -30,6 +30,11 @@ ALLOWED_EXTENSIONS = set(["npy","csv"])
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+@app.route('/iautosklearn')
+def to_main():
+    return redirect('/iautosklearn/')
+
 @app.route('/')
 def start():
     if not os.path.exists("data/hash_list.txt"):
