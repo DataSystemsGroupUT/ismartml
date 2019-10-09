@@ -382,13 +382,14 @@ def view_model():
  
 @app.route("/generate_model")
 def generate_model():
+    #generates model from the parameters and trains the model on the train set
+    #Load parameters
     values=session.get('values', 'not set')
     smote=session.get('smote', 'not set')
     target_ft=session.get('target_ft', 'not set')
     features=session.get('features', 'not set')
     print(features)
     print(target_ft)
-    #features.remove(target_ft)
     index = request.args.get('model', default = 0, type = int)
     filehandler = open("tmp/results.p", 'rb') 
     res_list=pickle.load(filehandler)
@@ -397,7 +398,6 @@ def generate_model():
     pipeline_params=[("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]
     if smote =="yes":
         pipeline_params.insert(0,("smote",SMOTE(random_state=42)))
-        
     pipe=Pipeline(pipeline_params)
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     X,y=process_data(path,"csv",target_ft)
@@ -405,14 +405,11 @@ def generate_model():
     dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
     filehandler = open("tmp_files/model_{}.pickle".format(str(index)), 'wb')
     pickle.dump(pipe, filehandler)
-    #try:
-    #skl_to_pmml(pipe,features,target_ft,"tmp_files/model_{}.pmml".format(index))
-    #except:
-    #    open("tmp_files/model_{}.pmml".format(index), 'a').close()
     cl=param_dict["classifier:__choice__"]
     importance=(pipeline_gen.get_importance(pipe,cl,smote))
+    conf_mat=pipeline_gen.get_matrix(pipe,X,y,smote)     
+    print(conf_mat)
     if len(importance)>0:
-    #[print(features[i],importance[i]) for i in range(len(features))]
     	imps=[[features[i],importance[i]] for i in range(len(features))]
     	imps=sorted(imps,key=lambda l:l[1],reverse=True)
     else:

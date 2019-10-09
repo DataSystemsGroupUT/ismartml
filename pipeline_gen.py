@@ -32,6 +32,7 @@ import pandas as pd
 from sklearn import datasets
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix
 
 
 # In[34]:
@@ -232,6 +233,16 @@ def get_importance(pipe,cl,smote):
         except:
             pass
     return []
+
+
+def get_matrix(pipe,X,y,smote):
+    trees=["gradient_boosting","decision_tree","random_forest","extra_trees","adaboost"]
+    linear=["libsvm_svc"]
+    ind=1
+    if smote=="yes":
+        ind=2
+    pred_y=pipe.steps[ind][1].predict(X) 
+    return confusion_matrix(y,pred_y)
 
 
 
