@@ -393,6 +393,7 @@ def view_estimator():
     index = request.args.get('model', default = None, type = str)
     res_list=res_list[index]
     #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Show Models"]
+    print(res_list[0][1].keys())
     col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
     if(values["task"]=="classification"):
         res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
