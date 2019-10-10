@@ -393,11 +393,16 @@ def view_estimator():
     index = request.args.get('model', default = None, type = str)
     res_list=res_list[index]
     slc=len("classifier:{}:".format(index))
-    col_names=[x for x in list(res_list[0][1].keys()) if x[:10]=="classifier" ]
+    col_names=[x for x in list(res_list[0][1].keys()) if x[:10]=="classifier" ][1:]
 
     #res_list=[x[1].values() for x in res_list]
     res_list=[[x[1][k] for k in  col_names ] for x in res_list]
-    col_names=[x[slc:] for x in col_names]
+    col_names=[x[slc:].replace("_"," ") for x in col_names]
+    
+
+
+
+
     #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Show Models"]
     #print(res_list[0][1].keys())
     #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
