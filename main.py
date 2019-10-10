@@ -335,7 +335,14 @@ def progress():
     col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
     if values["task"]!="classification":
         col_names[1]="Regressor"
+    #Sort list by scores
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
+    #divide list in dictionaries and dump to drive
+    grouped_results={}
+    for each in CLASSIFIERS:
+        grouped_results[each]=[]
+    for each in res_list:
+        grouped_results[each[1]['classifier:__choice__' ]].append(each)
     filehandler = open("tmp/results.p", 'wb') 
     pickle.dump(res_list, filehandler)
     turn+=+1
