@@ -15,7 +15,7 @@
 	</td>
 	{% elif col =="Download"%}			
 	<td>
-		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'generate_model' )+"?model="+ outer_loop.index0|string }}');">Generate</button>
+		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'generate_model' )+"?model="+ outer_loop.index0|string +"&estimator="+estimator }}');">Generate</button>
 	</td>
 	{% elif col =="Show Models"%}			
 	<td>

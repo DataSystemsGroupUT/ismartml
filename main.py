@@ -413,7 +413,7 @@ def view_model():
     #estim=CLASSIFIERS[CLASSIFIERS_DISP.index(estim)]
     model=res_list[estim][index]
     print(model)
-    return render_template("model.html",model=model,model_index=index)
+    return render_template("model.html",model=model,estimator=estim,model_index=index)
  
 @app.route("/generate_model")
 def generate_model():
@@ -423,12 +423,11 @@ def generate_model():
     smote=session.get('smote', 'not set')
     target_ft=session.get('target_ft', 'not set')
     features=session.get('features', 'not set')
-    print(features)
-    print(target_ft)
     index = request.args.get('model', default = 0, type = int)
+    estim = request.args.get('estimator', default = None, type = str)
     filehandler = open("tmp/results.p", 'rb') 
     res_list=pickle.load(filehandler)
-    arg_dict=res_list[index][1]
+    arg_dict=res_list[estim][index][1]
     param_dict=pipeline_gen.process_dict(arg_dict)
     pipeline_params=[("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]
     if smote =="yes":
