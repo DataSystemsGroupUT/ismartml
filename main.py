@@ -332,7 +332,8 @@ def progress():
     estimator=run_task(path,values["task"],values["data_type"],target_ft)
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
-    col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
+    #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
+    col_names=["{} Max Score".format(values["metric"]),"Classifier","Details"]
     if values["task"]!="classification":
         col_names[1]="Regressor"
     #Sort list by scores
@@ -343,8 +344,14 @@ def progress():
         grouped_results[each]=[]
     for each in res_list:
         grouped_results[each[1]['classifier:__choice__' ]].append(each)
-    filehandler = open("tmp/results.p", 'wb') 
-    pickle.dump(res_list, filehandler)
+    with open("tmp/results.p", 'wb') as filehandler: 
+        pickle.dump(grouped_results, filehandler)
+    res_list=[]
+    for  each in grouped_results.keys():
+        if grouped_results[each]:
+            res_list.append((grouped_results[each][0][0],each,"View"))
+    res_list.sort(key=lambda x:x[0],reverse=True)
+
     turn+=+1
     #copy tmp files to save for later
     #filehandler = open("tmp/autosk_tmp/spaces.p", 'wb') 
@@ -353,10 +360,10 @@ def progress():
         shutil.rmtree("tmp_runs/{}".format(checksum))
     shutil.copytree("tmp/autosk_tmp","tmp_runs/{}".format(checksum))
     #
-    if(values["task"]=="classification"):
-        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
-    else:
-        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
+    #if(values["task"]=="classification"):
+        #res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
+    #else:
+        #res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
     if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
     else:
