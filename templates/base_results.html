@@ -17,6 +17,11 @@
 	<td>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'generate_model' )+"?model="+ outer_loop.index0|string }}');">Generate</button>
 	</td>
+	{% elif col =="Show Models"%}			
+	<td>
+		<button type="button" class="btn btn-primary" value="View" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'view_estimator' )+"?model="+row[1] }}');">View</button>
+	</td>
+
         {% else %}
         <td>{{row_}}</td>
         {% endif %}
