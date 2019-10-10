@@ -390,27 +390,28 @@ def view_estimator():
     values=session.get('values', 'not set')
     with open("tmp/results.p", 'rb') as filehandler:
         res_list=pickle.load(filehandler)
-    print(res_list)
     index = request.args.get('model', default = None, type = str)
-    print(index)
     res_list=res_list[index]
-    col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Show Models"]
+    #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Show Models"]
+    col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
     if(values["task"]=="classification"):
-        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
+        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
     else:
-        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view"] for row in res_list]
+        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
  
     #return render_template("model.html",model=model,model_index=index)
-    return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
+    return render_template("results.html",column_names=col_names, estimator=index,row_data=res_list,zip=zip)
  
 
 
 @app.route('/model')
 def view_model():
-    filehandler = open("tmp/results.p", 'rb') 
-    res_list=pickle.load(filehandler)
+    with open("tmp/results.p", 'rb') as filehandler:
+        res_list=pickle.load(filehandler)
     index = request.args.get('model', default = 0, type = int)
-    model=res_list[index]
+    estim = request.args.get('estimator', default = None, type = str)
+    #estim=CLASSIFIERS[CLASSIFIERS_DISP.index(estim)]
+    model=res_list[estim][index]
     print(model)
     return render_template("model.html",model=model,model_index=index)
  
