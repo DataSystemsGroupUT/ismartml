@@ -373,15 +373,15 @@ def progress():
 @app.route('/stop')
 def stop():
     values=session.get('values', 'not set')
-    filehandler = open("tmp/results.p", 'rb') 
-    res_list=pickle.load(filehandler)
-    col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
-    if values["task"]!="classification":
-        col_names[1]="Regressor"
-    if(values["task"]=="classification"):
-        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
-    else:
-        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
+    with open("tmp/results.p", 'rb') as filehandler:
+        grouped_results=pickle.load(filehandler)
+    col_names=["{} Max Score".format(values["metric"]),"Classifier","Show Models"]
+    res_list=[]
+    for  each in grouped_results.keys():
+        if grouped_results[each]:
+            res_list.append((grouped_results[each][0][0],each,"View"))
+    res_list.sort(key=lambda x:x[0],reverse=True)
+
     return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
 
 
