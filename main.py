@@ -349,7 +349,7 @@ def progress():
     res_list=[]
     for  each in grouped_results.keys():
         if grouped_results[each]:
-            res_list.append((grouped_results[each][0][0],each,len(grouped_results[each]),"View"))
+            res_list.append((round(grouped_results[each][0][0],3),each,len(grouped_results[each]),"View"))
     res_list.sort(key=lambda x:x[0],reverse=True)
 
     turn+=+1
@@ -389,15 +389,15 @@ def stop():
 def view_estimator():
     values=session.get('values', 'not set')
     with open("tmp/results.p", 'rb') as filehandler:
-        res_list=pickle.load(filehandler)
+        or_list=pickle.load(filehandler)
     index = request.args.get('model', default = None, type = str)
-    res_list=res_list[index]
+    res_list=or_list[index]
     slc=len("classifier:{}:".format(index))
     col_names=[x for x in list(res_list[0][1].keys()) if x[:10]=="classifier" ][1:]
 
     #res_list=[x[1].values() for x in res_list]
-    res_list=[[x[1][k]  if type(x[1][k])!= float else round(x[1][k],4) for k in  col_names ] for x in res_list]
-    col_names=[x[slc:].replace("_"," ") for x in col_names]
+    res_list=[[round(x[0],3)]+ [x[1][k]  if type(x[1][k])!= float else round(x[1][k],3) for k in  col_names ] for x in res_list]
+    col_names= [("{} Max Score".format(values["metric"]))]+[x[slc:].replace("_"," ") for x in col_names]
     
 
 
