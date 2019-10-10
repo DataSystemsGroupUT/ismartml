@@ -396,7 +396,7 @@ def view_estimator():
     col_names=[x for x in list(res_list[0][1].keys()) if x[:10]=="classifier" ][1:]
 
     #res_list=[x[1].values() for x in res_list]
-    res_list=[[x[1][k] for k in  col_names ] for x in res_list]
+    res_list=[[x[1][k]  if type(x[1][k])!= float else round(x[1][k],4) for k in  col_names ] for x in res_list]
     col_names=[x[slc:].replace("_"," ") for x in col_names]
     
 
