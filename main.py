@@ -333,7 +333,7 @@ def progress():
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
-    col_names=["{} Max Score".format(values["metric"]),"Classifier","Show Models"]
+    col_names=["{} Max Score".format(values["metric"]),"Classifier","Models Trained","Show Models"]
     if values["task"]!="classification":
         col_names[1]="Regressor"
     #Sort list by scores
@@ -349,7 +349,7 @@ def progress():
     res_list=[]
     for  each in grouped_results.keys():
         if grouped_results[each]:
-            res_list.append((grouped_results[each][0][0],each,"View"))
+            res_list.append((grouped_results[each][0][0],each,len(grouped_results[each]),"View"))
     res_list.sort(key=lambda x:x[0],reverse=True)
 
     turn+=+1
@@ -392,13 +392,19 @@ def view_estimator():
         res_list=pickle.load(filehandler)
     index = request.args.get('model', default = None, type = str)
     res_list=res_list[index]
+    slc=len("classifier:{}:".format(index))
+    col_names=[x for x in list(res_list[0][1].keys()) if x[:10]=="classifier" ]
+
+    #res_list=[x[1].values() for x in res_list]
+    res_list=[[x[1][k] for k in  col_names ] for x in res_list]
+    col_names=[x[slc:] for x in col_names]
     #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Show Models"]
-    print(res_list[0][1].keys())
-    col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
-    if(values["task"]=="classification"):
-        res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
-    else:
-        res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
+    #print(res_list[0][1].keys())
+    #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
+    #if(values["task"]=="classification"):
+    #    res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
+    #else:
+    #    res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
  
     #return render_template("model.html",model=model,model_index=index)
     return render_template("results.html",column_names=col_names, estimator=index,row_data=res_list,zip=zip)
@@ -438,12 +444,11 @@ def generate_model():
     X,y=process_data(path,"csv",target_ft)
     pipe.fit(X,y)
     dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
-    filehandler = open("tmp_files/model_{}.pickle".format(str(index)), 'wb')
-    pickle.dump(pipe, filehandler)
+    with open("tmp_files/model_{}.pickle".format(str(index)), 'wb') as filehandler:
+        pickle.dump(pipe, filehandler)
     cl=param_dict["classifier:__choice__"]
     importance=(pipeline_gen.get_importance(pipe,cl,smote))
     conf_mat=pipeline_gen.get_matrix(pipe,X,y,smote)     
-    print(conf_mat)
     if len(importance)>0:
     	imps=[[features[i],importance[i]] for i in range(len(features))]
     	imps=sorted(imps,key=lambda l:l[1],reverse=True)
