@@ -474,7 +474,7 @@ def generate_model():
     importance=(pipeline_gen.get_importance(pipe,cl,smote))
     conf_mat=pipeline_gen.get_matrix(pipe,X,y,smote)     
     if len(importance)>0:
-    	imps=[[features[i],importance[i]] for i in range(len(features))]
+    	imps=[[features[i],round(importance[i],2)] for i in range(len(features))]
     	imps=sorted(imps,key=lambda l:l[1],reverse=True)
     else:
         imps=[]
