@@ -333,7 +333,7 @@ def progress():
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
     #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
-    col_names=["{} Max Score".format(values["metric"]),"Classifier","Models Trained","Show Models"]
+    col_names=["Classifier","{} Max Score".format(values["metric"]),"Models Trained","Show Models"]
     if values["task"]!="classification":
         col_names[1]="Regressor"
     #Sort list by scores
@@ -349,7 +349,7 @@ def progress():
     res_list=[]
     for  each in grouped_results.keys():
         if grouped_results[each]:
-            res_list.append((round(grouped_results[each][0][0],3),each,len(grouped_results[each]),"View"))
+            res_list.append((CLASSIFIERS_DISP[CLASSIFIERS.index(each)],round(grouped_results[each][0][0],3),len(grouped_results[each]),"View"))
     res_list.sort(key=lambda x:x[0],reverse=True)
 
     turn+=+1
@@ -365,9 +365,9 @@ def progress():
     #else:
         #res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
     if(turn>=iters):
-        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip, CLASSIFIERS=CLASSIFIERS,CLASSIFIERS_DISP=CLASSIFIERS_DISP)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip)
+        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=CLASSIFIERS, CLASSIFIERS_DISP=CLASSIFIERS_DISP)
 
 
 @app.route('/stop')
