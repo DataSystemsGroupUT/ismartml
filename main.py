@@ -402,12 +402,12 @@ def view_estimator():
 
 
 
-
+    disp_index=index.replace("_"," ").title()
 
     ##plotting
     fig_names=[]
     for i in range(1,len(res_list[0])):
-        if type(res_list[0][i])==float:
+        if type(res_list[0][i])==float or type(res_list[0][i])==int:
             #print(col_names[i])
             plt.clf()
             #print([[x[0],x[i]] for x in res_list])
@@ -431,7 +431,7 @@ def view_estimator():
     #    res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
  
     #return render_template("model.html",model=model,model_index=index)
-    return render_template("estimator_results.html",column_names=col_names, estimator=index,fig_names=fig_names,row_data=res_list,zip=zip)
+    return render_template("estimator_results.html",column_names=col_names,disp_index=disp_index, estimator=index,fig_names=fig_names,row_data=res_list,zip=zip)
  
 
 

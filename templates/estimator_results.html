@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-{% block title %}{{estimator}} Models{% endblock %}
+{% block title %}{{disp_index}} Models{% endblock %}
 {% block content %}
+<h1 class="target_cap">{{disp_index}} Models</h1>
 {% for plt in fig_names %}
 	   <nobr>
 	   <label class="feature_plt_label"><img  class="feature_plt" src="static/images/figs/{{plt}}.png">
