@@ -405,6 +405,7 @@ def view_estimator():
 
 
     ##plotting
+    fig_names=[]
     for i in range(1,len(res_list[0])):
         if type(res_list[0][i])==float:
             #print(col_names[i])
@@ -412,8 +413,11 @@ def view_estimator():
             #print([[x[0],x[i]] for x in res_list])
             #plot_list=[[x[0],x[i]] for x in res_list]
             #print(plot_list)
-            plt.scatter([x[0] for x in res_list],[x[i] for x in res_list])
+            plt.xlabel(index)
+            plt.ylabel(values["metric"])
+            plt.scatter([x[i] for x in res_list],[x[0] for x in res_list])
             plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
+            fig_names.append(i)
     
 
 
@@ -427,7 +431,7 @@ def view_estimator():
     #    res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
  
     #return render_template("model.html",model=model,model_index=index)
-    return render_template("results.html",column_names=col_names, estimator=index,row_data=res_list,zip=zip)
+    return render_template("results.html",column_names=col_names, estimator=index,fig_names=fig_names,row_data=res_list,zip=zip)
  
 
 
