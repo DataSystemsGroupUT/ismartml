@@ -403,6 +403,21 @@ def view_estimator():
 
 
 
+
+    ##plotting
+    for i in range(1,len(res_list[0])):
+        if type(res_list[0][i])==float:
+            #print(col_names[i])
+            plt.clf()
+            #print([[x[0],x[i]] for x in res_list])
+            #plot_list=[[x[0],x[i]] for x in res_list]
+            #print(plot_list)
+            plt.scatter([x[0] for x in res_list],[x[i] for x in res_list])
+            plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
+    
+
+
+
     #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Show Models"]
     #print(res_list[0][1].keys())
     #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
