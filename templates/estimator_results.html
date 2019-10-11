@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block title %}{{estimator}} Models{% endblock %}
 {% block content %}
+{% for plt in fig_names %}
+	   <nobr>
+	   <label class="feature_plt_label"><img  class="feature_plt" src="static/images/figs/{{plt}}.png"><figcaption class="feature_cap">
+{{plt}}</figcaption> &nbsp; &nbsp; </label>
+	</nobr>
+{% endfor %}
+
 {% include "base_results.html" %}
 {% endblock %}
