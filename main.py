@@ -396,7 +396,7 @@ def view_estimator():
     col_names=[x for x in list(res_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
 
     #res_list=[x[1].values() for x in res_list]
-    res_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float else round(x[1][k],3) for k in  col_names ]+["View"] for x in res_list]
+    res_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names ]+["View"] for x in res_list]
     col_names= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names]+["Details"]
     
 
