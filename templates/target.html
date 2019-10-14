@@ -120,7 +120,13 @@
 		</div>
 		</p>
 		<div id="smote_params">
-		<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+		<div class="form-radio">
+			<h5><p>Eqialize all classes</p></h5>
+			<input type="radio" name="equal" value="yes" required>
+			<label>Yes </label>
+			<input type="radio" name="equal" value="no" required checked>
+			<label>No </label>
+		</div>
 		</div>
 
 			<p> Imbalanced Dataset: {{ratio|string}}
