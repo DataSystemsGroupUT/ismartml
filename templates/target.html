@@ -2,8 +2,9 @@
 {% block title %}Autosklearn{% endblock %}
 {% block head %}
     	{{ super() }}
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
+<script			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
 	//clears page cache
 	$(window).bind("pageshow", function() {
 	    var form = $('form'); 
@@ -12,6 +13,22 @@
 	}); 
         </script>
 
+	<script>
+	$(document).ready(function(){
+	    $('input[name=smote]').click(function(){
+	    if ($(this).val() == 'yes')
+	    {
+	       $("#smote_params").slideDown();
+	    }
+	    else
+	    {
+	       $("#smote_params").slideUp();
+	    }
+	    });
+
+	});
+
+	</script>
 
 
 	<script>
@@ -103,6 +120,9 @@
 			<label>No </label>
 		</div>
 		</p>
+		<div id="smote_params">
+		<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+		</div>
 
 			<p> Imbalanced Dataset: {{ratio|string}}
 			</p>
