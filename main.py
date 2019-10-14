@@ -141,6 +141,8 @@ def target_class_r():
         
         if values["task"]=="classification":
             smote = request.form['smote']
+            smote_ratios = request.form.getlist("smote_ratio[]")
+            print(smote_ratios)
         else:
             smote = "no"
         
