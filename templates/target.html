@@ -122,10 +122,13 @@
 		<div id="smote_params">
 		<div class="form-radio">
 			<h5><p>Eqialize all classes</p></h5>
-			<input type="radio" name="equal" value="yes" required>
-			<label>Yes </label>
-			<input type="radio" name="equal" value="no" required checked>
-			<label>No </label>
+			{% for cl in classes.keys() %}
+			<nobr>
+			<input type="text"class="form-control"  name="smote_ratio[]" required>
+			<p>{{cl}}:{{classes[cl]}}</p>
+			</nobr>
+			{% endfor %}
+
 		</div>
 		</div>
 
