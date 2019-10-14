@@ -9,6 +9,9 @@
 #banner{ 
 max-width: 100%; height: auto; 
 }
+#smote_params{ 
+display:none;
+}
 
 .feature_cap {
 	border: 1px dotted blue;
