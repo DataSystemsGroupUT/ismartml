@@ -123,14 +123,14 @@ def target_class():
     data=pd.read_csv(path)
     unique, counts = np.unique(data[target_ft], return_counts=True)
     classes=dict(zip(unique, counts))
-    print(classes)
+    mx_key=max(classes,key=classes.get)
     #features = request.form.getlist("features_ls")
     plt.clf()
     data[target_ft].hist()
     plt.savefig("static/images/figs/target",bbox_inches="tight",transparent=True)
     ratio=[True if (min(data[target_ft].value_counts())/max(data[target_ft].value_counts()))<0.6 else False][0]
     pre_metric=["F1" if ratio else "Accuracy" ][0]
-    return render_template("target.html",TASK=values["task"],ratio=ratio,METRICS=METRICS,pre_metric=pre_metric,classes=classes)
+    return render_template("target.html",TASK=values["task"],ratio=ratio,METRICS=METRICS,pre_metric=pre_metric,classes=classes,mx_key=mx_key)
 
 @app.route('/target_class', methods=['POST'])
 def target_class_r():

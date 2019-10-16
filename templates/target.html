@@ -120,16 +120,17 @@
 		</div>
 		</p>
 		<div id="smote_params">
-		<div class="form-radio">
-			<h5><p>Eqialize all classes</p></h5>
+			<p>Majority Class: {{mx_key}}( {{classes[mx_key]}} samples)</p>
+			<h5><p>Enter Smote Ratio(Relative to majority class)</p></h5>
 			{% for cl in classes.keys() %}
 			<nobr>
+		        <div class="form-group w-25">
+			<label> Class: {{cl}}({{classes[cl]}} samples)</label> 
 			<input type="text"class="form-control"  name="smote_ratio[]" required>
-			<p>{{cl}}:{{classes[cl]}}</p>
+			</div>
 			</nobr>
 			{% endfor %}
 
-		</div>
 		</div>
 
 			<p> Imbalanced Dataset: {{ratio|string}}
