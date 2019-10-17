@@ -124,7 +124,6 @@ def target_class():
     unique, counts = np.unique(data[target_ft], return_counts=True)
     classes=dict(zip(unique, counts))
     mx_key=max(classes,key=classes.get)
-    session["classes"]=[str(x) for x in(classes.keys())]
     #features = request.form.getlist("features_ls")
     plt.clf()
     data[target_ft].hist()
@@ -138,12 +137,11 @@ def target_class_r():
     if request.method == 'POST':
         # check if the post request has the file part
         values=session.get('values', 'not set')
-        classes=session.get('classes', 'not set')
         metric = request.form['metric']
         
         if values["task"]=="classification":
             smote = request.form['smote']
-            smote_ratios = request.form.getlist("smote_ratio[]")
+            smote_ratios =[int(x) for x in request.form.getlist("smote_ratio[]")]
             print(smote_ratios)
         else:
             smote = "no"
@@ -157,11 +155,14 @@ def target_class_r():
         session["smote"]=smote
         if smote == "yes":
             smote_dic={}
-            for i in range(len(smote_ratios)):
-                smote_dic[classes[i]]=smote_ratios[i]
-            print(smote_dic)
             path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
             X,y=process_data(path,"csv",target_ft)
+            unique, counts = np.unique(y, return_counts=True)
+            #classes=dict(zip(unique, counts))
+            #mx_key=max(classes,key=classes.get)
+            for i in range(len(smote_ratios)):
+                smote_dic[unique[i]]=smote_ratios[i]
+            print(smote_dic)
             sm = SMOTE(random_state=42,sampling_strategy=smote_dic)
             X_res, y_res = sm.fit_resample(X, y)
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
