@@ -52,6 +52,7 @@
     </tr>
 <tr>
 <td colspan="3">
+<div  id="tb_{{outer_loop.index0}}">
 <p>
 {% set i = outer_loop.index0 %}
 {% for plt in estim_dict["fig_names"][i] %}
@@ -60,7 +61,6 @@
 </label>
 	</nobr>
 {% endfor %}
-<div  id="tb_{{outer_loop.index0}}">
 <table class="blueTable" >
     <tr>
         {% for col in estim_dict["col_names"][i] %}
