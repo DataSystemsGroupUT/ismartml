@@ -39,9 +39,7 @@
 <tr>
 <td colspan="3">
 <p>
-estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
-
-{% for i in range(len(estim_dict["index"])) %}
+{% set i = outer_loop.index0 %}
 {{estim_dict["index"][i]}}
 {% for plt in estim_dict["fig_names"][i] %}
 	   <nobr>
@@ -81,7 +79,6 @@ estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":
 
 </table>
 
-{% endfor%}
 </p>
 </td>
 </tr>
