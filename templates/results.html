@@ -42,7 +42,7 @@
 	</td>
 	{% elif col =="Show Models"%}			
 	<td>
-		<button type="button" class="btn btn-primary est_col" id="est_{{outer_loop.index0}}" value="View" name="model_dl">View</button>
+		<button type="button" class="btn btn-primary est_col" id="est_{{outer_loop.index0}}" value="View" name="model_dl">Expand</button>
 	</td>
 
         {% else %}
@@ -51,7 +51,7 @@
         {% endfor %}
     </tr>
 <tr>
-<td colspan="3">
+<td colspan="4">
 <div  id="tb_{{outer_loop.index0}}" style="display: none;">
 <p>
 {% set i = outer_loop.index0 %}
