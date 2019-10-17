@@ -1,6 +1,43 @@
 {% extends "base.html" %}
 {% block title %}Results{% endblock %}
+{% block head %}
+	{{ super() }}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{% endblock %}
 {% block content %}
+
 <h1 class="target_cap">Results</h1>
-{% include "base_results.html" %}
+<p>
+<table>
+    <tr>
+        {% for col in column_names %}
+        <th>{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in row_data %}
+    {% set outer_loop = loop %}
+    <tr>
+        {% for col, row_ in zip(column_names, row) %}
+        {% if col == "Details" %}
+        <td>
+		<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('/iautosklearn{{ url_for( 'view_model' )+"?model="+outer_loop.index0|string+"&estimator="+estimator }}');">Interpret</button>
+	</td>
+	{% elif col =="Download"%}			
+	<td>
+		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'generate_model' )+"?model="+ outer_loop.index0|string +"&estimator="+estimator }}');">Generate</button>
+	</td>
+	{% elif col =="Show Models"%}			
+	<td>
+		<button type="button" class="btn btn-primary" value="View" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'view_estimator' )+"?model="+ CLASSIFIERS[CLASSIFIERS_DISP.index(row[0])] }}');">View</button>
+	</td>
+
+        {% else %}
+        <td>{{row_}}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+
+</table>
+</p>
 {% endblock %}

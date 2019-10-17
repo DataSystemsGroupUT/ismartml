@@ -343,7 +343,6 @@ def progress():
     estimator=run_task(path,values["task"],values["data_type"],target_ft)
     results=estimator(turn,values["period"],values["search_space"],values["prep_space"], metric)
     df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
-    #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
     col_names=["Classifier","{} Max Score".format(values["metric"]),"Models Trained","Show Models"]
     if values["task"]!="classification":
         col_names[1]="Regressor"
@@ -365,16 +364,37 @@ def progress():
 
     turn+=+1
     #copy tmp files to save for later
-    #filehandler = open("tmp/autosk_tmp/spaces.p", 'wb') 
-    #pickle.dump([values["search_space"],values["prep_space"]],filehandler)
     if os.path.exists("tmp_runs/{}".format(checksum)):
         shutil.rmtree("tmp_runs/{}".format(checksum))
     shutil.copytree("tmp/autosk_tmp","tmp_runs/{}".format(checksum))
-    #
-    #if(values["task"]=="classification"):
-        #res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
-    #else:
-        #res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","generate"] for row in res_list]
+
+    with open("tmp/results.p", 'rb') as filehandler:
+        or_list=pickle.load(filehandler)
+    
+    index=CLASSIFIERS[CLASSIFIERS_DISP.index(res_list[0][0])]
+    #index = request.args.get('model', default = None, type = str)
+    fres_list=or_list[index]
+    slc=len("classifier:{}:".format(index))
+    col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
+    fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
+    col_names_e= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names_e]+["Details"]
+    disp_index=index.replace("_"," ").title()
+    ##plotting
+    fig_names=[]
+    for i in range(1,len(res_list[0])):
+        if type(res_list[0][i])==float or type(res_list[0][i])==int:
+            plt.clf()
+            plt.xlabel(col_names[i])
+            plt.ylabel("{} Score".format(values["metric"]))
+            plt.scatter([x[i] for x in res_list],[x[0] for x in res_list])
+            plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
+            fig_names.append(index+str(i))
+    
+
+
+
+
+
     if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip, CLASSIFIERS=CLASSIFIERS,CLASSIFIERS_DISP=CLASSIFIERS_DISP)
     else:
@@ -405,43 +425,21 @@ def view_estimator():
     res_list=or_list[index]
     slc=len("classifier:{}:".format(index))
     col_names=[x for x in list(res_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
-
     #res_list=[x[1].values() for x in res_list]
     res_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names ]+["Interpret"] for x in res_list]
     col_names= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names]+["Details"]
-    
-
-
-
     disp_index=index.replace("_"," ").title()
-
     ##plotting
     fig_names=[]
     for i in range(1,len(res_list[0])):
         if type(res_list[0][i])==float or type(res_list[0][i])==int:
-            #print(col_names[i])
             plt.clf()
-            #print([[x[0],x[i]] for x in res_list])
-            #plot_list=[[x[0],x[i]] for x in res_list]
-            #print(plot_list)
             plt.xlabel(col_names[i])
             plt.ylabel("{} Score".format(values["metric"]))
             plt.scatter([x[i] for x in res_list],[x[0] for x in res_list])
             plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
             fig_names.append(index+str(i))
     
-
-
-
-    #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Show Models"]
-    #print(res_list[0][1].keys())
-    #col_names=["{} Score".format(values["metric"]),"Classifier","Preprocessing","Details","Download"]
-    #if(values["task"]=="classification"):
-    #    res_list=[[row[0], format_ls("cl",row[1]["classifier:__choice__"]),format_ls("cp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
-    #else:
-    #    res_list=[[row[0], format_ls("rg",row[1]["regressor:__choice__"]),format_ls("rp",row[1]["preprocessor:__choice__"]),"view","Generate"] for row in res_list]
- 
-    #return render_template("model.html",model=model,model_index=index)
     return render_template("estimator_results.html",column_names=col_names,disp_index=disp_index, estimator=index,fig_names=fig_names,row_data=res_list,zip=zip)
  
 
