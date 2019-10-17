@@ -5,9 +5,10 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
 	$(document).ready(function(){
-	    $('input[class=est_col]').click(function(){
+	    $(".est_col").click(function(){
 	       //$("#smote_params").slideDown();
-		console.log("DDDDDDDDDDDDDDDDDDDD")
+		a=$(this).attr('id')
+		console.log(a)
 	    });
 
 	});
@@ -39,7 +40,7 @@
 	</td>
 	{% elif col =="Show Models"%}			
 	<td>
-		<button type="button" class="btn btn-primary" value="View" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'view_estimator' )+"?model="+ CLASSIFIERS[CLASSIFIERS_DISP.index(row[0])] }}');">View</button>
+		<button type="button" class="btn btn-primary est_col" id="est_{{outer_loop.index0}}" value="View" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'view_estimator' )+"?model="+ CLASSIFIERS[CLASSIFIERS_DISP.index(row[0])] }}');">View</button>
 	</td>
 
         {% else %}
@@ -77,7 +78,7 @@
 	</td>
 	{% elif col =="Show Models"%}			
 	<td>
-		<button type="button" class="btn btn-primary est_col" value="View" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'view_estimator' )+"?model="+ CLASSIFIERS[CLASSIFIERS_DISP.index(row[0])] }}');">View</button>
+		<button type="button" class="btn btn-primary" value="View" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'view_estimator' )+"?model="+ CLASSIFIERS[CLASSIFIERS_DISP.index(row[0])] }}');">View</button>
 	</td>
 
         {% else %}
