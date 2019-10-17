@@ -124,6 +124,7 @@ def target_class():
     unique, counts = np.unique(data[target_ft], return_counts=True)
     classes=dict(zip(unique, counts))
     mx_key=max(classes,key=classes.get)
+    session["classes"]=[str(x) for x in(classes.keys())]
     #features = request.form.getlist("features_ls")
     plt.clf()
     data[target_ft].hist()
@@ -137,6 +138,7 @@ def target_class_r():
     if request.method == 'POST':
         # check if the post request has the file part
         values=session.get('values', 'not set')
+        classes=session.get('classes', 'not set')
         metric = request.form['metric']
         
         if values["task"]=="classification":
@@ -146,7 +148,6 @@ def target_class_r():
         else:
             smote = "no"
         
-
         values["metric"]=metric
         session["values"]=values
         target_ft=session.get('target_ft', 'not set')
@@ -155,9 +156,13 @@ def target_class_r():
         #feature dropping can be brought here for better perforamnce
         session["smote"]=smote
         if smote == "yes":
+            smote_dic={}
+            for i in range(len(smote_ratios)):
+                smote_dic[classes[i]]=smote_ratios[i]
+            print(smote_dic)
             path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
             X,y=process_data(path,"csv",target_ft)
-            sm = SMOTE(random_state=42)
+            sm = SMOTE(random_state=42,sampling_strategy=smote_dic)
             X_res, y_res = sm.fit_resample(X, y)
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
             new_data.to_csv(path,index=False)
