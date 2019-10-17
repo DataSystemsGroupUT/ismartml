@@ -371,6 +371,7 @@ def progress():
     with open("tmp/results.p", 'rb') as filehandler:
         or_list=pickle.load(filehandler)
     
+    estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
     for each in res_list:
         index=CLASSIFIERS[CLASSIFIERS_DISP.index(each[0])]
         #index = request.args.get('model', default = None, type = str)
@@ -391,13 +392,18 @@ def progress():
                 plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
                 fig_names.append(index+str(i))
     
-
+        estim_dict["col_names"].append(col_names_e)	
+        estim_dict["disp_index"].append(disp_index)	
+        estim_dict["index"].append(index)	
+        estim_dict["fig_names"].append(fig_names)	
+        estim_dict["res_list"].append(fres_list)	
+	
 
 
 
 
     if(turn>=iters):
-        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip, CLASSIFIERS=CLASSIFIERS,CLASSIFIERS_DISP=CLASSIFIERS_DISP)
+        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip, CLASSIFIERS=CLASSIFIERS,CLASSIFIERS_DISP=CLASSIFIERS_DISP, estim_dict=estim_dict)
     else:
         return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=CLASSIFIERS, CLASSIFIERS_DISP=CLASSIFIERS_DISP)
 
