@@ -383,12 +383,12 @@ def progress():
         disp_index=index.replace("_"," ").title()
         ##plotting
         fig_names=[]
-        for i in range(1,len(res_list[0])):
-            if type(res_list[0][i])==float or type(res_list[0][i])==int:
+        for i in range(1,len(fres_list[0])):
+            if type(fres_list[0][i])==float or type(fres_list[0][i])==int:
                 plt.clf()
-                plt.xlabel(col_names[i])
+                plt.xlabel(col_names_e[i])
                 plt.ylabel("{} Score".format(values["metric"]))
-                plt.scatter([x[i] for x in res_list],[x[0] for x in res_list])
+                plt.scatter([x[i] for x in fres_list],[x[0] for x in fres_list])
                 plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
                 fig_names.append(index+str(i))
     
