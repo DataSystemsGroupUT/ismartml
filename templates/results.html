@@ -7,7 +7,7 @@
 	$(document).ready(function(){
 	    $(".est_col").click(function(){
 	       //$("#smote_params").slideDown();
-		a=$(this).attr('id')
+		a=$(this).attr('id').slice(4);
 		console.log(a)
 	    });
 
@@ -40,7 +40,7 @@
 	</td>
 	{% elif col =="Show Models"%}			
 	<td>
-		<button type="button" class="btn btn-primary est_col" id="est_{{outer_loop.index0}}" value="View" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'view_estimator' )+"?model="+ CLASSIFIERS[CLASSIFIERS_DISP.index(row[0])] }}');">View</button>
+		<button type="button" class="btn btn-primary est_col" id="est_{{outer_loop.index0}}" value="View" name="model_dl">View</button>
 	</td>
 
         {% else %}
@@ -58,7 +58,7 @@
 </label>
 	</nobr>
 {% endfor %}
-<table class="blueTable" id="estimator_id">
+<table class="blueTable" id="tb_{{outer_loop.index0}}">
     <tr>
         {% for col in estim_dict["col_names"][i] %}
         <th>{{col}}</th>
