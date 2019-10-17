@@ -40,4 +40,46 @@
 
 </table>
 </p>
+
+
+
+<p>
+estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
+{% for i in range(len(estim_dict["index"])) %}
+{{estim_dict["index"][i]}}
+<table>
+    <tr>
+        {% for col in estim_dict["col_names"][i] %}
+        <th>{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in estim_dict["res_list"][i] %}
+    {% set outer_loop = loop %}
+    <tr>
+        {% for col, row_ in zip(estim_dict["col_names"][i], row) %}
+        {% if col == "Details" %}
+        <td>
+		<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('/iautosklearn{{ url_for( 'view_model' )+"?model="+outer_loop.index0|string+"&estimator="+ estim_dict["index"][i] }}');">Interpret</button>
+	</td>
+	{% elif col =="Download"%}			
+	<td>
+		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'generate_model' )+"?model="+ outer_loop.index0|string +"&estimator="+estimator }}');">Generate</button>
+	</td>
+	{% elif col =="Show Models"%}			
+	<td>
+		<button type="button" class="btn btn-primary" value="View" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'view_estimator' )+"?model="+ CLASSIFIERS[CLASSIFIERS_DISP.index(row[0])] }}');">View</button>
+	</td>
+
+        {% else %}
+        <td>{{row_}}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endfor%}
+</p>
+
 {% endblock %}
