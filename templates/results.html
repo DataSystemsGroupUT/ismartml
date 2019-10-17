@@ -45,8 +45,15 @@
 
 <p>
 estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
+
 {% for i in range(len(estim_dict["index"])) %}
 {{estim_dict["index"][i]}}
+{% for plt in estim_dict["fig_names"][i] %}
+	   <nobr>
+	   <label class="feature_plt_label"><img  class="feature_plt" src="static/images/figs/{{plt}}.png">
+</label>
+	</nobr>
+{% endfor %}
 <table>
     <tr>
         {% for col in estim_dict["col_names"][i] %}
