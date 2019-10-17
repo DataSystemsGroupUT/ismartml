@@ -60,7 +60,8 @@
 </label>
 	</nobr>
 {% endfor %}
-<table class="blueTable" id="tb_{{outer_loop.index0}}">
+<div  id="tb_{{outer_loop.index0}}">
+<table class="blueTable" >
     <tr>
         {% for col in estim_dict["col_names"][i] %}
         <th>{{col}}</th>
@@ -91,7 +92,7 @@
     {% endfor %}
 
 </table>
-
+</div>
 </p>
 </td>
 </tr>
