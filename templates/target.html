@@ -126,7 +126,7 @@
 			<nobr>
 		        <div class="form-group w-25">
 			<label> Class: {{cl}}({{classes[cl]}} samples)</label> 
-			<input type="text"class="form-control"  name="smote_ratio[]" value={{classes[cl]}} required>
+			<input type="text"class="form-control"  name="smote_ratio[]" value={{classes[cl]/classes[mx_key]}} required>
 			</div>
 			</nobr>
 			{% endfor %}

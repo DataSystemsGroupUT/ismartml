@@ -141,8 +141,6 @@ def target_class_r():
         
         if values["task"]=="classification":
             smote = request.form['smote']
-            smote_ratios =[int(x) for x in request.form.getlist("smote_ratio[]")]
-            print(smote_ratios)
         else:
             smote = "no"
         
@@ -160,6 +158,8 @@ def target_class_r():
             unique, counts = np.unique(y, return_counts=True)
             #classes=dict(zip(unique, counts))
             #mx_key=max(classes,key=classes.get)
+            smote_ratios =[int(float(x)*max(counts)) for x in request.form.getlist("smote_ratio[]")]
+            print(smote_ratios)
             for i in range(len(smote_ratios)):
                 smote_dic[unique[i]]=smote_ratios[i]
             print(smote_dic)
