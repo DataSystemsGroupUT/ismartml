@@ -59,6 +59,24 @@
 	  }
 	}
 	</script>
+	<script>
+	$(document).ready(function(){
+	    $(".est_col").click(function(){
+	       //$("#smote_params").slideDown();
+		a="#tb_"+$(this).attr('id').slice(4);
+	       b=$(a).attr('id');
+		console.log(b)
+	       $(a).slideToggle();
+	    });
+
+	});
+	</script>
+
+	<div id="header_bar">
+	<img id="banner" src ="static/images/status/status7.svg">
+     </div>
+
+
 
 
 	<div id="header_bar">
