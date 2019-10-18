@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Download Model{% endblock %}
 
+{% block head %}
+    	{{ super() }}
+
+	<div id="header_bar">
+	<img id="banner" src ="static/images/status/status8.svg">
+     </div>
+{% endblock %}
 {% block content %}
-</p>
+
+<p>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'download_pickle' )+"?model="+index|string }}');">Download .pickle</button>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'download_joblib' )+"?model="+index|string }}');">Download .joblib</button>
 		<!-- <button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_pmml' )+"?model="+index|string }}');">Download .pmml</button> -->

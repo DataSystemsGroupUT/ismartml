@@ -16,6 +16,9 @@
 	});
 	</script>
 
+	<div id="header_bar">
+	<img id="banner" src ="static/images/status/status7.svg">
+     </div>
 
 {% endblock %}
 {% block content %}
@@ -73,7 +76,7 @@
         {% for col, row_ in zip(estim_dict["col_names"][i], row) %}
         {% if col == "Details" %}
         <td>
-		<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('/iautosklearn{{ url_for( 'view_model' )+"?model="+outer_loop.index0|string+"&estimator="+ estim_dict["index"][i] }}');">Interpret</button>
+		<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('/iautosklearn{{ url_for( 'generate_model' )+"?model="+outer_loop.index0|string+"&estimator="+ estim_dict["index"][i] }}');">Interpret</button>
 	</td>
 	{% elif col =="Download"%}			
 	<td>
