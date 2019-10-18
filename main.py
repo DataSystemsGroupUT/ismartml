@@ -417,10 +417,43 @@ def stop():
     res_list=[]
     for  each in grouped_results.keys():
         if grouped_results[each]:
-            res_list.append((grouped_results[each][0][0],each,"View"))
+            res_list.append((CLASSIFIERS_DISP[CLASSIFIERS.index(each)],round(grouped_results[each][0][0],3),len(grouped_results[each]),"View"))
     res_list.sort(key=lambda x:x[0],reverse=True)
 
-    return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip)
+
+
+    estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
+    for each in res_list:
+        index=CLASSIFIERS[CLASSIFIERS_DISP.index(each[0])]
+        #index = request.args.get('model', default = None, type = str)
+        fres_list=grouped_results[index]
+        slc=len("classifier:{}:".format(index))
+        col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
+        fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
+        col_names_e= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names_e]+["Details"]
+        disp_index=index.replace("_"," ").title()
+        ##plotting
+        fig_names=[]
+        for i in range(1,len(fres_list[0])):
+            if type(fres_list[0][i])==float or type(fres_list[0][i])==int:
+                plt.clf()
+                plt.xlabel(col_names_e[i])
+                plt.ylabel("{} Score".format(values["metric"]))
+                plt.scatter([x[i] for x in fres_list],[x[0] for x in fres_list])
+                plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
+                fig_names.append(index+str(i))
+    
+        estim_dict["col_names"].append(col_names_e)	
+        estim_dict["disp_index"].append(disp_index)	
+        estim_dict["index"].append(index)	
+        estim_dict["fig_names"].append(fig_names)	
+        estim_dict["res_list"].append(fres_list)	
+	
+
+
+
+
+    return render_template("results.html",column_names=col_names, estim_dict=estim_dict,row_data=res_list,zip=zip)
 
 
 @app.route('/estimator')
