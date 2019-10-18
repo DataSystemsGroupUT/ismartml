@@ -522,7 +522,7 @@ def generate_model():
         pickle.dump(pipe, filehandler)
     cl=param_dict["classifier:__choice__"]
     importance=(pipeline_gen.get_importance(pipe,cl,smote))
-    conf_mat=pipeline_gen.get_matrix(pipe,X,y,smote)     
+    metric_res=pipeline_gen.get_matrix(pipe,X,y,smote)     
 
     if len(importance)>0:
     	imps=[[features[i],round(importance[i],2)] for i in range(len(features))]
@@ -531,7 +531,7 @@ def generate_model():
         imps=[]
 
     column_names=["Feature","Importance"]
-    return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, zip=zip)
+    return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
 
 
 @app.route('/download_joblib')

@@ -9,15 +9,21 @@
      </div>
 {% endblock %}
 {% block content %}
-
+<div class="target_plt">
 <p>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'download_pickle' )+"?model="+index|string }}');">Download .pickle</button>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'download_joblib' )+"?model="+index|string }}');">Download .joblib</button>
 		<!-- <button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_pmml' )+"?model="+index|string }}');">Download .pmml</button> -->
 </p>
+</div>
 <p>
 <img class="target_plt"  src="static/images/figs/test.png"><figcaption class="target_cap">Confustion matrix</figcaption>
-    
+<div class="target_plt">
+<p>Accuracy Score: {{metric_res[0]}}</p>
+<p>Recall Score: {{metric_res[1]}}</p>
+<p>Precisio Score: {{metric_res[2]}}</p>
+<p>F1 Score: {{metric_res[3]}}</p>
+</div>
 </p>
 {% if not row_data %}
 <p>Not supported for this classifier</p>
