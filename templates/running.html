@@ -90,7 +90,7 @@
                     </div>
 		    </p>
 		    {% block stop_button %}
-		    <button type="button" class="btn btn-primary" value=Cancel name="Cancel" onclick="window.location.replace('/iautosklearn{{ url_for( 'start' )}}');">
+		    <button type="button" class="btn btn-primary" value=Cancel name="Cancel"  data-toggle="modal" data-target="#exampleModalCenter" onclick="window.location.replace('/iautosklearn{{ url_for( 'start' )}}');">
                     Cancel
                    </button>
 		   {% endblock %}
