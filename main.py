@@ -512,6 +512,7 @@ def generate_model():
     pipeline_params=[("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]
     if smote =="yes":
         pipeline_params.insert(0,("smote",SMOTE(random_state=42)))
+        
     pipe=Pipeline(pipeline_params)
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     X,y=process_data(path,"csv",target_ft)
@@ -522,6 +523,7 @@ def generate_model():
     cl=param_dict["classifier:__choice__"]
     importance=(pipeline_gen.get_importance(pipe,cl,smote))
     conf_mat=pipeline_gen.get_matrix(pipe,X,y,smote)     
+
     if len(importance)>0:
     	imps=[[features[i],round(importance[i],2)] for i in range(len(features))]
     	imps=sorted(imps,key=lambda l:l[1],reverse=True)

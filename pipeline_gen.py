@@ -8,6 +8,7 @@ from sklearn.decomposition import FastICA, PCA
 from sklearn.ensemble import ExtraTreesClassifier, RandomTreesEmbedding
 from sklearn.svm import LinearSVC
 from sklearn.preprocessing import PolynomialFeatures
+from sklearn.metrics import precision_score,recall_score,f1_score,accuracy_score
 
 
 # In[45]:
@@ -303,7 +304,12 @@ def get_matrix(pipe,X,y,smote):
         ind=2
     pred_y=pipe.steps[ind][1].predict(X) 
     plot_confusion_matrix(y,pred_y,np.unique(y))
-    return confusion_matrix(y,pred_y)
+    #confusion_matrix(y,pred_y)
+    a=accuracy_score(y, pred_y)   
+    r=recall_score(y, pred_y)   
+    f=f1_score(y, pred_y, average=None)   
+    p=precision_score(y, pred_y)   
+    return [a,r,p,f]
 
 
 
