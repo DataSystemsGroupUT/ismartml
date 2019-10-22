@@ -1,6 +1,5 @@
 import os
 from imblearn.over_sampling import SMOTE
-#import magic
 import urllib.request
 import pandas as pd
 from app import app
@@ -29,7 +28,6 @@ ALLOWED_EXTENSIONS = set(["npy","csv"])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 
 @app.route('/iautosklearn')
 def to_main():
@@ -63,9 +61,6 @@ def start_p():
             if(data_type=="csv" and (filename[-3:]!="csv" and filename[-3:]!="CSV")):
                 return "Wrong file extension (expected .csv)"
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            
-
-
             rec=[]
             if task=="classification":
                 meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),data_type)
@@ -85,7 +80,6 @@ def start_p():
 def featur_pg():
     values=session.get('values', 'not set')
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-    #features = request.form.getlist("features_ls")
     features=return_cols(path)
     new_data=select_cols(path,features)
     for i in range(len(features)):
@@ -107,7 +101,6 @@ def feature_pgr():
         new_data=select_cols(path,list(features)+[target_ft])
         new_data.to_csv(path,index=False)
         return redirect('/iautosklearn/target_class')
-    
 
 @app.route('/target_class')
 def target_class():
@@ -124,7 +117,6 @@ def target_class():
     unique, counts = np.unique(data[target_ft], return_counts=True)
     classes=dict(zip(unique, counts))
     mx_key=max(classes,key=classes.get)
-    #features = request.form.getlist("features_ls")
     plt.clf()
     data[target_ft].hist()
     plt.savefig("static/images/figs/target",bbox_inches="tight",transparent=True)
@@ -139,17 +131,14 @@ def target_class_r():
         # check if the post request has the file part
         values=session.get('values', 'not set')
         metric = request.form['metric']
-        
         if values["task"]=="classification":
             smote = request.form['smote']
         else:
             smote = "no"
-        
         values["metric"]=metric
         session["values"]=values
         target_ft=session.get('target_ft', 'not set')
         features=session.get('features', 'not set')
-        #features.remove(target_ft)
         #feature dropping can be brought here for better perforamnce
         session["smote"]=smote
         if smote == "yes":
@@ -159,8 +148,6 @@ def target_class_r():
             unique, counts = np.unique(y, return_counts=True)
             if min(counts)<=SMOTE_N:
                 SMOTE_N=min(counts)-1
-            #classes=dict(zip(unique, counts))
-            #mx_key=max(classes,key=classes.get)
             smote_ratios =[int(float(x)*max(counts)) for x in request.form.getlist("smote_ratio[]")]
             print(smote_ratios)
             for i in range(len(smote_ratios)):
@@ -208,17 +195,14 @@ def params_p():
         task=session.get("task","not set")
         search_space= request.form.getlist("estim_ls")
         prep_space= request.form.getlist("prep_ls")
-
         if(not search_space):
             return "You must select at least 1 estimator"
         if(not prep_space):
             return "You must select at least 1 preprocessor"
-
         values['data_type']=data_type
         values["search_space"]=search_space
         values["prep_space"]=prep_space
         session["values"]=values
-
         return redirect('/iautosklearn/budget')
 
 @app.route('/budget')
@@ -234,11 +218,8 @@ def budget():
         if each in ESTIMATOR_TIMES.keys():
             tm=ESTIMATOR_TIMES[each]
             total_pred_time+=0.2*(time_pred)
-
     #total_pred_time=time_pred
     print(total_pred_time)
-
-
     ##Configure for Task
     return render_template('budget.html',  zip=zip, TASK=task, PRED_TIME=int(total_pred_time))
 
@@ -252,19 +233,16 @@ def budget_p():
         filename=session.get("filename","not set")
         task=session.get("task","not set")
         reuse = request.form['reuse']
-
         if(int(time)<30):
             return "Time budget must be at least 30 seconds"
         if(int(period)<30):
             return "Update period must be at least 30 seconds"
         if(int(period)>int(time)):
             return "Update period can't be larger than total time budget"
-
         values['time']=int(time)
         values['period']=int(period)
         session["values"]=values
         session["reuse"]=reuse
-
         return redirect('/iautosklearn/running')
 
 @app.route('/running')
@@ -275,8 +253,6 @@ def running():
     extra=values["time"]%values["period"]
     format_period=format_time(values["period"])
     reuse=session.get('reuse', 'not set')
-
-
     #check dataset checksum and lookup
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     checksum=hash_file(path)+"_"+target_ft+"_"+values["task"]+"_"+values["metric"]
@@ -298,7 +274,6 @@ def running():
             #modify space.pcs
             olds=[]
             old_pres=[]
-            #path="tmp/autosk_tmp/smac3-output/run_0.OLD/configspace.pcs"
             path="tmp/autosk_tmp/space.pcs"
             with open(path,"r") as f:
                 lines=f.readlines()
@@ -309,25 +284,15 @@ def running():
                         olds=[ar.strip() for ar in line[len(pre):].split("}")[0].split(",")]
                     elif "preprocessor:__choice__ {" in line:
                         old_pres=[ar.strip() for ar in line[len("preprocessor:__choice__ {"):].split("}")[0].split(",")]
-
-                        
-
-            
             for param in values["search_space"]:
                 if param not in olds:
                     olds.append(param)
-
             for param in values["prep_space"]:
                 if param not in old_pres:
                     old_pres.append(param)
-
             values["search_space"]=olds
             values["prep_space"]=old_pres
             session["values"]=values
-
-
-
-
     return render_template('running.html',turn=0,task=values["task"],time=values["time"],iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"])
 
 @app.route('/progress')
@@ -364,20 +329,16 @@ def progress():
         if grouped_results[each]:
             res_list.append((CLASSIFIERS_DISP[CLASSIFIERS.index(each)],round(grouped_results[each][0][0],3),len(grouped_results[each]),"View"))
     res_list.sort(key=lambda x:x[0],reverse=True)
-
     turn+=+1
     #copy tmp files to save for later
     if os.path.exists("tmp_runs/{}".format(checksum)):
         shutil.rmtree("tmp_runs/{}".format(checksum))
     shutil.copytree("tmp/autosk_tmp","tmp_runs/{}".format(checksum))
-
     with open("tmp/results.p", 'rb') as filehandler:
         or_list=pickle.load(filehandler)
-    
     estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
     for each in res_list:
         index=CLASSIFIERS[CLASSIFIERS_DISP.index(each[0])]
-        #index = request.args.get('model', default = None, type = str)
         fres_list=or_list[index]
         slc=len("classifier:{}:".format(index))
         col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
@@ -394,22 +355,15 @@ def progress():
                 plt.scatter([x[i] for x in fres_list],[x[0] for x in fres_list])
                 plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
                 fig_names.append(index+str(i))
-    
         estim_dict["col_names"].append(col_names_e)	
         estim_dict["disp_index"].append(disp_index)	
         estim_dict["index"].append(index)	
         estim_dict["fig_names"].append(fig_names)	
         estim_dict["res_list"].append(fres_list)	
-	
-
-
-
-
     if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=CLASSIFIERS,CLASSIFIERS_DISP=CLASSIFIERS_DISP, estim_dict=estim_dict)
     else:
         return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=CLASSIFIERS, CLASSIFIERS_DISP=CLASSIFIERS_DISP,estim_dict=estim_dict)
-
 
 @app.route('/stop')
 def stop():
@@ -422,13 +376,9 @@ def stop():
         if grouped_results[each]:
             res_list.append((CLASSIFIERS_DISP[CLASSIFIERS.index(each)],round(grouped_results[each][0][0],3),len(grouped_results[each]),"View"))
     res_list.sort(key=lambda x:x[0],reverse=True)
-
-
-
     estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
     for each in res_list:
         index=CLASSIFIERS[CLASSIFIERS_DISP.index(each[0])]
-        #index = request.args.get('model', default = None, type = str)
         fres_list=grouped_results[index]
         slc=len("classifier:{}:".format(index))
         col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
@@ -439,25 +389,13 @@ def stop():
         fig_names=[]
         for i in range(1,len(fres_list[0])):
             if type(fres_list[0][i])==float or type(fres_list[0][i])==int:
-                #plt.clf()
-                #plt.xlabel(col_names_e[i])
-                #plt.ylabel("{} Score".format(values["metric"]))
-                #plt.scatter([x[i] for x in fres_list],[x[0] for x in fres_list])
-                #plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
                 fig_names.append(index+str(i))
-    
         estim_dict["col_names"].append(col_names_e)	
         estim_dict["disp_index"].append(disp_index)	
         estim_dict["index"].append(index)	
         estim_dict["fig_names"].append(fig_names)	
         estim_dict["res_list"].append(fres_list)	
-	
-
-
-
-
     return render_template("results.html",column_names=col_names, estim_dict=estim_dict,row_data=res_list,zip=zip)
-
 
 @app.route('/estimator')
 def view_estimator():
@@ -468,7 +406,6 @@ def view_estimator():
     res_list=or_list[index]
     slc=len("classifier:{}:".format(index))
     col_names=[x for x in list(res_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
-    #res_list=[x[1].values() for x in res_list]
     res_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names ]+["Interpret"] for x in res_list]
     col_names= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names]+["Details"]
     disp_index=index.replace("_"," ").title()
@@ -482,18 +419,14 @@ def view_estimator():
             plt.scatter([x[i] for x in res_list],[x[0] for x in res_list])
             plt.savefig("static/images/figs/"+index+str(i),bbox_inches="tight",transparent=True)
             fig_names.append(index+str(i))
-    
     return render_template("estimator_results.html",column_names=col_names,disp_index=disp_index, estimator=index,fig_names=fig_names,row_data=res_list,zip=zip)
  
-
-
 @app.route('/model')
 def view_model():
     with open("tmp/results.p", 'rb') as filehandler:
         res_list=pickle.load(filehandler)
     index = request.args.get('model', default = 0, type = int)
     estim = request.args.get('estimator', default = None, type = str)
-    #estim=CLASSIFIERS[CLASSIFIERS_DISP.index(estim)]
     model=res_list[estim][index]
     print(model)
     return render_template("model.html",model=model,estimator=estim,model_index=index)
@@ -516,7 +449,6 @@ def generate_model():
     pipeline_params=[("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]
     if smote =="yes":
         pipeline_params.insert(0,("smote",SMOTE(random_state=42)))
-        
     pipe=Pipeline(pipeline_params)
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     X,y=process_data(path,"csv",target_ft)
@@ -527,16 +459,13 @@ def generate_model():
     cl=param_dict["classifier:__choice__"]
     importance=(pipeline_gen.get_importance(pipe,cl,smote))
     metric_res=pipeline_gen.get_matrix(pipe,X,y,smote)     
-
     if len(importance)>0:
     	imps=[[features[i],round(importance[i],2)] for i in range(len(features))]
     	imps=sorted(imps,key=lambda l:l[1],reverse=True)
     else:
         imps=[]
-
     column_names=["Feature","Importance"]
     return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
-
 
 @app.route('/download_joblib')
 def download_joblib():
@@ -548,16 +477,12 @@ def download_pickle():
     index = request.args.get('model', default = 0, type = int)
     return send_from_directory("tmp_files",'model_{}.pickle'.format(str(index)), as_attachment=True)
 
-
-
 @app.route('/download_pmml')
 def download_pmml():
     index = request.args.get('model', default = 0, type = int)
     if os.path.getsize("tmp_files/model_{}.pmml".format(index))>0:
         return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
     return "This pipeline is not supported for pmml. Try joblib/pickle"
-
-
 
 @app.route("/test")
 def test():
