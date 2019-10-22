@@ -95,6 +95,8 @@ def feature_pgr():
         target_ft = request.form['target_ft']
         session["target_ft"]=target_ft
         features = request.form.getlist("features_ls")
+        if(target_ft not in features):
+            return "You can't discard the target class"      
         features.remove(target_ft)
         session["features"]=features
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
@@ -159,7 +161,6 @@ def target_class_r():
             new_data.to_csv(path,index=False)
         print(smote)
         return redirect('/iautosklearn/params')
-    
 
 @app.route('/params')
 def params():
@@ -428,7 +429,6 @@ def view_model():
     index = request.args.get('model', default = 0, type = int)
     estim = request.args.get('estimator', default = None, type = str)
     model=res_list[estim][index]
-    print(model)
     return render_template("model.html",model=model,estimator=estim,model_index=index)
  
 @app.route("/generate_model")
