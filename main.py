@@ -501,6 +501,7 @@ def generate_model():
     #Load parameters
     values=session.get('values', 'not set')
     smote=session.get('smote', 'not set')
+    smote="no" #dont include smote in the pipeline
     target_ft=session.get('target_ft', 'not set')
     features=session.get('features', 'not set')
     index = request.args.get('model', default = 0, type = int)
