@@ -16,7 +16,7 @@ PREPROCESSORS_RG=["no_preprocessing","extra_trees_preproc_for_regression","fast_
 
 PREPROCESSORS_RG_DISP=["No Preprocessing","Extra Trees Preprocessor","Fast ICA","Feature Agglomeration","Kernel PCA","Kitchen Sinks","Liblinear SVC Preprocessor","Nystroem Sampler","PCA","Polynomial","Random Trees Embedding","Select Percentile Classification","Select Percentile Regression","Select Rates","Truncated SVD"]
 
-METRICS_CL=[metrics.accuracy,metrics.f1,metrics.precision, metrics.recall]
+METRICS_CL=[metrics.accuracy,metrics.f1_macro,metrics.precision, metrics.recall]
 
 METRICS_RG=[metrics.r2,metrics.mean_squared_error,metrics.mean_absolute_error,metrics.median_absolute_error]
 
