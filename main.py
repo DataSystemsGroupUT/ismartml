@@ -135,6 +135,7 @@ def target_class():
 @app.route('/target_class', methods=['POST'])
 def target_class_r():
     if request.method == 'POST':
+        SMOTE_N=5
         # check if the post request has the file part
         values=session.get('values', 'not set')
         metric = request.form['metric']
@@ -156,6 +157,8 @@ def target_class_r():
             path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
             X,y=process_data(path,"csv",target_ft)
             unique, counts = np.unique(y, return_counts=True)
+            if min(counts)<=SMOTE_N:
+                SMOTE_N=min(counts)-1
             #classes=dict(zip(unique, counts))
             #mx_key=max(classes,key=classes.get)
             smote_ratios =[int(float(x)*max(counts)) for x in request.form.getlist("smote_ratio[]")]
@@ -163,7 +166,7 @@ def target_class_r():
             for i in range(len(smote_ratios)):
                 smote_dic[unique[i]]=smote_ratios[i]
             print(smote_dic)
-            sm = SMOTE(random_state=42,sampling_strategy=smote_dic)
+            sm = SMOTE(random_state=42,sampling_strategy=smote_dic, k_neighbors=SMOTE_N)
             X_res, y_res = sm.fit_resample(X, y)
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
             new_data.to_csv(path,index=False)
