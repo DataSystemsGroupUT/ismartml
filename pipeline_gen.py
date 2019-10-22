@@ -306,9 +306,9 @@ def get_matrix(pipe,X,y,smote):
     plot_confusion_matrix(y,pred_y,np.unique(y))
     #confusion_matrix(y,pred_y)
     a=accuracy_score(y, pred_y)   
-    r=recall_score(y, pred_y)   
-    f=f1_score(y, pred_y, average=None)   
-    p=precision_score(y, pred_y)   
+    r=recall_score(y, pred_y,average="macro")   
+    f=f1_score(y, pred_y, average="macro")   
+    p=precision_score(y, pred_y,average="macro")   
     return [a,r,p,f]
 
 
