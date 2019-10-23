@@ -460,8 +460,11 @@ def generate_model():
     importance=(pipeline_gen.get_importance(pipe,cl,smote))
     metric_res=pipeline_gen.get_matrix(pipe,X,y,smote)     
     if len(importance)>0:
-    	imps=[[features[i],round(importance[i],2)] for i in range(len(features))]
-    	imps=sorted(imps,key=lambda l:l[1],reverse=True)
+        imps=[[features[i],round(importance[i],2)] for i in range(len(features))]
+        imps=sorted(imps,key=lambda l:l[1],reverse=True)
+        plt.clf()
+        plt.barh(features,importance,align='center',height=0.1)
+        plt.savefig("static/images/figs/model_imp",bbox_inches="tight",transparent=True)
     else:
         imps=[]
     column_names=["Feature","Importance"]
