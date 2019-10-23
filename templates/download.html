@@ -16,7 +16,6 @@
 </p>
 <p>
 <img class="target_plt"  src="static/images/figs/test.png"><figcaption class="target_cap">Confustion matrix</figcaption>
-<img class="target_plt"  src="static/images/figs/model_imp.png"><figcaption class="target_cap">Confustion matrix</figcaption>
 <div>
 <p>Accuracy Score: {{metric_res[0]}}</p>
 <p>Recall Score: {{metric_res[1]}}</p>
@@ -27,6 +26,6 @@
 {% if not row_data %}
 <p>Not supported for this classifier</p>
 {% else %}
-{% include "base_results.html" %}
+<img class="target_plt"  src="static/images/figs/model_imp.png"><figcaption class="target_cap">Feature Importance</figcaption>
 {% endif %}
 {% endblock %}
