@@ -19,6 +19,7 @@ from imblearn.pipeline import Pipeline #smote pipeline
 from joblib import dump, load
 from nyoka import skl_to_pmml
 import numpy as np
+from sklearn.inspection import plot_partial_dependence
 
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
@@ -445,6 +446,7 @@ def generate_model():
     filehandler = open("tmp/results.p", 'rb') 
     res_list=pickle.load(filehandler)
     arg_dict=res_list[estim][index][1]
+    #constuct and fit pipeline
     param_dict=pipeline_gen.process_dict(arg_dict)
     pipeline_params=[("preprocessor",pipeline_gen.build_preprocessor_cl(param_dict)),("classifeir",pipeline_gen.build_classifier(param_dict))]
     if smote =="yes":
@@ -457,6 +459,7 @@ def generate_model():
     with open("tmp_files/model_{}.pickle".format(str(index)), 'wb') as filehandler:
         pickle.dump(pipe, filehandler)
     cl=param_dict["classifier:__choice__"]
+    #feature importances
     importance=(pipeline_gen.get_importance(pipe,cl,smote))
     metric_res=pipeline_gen.get_matrix(pipe,X,y,smote)     
     if len(importance)>0:
@@ -475,10 +478,22 @@ def generate_model():
     column_names=["Metric","Score"]
     metric_names=["Accuracy","Recall","Precision","F1"]
     metric_res=[[metric_names[i],metric_res[i]] for i in range(len(metric_res))]
+
+    #partial dependancy
+    partial_fig_names=[]
+    for feat in features:
+        #TODO: fix for estimator position with smote on
+        partial_path="static/images/figs/partial_"+str(feat)
+        partial_fig_names.append(partial_path)
+        plot_partial_dependence(pipe.steps[1][1], X, [feat], feature_names=features) 
+        plt.savefig(partial_path,bbox_inches="tight",transparent=True)
+
+
+
     #column_names=["Feature","Importance"]
     #return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
     
-    return render_template("download.html",index=index,column_names=column_names,row_data=metric_res,CL_Name=cl, metric_res=metric_res,zip=zip)
+    return render_template("download.html",index=index,column_names=column_names,row_data=metric_res,CL_Name=cl, metric_res=metric_res,zip=zip,partial_fig_names=partial_fig_names)
 
 @app.route('/download_joblib')
 def download_joblib():
