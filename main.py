@@ -483,12 +483,12 @@ def generate_model():
     partial_fig_names=[]
     for feat in features:
         #TODO: fix for estimator position with smote on
-        partial_path="static/images/figs/partial_"+str(feat)
+        part_fig=plt.figure(figsize=(5,5))
+        partial_path="partial_"+str(feat)
         partial_fig_names.append(partial_path)
-        plot_partial_dependence(pipe.steps[1][1], X, [feat], feature_names=features) 
-        plt.savefig(partial_path,bbox_inches="tight",transparent=True)
-
-
+        plot_partial_dependence(pipe.steps[1][1], X, [feat], fig=part_fig,feature_names=features) 
+        plt.savefig("static/images/figs/"+partial_path,bbox_inches="tight",transparent=True)
+    plt.figure()
 
     #column_names=["Feature","Importance"]
     #return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
