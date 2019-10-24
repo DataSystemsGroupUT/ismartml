@@ -148,7 +148,7 @@ def process_data(path,data_type,target_ft):
     else:
         X=None
         y=None
-    return X,y
+    return X,y,data
 
 
 def run_task(path,task,data_type, target_ft,test_split=0.1):
@@ -160,7 +160,7 @@ def run_task(path,task,data_type, target_ft,test_split=0.1):
     #X=data[:,:-1]
     #y=data[:,-1]
     #X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
-    X,y=process_data(path,data_type,target_ft)
+    X,y,_=process_data(path,data_type,target_ft)
     
     
     X_train, X_test, y_train, y_test = \

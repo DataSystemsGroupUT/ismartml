@@ -56,6 +56,9 @@ tr:nth-child(even) {
 .feature_plt_label{
 	width:24%
 }
+.pdp_plt_label{
+	width:49%
+}
 .target_plt{
   display: block;
   margin-left: auto;

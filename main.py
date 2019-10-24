@@ -20,6 +20,7 @@ from joblib import dump, load
 from nyoka import skl_to_pmml
 import numpy as np
 from sklearn.inspection import plot_partial_dependence
+from pdpbox import pdp, get_dataset, info_plots
 
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
@@ -147,7 +148,7 @@ def target_class_r():
         if smote == "yes":
             smote_dic={}
             path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-            X,y=process_data(path,"csv",target_ft)
+            X,y,_=process_data(path,"csv",target_ft)
             unique, counts = np.unique(y, return_counts=True)
             if min(counts)<=SMOTE_N:
                 SMOTE_N=min(counts)-1
@@ -453,7 +454,7 @@ def generate_model():
         pipeline_params.insert(0,("smote",SMOTE(random_state=42)))
     pipe=Pipeline(pipeline_params)
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
-    X,y=process_data(path,"csv",target_ft)
+    X,y,data=process_data(path,"csv",target_ft)
     pipe.fit(X,y)
     dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
     with open("tmp_files/model_{}.pickle".format(str(index)), 'wb') as filehandler:
@@ -486,8 +487,10 @@ def generate_model():
         part_fig=plt.figure(figsize=(5,5))
         partial_path="partial_"+str(feat)
         partial_fig_names.append(partial_path)
-        plot_partial_dependence(pipe.steps[1][1], X, [feat], fig=part_fig,feature_names=features) 
-        plt.savefig("static/images/figs/"+partial_path,bbox_inches="tight",transparent=True)
+        #plot_partial_dependence(pipe.steps[1][1], X, [feat], fig=part_fig,feature_names=features) 
+        feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=feat)
+        fig, axes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=feat, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False)
+        fig.savefig("static/images/figs/"+partial_path,bbox_inches="tight",transparent=True)
     plt.figure()
 
     #column_names=["Feature","Importance"]
