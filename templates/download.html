@@ -14,21 +14,22 @@
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'download_joblib' )+"?model="+index|string }}');">Download .joblib</button>
 		<!-- <button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_pmml' )+"?model="+index|string }}');">Download .pmml</button> -->
 </p>
-<p>
-<label class="pdp_plt_label"><img class="feature_plt" src="static/images/figs/conf_mt_0.png"></label>
-<label class="pdp_plt_label"><img class="feature_plt" src="static/images/figs/conf_mt_1.png"></label>
+<div class="container-fluid">
+  <div class="row  align-items-center">
+    <div class="col">
+<img class="feature_plt" src="static/images/figs/conf_mt_0.png">
+    </div>
+    <div class="col">
+<img class="feature_plt" src="static/images/figs/conf_mt_1.png">
+    </div>
+    <div class="col">
+<p class="feature_plt"> {% include "base_results.html" %}</p>
+    </div>
+  </div>
+</div>
 <div>
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-md-auto">
-{% include "base_results.html" %}
 
 </div>
-</div>
-</div>
-
-</div>
-</p>
 {% if not row_data %}
 <p>Not supported for this classifier</p>
 {% else %}

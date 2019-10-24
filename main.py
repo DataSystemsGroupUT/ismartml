@@ -478,7 +478,7 @@ def generate_model():
         imps=[]
     column_names=["Metric","Score"]
     metric_names=["Accuracy","Recall","Precision","F1"]
-    metric_res=[[metric_names[i],metric_res[i]] for i in range(len(metric_res))]
+    metric_res=[[metric_names[i],round(metric_res[i],3)] for i in range(len(metric_res))]
 
     #partial dependancy
     partial_fig_names=[]
