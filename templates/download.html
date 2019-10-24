@@ -17,10 +17,7 @@
 <p>
 <img class="target_plt"  src="static/images/figs/test.png"><figcaption class="target_cap">Confustion matrix</figcaption>
 <div>
-<p>Accuracy Score: {{metric_res[0]}}</p>
-<p>Recall Score: {{metric_res[1]}}</p>
-<p>Precisio Score: {{metric_res[2]}}</p>
-<p>F1 Score: {{metric_res[3]}}</p>
+{% include "base_results.html" %}
 </div>
 </p>
 {% if not row_data %}

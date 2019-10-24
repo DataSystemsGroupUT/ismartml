@@ -469,8 +469,13 @@ def generate_model():
         plt.savefig("static/images/figs/model_imp",bbox_inches="tight",transparent=True)
     else:
         imps=[]
-    column_names=["Feature","Importance"]
-    return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
+    column_names=["Metric","Score"]
+    metric_names=["Accuracy","Recall","Precision","F1"]
+    metric_res=[[metric_names[i],metric_res[i]] for i in range(len(metric_res))]
+    #column_names=["Feature","Importance"]
+    #return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
+    
+    return render_template("download.html",index=index,column_names=column_names,row_data=metric_res,CL_Name=cl, metric_res=metric_res,zip=zip)
 
 @app.route('/download_joblib')
 def download_joblib():
