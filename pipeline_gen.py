@@ -251,8 +251,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     """
     if not title:
         if normalize:
-            title = 'Normalized confusion matrix'
-            title = 'Normalized confusion matrix'
+            title = 'Confusion matrix, with normalization'
         else:
             title = 'Confusion matrix, without normalization'
 
@@ -293,7 +292,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     ha="center", va="center",
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout()
-    fig.savefig("static/images/figs/test",bbox_inches="tight",transparent=True)
+    fig.savefig("static/images/figs/conf_mt_"+str(int(normalize)),bbox_inches="tight",transparent=True)
     return ax
 
 
@@ -304,7 +303,8 @@ def get_matrix(pipe,X,y,smote):
     if smote=="yes":
         ind=2
     pred_y=pipe.steps[ind][1].predict(X) 
-    plot_confusion_matrix(y,pred_y,np.unique(y), title="Confusion Matrix")
+    plot_confusion_matrix(y,pred_y,np.unique(y), normalize=False)
+    plot_confusion_matrix(y,pred_y,np.unique(y), normalize=True)
     a=accuracy_score(y, pred_y)   
     r=recall_score(y, pred_y,average="macro")   
     f=f1_score(y, pred_y, average="macro")   
