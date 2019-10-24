@@ -252,6 +252,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     if not title:
         if normalize:
             title = 'Normalized confusion matrix'
+            title = 'Normalized confusion matrix'
         else:
             title = 'Confusion matrix, without normalization'
 
@@ -303,8 +304,7 @@ def get_matrix(pipe,X,y,smote):
     if smote=="yes":
         ind=2
     pred_y=pipe.steps[ind][1].predict(X) 
-    plot_confusion_matrix(y,pred_y,np.unique(y))
-    #confusion_matrix(y,pred_y)
+    plot_confusion_matrix(y,pred_y,np.unique(y), title="Confusion Matrix")
     a=accuracy_score(y, pred_y)   
     r=recall_score(y, pred_y,average="macro")   
     f=f1_score(y, pred_y, average="macro")   

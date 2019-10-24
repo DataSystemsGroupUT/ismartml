@@ -15,7 +15,7 @@
 		<!-- <button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_pmml' )+"?model="+index|string }}');">Download .pmml</button> -->
 </p>
 <p>
-<img class="target_plt"  src="static/images/figs/test.png"><figcaption class="target_cap">Confustion matrix</figcaption>
+<img class="target_plt"  src="static/images/figs/test.png">
 <div>
 <div class="container">
   <div class="row justify-content-md-center">
@@ -31,6 +31,6 @@
 {% if not row_data %}
 <p>Not supported for this classifier</p>
 {% else %}
-<img class="target_plt"  src="static/images/figs/model_imp.png"><figcaption class="target_cap">Feature Importance</figcaption>
+<img class="target_plt"  src="static/images/figs/model_imp.png">
 {% endif %}
 {% endblock %}

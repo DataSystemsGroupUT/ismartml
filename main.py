@@ -465,6 +465,9 @@ def generate_model():
         plt_features=[x[0] for x in reversed(imps)]
         plt_imps=[x[1] for x in reversed(imps)]
         plt.clf()
+        plt.title("Feature Importance")
+        plt.ylabel("Feature Name")
+        plt.xlabel("Importance")      
         plt.barh(plt_features,plt_imps,align='center',height=0.2, color='c')
         plt.savefig("static/images/figs/model_imp",bbox_inches="tight",transparent=True)
     else:
