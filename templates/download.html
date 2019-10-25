@@ -6,7 +6,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var url = "/iautosklearn/";
+		var url = "/iautosklearn/plot_modal?model={{index|string}}&estimator={{estimator}}";
 		jQuery('#modellink').click(function(e) {
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
