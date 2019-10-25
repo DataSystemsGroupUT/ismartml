@@ -54,6 +54,7 @@
 <div class="container-fluid">
   <div class="row  align-items-center">
     <div class="col">
+<label>Feature 1</label>
 <select class="form-control" id="feat_1">
 {% for feat in features %}
 	<nobr>
@@ -64,6 +65,7 @@
     </div>
     <div class="col">
     
+<label>Feature 2</label>
 <select class="form-control" id="feat_2">
 {% for feat in features %}
 	<nobr>
@@ -74,6 +76,7 @@
 
     </div>
     <div class="col">
+<label>Target Class Label</label>
 <select class="form-control" id="targ_1">
 {% for label in targets %}
 	<nobr>
@@ -82,10 +85,10 @@
 {% endfor %}
 </select>
 
-
     </div>
     <div class="col">
 
+<label><br /> <br /></label>
 <a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="modellink">Plot</a>
     </div>
 
