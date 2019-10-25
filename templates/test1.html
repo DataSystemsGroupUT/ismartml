@@ -10,7 +10,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		var url = "/iautosklearn/test";
+		var url = "/iautosklearn/";
 		jQuery('#modellink').click(function(e) {
 		    $('.modal-body').load(url,function(result){
 				$('#myModal').modal({show:true});
@@ -19,44 +19,25 @@
 	});
 </script>
 
-<!--
-<script type="text/javascript">
-
-$(document).ready(function(){
-    $('.openPopup').on('click',function(){
-        var dataURL = $(this).attr('data-href');
-        $('.modal-body').load(dataURL,function(){
-            $('#myModal').modal({show:true});
-        });
-    }); 
-});
-
--->
-</script>
 </head>
 <body>
-
-<a href="javascript:void(0);" data-href="/iautosklearn/" class="openPopup">About Us</a>
+<div class="container ">
 <div class="jumbotron"><a class="btn btn-primary pull-right" data-toggle="modal" href="#myModal" id="modellink">Show Modal</a></div>
+<div class="modal-container"></div>
+</div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Bootstrap Modal with Dynamic Content</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Sample Model Box - Header Area</h4>
             </div>
             <div class="modal-body">
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-      
     </div>
 </div>
 
