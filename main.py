@@ -496,7 +496,7 @@ def generate_model():
     #column_names=["Feature","Importance"]
     #return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
     
-    return render_template("download.html",estimator=estim,index=index,column_names=column_names,row_data=metric_res,CL_Name=cl, metric_res=metric_res,zip=zip,partial_fig_names=partial_fig_names)
+    return render_template("download.html",features=features,targets=np.unique(y),estimator=estim,index=index,column_names=column_names,row_data=metric_res,CL_Name=cl, metric_res=metric_res,zip=zip,partial_fig_names=partial_fig_names)
 
 @app.route('/download_joblib')
 def download_joblib():

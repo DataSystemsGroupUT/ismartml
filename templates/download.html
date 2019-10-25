@@ -8,6 +8,8 @@
 	$(document).ready(function(){
 		var url = "/iautosklearn/plot_modal?model={{index|string}}&estimator={{estimator}}";
 		jQuery('#modellink').click(function(e) {
+                var v1=$("#feat_1 :selected").val();
+                console.log(v1)
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
 			});
@@ -41,8 +43,32 @@
 </div>
 <div>
 
-<div class="jumbotron"><a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="modellink">Show Modal</a></div>
+<div class="jumbotron">
+<select class="form-control w-25" id="feat_1">
+{% for feat in features %}
+	<nobr>
+        <option value={{feat}}>{{feat}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+<select class="form-control w-25" id="feat_2">
+{% for feat in features %}
+	<nobr>
+        <option value={{feat}}>{{feat}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+<select class="form-control w-25" id="targ_1">
+{% for label in targets %}
+	<nobr>
+        <option value={{label}}>{{label}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+<a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="modellink">Show Modal</a>
 
+
+</div>
 <!-- Modal -->
 <div class="modal fade" id="plt_modal" role="dialog">
     <div class="modal-dialog">
