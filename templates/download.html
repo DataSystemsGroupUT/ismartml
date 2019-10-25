@@ -6,10 +6,11 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var url = "/iautosklearn/plot_modal?model={{index|string}}&estimator={{estimator}}";
 		jQuery('#modellink').click(function(e) {
-                var v1=$("#feat_1 :selected").val();
-                console.log(v1)
+                var f1=$("#feat_1 :selected").val();
+                var f2=$("#feat_2 :selected").val();
+                var t1=$("#targ_1 :selected").val();
+		var url = "/iautosklearn/plot_modal?model={{index|string}}&estimator={{estimator}}&f1="+f1+"&f2="+f2+"&t1="+t1;
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
 			});

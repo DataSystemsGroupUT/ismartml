@@ -521,9 +521,12 @@ def download_pmml():
 def plot_modal():
     index = request.args.get('model', default = 0, type = int)
     estim = request.args.get('estimator', default = None, type = str)
+    f1 = request.args.get('f1', default = None, type = str)
+    f2 = request.args.get('f2', default = None, type = str)
+    t1 = request.args.get('t1', default = None, type = str)
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
-    return "PARAMS: {}, {}".format(str(index),str(estim)) 
+    return "PARAMS: {}, {}, {}, {}, {}".format(str(index),str(estim),f1,f2,t1) 
 
 
 @app.route("/test")
