@@ -535,6 +535,34 @@ def plot_modal():
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
     mod_fig=plt.figure(figsize=(10,10))
+    mod_path="modal_"+"pdp_"+str(f1)
+    feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=f1)
+    fig, axes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=f1, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False, which_classes=[chosen_class])
+    fig.savefig("static/images/figs/"+mod_path,bbox_inches="tight",transparent=True)
+    plt.figure()
+
+    #return "PARAMS: {}, {}, {}, {}, {}".format(str(index),str(estim),f1,f2,t1) 
+    return render_template("modal_plot.html", plot_name=mod_path)
+
+
+@app.route('/plot_pdp')
+def plot_pdp():
+    
+    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    index = request.args.get('model', default = 0, type = int)
+    estim = request.args.get('estimator', default = None, type = str)
+    target_ft=session.get('target_ft', 'not set')
+    features=session.get('features', 'not set')
+    f1 = request.args.get('f1', default = None, type = str)
+    t1 = request.args.get('t1', default = None, type = str)
+    X,y,data=process_data(path,"csv",target_ft)
+
+
+    chosen_class=list(np.unique(y)).index(int(t1))
+    """
+    with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
+        pipe=pickle.load(filehandler)
+    mod_fig=plt.figure(figsize=(10,10))
     mod_path="modal_"+str(f1)+"_"+str(f2)
     #feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=feat)
     pdp_V1_V2 = pdp.pdp_interact(
@@ -548,11 +576,13 @@ def plot_modal():
     #fig, axes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=feat, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False)
     fig.savefig("static/images/figs/"+mod_path,bbox_inches="tight",transparent=True)
     plt.figure()
+    """
+    return "PARAMS: {}, {}, {}, {}".format(str(index),str(estim),f1,t1) 
+    #return render_template("modal_plot.html", plot_name=mod_path)
 
 
 
-    #return "PARAMS: {}, {}, {}, {}, {}".format(str(index),str(estim),f1,f2,t1) 
-    return render_template("modal_plot.html", plot_name=mod_path)
+
 
 @app.route("/loading")
 def loading():

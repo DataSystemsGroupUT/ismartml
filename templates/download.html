@@ -23,6 +23,27 @@
 	});
 </script>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		jQuery('#pdplink').click(function(e) {
+		var url = "/iautosklearn/loading";
+		    $('.modal-body').load(url,function(result){
+				$('#plt_modal').modal({show:true});
+			});
+
+                var f1=$("#feat_pdp :selected").val();
+                var t1=$("#targ_pdp :selected").val();
+		var url = "/iautosklearn/plot_pdp?model={{index|string}}&estimator={{estimator}}&f1="+f1+"&t1="+t1;
+		    $('.modal-body').load(url,function(result){
+				$('#plt_modal').modal({show:true});
+			});
+		});
+	});
+</script>
+
+
+
+
 
 	<div id="header_bar">
 	<img id="banner" src ="static/images/status/status8.svg">
@@ -48,6 +69,47 @@
   </div>
 </div>
 <div>
+
+<div class="jumbotron">
+<h3 class="text-center">Plot Feature Interaction PDP</h3>
+<div class="container-fluid">
+  <div class="row  align-items-center">
+    <div class="col">
+<label>Feature </label>
+<select class="form-control" id="feat_pdp">
+{% for feat in features %}
+	<nobr>
+        <option value={{feat}}>{{feat}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+    </div>
+    <div class="col">
+<label>Target Class Label</label>
+<select class="form-control" id="targ_pdp">
+{% for label in targets %}
+	<nobr>
+        <option value={{label}}>{{label}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+
+    </div>
+    <div class="col">
+
+<label><br /> <br /></label>
+
+<p class="text-center">
+<a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="pdplink">Plot</a>
+</p>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
 
 <div class="jumbotron">
 <h3 class="text-center">Plot Feature Interaction PDP</h3>
@@ -97,7 +159,6 @@
 
   </div>
 </div>
-<div>
 
 
 
@@ -105,7 +166,6 @@
 
 
 
-</div>
 <!-- Modal -->
 <div class="modal fade" id="plt_modal" role="dialog">
     <div class="modal-dialog modal-lg">
