@@ -534,7 +534,7 @@ def plot_modal():
 
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
-    mod_fig=plt.figure(figsize=(5,5))
+    mod_fig=plt.figure(figsize=(10,10))
     mod_path="modal_"+str(f1)+"_"+str(f2)
     #feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=feat)
     pdp_V1_V2 = pdp.pdp_interact(
