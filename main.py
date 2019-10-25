@@ -517,15 +517,14 @@ def download_pmml():
         return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
     return "This pipeline is not supported for pmml. Try joblib/pickle"
 
-@app.route('/plot_modal')
-def plot_modal():
+@app.route('/plot_pdp')
+def plot_pdp():
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     index = request.args.get('model', default = 0, type = int)
     estim = request.args.get('estimator', default = None, type = str)
     target_ft=session.get('target_ft', 'not set')
     features=session.get('features', 'not set')
     f1 = request.args.get('f1', default = None, type = str)
-    f2 = request.args.get('f2', default = None, type = str)
     t1 = request.args.get('t1', default = None, type = str)
     X,y,data=process_data(path,"csv",target_ft)
 
@@ -545,8 +544,8 @@ def plot_modal():
     return render_template("modal_plot.html", plot_name=mod_path)
 
 
-@app.route('/plot_pdp')
-def plot_pdp():
+@app.route('/plot_modal')
+def plot_modal():
     
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     index = request.args.get('model', default = 0, type = int)
@@ -554,12 +553,13 @@ def plot_pdp():
     target_ft=session.get('target_ft', 'not set')
     features=session.get('features', 'not set')
     f1 = request.args.get('f1', default = None, type = str)
+    f2 = request.args.get('f2', default = None, type = str)
     t1 = request.args.get('t1', default = None, type = str)
     X,y,data=process_data(path,"csv",target_ft)
 
 
     chosen_class=list(np.unique(y)).index(int(t1))
-    """
+    
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
     mod_fig=plt.figure(figsize=(10,10))
@@ -573,12 +573,10 @@ def plot_pdp():
     pdp_V1_V2, [f1, f2], plot_type='grid',x_quantile=True, ncols=2, plot_pdp=True, 
     which_classes=[chosen_class]
     )
-    #fig, axes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=feat, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False)
     fig.savefig("static/images/figs/"+mod_path,bbox_inches="tight",transparent=True)
     plt.figure()
-    """
-    return "PARAMS: {}, {}, {}, {}".format(str(index),str(estim),f1,t1) 
-    #return render_template("modal_plot.html", plot_name=mod_path)
+    
+    return render_template("modal_plot.html", plot_name=mod_path)
 
 
 
