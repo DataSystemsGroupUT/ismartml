@@ -456,8 +456,8 @@ def generate_model():
     path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
     X,y,data=process_data(path,"csv",target_ft)
     pipe.fit(X,y)
-    dump(pipe, 'tmp_files/model_{}.joblib'.format(str(index))) 
-    with open("tmp_files/model_{}.pickle".format(str(index)), 'wb') as filehandler:
+    dump(pipe, 'tmp_files/model_{}_{}.joblib'.format(estim,str(index))) 
+    with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'wb') as filehandler:
         pickle.dump(pipe, filehandler)
     cl=param_dict["classifier:__choice__"]
     #feature importances
@@ -496,17 +496,19 @@ def generate_model():
     #column_names=["Feature","Importance"]
     #return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
     
-    return render_template("download.html",index=index,column_names=column_names,row_data=metric_res,CL_Name=cl, metric_res=metric_res,zip=zip,partial_fig_names=partial_fig_names)
+    return render_template("download.html",estimator=estim,index=index,column_names=column_names,row_data=metric_res,CL_Name=cl, metric_res=metric_res,zip=zip,partial_fig_names=partial_fig_names)
 
 @app.route('/download_joblib')
 def download_joblib():
     index = request.args.get('model', default = 0, type = int)
-    return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
+    estim = request.args.get('estimator', default = None, type = str)
+    return send_from_directory("tmp_files",'model_{}_{}.joblib'.format(estim,str(index)), as_attachment=True)
 
 @app.route('/download_pickle')
 def download_pickle():
     index = request.args.get('model', default = 0, type = int)
-    return send_from_directory("tmp_files",'model_{}.pickle'.format(str(index)), as_attachment=True)
+    estim = request.args.get('estimator', default = None, type = str)
+    return send_from_directory("tmp_files",'model_{}_{}.pickle'.format(estim,str(index)), as_attachment=True)
 
 @app.route('/download_pmml')
 def download_pmml():
@@ -514,6 +516,11 @@ def download_pmml():
     if os.path.getsize("tmp_files/model_{}.pmml".format(index))>0:
         return send_from_directory("tmp_files",'model_{}.joblib'.format(str(index)), as_attachment=True)
     return "This pipeline is not supported for pmml. Try joblib/pickle"
+
+@app.route('/plot_modal')
+def plot_modal():
+    return None
+
 
 @app.route("/test")
 def test():
