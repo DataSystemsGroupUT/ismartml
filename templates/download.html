@@ -1,8 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Download Model{% endblock %}
+{% block title %}Model Details{% endblock %}
 
 {% block head %}
     	{{ super() }}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var url = "/iautosklearn/";
+		jQuery('#modellink').click(function(e) {
+		    $('.modal-body').load(url,function(result){
+				$('#plt_modal').modal({show:true});
+			});
+		});
+	});
+</script>
+
 
 	<div id="header_bar">
 	<img id="banner" src ="static/images/status/status8.svg">
@@ -28,6 +40,33 @@
   </div>
 </div>
 <div>
+
+<div class="jumbotron"><a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="modellink">Show Modal</a></div>
+
+<!-- Modal -->
+<div class="modal fade" id="plt_modal" role="dialog">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Bootstrap Modal with Dynamic Content</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+
+
 
 </div>
 {% if not row_data %}
