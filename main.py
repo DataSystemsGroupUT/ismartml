@@ -482,6 +482,7 @@ def generate_model():
 
     #partial dependancy
     partial_fig_names=[]
+    """
     for feat in features:
         #TODO: fix for estimator position with smote on
         part_fig=plt.figure(figsize=(5,5))
@@ -492,7 +493,7 @@ def generate_model():
         fig, axes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=feat, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False)
         fig.savefig("static/images/figs/"+partial_path,bbox_inches="tight",transparent=True)
     plt.figure()
-
+    """
     #column_names=["Feature","Importance"]
     #return render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl, metric_res=metric_res,zip=zip)
     
@@ -534,7 +535,7 @@ def plot_pdp():
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
     mod_fig=plt.figure(figsize=(10,10))
-    mod_path="modal_"+"pdp_"+str(f1)
+    mod_path="modal_"+"pdp_"+str(f1.replace('.','_'))
     feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=f1)
     fig, axes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=f1, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False, which_classes=[chosen_class])
     fig.savefig("static/images/figs/"+mod_path,bbox_inches="tight",transparent=True)
@@ -563,7 +564,7 @@ def plot_modal():
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
     mod_fig=plt.figure(figsize=(10,10))
-    mod_path="modal_"+str(f1)+"_"+str(f2)
+    mod_path="modal_"+str(f1.replace('.','_'))+"_"+str(f2.replace('.','_'))
     #feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=feat)
     pdp_V1_V2 = pdp.pdp_interact(
     model=pipe.steps[1][1], dataset=data, model_features=features, features=[f1, f2], 
