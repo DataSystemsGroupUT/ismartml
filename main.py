@@ -554,6 +554,11 @@ def plot_modal():
     #return "PARAMS: {}, {}, {}, {}, {}".format(str(index),str(estim),f1,f2,t1) 
     return render_template("modal_plot.html", plot_name=mod_path)
 
+@app.route("/loading")
+def loading():
+    return render_template("loading.html")
+
+
 
 @app.route("/test")
 def test():

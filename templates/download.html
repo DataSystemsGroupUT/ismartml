@@ -7,6 +7,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		jQuery('#modellink').click(function(e) {
+		var url = "/iautosklearn/loading";
+		    $('.modal-body').load(url,function(result){
+				$('#plt_modal').modal({show:true});
+			});
+
                 var f1=$("#feat_1 :selected").val();
                 var f2=$("#feat_2 :selected").val();
                 var t1=$("#targ_1 :selected").val();
@@ -66,7 +71,7 @@
 	</nobr>
 {% endfor %}
 </select>
-<a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="modellink">Show Modal</a>
+<a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="modellink">Plot</a>
 
 
 </div>
@@ -78,10 +83,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Bootstrap Modal with Dynamic Content</h4>
+                <h4 class="modal-title">Plot</h4>
             </div>
             <div class="modal-body">
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
