@@ -50,28 +50,53 @@
 <div>
 
 <div class="jumbotron">
-<select class="form-control w-25" id="feat_1">
+
+<div class="container-fluid">
+  <div class="row  align-items-center">
+    <div class="col">
+<select class="form-control" id="feat_1">
 {% for feat in features %}
 	<nobr>
         <option value={{feat}}>{{feat}}</option> 
 	</nobr>
 {% endfor %}
 </select>
-<select class="form-control w-25" id="feat_2">
+    </div>
+    <div class="col">
+    
+<select class="form-control" id="feat_2">
 {% for feat in features %}
 	<nobr>
         <option value={{feat}}>{{feat}}</option> 
 	</nobr>
 {% endfor %}
 </select>
-<select class="form-control w-25" id="targ_1">
+
+    </div>
+    <div class="col">
+<select class="form-control" id="targ_1">
 {% for label in targets %}
 	<nobr>
         <option value={{label}}>{{label}}</option> 
 	</nobr>
 {% endfor %}
 </select>
+
+
+    </div>
+    <div class="col">
+
 <a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="modellink">Plot</a>
+    </div>
+
+  </div>
+</div>
+<div>
+
+
+
+
+
 
 
 </div>
