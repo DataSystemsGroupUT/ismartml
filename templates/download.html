@@ -131,7 +131,11 @@
 <select class="form-control" id="feat_2">
 {% for feat in features %}
 	<nobr>
+{% if loop.index0==1 %}
+        <option selected="selected"  value={{feat}}>{{feat}}</option> 
+{% else %}
         <option value={{feat}}>{{feat}}</option> 
+{% endif %}
 	</nobr>
 {% endfor %}
 </select>
