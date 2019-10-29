@@ -150,3 +150,6 @@ table.blueTable tfoot .links a{
      border-top-left-radius: 5px;
      border-top-right-radius: 5px;
  }
+.no-border{
+  border:none;
+}
