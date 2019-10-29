@@ -537,7 +537,7 @@ def plot_pdp():
     mod_fig=plt.figure(figsize=(10,10))
     mod_path="modal_"+"pdp_"+str(f1.replace('.','_'))
     feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=f1)
-    fig, axes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=f1, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False, which_classes=[chosen_class])
+    fig, axes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=f1, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False, which_classes=[chosen_class], plot_params={"subtitle":"For Class {}, Label: {}".format(chosen_class,t1)})
     fig.savefig("static/images/figs/"+mod_path,bbox_inches="tight",transparent=True)
     plt.figure()
 
@@ -572,7 +572,7 @@ def plot_modal():
     )
     fig, axes = pdp.pdp_interact_plot(
     pdp_V1_V2, [f1, f2], plot_type='grid',x_quantile=True, ncols=2, plot_pdp=True, 
-    which_classes=[chosen_class]
+    which_classes=[chosen_class],plot_params={"subtitle":"For Class {}, Label: {}".format(chosen_class,t1)}
     )
     fig.savefig("static/images/figs/"+mod_path,bbox_inches="tight",transparent=True)
     plt.figure()
