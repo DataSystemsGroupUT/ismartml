@@ -3,6 +3,7 @@
 
 {% block head %}
     	{{ super() }}
+    <link rel="stylesheet" href="/iautosklearn{{ url_for('static', filename='css/download.css') }}">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -183,7 +184,7 @@
             <div class="modal-body">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
       
