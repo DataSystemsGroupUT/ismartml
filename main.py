@@ -357,8 +357,13 @@ def progress():
     for each in res_list:
         index=ESTIMATORS[ESTIMATORS_DISP.index(each[0])]
         fres_list=or_list[index]
-        slc=len("classifier:{}:".format(index))
-        col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
+
+        if values["task"]=='classification':
+            slc=len("classifier:{}:".format(index))
+            col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
+        else:
+            slc=len("regressor:{}:".format(index))
+            col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="regressor" and x[-21:]!="min_impurity_decrease"][1:]
         fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
         col_names_e= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names_e]+["Details"]
         disp_index=index.replace("_"," ").title()
@@ -378,9 +383,9 @@ def progress():
         estim_dict["fig_names"].append(fig_names)	
         estim_dict["res_list"].append(fres_list)	
     if(turn>=iters):
-        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=CLASSIFIERS,CLASSIFIERS_DISP=CLASSIFIERS_DISP, estim_dict=estim_dict)
+        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=ESTIMATORS,CLASSIFIERS_DISP=ESTIMATORS_DISP, estim_dict=estim_dict)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=CLASSIFIERS, CLASSIFIERS_DISP=CLASSIFIERS_DISP,estim_dict=estim_dict)
+        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=ESTIMATORS, CLASSIFIERS_DISP=ESTIMATORS_DISP,estim_dict=estim_dict)
 
 @app.route('/stop')
 def stop():
