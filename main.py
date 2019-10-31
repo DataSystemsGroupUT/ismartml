@@ -320,17 +320,31 @@ def progress():
     #Sort list by scores
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     #divide list in dictionaries and dump to drive
+    
+
     grouped_results={}
-    for each in CLASSIFIERS:
-        grouped_results[each]=[]
-    for each in res_list:
-        grouped_results[each[1]['classifier:__choice__' ]].append(each)
+    if values["task"]=='classification':
+        ESTIMATORS=CLASSIFIERS
+        ESTIMATORS_DISP=CLASSIFIERS_DISP
+        for each in CLASSIFIERS:
+            grouped_results[each]=[]
+        for each in res_list:
+            grouped_results[each[1]['classifier:__choice__' ]].append(each)
+    else:
+        ESTIMATORS=REGRESSORS
+        ESTIMATORS_DISP=REGRESSORS_DISP
+        for each in REGRESSORS:
+            grouped_results[each]=[]
+        for each in res_list:
+            grouped_results[each[1]['regressor:__choice__' ]].append(each)
+ 
+
     with open("tmp/results.p", 'wb') as filehandler: 
         pickle.dump(grouped_results, filehandler)
     res_list=[]
     for  each in grouped_results.keys():
         if grouped_results[each]:
-            res_list.append((CLASSIFIERS_DISP[CLASSIFIERS.index(each)],round(grouped_results[each][0][0],3),len(grouped_results[each]),"View"))
+            res_list.append((ESTIMATORS_DISP[ESTIMATORS.index(each)],round(grouped_results[each][0][0],3),len(grouped_results[each]),"View"))
     res_list.sort(key=lambda x:x[0],reverse=True)
     turn+=+1
     #copy tmp files to save for later
@@ -341,7 +355,7 @@ def progress():
         or_list=pickle.load(filehandler)
     estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
     for each in res_list:
-        index=CLASSIFIERS[CLASSIFIERS_DISP.index(each[0])]
+        index=ESTIMATORS[ESTIMATORS_DISP.index(each[0])]
         fres_list=or_list[index]
         slc=len("classifier:{}:".format(index))
         col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
@@ -530,7 +544,7 @@ def plot_pdp():
     X,y,data=process_data(path,"csv",target_ft)
 
 
-    chosen_class=list(np.unique(y)).index(int(t1))
+    chosen_class=list(np.unique(y)).index(int(float(t1)))
 
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
@@ -559,7 +573,7 @@ def plot_modal():
     X,y,data=process_data(path,"csv",target_ft)
 
 
-    chosen_class=list(np.unique(y)).index(int(t1))
+    chosen_class=list(np.unique(y)).index(int(float(t1)))
     
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
