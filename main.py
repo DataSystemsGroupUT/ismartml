@@ -17,7 +17,7 @@ import pipeline_gen
 #from sklearn.pipeline import Pipeline #original pipline
 from imblearn.pipeline import Pipeline #smote pipeline
 from joblib import dump, load
-from nyoka import skl_to_pmml
+#from nyoka import skl_to_pmml
 import numpy as np
 from sklearn.inspection import plot_partial_dependence
 from pdpbox import pdp, get_dataset, info_plots
@@ -73,7 +73,7 @@ def start_p():
             session["data_type"]=data_type
             session["rec"]=rec
             session["task"]=task
-            return redirect('/iautosklearn/features')
+            return redirect('/features')
         else:
             flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
             return redirect(request.url)
@@ -104,7 +104,7 @@ def feature_pgr():
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,list(features)+[target_ft])
         new_data.to_csv(path,index=False)
-        return redirect('/iautosklearn/target_class')
+        return redirect('/target_class')
 
 @app.route('/target_class')
 def target_class():
@@ -162,7 +162,7 @@ def target_class_r():
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
             new_data.to_csv(path,index=False)
         print(smote)
-        return redirect('/iautosklearn/params')
+        return redirect('/params')
 
 @app.route('/params')
 def params():
@@ -206,7 +206,7 @@ def params_p():
         values["search_space"]=search_space
         values["prep_space"]=prep_space
         session["values"]=values
-        return redirect('/iautosklearn/budget')
+        return redirect('/budget')
 
 @app.route('/budget')
 def budget():
@@ -246,7 +246,7 @@ def budget_p():
         values['period']=int(period)
         session["values"]=values
         session["reuse"]=reuse
-        return redirect('/iautosklearn/running')
+        return redirect('/running')
 
 @app.route('/running')
 def running():
