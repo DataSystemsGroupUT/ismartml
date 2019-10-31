@@ -10,7 +10,7 @@
             });
         </script>
 	<script> 
-	var t=0;
+	var t=0.0;
 	var per={{RAW_PERIOD|int}}
 	var x = setInterval(function() { 
   	var elem = document.getElementById("bar1");   
@@ -21,7 +21,7 @@
 	var minutes = Math.floor((t % (60 * 60)) / ( 60)); 
 	var seconds = Math.floor((t % ( 60)) ); 
 
-	elem.style.width = Math.floor(100*(seconds/per)) + '%'; 
+	elem.style.width = Math.floor(100*t/per) + '%'; 
 	
 	if(minutes<1){
 	document.getElementById("timer").innerHTML = 
@@ -43,22 +43,7 @@
 	}
 	}, 1000); 
 	</script> 
-		
-	<script>
-	function move() {
-	  var elem = document.getElementById("bar1");   
-	  var width = 1;
-	  var id = setInterval(frame, 10);
-	  function frame() {
-	    if (width >= 100) {
-	      clearInterval(id);
-	    } else {
-	      width++; 
-	      elem.style.width = width + '%'; 
-	    }
-	  }
-	}
-	</script>
+	
 	<script>
 	$(document).ready(function(){
 	    $(".est_col").click(function(){
@@ -90,7 +75,7 @@
                     </div>
 		    </p>
 		    {% block stop_button %}
-		    <button type="button" class="btn btn-primary" value=Cancel name="Cancel"  data-toggle="modal" data-target="#exampleModalCenter" onclick="window.location.replace('/iautosklearn{{ url_for( 'start' )}}');">
+		    <button type="button" class="btn btn-primary" value=Cancel name="Cancel"  data-toggle="modal" data-target="#exampleModalCenter" onclick="window.location.replace('{{ url_for( 'start' )}}');">
                     Cancel
                    </button>
 		   {% endblock %}
