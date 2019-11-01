@@ -365,7 +365,9 @@ def progress():
         else:
             slc=len("regressor:{}:".format(index))
             col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="regressor" and x[-21:]!="min_impurity_decrease"][1:]
-        fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
+
+        ##TODO: 0 if k not in x[1] sets default argumetn to 0, 0 should be replaced with default argument
+        fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [0 if k not in x[1] else x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
         col_names_e= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names_e]+["Details"]
         disp_index=index.replace("_"," ").title()
         ##plotting
@@ -405,7 +407,17 @@ def stop():
         fres_list=grouped_results[index]
         slc=len("classifier:{}:".format(index))
         col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
+
+
+        
         fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
+        
+        
+        
+        
+        
+        
+        
         col_names_e= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names_e]+["Details"]
         disp_index=index.replace("_"," ").title()
         ##plotting
