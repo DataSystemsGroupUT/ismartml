@@ -354,6 +354,7 @@ def progress():
     with open("tmp/results.p", 'rb') as filehandler:
         or_list=pickle.load(filehandler)
     estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
+    res_list.sort(key=lambda x:x[1],reverse=True)
     for each in res_list:
         index=ESTIMATORS[ESTIMATORS_DISP.index(each[0])]
         fres_list=or_list[index]
@@ -382,7 +383,6 @@ def progress():
         estim_dict["index"].append(index)	
         estim_dict["fig_names"].append(fig_names)	
         estim_dict["res_list"].append(fres_list)	
-    res_list.sort(key=lambda x:x[1],reverse=True)
     if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=ESTIMATORS,CLASSIFIERS_DISP=ESTIMATORS_DISP, estim_dict=estim_dict)
     else:
