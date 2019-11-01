@@ -3,12 +3,12 @@
 
 {% block head %}
     	{{ super() }}
-    <link rel="stylesheet" href="/iautosklearn{{ url_for('static', filename='css/download.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/download.css') }}">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		jQuery('#modellink').click(function(e) {
-		var url = "/iautosklearn/loading";
+		var url = "/loading";
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
 			});
@@ -16,7 +16,7 @@
                 var f1=$("#feat_1 :selected").val();
                 var f2=$("#feat_2 :selected").val();
                 var t1=$("#targ_1 :selected").val();
-		var url = "/iautosklearn/plot_modal?model={{index|string}}&estimator={{estimator}}&f1="+f1+"&f2="+f2+"&t1="+t1;
+		var url = "/plot_modal?model={{index|string}}&estimator={{estimator}}&f1="+f1+"&f2="+f2+"&t1="+t1;
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
 			});
@@ -27,14 +27,14 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		jQuery('#pdplink').click(function(e) {
-		var url = "/iautosklearn/loading";
+		var url = "/loading";
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
 			});
 
                 var f1=$("#feat_pdp :selected").val();
                 var t1=$("#targ_pdp :selected").val();
-		var url = "/iautosklearn/plot_pdp?model={{index|string}}&estimator={{estimator}}&f1="+f1+"&t1="+t1;
+		var url = "/plot_pdp?model={{index|string}}&estimator={{estimator}}&f1="+f1+"&t1="+t1;
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
 			});
@@ -52,8 +52,8 @@
 {% endblock %}
 {% block content %}
 <p class="text-center">
-		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'download_pickle' )+"?model="+index|string+"&estimator="+ estimator }}');">Download .pickle</button>
-		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('/iautosklearn{{ url_for( 'download_joblib' )+"?model="+index|string+"&estimator="+ estimator }}');">Download .joblib</button>
+		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_pickle' )+"?model="+index|string+"&estimator="+ estimator }}');">Download .pickle</button>
+		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_joblib' )+"?model="+index|string+"&estimator="+ estimator }}');">Download .joblib</button>
 		<!-- <button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'download_pmml' )+"?model="+index|string }}');">Download .pmml</button> -->
 </p>
 <div class="container-fluid">

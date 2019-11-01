@@ -17,7 +17,7 @@ import pipeline_gen
 #from sklearn.pipeline import Pipeline #original pipline
 from imblearn.pipeline import Pipeline #smote pipeline
 from joblib import dump, load
-from nyoka import skl_to_pmml
+#from nyoka import skl_to_pmml
 import numpy as np
 from sklearn.inspection import plot_partial_dependence
 from pdpbox import pdp, get_dataset, info_plots
@@ -73,7 +73,7 @@ def start_p():
             session["data_type"]=data_type
             session["rec"]=rec
             session["task"]=task
-            return redirect('/iautosklearn/features')
+            return redirect('/features')
         else:
             flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
             return redirect(request.url)
@@ -104,7 +104,7 @@ def feature_pgr():
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,list(features)+[target_ft])
         new_data.to_csv(path,index=False)
-        return redirect('/iautosklearn/target_class')
+        return redirect('/target_class')
 
 @app.route('/target_class')
 def target_class():
@@ -162,7 +162,7 @@ def target_class_r():
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
             new_data.to_csv(path,index=False)
         print(smote)
-        return redirect('/iautosklearn/params')
+        return redirect('/params')
 
 @app.route('/params')
 def params():
@@ -206,7 +206,7 @@ def params_p():
         values["search_space"]=search_space
         values["prep_space"]=prep_space
         session["values"]=values
-        return redirect('/iautosklearn/budget')
+        return redirect('/budget')
 
 @app.route('/budget')
 def budget():
@@ -246,7 +246,7 @@ def budget_p():
         values['period']=int(period)
         session["values"]=values
         session["reuse"]=reuse
-        return redirect('/iautosklearn/running')
+        return redirect('/running')
 
 @app.route('/running')
 def running():
@@ -320,17 +320,31 @@ def progress():
     #Sort list by scores
     res_list = [[a,b]for a, b in zip(df["mean_test_score"].values.tolist(),df["params"].values.tolist())]
     #divide list in dictionaries and dump to drive
+    
+
     grouped_results={}
-    for each in CLASSIFIERS:
-        grouped_results[each]=[]
-    for each in res_list:
-        grouped_results[each[1]['classifier:__choice__' ]].append(each)
+    if values["task"]=='classification':
+        ESTIMATORS=CLASSIFIERS
+        ESTIMATORS_DISP=CLASSIFIERS_DISP
+        for each in CLASSIFIERS:
+            grouped_results[each]=[]
+        for each in res_list:
+            grouped_results[each[1]['classifier:__choice__' ]].append(each)
+    else:
+        ESTIMATORS=REGRESSORS
+        ESTIMATORS_DISP=REGRESSORS_DISP
+        for each in REGRESSORS:
+            grouped_results[each]=[]
+        for each in res_list:
+            grouped_results[each[1]['regressor:__choice__' ]].append(each)
+ 
+
     with open("tmp/results.p", 'wb') as filehandler: 
         pickle.dump(grouped_results, filehandler)
     res_list=[]
     for  each in grouped_results.keys():
         if grouped_results[each]:
-            res_list.append((CLASSIFIERS_DISP[CLASSIFIERS.index(each)],round(grouped_results[each][0][0],3),len(grouped_results[each]),"View"))
+            res_list.append((ESTIMATORS_DISP[ESTIMATORS.index(each)],round(grouped_results[each][0][0],3),len(grouped_results[each]),"View"))
     res_list.sort(key=lambda x:x[0],reverse=True)
     turn+=+1
     #copy tmp files to save for later
@@ -340,12 +354,20 @@ def progress():
     with open("tmp/results.p", 'rb') as filehandler:
         or_list=pickle.load(filehandler)
     estim_dict={"col_names":[],"disp_index":[],"index":[],"fig_names":[],"res_list":[]}
+    res_list.sort(key=lambda x:x[1],reverse=True)
     for each in res_list:
-        index=CLASSIFIERS[CLASSIFIERS_DISP.index(each[0])]
+        index=ESTIMATORS[ESTIMATORS_DISP.index(each[0])]
         fres_list=or_list[index]
-        slc=len("classifier:{}:".format(index))
-        col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
-        fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
+
+        if values["task"]=='classification':
+            slc=len("classifier:{}:".format(index))
+            col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
+        else:
+            slc=len("regressor:{}:".format(index))
+            col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="regressor" and x[-21:]!="min_impurity_decrease"][1:]
+
+        ##TODO: 0 if k not in x[1] sets default argumetn to 0, 0 should be replaced with default argument
+        fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [0 if k not in x[1] else x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
         col_names_e= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names_e]+["Details"]
         disp_index=index.replace("_"," ").title()
         ##plotting
@@ -364,9 +386,9 @@ def progress():
         estim_dict["fig_names"].append(fig_names)	
         estim_dict["res_list"].append(fres_list)	
     if(turn>=iters):
-        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=CLASSIFIERS,CLASSIFIERS_DISP=CLASSIFIERS_DISP, estim_dict=estim_dict)
+        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=ESTIMATORS,CLASSIFIERS_DISP=ESTIMATORS_DISP, estim_dict=estim_dict)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=CLASSIFIERS, CLASSIFIERS_DISP=CLASSIFIERS_DISP,estim_dict=estim_dict)
+        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=ESTIMATORS, CLASSIFIERS_DISP=ESTIMATORS_DISP,estim_dict=estim_dict)
 
 @app.route('/stop')
 def stop():
@@ -385,7 +407,17 @@ def stop():
         fres_list=grouped_results[index]
         slc=len("classifier:{}:".format(index))
         col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
+
+
+        
         fres_list=[[round(x[0],3),x[1]["preprocessor:__choice__"].replace("_"," ").title()]+ [x[1][k]  if type(x[1][k])!= float  and type(x[1][k])!=str else round(x[1][k],3) if type(x[1][k])==float else x[1][k].replace("_"," ").title() for k in  col_names_e ]+["Interpret"] for x in fres_list]
+        
+        
+        
+        
+        
+        
+        
         col_names_e= [("{} Score".format(values["metric"])),"Preprocessor"]+[x[slc:].replace("_"," ").title() for x in col_names_e]+["Details"]
         disp_index=index.replace("_"," ").title()
         ##plotting
@@ -530,7 +562,7 @@ def plot_pdp():
     X,y,data=process_data(path,"csv",target_ft)
 
 
-    chosen_class=list(np.unique(y)).index(int(t1))
+    chosen_class=list(np.unique(y)).index(int(float(t1)))
 
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
@@ -559,7 +591,7 @@ def plot_modal():
     X,y,data=process_data(path,"csv",target_ft)
 
 
-    chosen_class=list(np.unique(y)).index(int(t1))
+    chosen_class=list(np.unique(y)).index(int(float(t1)))
     
     with open("tmp_files/model_{}_{}.pickle".format(estim,str(index)), 'rb') as filehandler:
         pipe=pickle.load(filehandler)
