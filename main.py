@@ -392,7 +392,7 @@ def progress():
         estim_dict["fig_names"].append(fig_names)	
         estim_dict["res_list"].append(fres_list)	
     if(turn>=iters):
-        return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=ESTIMATORS,CLASSIFIERS_DISP=ESTIMATORS_DISP, estim_dict=estim_dict)
+        return render_template("results.html",url_mod=url_mod,column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=ESTIMATORS,CLASSIFIERS_DISP=ESTIMATORS_DISP, estim_dict=estim_dict)
     else:
         return render_template("progress.html",url_mod=url_mod,turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=ESTIMATORS, CLASSIFIERS_DISP=ESTIMATORS_DISP,estim_dict=estim_dict)
 
