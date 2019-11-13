@@ -28,12 +28,18 @@ output_folder = 'tmp/autosk_out'
 #ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 ALLOWED_EXTENSIONS = set(["npy","csv"])
 
+def url_mod(fnc):
+    pre="/ismartml"
+    return pre+url_for(fnc)
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @app.route('/iautosklearn')
 def to_main():
     return redirect('/iautosklearn/')
+
 
 @app.route('/')
 def start():
@@ -73,7 +79,7 @@ def start_p():
             session["data_type"]=data_type
             session["rec"]=rec
             session["task"]=task
-            return redirect('/features')
+            return redirect(url_mod("featur_pg"))
         else:
             flash('Allowed file types are: {}'.format(str(ALLOWED_EXTENSIONS )))
             return redirect(request.url)
@@ -104,7 +110,7 @@ def feature_pgr():
         path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
         new_data=select_cols(path,list(features)+[target_ft])
         new_data.to_csv(path,index=False)
-        return redirect('/target_class')
+        return redirect(url_mod('target_class'))
 
 @app.route('/target_class')
 def target_class():
@@ -162,7 +168,7 @@ def target_class_r():
             new_data=pd.DataFrame(np.column_stack((X_res,y_res)),columns=list(features)+[target_ft])
             new_data.to_csv(path,index=False)
         print(smote)
-        return redirect('/params')
+        return redirect(url_mod('params'))
 
 @app.route('/params')
 def params():
@@ -206,12 +212,12 @@ def params_p():
         values["search_space"]=search_space
         values["prep_space"]=prep_space
         session["values"]=values
-        return redirect('/budget')
+        return redirect(url_mod('budget'))
 
 @app.route('/budget')
 def budget():
     task=session.get("task","not set")
-    values=session.get('values', 'not set')
+    values=session.get("values", "not set")
     total_pred_time=0
     filename=session.get("filename","not set")
     meta=get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename),'csv')
@@ -246,7 +252,7 @@ def budget_p():
         values['period']=int(period)
         session["values"]=values
         session["reuse"]=reuse
-        return redirect('/running')
+        return redirect(url_mod('running'))
 
 @app.route('/running')
 def running():
