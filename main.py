@@ -302,7 +302,7 @@ def running():
             values["search_space"]=olds
             values["prep_space"]=old_pres
             session["values"]=values
-    return render_template('running.html',turn=0,task=values["task"],time=values["time"],iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"])
+    return render_template('running.html',url_mod=url_mod,turn=0,task=values["task"],time=values["time"],iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"])
 
 @app.route('/progress')
 def progress():
@@ -394,7 +394,7 @@ def progress():
     if(turn>=iters):
         return render_template("results.html",column_names=col_names, row_data=res_list,zip=zip,len=len, CLASSIFIERS=ESTIMATORS,CLASSIFIERS_DISP=ESTIMATORS_DISP, estim_dict=estim_dict)
     else:
-        return render_template("progress.html",turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=ESTIMATORS, CLASSIFIERS_DISP=ESTIMATORS_DISP,estim_dict=estim_dict)
+        return render_template("progress.html",url_mod=url_mod,turn=turn,iters=iters,PERIOD=format_period,RAW_PERIOD=values["period"], task=values["task"],time=values["time"],column_names=col_names, row_data=res_list,zip=zip,CLASSIFIERS=ESTIMATORS, CLASSIFIERS_DISP=ESTIMATORS_DISP,estim_dict=estim_dict)
 
 @app.route('/stop')
 def stop():
