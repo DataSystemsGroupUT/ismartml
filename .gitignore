@@ -11,3 +11,4 @@ uploads/*
 *.pyc
 data/*
 *.ini
+adaboost.joblib
