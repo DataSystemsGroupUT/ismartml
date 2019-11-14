@@ -4,3 +4,5 @@ tmp_runs/*
 notebooks
 model_training
 tmp_file
+*.sock
+*.wsgi
