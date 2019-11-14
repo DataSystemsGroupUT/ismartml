@@ -13,3 +13,4 @@ data/*
 *.ini
 adaboost.joblib
 key.py
+static/images/figs
