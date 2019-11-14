@@ -6,3 +6,7 @@ model_training
 tmp_file
 *.sock
 *.wsgi
+tmp_files/*
+uploads/*
+*.pyc
+data/*
