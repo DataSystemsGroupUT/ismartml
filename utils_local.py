@@ -1,5 +1,5 @@
-from hashlib import md5
 import pandas as pd
+from hashlib import md5
 
 def hash_file(path):
     chk= md5()
