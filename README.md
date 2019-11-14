@@ -6,6 +6,7 @@ users and domain experts (e.g., physicians) to easily define, configure and cont
 space for the AutoML search process according to
 their own preferences.
 
+<img width="905" alt="Panel" src="https://user-images.githubusercontent.com/8884249/68866376-fcbd2180-06fc-11ea-9a53-7e5a0fec5d7f.PNG">
 
 ## Getting Started
 
