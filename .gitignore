@@ -12,3 +12,4 @@ uploads/*
 data/*
 *.ini
 adaboost.joblib
+key.py
