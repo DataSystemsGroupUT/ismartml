@@ -25,8 +25,8 @@ Install iSmartML locally
 
 Clone repository and install dependencies
 ```
-git clone https://github.com/ShotaA/Autosk-Interface.git
-cd Autosk-Interface
+git clone https://github.com/DataSystemsGroupUT/ismartml.git
+cd ismartml
 pip install -r requirements.txt 
 ```
 
