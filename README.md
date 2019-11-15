@@ -7,6 +7,8 @@ space for the AutoML search process according to
 their own preferences.
 
 <img alt="architecture" src="https://user-images.githubusercontent.com/8884249/68950788-86d0bd00-07c5-11ea-8b91-cab51811cc2b.png">
+## Demo
+The tool is avilable at https://bigdata.cs.ut.ee/ismartml/
 
 ## Getting Started
 
