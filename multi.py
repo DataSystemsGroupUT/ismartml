@@ -1,8 +1,9 @@
+""" Running AutoSklearn on the data """
+import shutil
 import multiprocessing
 import warnings
 #warnings.filterwarnings(action='once')
 warnings.filterwarnings('ignore')
-import shutil
 
 import sklearn.model_selection
 import sklearn.datasets
@@ -29,7 +30,7 @@ for dir_ in [tmp_folder, output_folder]:
 
 
 def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
-    def spawn_classifier(seed, time, search_space,prep_space,metric,dataset_name=None):
+    def spawn_classifier(seed, time, search_space, prep_space, metric, dataset_name=None):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -73,14 +74,14 @@ def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test, metric = metric,dataset_name=dataset_name)
+        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test, metric=metric, dataset_name=dataset_name)
         #print(automl.cv_results_)
         return automl.cv_results_
     return spawn_classifier
 
 
 def get_spawn_regressor(X_train, y_train, X_test=None, y_test=None):
-    def spawn_regressor(seed, time,search_space,prep_space,metric,dataset_name=None ):
+    def spawn_regressor(seed, time, search_space, prep_space, metric, dataset_name=None):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -124,97 +125,48 @@ def get_spawn_regressor(X_train, y_train, X_test=None, y_test=None):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test,metric=metric, dataset_name=dataset_name)
+        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test, metric=metric, dataset_name=dataset_name)
         #print(automl.cv_results_)
         return automl.cv_results_
 
     return spawn_regressor
 
-def process_data(path,data_type,target_ft):
-    if(data_type=="numpy"):
-        data=np.load(path)
-        X=data[:,:-1]
-        y=data[:,-1]
-    elif(data_type=="csv"):
+def process_data(path, data_type, target_ft):
+    if data_type == "numpy":
+        data = np.load(path)
+        X = data[:, :-1]
+        y = data[:, -1]
+    elif data_type == "csv":
         #data=np.genfromtxt(path,skip_header=1,delimiter=",")
-        data=pd.read_csv(path)
-        X=data.loc[:,data.columns!=target_ft].to_numpy()
-        y=data.loc[:,target_ft].to_numpy()
+        data = pd.read_csv(path)
+        X = data.loc[:, data.columns != target_ft].to_numpy()
+        y = data.loc[:, target_ft].to_numpy()
         #data=data.to_numpy()
         #X=data[:,:-1]
         #y=data[:,-1]
-        print(data.columns)
-        print(X.shape,y.shape)
+        #print(data.columns)
+        #print(X.shape, y.shape)
     else:
-        X=None
-        y=None
-    return X,y,data
+        X = None
+        y = None
+    return X, y, data
 
 
-def run_task(path,task,data_type, target_ft,test_split=0.1):
+def run_task(path, task, data_type, target_ft, test_split=0.1):
 
     #interval=time//period
     #extra=time%period
-    results=[]
+    results = []
     #data=np.load(path)
     #X=data[:,:-1]
     #y=data[:,-1]
     #X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
-    X,y,_=process_data(path,data_type,target_ft)
-    
-    
+    X, y, _ = process_data(path, data_type, target_ft)
     X_train, X_test, y_train, y_test = \
-        sklearn.model_selection.train_test_split(X, y,test_size=0.3 ,random_state=1)
-    
-    
-    if task=="classification":
+        sklearn.model_selection.train_test_split(X, y, test_size=0.3, random_state=1)
+    if task == "classification":
         spawn_estimator = get_spawn_classifier(X_train, y_train, X_test=X_test, y_test=y_test)
-    elif task=="regression":
+    elif task == "regression":
         spawn_estimator = get_spawn_regressor(X_train, y_train, X_test=X_test, y_test=y_test)
 
     return spawn_estimator
-
-    """
-    for i in range(interval): 
-        #results.append(spawn_classifier(i,time))
-        results.append(spawn_estimator(i,time))
-    if extra >=30:
-        results.append(spawn_estimator(i,time))
-    return results[-1]
-    """
-
-    """
-    print('Starting to build an ensemble!')
-    automl = AutoSklearnClassifier(
-        time_left_for_this_task=30,
-        per_run_time_limit=15,
-        ml_memory_limit=1024,
-        shared_mode=True,
-        ensemble_size=50,
-        ensemble_nbest=200,
-        tmp_folder=tmp_folder,
-        output_folder=output_folder,
-        initial_configurations_via_metalearning=0,
-        seed=1,
-    )
-
-    # Both the ensemble_size and ensemble_nbest parameters can be changed now if
-    # necessary
-    automl.fit_ensemble(
-        y_train,
-        task=MULTICLASS_CLASSIFICATION,
-        metric=accuracy,
-        precision='32',
-        dataset_name='digits',
-        ensemble_size=20,
-        ensemble_nbest=50,
-    )
-
-    predictions = automl.predict(X_test)
-    print(automl.show_models())
-    print("Accuracy score", sklearn.metrics.accuracy_score(y_test, predictions))
-    """
-
-if __name__ == '__main__':
-    #run_task("../digits_c.np.npy","classification",30)
-    run_task("../digits_c.np.npy","regression",30)
