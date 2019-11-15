@@ -1,21 +1,12 @@
 """ Running AutoSklearn on the data """
 import shutil
-import multiprocessing
 import warnings
-#warnings.filterwarnings(action='once')
-warnings.filterwarnings('ignore')
-
-import sklearn.model_selection
-import sklearn.datasets
-import sklearn.metrics
-
-from autosklearn.metrics import accuracy
-from autosklearn import metrics
-from autosklearn.classification import AutoSklearnClassifier
-from autosklearn.regression import AutoSklearnRegressor
-from autosklearn.constants import MULTICLASS_CLASSIFICATION
 import numpy as np
 import pandas as pd
+import sklearn.model_selection
+from autosklearn.classification import AutoSklearnClassifier
+from autosklearn.regression import AutoSklearnRegressor
+warnings.filterwarnings('ignore')
 
 
 tmp_folder = 'tmp/autosk_tmp'
@@ -30,6 +21,7 @@ for dir_ in [tmp_folder, output_folder]:
 
 
 def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
+    """Generates and returns spaw_classifier """
     def spawn_classifier(seed, time, search_space, prep_space, metric, dataset_name=None):
         """Spawn a subprocess.
 
@@ -74,7 +66,8 @@ def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test, metric=metric, dataset_name=dataset_name)
+        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test,
+                   metric=metric, dataset_name=dataset_name)
         #print(automl.cv_results_)
         return automl.cv_results_
     return spawn_classifier
@@ -125,25 +118,22 @@ def get_spawn_regressor(X_train, y_train, X_test=None, y_test=None):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test, metric=metric, dataset_name=dataset_name)
+        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test,
+                   metric=metric, dataset_name=dataset_name)
         #print(automl.cv_results_)
         return automl.cv_results_
-
     return spawn_regressor
 
 def process_data(path, data_type, target_ft):
+    """Loads data and returns as X,y """
     if data_type == "numpy":
         data = np.load(path)
         X = data[:, :-1]
         y = data[:, -1]
     elif data_type == "csv":
-        #data=np.genfromtxt(path,skip_header=1,delimiter=",")
         data = pd.read_csv(path)
         X = data.loc[:, data.columns != target_ft].to_numpy()
         y = data.loc[:, target_ft].to_numpy()
-        #data=data.to_numpy()
-        #X=data[:,:-1]
-        #y=data[:,-1]
         #print(data.columns)
         #print(X.shape, y.shape)
     else:
@@ -152,15 +142,8 @@ def process_data(path, data_type, target_ft):
     return X, y, data
 
 
-def run_task(path, task, data_type, target_ft, test_split=0.1):
-
-    #interval=time//period
-    #extra=time%period
-    results = []
-    #data=np.load(path)
-    #X=data[:,:-1]
-    #y=data[:,-1]
-    #X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
+def run_task(path, task, data_type, target_ft):
+    """Runs AutoSklearn optimizer on passed data and parameters """
     X, y, _ = process_data(path, data_type, target_ft)
     X_train, X_test, y_train, y_test = \
         sklearn.model_selection.train_test_split(X, y, test_size=0.3, random_state=1)
@@ -168,5 +151,4 @@ def run_task(path, task, data_type, target_ft, test_split=0.1):
         spawn_estimator = get_spawn_classifier(X_train, y_train, X_test=X_test, y_test=y_test)
     elif task == "regression":
         spawn_estimator = get_spawn_regressor(X_train, y_train, X_test=X_test, y_test=y_test)
-
     return spawn_estimator
