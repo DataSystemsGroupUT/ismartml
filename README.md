@@ -6,7 +6,11 @@ users and domain experts (e.g., physicians) to easily define, configure and cont
 space for the AutoML search process according to
 their own preferences.
 
-<img width="905" alt="Panel" src="https://user-images.githubusercontent.com/8884249/68866376-fcbd2180-06fc-11ea-9a53-7e5a0fec5d7f.PNG">
+<img alt="architecture" src="https://user-images.githubusercontent.com/8884249/68950788-86d0bd00-07c5-11ea-8b91-cab51811cc2b.png">
+
+## Demo
+
+The tool is avilable at https://bigdata.cs.ut.ee/ismartml/
 
 ## Getting Started
 
