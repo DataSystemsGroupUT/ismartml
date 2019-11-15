@@ -1,4 +1,4 @@
-# Autosk-Interface
+# iSmartML
 
 iSmartML is an interactive and user-guided framework for improving the utility and usability of the AutoML
 process. The framework provides the end-user with a userfriendly configuration control panel that allows nontechnical 
@@ -42,7 +42,7 @@ The tool should be avilable at
 http://localhost:8080/
 ```
 
-Or deploy with web server
+Or deploy with a web server
 
 
 
