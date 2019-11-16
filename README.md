@@ -20,7 +20,7 @@ iSmartML is an interactive and user-guided framework for improving the utility a
 
 The tool is avilable at https://bigdata.cs.ut.ee/ismartml/
 
-[![iSmartML](http://img.youtube.com/vi/v=aug5UXd1dNI/0.jpg)](https://www.youtube.com/watch?v=aug5UXd1dNI "iSmartML")
+[![iSmartML](https://www.youtube.com/watch?v=aug5UXd1dNI)](https://www.youtube.com/watch?v=aug5UXd1dNI "iSmartML")
 
 ## Getting Started
 
