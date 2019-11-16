@@ -20,6 +20,8 @@ iSmartML is an interactive and user-guided framework for improving the utility a
 
 The tool is avilable at https://bigdata.cs.ut.ee/ismartml/
 
+[!(http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://www.youtube.com/watch?v=aug5UXd1dNI&feature=youtu.be)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
