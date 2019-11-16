@@ -12,7 +12,9 @@ iSmartML is an interactive and user-guided framework for improving the utility a
 
 - The framework is equipped with an explanation module which allows the end-user to understand and diagnose the design of the returned machine learning models using various explanation techniques. In particular, the explanation module allows the end-user to choose the model with the best satisfactory explanation for a higher trust or to use the information of the explanation process to refine and optimize a new iteration of the automated search process.
 
+<p align="center">
 <img alt="architecture" src="https://user-images.githubusercontent.com/8884249/68950788-86d0bd00-07c5-11ea-8b91-cab51811cc2b.png">
+</p>
 
 ## Demo
 
