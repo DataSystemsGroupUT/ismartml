@@ -1,6 +1,6 @@
 # iSmartML
 
-iSmartML is an interactive and user-guided framework for improving the utility and usability of the AutoML process with the following main features:
+**iSmartML** is an interactive and user-guided framework for improving the utility and usability of the *AutoML* process with the following main features:
 
 - The framework provides the end-user with a userfriendly configuration control panel that allows nontechnical users and domain experts (e.g., physicians) to easily define, configure and control the search space for the AutoML search process according to their own preferences.
 
@@ -20,7 +20,7 @@ iSmartML is an interactive and user-guided framework for improving the utility a
 
 The tool is avilable at https://bigdata.cs.ut.ee/ismartml/
 
-[![Video Demo for iSmartML](https://www.youtube.com/watch?v=aug5UXd1dNI)](https://www.youtube.com/watch?v=aug5UXd1dNI "iSmartML")
+[![Video Demo for iSmartML](http://img.youtube.com/vi/aug5UXd1dNI/0.jpg)](http://www.youtube.com/watch?v=aug5UXd1dNI "iSmartML")
 
 ## Getting Started
 
