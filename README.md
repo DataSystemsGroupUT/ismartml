@@ -2,15 +2,15 @@
 
 **iSmartML** is an interactive and user-guided framework for improving the utility and usability of the *AutoML* process with the following main features:
 
-- The framework provides the end-user with a userfriendly configuration control panel that allows nontechnical users and domain experts (e.g., physicians) to easily define, configure and control the search space for the AutoML search process according to their own preferences.
+- The framework provides the end-user with a user-friendly configuration *control panel* that allows nontechnical users and domain experts (e.g., physicians) to easily define, configure and control the search space for the AutoML search process according to their own preferences.
 
-- The framework is equipped with a recommendation engine, that uses a meta-learning mechanism, to help the end-users on defining the effective search space for the input dataset, potentially useful pre-processors and accurately estimating the time budget.
+- The framework is equipped with a *recommendation engine*, that uses a meta-learning mechanism, to help the end-users on defining the effective search space for the input dataset, potentially useful pre-processors and accurately estimating the time budget.
 
-- The framework provides the end-user with a monitoring panel that allows tracking the progress of the search process during the whole allocated time budget and reports a stream of model configurations by sending alerts whenever a better pipeline is found during any point of time through the search process.
+- The framework provides the end-user with a *monitoring panel* that allows tracking the progress of the search process during the whole allocated time budget and reports a stream of model configurations by sending alerts whenever a better pipeline is found during any point of time through the search process.
 
-- The framework is equipped with a logging mechanism which enables storing the results of the explored configurations over a given dataset on one run so that repeated runs on the same dataset can be more effective by avoiding re-exploring the same candidate configurations on the search space.
+- The framework is equipped with a *logging* mechanism which enables storing the results of the explored configurations over a given dataset on one run so that repeated runs on the same dataset can be more effective by avoiding re-exploring the same candidate configurations on the search space.
 
-- The framework is equipped with an explanation module which allows the end-user to understand and diagnose the design of the returned machine learning models using various explanation techniques. In particular, the explanation module allows the end-user to choose the model with the best satisfactory explanation for a higher trust or to use the information of the explanation process to refine and optimize a new iteration of the automated search process.
+- The framework is equipped with an *explanation module* which allows the end-user to understand and diagnose the design of the returned machine learning models using various explanation techniques. In particular, the explanation module allows the end-user to choose the model with the best satisfactory explanation for a higher trust or to use the information of the explanation process to refine and optimize a new iteration of the automated search process.
 
 <p align="center">
 <img alt="architecture" src="https://user-images.githubusercontent.com/8884249/68950788-86d0bd00-07c5-11ea-8b91-cab51811cc2b.png">
