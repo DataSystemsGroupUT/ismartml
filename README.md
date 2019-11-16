@@ -20,7 +20,7 @@ iSmartML is an interactive and user-guided framework for improving the utility a
 
 The tool is avilable at https://bigdata.cs.ut.ee/ismartml/
 
-[![Audi R8](http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://www.youtube.com/watch?v=aug5UXd1dNI "iSmartML")
+[![iSmartML](http://img.youtube.be/vi/v=aug5UXd1dNI/0.jpg)](https://www.youtube.com/watch?v=aug5UXd1dNI "iSmartML")
 
 ## Getting Started
 
