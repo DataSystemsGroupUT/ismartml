@@ -153,3 +153,8 @@ table.blueTable tfoot .links a{
 .no-border{
   border:none;
 }
+
+iframe {
+   display: block;
+   margin: 0 auto;
+}
