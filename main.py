@@ -85,7 +85,7 @@ def start_p():
 @app.route('/features')
 def featur_pg():
     values = session.get('values', 'not set')
-    path = os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    path = os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
     features = return_cols(path)
     new_data = select_cols(path,features)
     for i in range(len(features)):
@@ -105,7 +105,7 @@ def feature_pgr():
             return "You can't discard the target class"      
         features.remove(target_ft)
         session["features"] = features
-        path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+        path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
         new_data = select_cols(path,list(features)+[target_ft])
         new_data.to_csv(path, index=False)
         return redirect(url_mod('target_class'))
@@ -120,7 +120,7 @@ def target_class():
         METRICS = METRICS_RG_DISP
     values = session.get('values', 'not set')
     target_ft = session.get('target_ft', 'not set')
-    path = os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+    path = os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
     data = pd.read_csv(path)
     unique, counts = np.unique(data[target_ft], return_counts=True)
     classes = dict(zip(unique, counts))
@@ -151,7 +151,7 @@ def target_class_r():
         session["smote"]=smote
         if smote == "yes":
             smote_dic={}
-            path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename","not set"))
+            path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
             X, y, _=process_data(path, "csv", target_ft)
             unique, counts = np.unique(y, return_counts=True)
             if min(counts)<=SMOTE_N:
@@ -175,7 +175,7 @@ def params():
     column_names=["Classifier", "Score"]
     bolds=[]
     ##Configure for Task
-    if task=="classification":
+    if task == "classification":
         rec=[x for x in rec if x[1]!=0] #remove predicions with 0 score from results
         #get bold indexes for recomended classifiers
         rec_t=list(map(list, zip(*rec)))
@@ -186,11 +186,11 @@ def params():
                 if "SVC" in rec_t[0]:
                     bolds.append(CLASSIFIERS_DISP.index(cl))
         #Get corect lists for this task
-        ESTIMATORS=[CLASSIFIERS, CLASSIFIERS_DISP]
-        PREPROCESSORS=[PREPROCESSORS_CL, PREPROCESSORS_CL_DISP] 
+        ESTIMATORS = [CLASSIFIERS, CLASSIFIERS_DISP]
+        PREPROCESSORS = [PREPROCESSORS_CL, PREPROCESSORS_CL_DISP] 
     else:
-        ESTIMATORS=[REGRESSORS, REGRESSORS_DISP]
-        PREPROCESSORS=[PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
+        ESTIMATORS = [REGRESSORS, REGRESSORS_DISP]
+        PREPROCESSORS = [PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
     return render_template('upload.html', ESTIMATORS=ESTIMATORS, PREPROCESSORS=PREPROCESSORS, column_names=column_names, row_data=rec, zip=zip, TASK=task, BOLD_CL=bolds)
 
 @app.route('/params', methods=['POST'])
@@ -240,32 +240,32 @@ def budget_p():
         filename=session.get("filename", "not set")
         task=session.get("task", "not set")
         reuse = request.form['reuse']
-        if(int(time)<30):
+        if int(time )< 30:
             return "Time budget must be at least 30 seconds"
-        if(int(period)<30):
+        if int(period) < 30:
             return "Update period must be at least 30 seconds"
-        if(int(period)>int(time)):
+        if int(period) > int(time):
             return "Update period can't be larger than total time budget"
-        values['time']=int(time)
-        values['period']=int(period)
-        session["values"]=values
-        session["reuse"]=reuse
+        values['time'] = int(time)
+        values['period'] = int(period)
+        session["values"] = values
+        session["reuse"] = reuse
         return redirect(url_mod('running'))
 
 @app.route('/running')
 def running():
-    values=session.get('values', 'not set')
-    target_ft=session.get('target_ft', 'not set')
-    iters=values["time"]//values["period"]
-    extra=values["time"]%values["period"]
-    format_period=format_time(values["period"])
-    reuse=session.get('reuse', 'not set')
+    values = session.get('values', 'not set')
+    target_ft = session.get('target_ft', 'not set')
+    iters = values["time"]//values["period"]
+    extra = values["time"]%values["period"]
+    format_period = format_time(values["period"])
+    reuse = session.get('reuse', 'not set')
     #check dataset checksum and lookup
-    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
-    checksum=hash_file(path)+"_"+target_ft+"_"+values["task"]+"_"+values["metric"]
+    path = os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
+    checksum = hash_file(path)+"_"+target_ft+"_"+values["task"]+"_"+values["metric"]
     session["checksum"]=checksum
     with open("data/hash_list.txt", "r") as f:
-        lines=f.readlines()
+        lines = f.readlines()
     if(checksum+"\n" not in lines):
         with open("data/hash_list.txt", "a") as f:
             f.write(checksum+"\n")
@@ -275,17 +275,17 @@ def running():
         except OSError:
             pass
     #copy tmp to run on it
-    if reuse=="yes":
+    if reuse == "yes":
         if os.path.exists("tmp_runs/{}".format(checksum)):
             shutil.copytree("tmp_runs/{}".format(checksum), "tmp/autosk_tmp")
             #modify space.pcs
-            olds=[]
-            old_pres=[]
-            path="tmp/autosk_tmp/space.pcs"
+            olds = []
+            old_pres = []
+            path = "tmp/autosk_tmp/space.pcs"
             with open(path, "r") as f:
-                lines=f.readlines()
+                lines = f.readlines()
                 "classifier:__choice__ {decision_tree, gradient_boosting, random_forest} [random_forest]"
-                pre="classifier:__choice__ {"
+                pre = "classifier:__choice__ {"
                 for line in lines:
                     if "classifier:__choice__ {" in line:
                         olds=[ar.strip() for ar in line[len(pre):].split("}")[0].split(",")]
@@ -297,73 +297,73 @@ def running():
             for param in values["prep_space"]:
                 if param not in old_pres:
                     old_pres.append(param)
-            values["search_space"]=olds
-            values["prep_space"]=old_pres
-            session["values"]=values
+            values["search_space"] = olds
+            values["prep_space"] = old_pres
+            session["values"] = values
     return render_template('running.html', url_mod=url_mod, turn=0, task=values["task"], time=values["time"], iters=iters, PERIOD=format_period, RAW_PERIOD=values["period"])
 
 @app.route('/progress')
 def progress():
     turn = request.args.get('iter', default = 0, type=int)
     print("turn", turn)
-    values=session.get('values', 'not set')
-    target_ft=session.get('target_ft', 'not set')
-    checksum=session.get('checksum', 'not set')
-    iters=values["time"]//values["period"]
-    extra=values["time"]%values["period"]
-    format_period=format_time(values["period"])
-    metric=gen_metric(values["task"], values["metric"])
-    path=os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
-    features=return_cols(path)
-    estimator=run_task(path, values["task"], values["data_type"], target_ft)
-    results=estimator(turn, values["period"], values["search_space"], values["prep_space"], metric)
-    df=pd.DataFrame(data=results).sort_values(by="rank_test_scores")
-    col_names=["Classifier", "{} Max Score".format(values["metric"]), "Models Trained", "Show Models"]
+    values = session.get('values', 'not set')
+    target_ft = session.get('target_ft', 'not set')
+    checksum = session.get('checksum', 'not set')
+    iters = values["time"]//values["period"]
+    extra = values["time"]%values["period"]
+    format_period = format_time(values["period"])
+    metric = gen_metric(values["task"], values["metric"])
+    path = os.path.join(app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
+    features = return_cols(path)
+    estimator = run_task(path, values["task"], values["data_type"], target_ft)
+    results = estimator(turn, values["period"], values["search_space"], values["prep_space"], metric)
+    df = pd.DataFrame(data=results).sort_values(by="rank_test_scores")
+    col_names = ["Classifier", "{} Max Score".format(values["metric"]), "Models Trained", "Show Models"]
     if values["task"]!="classification":
-        col_names[1]="Regressor"
+        col_names[1] = "Regressor"
     #Sort list by scores
     res_list = [[a, b]for a, b in zip(df["mean_test_score"].values.tolist(), df["params"].values.tolist())]
     #divide list in dictionaries and dump to drive
     
 
-    grouped_results={}
-    if values["task"]=='classification':
+    grouped_results = {}
+    if values["task"] == 'classification':
         ESTIMATORS=CLASSIFIERS
-        ESTIMATORS_DISP=CLASSIFIERS_DISP
+        ESTIMATORS_DISP = CLASSIFIERS_DISP
         for each in CLASSIFIERS:
-            grouped_results[each]=[]
+            grouped_results[each] = []
         for each in res_list:
             grouped_results[each[1]['classifier:__choice__' ]].append(each)
     else:
-        ESTIMATORS=REGRESSORS
-        ESTIMATORS_DISP=REGRESSORS_DISP
+        ESTIMATORS = REGRESSORS
+        ESTIMATORS_DISP = REGRESSORS_DISP
         for each in REGRESSORS:
-            grouped_results[each]=[]
+            grouped_results[each] = []
         for each in res_list:
             grouped_results[each[1]['regressor:__choice__' ]].append(each)
  
 
     with open("tmp/results.p", 'wb') as filehandler: 
         pickle.dump(grouped_results, filehandler)
-    res_list=[]
+    res_list = []
     for  each in grouped_results.keys():
         if grouped_results[each]:
             res_list.append((ESTIMATORS_DISP[ESTIMATORS.index(each)], round(grouped_results[each][0][0], 3), len(grouped_results[each]), "View"))
     res_list.sort(key=lambda x:x[0], reverse=True)
-    turn+=+1
+    turn+=1
     #copy tmp files to save for later
     if os.path.exists("tmp_runs/{}".format(checksum)):
         shutil.rmtree("tmp_runs/{}".format(checksum))
     shutil.copytree("tmp/autosk_tmp", "tmp_runs/{}".format(checksum))
     with open("tmp/results.p", 'rb') as filehandler:
-        or_list=pickle.load(filehandler)
-    estim_dict={"col_names":[], "disp_index":[], "index":[], "fig_names":[], "res_list":[]}
+        or_list = pickle.load(filehandler)
+    estim_dict = {"col_names":[], "disp_index":[], "index":[], "fig_names":[], "res_list":[]}
     res_list.sort(key=lambda x:x[1], reverse=True)
     for each in res_list:
-        index=ESTIMATORS[ESTIMATORS_DISP.index(each[0])]
-        fres_list=or_list[index]
+        index = ESTIMATORS[ESTIMATORS_DISP.index(each[0])]
+        fres_list = or_list[index]
 
-        if values["task"]=='classification':
+        if values["task"] == 'classification':
             slc=len("classifier:{}:".format(index))
             col_names_e=[x for x in list(fres_list[0][1].keys()) if x[:10]=="classifier" and x[-21:]!="min_impurity_decrease"][1:]
         else:
