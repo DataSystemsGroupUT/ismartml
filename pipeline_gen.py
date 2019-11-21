@@ -8,20 +8,20 @@ from sklearn.decomposition import FastICA, PCA
 from sklearn.ensemble import ExtraTreesClassifier, RandomTreesEmbedding
 from sklearn.svm import LinearSVC
 from sklearn.preprocessing import PolynomialFeatures
-from sklearn.metrics import precision_score,recall_score,f1_score,accuracy_score
+from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 
 
 # In[45]:
 
 
-from sklearn.ensemble import AdaBoostClassifier,ExtraTreesClassifier, GradientBoostingClassifier,RandomForestClassifier
+from sklearn.ensemble import AdaBoostClassifier, ExtraTreesClassifier, GradientBoostingClassifier, RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import BernoulliNB, GaussianNB, MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.svm import LinearSVC, SVC
-from sklearn.linear_model import PassiveAggressiveClassifier,SGDClassifier
-from autosklearn.pipeline.components.feature_preprocessing.liblinear_svc_preprocessor import LibLinear_Preprocessor 
+from sklearn.linear_model import PassiveAggressiveClassifier, SGDClassifier
+from autosklearn.pipeline.components.feature_preprocessing.liblinear_svc_preprocessor import LibLinear_Preprocessor
 from autosklearn.pipeline.components.classification.liblinear_svc import LibLinear_SVC
 from autosklearn.pipeline.components.classification.libsvm_svc import LibSVM_SVC
 
@@ -45,62 +45,70 @@ from sklearn.utils.multiclass import unique_labels
 
 
 def fast_ica(params):
-    pr=FastICA(**params)
+    pr = FastICA(**params)
     return pr
+
 
 def extra_trees_preproc_for_classification(params):
-    pr=ExtraTreesClassifier(**params)
+    pr = ExtraTreesClassifier(**params)
     return pr
+
 
 def no_preprocessing(params):
-    pr=None
+    pr = None
     return pr
+
 
 def liblinear_svc_preprocessor(params):
-    #pr=LinearSVC(**params)
-    pr=LibLinear_Preprocessor(**params)
+    # pr=LinearSVC(**params)
+    pr = LibLinear_Preprocessor(**params)
     return pr
+
 
 def polynomial(params):
-    pr=PolynomialFeatures(**params)
+    pr = PolynomialFeatures(**params)
     return pr
+
 
 def random_trees_embedding(params):
-    pr=RandomTreesEmbedding(**params)
+    pr = RandomTreesEmbedding(**params)
     return pr
+
 
 def pca(params):
     params.pop("keep_variance")
-    pr=PCA(**params)
+    pr = PCA(**params)
     return pr
+
 
 def pca(params):
     params.pop("keep_variance")
-    pr=PCA(**params)
+    pr = PCA(**params)
     return pr
+
 
 def build_preprocessor_cl(param_dict):
     print(param_dict["preprocessor:__choice__"])
-    params={}
-    pre="preprocessor:{}:".format(param_dict["preprocessor:__choice__"])
+    params = {}
+    pre = "preprocessor:{}:".format(param_dict["preprocessor:__choice__"])
     for key in param_dict.keys():
         if pre in key:
-            params[key[len(pre):]]=param_dict[key]
-    if param_dict["preprocessor:__choice__"]=="fast_ica":
-            return fast_ica(params)
-    elif param_dict["preprocessor:__choice__"]=="extra_trees_preproc_for_classification":
-            return extra_trees_preproc_for_classification(params)
-    elif param_dict["preprocessor:__choice__"]=="no_preprocessing":
-            return no_preprocessing(params)
-    elif param_dict["preprocessor:__choice__"]=="liblinear_svc_preprocessor":
-            return liblinear_svc_preprocessor(params)
-    elif param_dict["preprocessor:__choice__"]=="random_trees_embedding":
-            return random_trees_embedding(params)
-    elif param_dict["preprocessor:__choice__"]=="polynomial":
-            return polynomial(params)
-    elif param_dict["preprocessor:__choice__"]=="pca":
-            return pca(params)
-    #elif param_dict["preprocessor:__choice__"]=="pca":
+            params[key[len(pre):]] = param_dict[key]
+    if param_dict["preprocessor:__choice__"] == "fast_ica":
+        return fast_ica(params)
+    elif param_dict["preprocessor:__choice__"] == "extra_trees_preproc_for_classification":
+        return extra_trees_preproc_for_classification(params)
+    elif param_dict["preprocessor:__choice__"] == "no_preprocessing":
+        return no_preprocessing(params)
+    elif param_dict["preprocessor:__choice__"] == "liblinear_svc_preprocessor":
+        return liblinear_svc_preprocessor(params)
+    elif param_dict["preprocessor:__choice__"] == "random_trees_embedding":
+        return random_trees_embedding(params)
+    elif param_dict["preprocessor:__choice__"] == "polynomial":
+        return polynomial(params)
+    elif param_dict["preprocessor:__choice__"] == "pca":
+        return pca(params)
+    # elif param_dict["preprocessor:__choice__"]=="pca":
     #        return pca(params)
 
 
@@ -108,106 +116,121 @@ def build_preprocessor_cl(param_dict):
 
 
 def adaboost_cl(params):
-    max_depth=params.pop("max_depth")
-    params["base_estimator"]=DecisionTreeClassifier(max_depth=max_depth)
-    cl=AdaBoostClassifier(**params)
+    max_depth = params.pop("max_depth")
+    params["base_estimator"] = DecisionTreeClassifier(max_depth=max_depth)
+    cl = AdaBoostClassifier(**params)
     return cl
+
 
 def decision_tree_cl(params):
-    max_depth=params.pop("max_depth_factor")
-    cl=DecisionTreeClassifier(**params)
+    max_depth = params.pop("max_depth_factor")
+    cl = DecisionTreeClassifier(**params)
     return cl
+
 
 def bernoulli_nb_cl(params):
-    cl=BernoulliNB(**params)
+    cl = BernoulliNB(**params)
     return cl
+
 
 def extra_trees_cl(params):
-    cl=ExtraTreesClassifier(**params)
+    cl = ExtraTreesClassifier(**params)
     return cl
+
 
 def gaussian_nb_cl(params):
-    cl=GaussianNB(**params)
+    cl = GaussianNB(**params)
     return cl
+
 
 def gradient_boosting_cl(params):
-    cl=GradientBoostingClassifier(**params)
+    cl = GradientBoostingClassifier(**params)
     return cl
+
 
 def k_nearest_neighbors_cl(params):
-    cl=KNeighborsClassifier(**params)
+    cl = KNeighborsClassifier(**params)
     return cl
+
 
 def lda_cl(params):
-    cl=LinearDiscriminantAnalysis(**params)
+    cl = LinearDiscriminantAnalysis(**params)
     return cl
+
 
 def liblinear_svc_cl(params):
-    #cl=LinearSVC(**params)
-    cl=LibLinear_SVC(**params)
+    # cl=LinearSVC(**params)
+    cl = LibLinear_SVC(**params)
     return cl
+
 
 def libsvm_svc_cl(params):
-    #cl=SVC(**params)
-    cl=LibSVM_SVC(**params)
+    # cl=SVC(**params)
+    cl = LibSVM_SVC(**params)
     return cl
+
 
 def qda_cl(params):
-    cl=QuadraticDiscriminantAnalysis(**params)
+    cl = QuadraticDiscriminantAnalysis(**params)
     return cl
+
 
 def passive_aggressive_cl(params):
-    cl=PassiveAggressiveClassifier(**params)
+    cl = PassiveAggressiveClassifier(**params)
     return cl
+
 
 def multinomial_nb_cl(params):
-    cl=MultinomialNB(**params)
+    cl = MultinomialNB(**params)
     return cl
+
 
 def random_forest_cl(params):
-    cl=RandomForestClassifier(**params)
+    cl = RandomForestClassifier(**params)
     return cl
 
+
 def sgd_cl(params):
-    cl=SGDClassifier(**params)
+    cl = SGDClassifier(**params)
     return cl
+
 
 def build_classifier(param_dict):
     print(param_dict["classifier:__choice__"])
-    params={}
-    pre="classifier:{}:".format(param_dict["classifier:__choice__"])
+    params = {}
+    pre = "classifier:{}:".format(param_dict["classifier:__choice__"])
     for key in param_dict.keys():
         if pre in key:
-            params[key[len(pre):]]=param_dict[key]
-    if param_dict["classifier:__choice__"]=="adaboost":
-            return adaboost_cl(params)
-    elif param_dict["classifier:__choice__"]=="decision_tree":
-            return decision_tree_cl(params)
-    elif param_dict["classifier:__choice__"]=="bernoulli_nb":
-            return bernoulli_nb_cl(params)
-    elif param_dict["classifier:__choice__"]=="extra_trees":
-            return extra_trees_cl(params)
-    elif param_dict["classifier:__choice__"]=="gaussian_nb":
-            return gaussian_nb_cl(params)
-    elif param_dict["classifier:__choice__"]=="gradient_boosting":
-            return gradient_boosting_cl(params)
-    elif param_dict["classifier:__choice__"]=="k_nearest_neighbors":
-            return k_nearest_neighbors_cl(params)
-    elif param_dict["classifier:__choice__"]=="lda":
-            return lda_cl(params)
-    elif param_dict["classifier:__choice__"]=="liblinear_svc":
-            return liblinear_svc_cl(params)
-    elif param_dict["classifier:__choice__"]=="libsvm_svc":
-            return libsvm_svc_cl(params)
-    elif param_dict["classifier:__choice__"]=="qda":
+            params[key[len(pre):]] = param_dict[key]
+    if param_dict["classifier:__choice__"] == "adaboost":
+        return adaboost_cl(params)
+    elif param_dict["classifier:__choice__"] == "decision_tree":
+        return decision_tree_cl(params)
+    elif param_dict["classifier:__choice__"] == "bernoulli_nb":
+        return bernoulli_nb_cl(params)
+    elif param_dict["classifier:__choice__"] == "extra_trees":
+        return extra_trees_cl(params)
+    elif param_dict["classifier:__choice__"] == "gaussian_nb":
+        return gaussian_nb_cl(params)
+    elif param_dict["classifier:__choice__"] == "gradient_boosting":
+        return gradient_boosting_cl(params)
+    elif param_dict["classifier:__choice__"] == "k_nearest_neighbors":
+        return k_nearest_neighbors_cl(params)
+    elif param_dict["classifier:__choice__"] == "lda":
+        return lda_cl(params)
+    elif param_dict["classifier:__choice__"] == "liblinear_svc":
+        return liblinear_svc_cl(params)
+    elif param_dict["classifier:__choice__"] == "libsvm_svc":
+        return libsvm_svc_cl(params)
+    elif param_dict["classifier:__choice__"] == "qda":
         return qda_cl(params)
-    elif param_dict["classifier:__choice__"]=="passive_aggressive":
+    elif param_dict["classifier:__choice__"] == "passive_aggressive":
         return passive_aggressive_cl(params)
-    elif param_dict["classifier:__choice__"]=="multinomial_nb":
+    elif param_dict["classifier:__choice__"] == "multinomial_nb":
         return multinomial_nb_cl(params)
-    elif param_dict["classifier:__choice__"]=="random_forest":
+    elif param_dict["classifier:__choice__"] == "random_forest":
         return random_forest_cl(params)
-    elif param_dict["classifier:__choice__"]=="sgd":
+    elif param_dict["classifier:__choice__"] == "sgd":
         return sgd_cl(params)
     else:
         return None
@@ -218,25 +241,28 @@ def build_classifier(param_dict):
 
 def process_dict(dict):
     for key in dict.keys():
-        if dict[key]=="None":
-            dict[key]=None
+        if dict[key] == "None":
+            dict[key] = None
     return dict
 
 
-
-
-def get_importance(pipe,cl,smote):
-    trees=["gradient_boosting","decision_tree","random_forest","extra_trees","adaboost"]
-    linear=["libsvm_svc"]
-    ind=1
-    if smote=="yes":
-        ind=2
+def get_importance(pipe, cl, smote):
+    trees = [
+        "gradient_boosting",
+        "decision_tree",
+        "random_forest",
+        "extra_trees",
+        "adaboost"]
+    linear = ["libsvm_svc"]
+    ind = 1
+    if smote == "yes":
+        ind = 2
     if cl in trees:
         return pipe.steps[ind][1].feature_importances_
     if cl in linear:
         try:
             return pipe.steps[ind][1].feature_importances_
-        except:
+        except BaseException:
             pass
     return []
 
@@ -265,7 +291,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     else:
         print('Confusion matrix, without normalization')
 
-    #print(cm)
+    # print(cm)
 
     fig, ax = plt.subplots()
     im = ax.imshow(cm, interpolation='nearest', cmap=cmap)
@@ -292,31 +318,30 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     ha="center", va="center",
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout()
-    fig.savefig("static/images/figs/conf_mt_"+str(int(normalize)),bbox_inches="tight",transparent=True)
+    fig.savefig("static/images/figs/conf_mt_" +
+                str(int(normalize)), bbox_inches="tight", transparent=True)
     return ax
 
 
-def get_matrix(pipe,X,y,smote):
-    trees=["gradient_boosting","decision_tree","random_forest","extra_trees","adaboost"]
-    linear=["libsvm_svc"]
-    ind=1
-    if smote=="yes":
-        ind=2
-    pred_y=pipe.steps[ind][1].predict(X) 
-    plot_confusion_matrix(y,pred_y,np.unique(y), normalize=False)
-    plot_confusion_matrix(y,pred_y,np.unique(y), normalize=True)
-    a=accuracy_score(y, pred_y)   
-    r=recall_score(y, pred_y,average="macro")   
-    f=f1_score(y, pred_y, average="macro")   
-    p=precision_score(y, pred_y,average="macro")   
-    return [a,r,p,f]
-
-
-
-
-
-
-
+def get_matrix(pipe, X, y, smote):
+    trees = [
+        "gradient_boosting",
+        "decision_tree",
+        "random_forest",
+        "extra_trees",
+        "adaboost"]
+    linear = ["libsvm_svc"]
+    ind = 1
+    if smote == "yes":
+        ind = 2
+    pred_y = pipe.steps[ind][1].predict(X)
+    plot_confusion_matrix(y, pred_y, np.unique(y), normalize=False)
+    plot_confusion_matrix(y, pred_y, np.unique(y), normalize=True)
+    a = accuracy_score(y, pred_y)
+    r = recall_score(y, pred_y, average="macro")
+    f = f1_score(y, pred_y, average="macro")
+    p = precision_score(y, pred_y, average="macro")
+    return [a, r, p, f]
 
 
 # In[37]:
@@ -341,14 +366,10 @@ def get_matrix(pipe,X,y,smote):
 # y=dt[target]
 # pipe.fit(X,y)
 # from nyoka import skl_to_pmml
-# 
-# 
+#
+#
 # #features=[""]
 # #target=[""]
 # skl_to_pmml(pipe,features,target,"svc_pmml.pmml")
 
 # In[ ]:
-
-
-
-

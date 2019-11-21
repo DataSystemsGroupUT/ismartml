@@ -2,6 +2,7 @@
 from hashlib import md5
 import pandas as pd
 
+
 def hash_file(path):
     """ Returns md5 hash of a file"""
     chk = md5()
@@ -10,10 +11,12 @@ def hash_file(path):
             chk.update(chunk)
     return chk.hexdigest()
 
+
 def return_cols(path):
     """ Returns column names of the CSV"""
     data = pd.read_csv(path)
     return list(data.columns)
+
 
 def select_cols(path, cols):
     """Select passed columns from the CSV"""

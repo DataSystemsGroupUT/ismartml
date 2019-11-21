@@ -15,15 +15,12 @@ from extras import *
 from extract import get_meta
 from predict_meta import predict_meta, predict_time
 from utils_local import *
-# from sklearn.pipeline import Pipeline #original pipline
 from joblib import dump, load
 from pdpbox import pdp
-#from nyoka import skl_to_pmml
 
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
 
-#ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 ALLOWED_EXTENSIONS = set(["npy", "csv"])
 
 
@@ -35,11 +32,6 @@ def url_mod(fnc):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit(
         '.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-@app.route('/iautosklearn')
-def to_main():
-    return redirect('/iautosklearn/')
 
 
 @app.route('/')
@@ -66,9 +58,9 @@ def start_p():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            if(data_type == "numpy" and filename[-3:] != "npy"):
+            if data_type == "numpy" and filename[-3:] != "npy":
                 return "Wrong file extension (expected .npy)"
-            if(data_type == "csv" and (filename[-3:] != "csv" and filename[-3:] != "CSV")):
+            if data_type == "csv" and (filename[-3:] != "csv" and filename[-3:] != "CSV"):
                 return "Wrong file extension (expected .csv)"
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             rec = []
@@ -240,9 +232,9 @@ def params_p():
         task = session.get("task", "not set")
         search_space = request.form.getlist("estim_ls")
         prep_space = request.form.getlist("prep_ls")
-        if(not search_space):
+        if not search_space:
             return "You must select at least 1 estimator"
-        if(not prep_space):
+        if not prep_space:
             return "You must select at least 1 preprocessor"
         values['data_type'] = data_type
         values["search_space"] = search_space
@@ -259,14 +251,10 @@ def budget():
     filename = session.get("filename", "not set")
     meta = get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'csv')
     time_pred = predict_time(meta)
-    print(time_pred)
     for each in values["search_space"]:
         if each in ESTIMATOR_TIMES.keys():
             tm = ESTIMATOR_TIMES[each]
             total_pred_time += 0.2 * (time_pred)
-    # total_pred_time=time_pred
-    print(total_pred_time)
-    # Configure for Task
     return render_template('budget.html', zip=zip,
                            TASK=task, PRED_TIME=int(total_pred_time))
 
@@ -310,7 +298,7 @@ def running():
     session["checksum"] = checksum
     with open("data/hash_list.txt", "r") as f:
         lines = f.readlines()
-    if(checksum + "\n" not in lines):
+    if checksum + "\n" not in lines:
         with open("data/hash_list.txt", "a") as f:
             f.write(checksum + "\n")
     for dir_ in [tmp_folder, output_folder]:
@@ -387,7 +375,6 @@ def progress():
     res_list = [[a, b]for a, b in zip(
         df["mean_test_score"].values.tolist(), df["params"].values.tolist())]
     # divide list in dictionaries and dump to drive
-
     grouped_results = {}
     if values["task"] == 'classification':
         ESTIMATORS = CLASSIFIERS
@@ -425,7 +412,6 @@ def progress():
     for each in res_list:
         index = ESTIMATORS[ESTIMATORS_DISP.index(each[0])]
         fres_list = or_list[index]
-
         if values["task"] == 'classification':
             slc = len("classifier:{}:".format(index))
             col_names_e = [x for x in list(fres_list[0][1].keys(
@@ -434,7 +420,6 @@ def progress():
             slc = len("regressor:{}:".format(index))
             col_names_e = [x for x in list(fres_list[0][1].keys(
             )) if x[:10] == "regressor" and x[-21:] != "min_impurity_decrease"][1:]
-
         # TODO: 0 if k not in x[1] sets default argumetn to 0, 0 should be
         # replaced with default argument
         fres_list = [
@@ -520,7 +505,6 @@ def stop():
         slc = len("classifier:{}:".format(index))
         col_names_e = [x for x in list(fres_list[0][1].keys(
         )) if x[:10] == "classifier" and x[-21:] != "min_impurity_decrease"][1:]
-
         fres_list = [
             [
                 round(
@@ -663,23 +647,6 @@ def generate_model():
 
     # partial dependancy
     partial_fig_names = []
-    """
-    for feat in features:
-        #TODO: fix for estimator position with smote on
-        part_fig=plt.figure(figsize=(5,5))
-        partial_path="partial_"+str(feat)
-        partial_fig_names.append(partial_path)
-        #plot_partial_dependence(pipe.steps[1][1], X, [feat], fig=part_fig,feature_names=features)
-        feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=feat)
-        fig, amxes = pdp.pdp_plot(pdp_isolate_out=feat_p, feature_name=feat, center=True, x_quantile=True, plot_lines=True, frac_to_plot=100, show_percentile=False)
-        fig.savefig("static/images/figs/"+partial_path,bbox_inches="tight",transparent=True)
-    plt.figure()
-    """
-    # column_names=["Feature","Importance"]
-    # return
-    # render_template("download.html",index=index,column_names=column_names,row_data=imps,CL_Name=cl,
-    # metric_res=metric_res,zip=zip)
-
     return render_template(
         "download.html",
         url_mod=url_mod,
@@ -711,16 +678,6 @@ def download_pickle():
         estim, str(index)), as_attachment=True)
 
 
-@app.route('/download_pmml')
-def download_pmml():
-    index = request.args.get('model', default=0, type=int)
-    if os.path.getsize("tmp_files/model_{}.pmml".format(index)) > 0:
-        return send_from_directory(
-            "tmp_files", 'model_{}.joblib'.format(
-                str(index)), as_attachment=True)
-    return "This pipeline is not supported for pmml. Try joblib/pickle"
-
-
 @app.route('/plot_pdp')
 def plot_pdp():
     path = os.path.join(app.config['UPLOAD_FOLDER'],
@@ -732,9 +689,7 @@ def plot_pdp():
     f1 = request.args.get('f1', default=None, type=str)
     t1 = request.args.get('t1', default=None, type=str)
     X, y, data = process_data(path, "csv", target_ft)
-
     chosen_class = list(np.unique(y)).index(int(float(t1)))
-
     with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
         pipe = pickle.load(filehandler)
     mod_path = "modal_" + "pdp_" + str(f1.replace('.', '_'))
@@ -748,15 +703,11 @@ def plot_pdp():
     fig.savefig("static/images/figs/" + mod_path,
                 bbox_inches="tight", transparent=True)
     plt.figure()
-
-    # return "PARAMS: {}, {}, {}, {},
-    # {}".format(str(index),str(estim),f1,f2,t1)
     return render_template("modal_plot.html", plot_name=mod_path)
 
 
 @app.route('/plot_modal')
 def plot_modal():
-
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
     index = request.args.get('model', default=0, type=int)
@@ -767,14 +718,11 @@ def plot_modal():
     f2 = request.args.get('f2', default=None, type=str)
     t1 = request.args.get('t1', default=None, type=str)
     X, y, data = process_data(path, "csv", target_ft)
-
     chosen_class = list(np.unique(y)).index(int(float(t1)))
-
     with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
         pipe = pickle.load(filehandler)
     mod_path = "modal_" + str(f1.replace('.', '_')) + \
         "_" + str(f2.replace('.', '_'))
-    #feat_p = pdp.pdp_isolate(model=pipe.steps[1][1], dataset=data, model_features=features, feature=feat)
     pdp_V1_V2 = pdp.pdp_interact(
         model=pipe.steps[1][1], dataset=data, model_features=features, features=[
             f1, f2], num_grid_points=None, percentile_ranges=[
@@ -787,7 +735,6 @@ def plot_modal():
     fig.savefig("static/images/figs/" + mod_path,
                 bbox_inches="tight", transparent=True)
     plt.figure()
-
     return render_template("modal_plot.html", plot_name=mod_path)
 
 

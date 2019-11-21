@@ -22,7 +22,13 @@ for dir_ in [tmp_folder, output_folder]:
 
 def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
     """Generates and returns spaw_classifier """
-    def spawn_classifier(seed, time, search_space, prep_space, metric, dataset_name=None):
+    def spawn_classifier(
+            seed,
+            time,
+            search_space,
+            prep_space,
+            metric,
+            dataset_name=None):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -44,7 +50,8 @@ def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
         # 1. all classifiers write to the same output directory
         # 2. shared_mode is set to True, this enables sharing of data between
         # models.
-        # 3. all instances of the AutoSklearnClassifier must have a different seed!
+        # 3. all instances of the AutoSklearnClassifier must have a different
+        # seed!
         automl = AutoSklearnClassifier(
             time_left_for_this_task=time,
             # sec., how long should this seed fit process run
@@ -68,13 +75,19 @@ def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
         )
         automl.fit(X_train, y_train, X_test=X_test, y_test=y_test,
                    metric=metric, dataset_name=dataset_name)
-        #print(automl.cv_results_)
+        # print(automl.cv_results_)
         return automl.cv_results_
     return spawn_classifier
 
 
 def get_spawn_regressor(X_train, y_train, X_test=None, y_test=None):
-    def spawn_regressor(seed, time, search_space, prep_space, metric, dataset_name=None):
+    def spawn_regressor(
+            seed,
+            time,
+            search_space,
+            prep_space,
+            metric,
+            dataset_name=None):
         """Spawn a subprocess.
 
         auto-sklearn does not take care of spawning worker processes. This
@@ -96,7 +109,8 @@ def get_spawn_regressor(X_train, y_train, X_test=None, y_test=None):
         # 1. all classifiers write to the same output directory
         # 2. shared_mode is set to True, this enables sharing of data between
         # models.
-        # 3. all instances of the AutoSklearnClassifier must have a different seed!
+        # 3. all instances of the AutoSklearnClassifier must have a different
+        # seed!
         automl = AutoSklearnRegressor(
             time_left_for_this_task=time,
             # sec., how long should this seed fit process run
@@ -120,9 +134,10 @@ def get_spawn_regressor(X_train, y_train, X_test=None, y_test=None):
         )
         automl.fit(X_train, y_train, X_test=X_test, y_test=y_test,
                    metric=metric, dataset_name=dataset_name)
-        #print(automl.cv_results_)
+        # print(automl.cv_results_)
         return automl.cv_results_
     return spawn_regressor
+
 
 def process_data(path, data_type, target_ft):
     """Loads data and returns as X,y """
@@ -134,7 +149,7 @@ def process_data(path, data_type, target_ft):
         data = pd.read_csv(path)
         X = data.loc[:, data.columns != target_ft].to_numpy()
         y = data.loc[:, target_ft].to_numpy()
-        #print(data.columns)
+        # print(data.columns)
         #print(X.shape, y.shape)
     else:
         X = None
@@ -145,10 +160,12 @@ def process_data(path, data_type, target_ft):
 def run_task(path, task, data_type, target_ft):
     """Runs AutoSklearn optimizer on passed data and parameters """
     X, y, _ = process_data(path, data_type, target_ft)
-    X_train, X_test, y_train, y_test = \
-        sklearn.model_selection.train_test_split(X, y, test_size=0.3, random_state=1)
+    X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(
+        X, y, test_size=0.3, random_state=1)
     if task == "classification":
-        spawn_estimator = get_spawn_classifier(X_train, y_train, X_test=X_test, y_test=y_test)
+        spawn_estimator = get_spawn_classifier(
+            X_train, y_train, X_test=X_test, y_test=y_test)
     elif task == "regression":
-        spawn_estimator = get_spawn_regressor(X_train, y_train, X_test=X_test, y_test=y_test)
+        spawn_estimator = get_spawn_regressor(
+            X_train, y_train, X_test=X_test, y_test=y_test)
     return spawn_estimator
