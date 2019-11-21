@@ -4,11 +4,11 @@ from joblib import dump, load
 
 
 # Model="knn.joblib"
-Model = "fr.joblib"
-Scaler = "scaler.joblib"
+Model = "meta_models/fr.joblib"
+Scaler = "meta_models/scaler.joblib"
 
 
-Time_Model = "adaboost.joblib"
+Time_Model = "meta_models/adaboost.joblib"
 
 classes_og = [
     'sklearn.KNeighborsClassifier',
