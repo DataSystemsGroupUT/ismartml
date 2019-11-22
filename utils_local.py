@@ -1,7 +1,7 @@
 """ Utility functions used by the tool """
 from hashlib import md5
 import pandas as pd
-
+from sklearn.preprocessing import LabelEncoder
 
 def hash_file(path):
     """ Returns md5 hash of a file"""
@@ -11,6 +11,16 @@ def hash_file(path):
             chk.update(chunk)
     return chk.hexdigest()
 
+def load_initial(path):
+    """ Encodes data and returns new data """
+    data = pd.read_csv(path)
+    mask = data.dtypes==object
+    categorical = data.columns[mask].tolist()
+    if categorical:
+        le = LabelEncoder()
+        data[categorical] = data[categorical].apply(lambda x: le.fit_transform(x))
+        data.to_csv(path, index=False)
+    return data
 
 def return_cols(path):
     """ Returns column names of the CSV"""

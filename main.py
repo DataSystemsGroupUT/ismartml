@@ -85,11 +85,11 @@ def featur_pg():
     values = session.get('values', 'not set')
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    features = return_cols(path)
-    new_data = select_cols(path, features)
+    data = load_initial(path)
+    features= data.columns
     for i in range(len(features)):
         plt.clf()
-        new_data[features[i]].hist()
+        data[features[i]].hist()
         plt.savefig("static/images/figs/" + str(i),
                     bbox_inches="tight", transparent=True)
     return render_template("features.html", FEATURES=features)
