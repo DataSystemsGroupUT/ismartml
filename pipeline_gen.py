@@ -334,7 +334,7 @@ def get_matrix(pipe, X, y, smote):
     ind = 2
     if smote == "yes":
         ind += 1
-    pred_y = pipe.steps[ind][1].predict(X)
+    pred_y = pipe.predict(X)
     plot_confusion_matrix(y, pred_y, np.unique(y), normalize=False)
     plot_confusion_matrix(y, pred_y, np.unique(y), normalize=True)
     a = accuracy_score(y, pred_y)
