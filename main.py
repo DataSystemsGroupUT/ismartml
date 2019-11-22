@@ -256,6 +256,8 @@ def budget():
         if each in ESTIMATOR_TIMES.keys():
             tm = ESTIMATOR_TIMES[each]
             total_pred_time += 0.2 * (time_pred)
+    if total_pred_time<30:
+        total_pred_time=30
     return render_template('budget.html', zip=zip,
                            TASK=task, PRED_TIME=int(total_pred_time))
 
@@ -694,9 +696,8 @@ def plot_pdp():
     with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
         pipe = pickle.load(filehandler)
     mod_path = "modal_" + "pdp_" + str(f1.replace('.', '_'))
-    #TODO: pipe steps should be dynamic
     feat_p = pdp.pdp_isolate(
-        model=pipe.steps[2][1],
+        model=pipe,
         dataset=data,
         model_features=features,
         feature=f1)
@@ -726,7 +727,7 @@ def plot_modal():
     mod_path = "modal_" + str(f1.replace('.', '_')) + \
         "_" + str(f2.replace('.', '_'))
     pdp_V1_V2 = pdp.pdp_interact(
-        model=pipe.steps[2][1], dataset=data, model_features=features, features=[
+        model=pipe, dataset=data, model_features=features, features=[
             f1, f2], num_grid_points=None, percentile_ranges=[
             None, None])
     fig, axes = pdp.pdp_interact_plot(
