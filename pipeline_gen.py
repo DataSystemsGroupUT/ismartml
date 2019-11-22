@@ -254,9 +254,9 @@ def get_importance(pipe, cl, smote):
         "extra_trees",
         "adaboost"]
     linear = ["libsvm_svc"]
-    ind = 1
+    ind = 2
     if smote == "yes":
-        ind = 2
+        ind += 1
     if cl in trees:
         return pipe.steps[ind][1].feature_importances_
     if cl in linear:
@@ -331,9 +331,9 @@ def get_matrix(pipe, X, y, smote):
         "extra_trees",
         "adaboost"]
     linear = ["libsvm_svc"]
-    ind = 1
+    ind = 2
     if smote == "yes":
-        ind = 2
+        ind += 1
     pred_y = pipe.steps[ind][1].predict(X)
     plot_confusion_matrix(y, pred_y, np.unique(y), normalize=False)
     plot_confusion_matrix(y, pred_y, np.unique(y), normalize=True)

@@ -8,6 +8,7 @@ import pipeline_gen
 from app import app
 from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline  # smote pipeline
+from sklearn.impute import SimpleImputer
 from flask import Flask, flash, request, redirect, render_template, url_for, session, send_from_directory
 from werkzeug.utils import secure_filename
 from multi import run_task, process_data
@@ -609,7 +610,7 @@ def generate_model():
     arg_dict = res_list[estim][index][1]
     # constuct and fit pipeline
     param_dict = pipeline_gen.process_dict(arg_dict)
-    pipeline_params = [("preprocessor", pipeline_gen.build_preprocessor_cl(
+    pipeline_params = [("imputation",SimpleImputer(missing_values=np.nan, strategy='mean')), ("preprocessor", pipeline_gen.build_preprocessor_cl(
         param_dict)), ("classifeir", pipeline_gen.build_classifier(param_dict))]
     if smote == "yes":
         pipeline_params.insert(0, ("smote", SMOTE(random_state=42)))
@@ -693,8 +694,9 @@ def plot_pdp():
     with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
         pipe = pickle.load(filehandler)
     mod_path = "modal_" + "pdp_" + str(f1.replace('.', '_'))
+    #TODO: pipe steps should be dynamic
     feat_p = pdp.pdp_isolate(
-        model=pipe.steps[1][1],
+        model=pipe.steps[2][1],
         dataset=data,
         model_features=features,
         feature=f1)
@@ -724,7 +726,7 @@ def plot_modal():
     mod_path = "modal_" + str(f1.replace('.', '_')) + \
         "_" + str(f2.replace('.', '_'))
     pdp_V1_V2 = pdp.pdp_interact(
-        model=pipe.steps[1][1], dataset=data, model_features=features, features=[
+        model=pipe.steps[2][1], dataset=data, model_features=features, features=[
             f1, f2], num_grid_points=None, percentile_ranges=[
             None, None])
     fig, axes = pdp.pdp_interact_plot(
