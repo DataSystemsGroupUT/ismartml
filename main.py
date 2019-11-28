@@ -361,6 +361,7 @@ def progress():
     metric = gen_metric(values["task"], values["metric"])
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
+    #TODO: features can be passed from previous calls for optimization
     features = return_cols(path)
     estimator = run_task(path, values["task"], values["data_type"], target_ft)
     results = estimator(
@@ -468,7 +469,8 @@ def progress():
             len=len,
             CLASSIFIERS=ESTIMATORS,
             CLASSIFIERS_DISP=ESTIMATORS_DISP,
-            estim_dict=estim_dict)
+            estim_dict=estim_dict,
+            task=values['task'])
     else:
         return render_template(
             "progress.html",
@@ -477,14 +479,14 @@ def progress():
             iters=iters,
             PERIOD=format_period,
             RAW_PERIOD=values["period"],
-            task=values["task"],
             time=values["time"],
             column_names=col_names,
             row_data=res_list,
             zip=zip,
             CLASSIFIERS=ESTIMATORS,
             CLASSIFIERS_DISP=ESTIMATORS_DISP,
-            estim_dict=estim_dict)
+            estim_dict=estim_dict,
+            task=values['task'])
 
 
 @app.route('/stop')
