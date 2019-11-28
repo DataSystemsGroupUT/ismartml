@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Model{% endblock %}
 {% block content %}
-<p><button type="button" class="btn btn-primary" value="Generate Model"  name="generate" onclick="window.open('/iautosklearn{{ url_for( 'generate_model' )+"?model="+ model_index|string+"&estimator="+estimator}}');">Generate Model</button></p>
 <table>
 	<tr>
 		<td>Score</td>

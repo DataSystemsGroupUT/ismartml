@@ -45,18 +45,9 @@
         {% if task == "classification" %}
 		<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'generate_model' )+"?model="+outer_loop.index0|string+"&estimator="+ estim_dict["index"][i] }}');">Interpret</button>
         {% else %}
-	<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'view_model' )+"?model="+outer_loop.index0|string+"&estimator="+ estim_dict["index"][i] }}');">Interpret</button>
+	<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'view_model' )+"?model="+outer_loop.index0|string+"&estimator="+ estim_dict["index"][i] }}');">Show Model</button>
 	{% endif %}
 	</td>
-	{% elif col =="Download"%}			
-	<td>
-		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_mod( 'generate_model' )+"?model="+ outer_loop.index0|string +"&estimator="+estimator }}');">Generate</button>
-	</td>
-	{% elif col =="Show Models"%}			
-	<td>
-		<button type="button" class="btn btn-primary" value="View" name="model_dl" onclick="window.open('{{ url_mod( 'view_estimator' )+"?model="+ CLASSIFIERS[CLASSIFIERS_DISP.index(row[0])] }}');">View</button>
-	</td>
-
         {% else %}
         <td>{{row_}}</td>
         {% endif %}

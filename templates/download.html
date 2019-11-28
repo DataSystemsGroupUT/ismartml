@@ -52,6 +52,7 @@
 {% endblock %}
 {% block content %}
 <p class="text-center">
+	<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'view_model' )+"?model="+index|string+"&estimator="+ estimator }}');">Show Model</button>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_mod( 'download_pickle' )+"?model="+index|string+"&estimator="+ estimator }}');">Download .pickle</button>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_mod( 'download_joblib' )+"?model="+index|string+"&estimator="+ estimator }}');">Download .joblib</button>
 </p>
