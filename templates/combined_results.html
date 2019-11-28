@@ -9,15 +9,7 @@
     {% set outer_loop = loop %}
     <tr>
         {% for col, row_ in zip(column_names, row) %}
-        {% if col == "Details" %}
-        <td>
-		<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_for( 'view_model' )+"?model="+outer_loop.index0|string+"&estimator="+estimator }}');">Interpret</button>
-	</td>
-	{% elif col =="Download"%}			
-	<td>
-		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_for( 'generate_model' )+"?model="+ outer_loop.index0|string +"&estimator="+estimator }}');">Generate</button>
-	</td>
-	{% elif col =="Show Models"%}			
+	{% if col =="Show Models"%}			
 	<td>
 		<button type="button" class="btn btn-primary est_col" id="est_{{outer_loop.index0}}" value="View" name="model_dl">Expand</button>
 	</td>
@@ -50,7 +42,11 @@
         {% for col, row_ in zip(estim_dict["col_names"][i], row) %}
         {% if col == "Details" %}
         <td>
+        {% if task == "classification" %}
 		<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'generate_model' )+"?model="+outer_loop.index0|string+"&estimator="+ estim_dict["index"][i] }}');">Interpret</button>
+        {% else %}
+	<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'view_model' )+"?model="+outer_loop.index0|string+"&estimator="+ estim_dict["index"][i] }}');">Interpret</button>
+	{% endif %}
 	</td>
 	{% elif col =="Download"%}			
 	<td>
