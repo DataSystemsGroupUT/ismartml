@@ -374,7 +374,7 @@ def progress():
     col_names = ["Classifier", "{} Max Score".format(
         values["metric"]), "Models Trained", "Show Models"]
     if values["task"] != "classification":
-        col_names[1] = "Regressor"
+        col_names[0] = "Regressor"
     # Sort list by scores
     res_list = [[a, b]for a, b in zip(
         df["mean_test_score"].values.tolist(), df["params"].values.tolist())]
