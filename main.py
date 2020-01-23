@@ -54,6 +54,7 @@ def start_p():
         #data_type = request.form['data_type']
         data_type = "csv"
         task = request.form['task']
+        backend = request.form['backend']
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
@@ -70,6 +71,7 @@ def start_p():
                     app.config['UPLOAD_FOLDER'], filename), data_type)
                 rec = predict_meta(meta)
             values['task'] = task
+            values["backend"] = backend
             session["filename"] = filename
             session["values"] = values
             session["data_type"] = data_type
@@ -185,9 +187,15 @@ def target_class_r():
             new_data = pd.DataFrame(np.column_stack(
                 (X_res, y_res)), columns=list(features) + [target_ft])
             new_data.to_csv(path, index=False)
-        print(smote)
-        return redirect(url_mod('params'))
+        
+        if values['backend']=='autosklearn':
+            return redirect(url_mod('params'))
+        elif values['backend']=='tpot':
+            return redirect(url_mod('params_tpot'))
 
+@app.route('/params_tpot')
+def params_tpot():
+    return "lalalala"
 
 @app.route('/params')
 def params():
