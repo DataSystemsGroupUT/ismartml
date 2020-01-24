@@ -6,6 +6,8 @@ import pandas as pd
 import sklearn.model_selection
 from autosklearn.classification import AutoSklearnClassifier
 from autosklearn.regression import AutoSklearnRegressor
+from tpot import TPOTClassifier
+
 warnings.filterwarnings('ignore')
 
 
@@ -169,3 +171,18 @@ def run_task(path, task, data_type, target_ft):
         spawn_estimator = get_spawn_regressor(
             X_train, y_train, X_test=X_test, y_test=y_test)
     return spawn_estimator
+
+def run_task_tpot(path, task, data_type, target_ft):
+    """Runs AutoSklearn optimizer on passed data and parameters """
+    X, y, _ = process_data(path, data_type, target_ft)
+    X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(
+        X, y, test_size=0.3, random_state=1)
+    if task == "classification":
+        pipeline_optimizer = TPOTClassifier(generations=5, population_size=20, cv=5,
+                                    random_state=42, verbosity=2)
+    #elif task == "regression":
+    #    spawn_estimator = get_spawn_regressor(
+    #        X_train, y_train, X_test=X_test, y_test=y_test)
+    pipeline_optimizer.fit(X_train, y_train)
+    return pipeline_optimizer
+

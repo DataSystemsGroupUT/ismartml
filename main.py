@@ -11,13 +11,14 @@ from imblearn.pipeline import Pipeline  # smote pipeline
 from sklearn.impute import SimpleImputer
 from flask import Flask, flash, request, redirect, render_template, url_for, session, send_from_directory
 from werkzeug.utils import secure_filename
-from multi import run_task, process_data
+from multi import run_task, process_data, run_task_tpot
 from extras import *
 from extract import get_meta
 from predict_meta import predict_meta, predict_time
 from utils_local import *
 from joblib import dump, load
 from pdpbox import pdp
+
 
 tmp_folder = 'tmp/autosk_tmp'
 output_folder = 'tmp/autosk_out'
@@ -72,6 +73,7 @@ def start_p():
                 rec = predict_meta(meta)
             values['task'] = task
             values["backend"] = backend
+            values['data_type'] = data_type
             session["filename"] = filename
             session["values"] = values
             session["data_type"] = data_type
@@ -195,7 +197,12 @@ def target_class_r():
 
 @app.route('/params_tpot')
 def params_tpot():
-    return "lalalala"
+    values = session.get('values', 'not set')
+    target_ft = session.get('target_ft', 'not set')
+    path = os.path.join(app.config['UPLOAD_FOLDER'],
+                        session.get("filename", "not set"))
+    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], target_ft)
+    return str(list(pipeline_optimizer.evaluated_individuals_.keys())[0])
 
 @app.route('/params')
 def params():
@@ -236,7 +243,6 @@ def params():
 def params_p():
     if request.method == 'POST':
         values = session.get('values', 'not set')
-        data_type = session.get('data_type', 'not set')
         filename = session.get("filename", "not set")
         task = session.get("task", "not set")
         search_space = request.form.getlist("estim_ls")
