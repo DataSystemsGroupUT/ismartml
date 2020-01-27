@@ -193,7 +193,8 @@ def target_class_r():
         if values['backend']=='autosklearn':
             return redirect(url_mod('params'))
         elif values['backend']=='tpot':
-            return redirect(url_mod('params_tpot'))
+            #return redirect(url_mod('params_tpot'))
+            return redirect(url_mod('budget_tpot'))
 
 @app.route('/params_tpot')
 def params_tpot():
@@ -257,6 +258,47 @@ def params_p():
         session["values"] = values
         return redirect(url_mod('budget'))
 
+@app.route('/budget_tpot')
+def budget_tpot():
+    task = session.get("task", "not set")
+    values = session.get("values", "not set")
+    total_pred_time = 0
+    filename = session.get("filename", "not set")
+    meta = get_meta(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'csv')
+    time_pred = predict_time(meta)
+    #for each in values["search_space"]:
+    #    if each in ESTIMATOR_TIMES.keys():
+    #        tm = ESTIMATOR_TIMES[each]
+    #        total_pred_time += 0.2 * (time_pred)
+    if total_pred_time<30:
+        total_pred_time=30
+    return render_template('budget.html', zip=zip,
+                           TASK=task, PRED_TIME=int(total_pred_time))
+
+
+@app.route('/budget_tpot', methods=['POST'])
+def budget_tpot_p():
+    if request.method == 'POST':
+        values = session.get('values', 'not set')
+        time = request.form['time']
+        period = request.form['period']
+        data_type = session.get('data_type', 'not set')
+        filename = session.get("filename", "not set")
+        task = session.get("task", "not set")
+        reuse = request.form['reuse']
+        if int(time) < 30:
+            return "Time budget must be at least 30 seconds"
+        if int(period) < 30:
+            return "Update period must be at least 30 seconds"
+        if int(period) > int(time):
+            return "Update period can't be larger than total time budget"
+        values['time'] = int(time)
+        values['period'] = int(period)
+        session["values"] = values
+        session["reuse"] = reuse
+        return redirect(url_mod('running_tpot'))
+
+
 
 @app.route('/budget')
 def budget():
@@ -297,6 +339,17 @@ def budget_p():
         session["values"] = values
         session["reuse"] = reuse
         return redirect(url_mod('running'))
+
+
+@app.route('/running_tpot')
+def running_tpot():
+    values = session.get('values', 'not set')
+    target_ft = session.get('target_ft', 'not set')
+    path = os.path.join(app.config['UPLOAD_FOLDER'],
+                        session.get("filename", "not set"))
+    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], target_ft)
+    return str(list(pipeline_optimizer.evaluated_individuals_.keys())[0])
+
 
 
 @app.route('/running')
