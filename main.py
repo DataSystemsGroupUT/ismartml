@@ -198,6 +198,7 @@ def target_class_r():
 
 @app.route('/params_tpot')
 def params_tpot():
+    ################TODO :
     values = session.get('values', 'not set')
     target_ft = session.get('target_ft', 'not set')
     path = os.path.join(app.config['UPLOAD_FOLDER'],
@@ -292,7 +293,7 @@ def budget_tpot_p():
             return "Update period must be at least 30 seconds"
         if int(period) > int(time):
             return "Update period can't be larger than total time budget"
-        values['time'] = int(time)
+        values['time'] = int(time)//60
         values['period'] = int(period)
         session["values"] = values
         session["reuse"] = reuse
@@ -347,7 +348,7 @@ def running_tpot():
     target_ft = session.get('target_ft', 'not set')
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], target_ft)
+    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["time"],target_ft)
     return str(list(pipeline_optimizer.evaluated_individuals_.keys())[0])
 
 
