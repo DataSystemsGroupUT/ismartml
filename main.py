@@ -349,7 +349,23 @@ def running_tpot():
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
     pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["time"],target_ft)
-    return str(list(pipeline_optimizer.evaluated_individuals_.keys())[0])
+    #return str(list(pipeline_optimizer.evaluated_individuals_.keys())[0])
+    res_list=pipeline_optimizer.evaluated_individuals_.keys()
+    res=pipeline_optimizer.evaluated_individuals_
+    #res_list=res[list(pipeline_optimizer.evaluated_individuals_.keys())[0]]
+    res_list=[[pipe] for pipe in res_list]
+    #return str(res_list)
+    col_names=["one","two","three"]
+    return render_template(
+            "base_results.html",
+            url_mod=url_mod,
+            column_names=col_names,
+            row_data=res_list,
+            zip=zip,
+            len=len,
+            #task=values['task'])
+            )
+
 
 
 
