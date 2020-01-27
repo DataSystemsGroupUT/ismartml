@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import pipeline_gen
+import re
 from app import app
 from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline  # smote pipeline
@@ -353,7 +354,7 @@ def running_tpot():
     res_list=pipeline_optimizer.evaluated_individuals_.keys()
     res=pipeline_optimizer.evaluated_individuals_
     #res_list=res[list(pipeline_optimizer.evaluated_individuals_.keys())[0]]
-    res_list=[[pipe] for pipe in res_list]
+    res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
     #return str(res_list)
     col_names=["one","two","three"]
     return render_template(
