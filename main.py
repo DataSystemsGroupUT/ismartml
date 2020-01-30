@@ -341,31 +341,50 @@ def budget_p():
         session["reuse"] = reuse
         return redirect(url_mod('running'))
 
+#@app.route('/running_tpot')
+#def running_tpot():
+#    values = session.get('values', 'not set')
+#    target_ft = session.get('target_ft', 'not set')
+#    path = os.path.join(app.config['UPLOAD_FOLDER'],
+#                        session.get("filename", "not set"))
+#    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["time"],target_ft)
+#    #return str(list(pipeline_optimizer.evaluated_individuals_.keys())[0])
+#    res_list=pipeline_optimizer.evaluated_individuals_.keys()
+#    res=pipeline_optimizer.evaluated_individuals_
+#    #res_list=res[list(pipeline_optimizer.evaluated_individuals_.keys())[0]]
+#    res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
+#    #return str(res_list)
+#    col_names=["one","two","three","four","five","six"]
+#    return render_template(
+#            "base_results.html",
+#            url_mod=url_mod,
+#            column_names=col_names,
+#            row_data=res_list,
+#            zip=zip,
+#            len=len,
+#            #task=values['task'])
+#            )
 
 @app.route('/running_tpot')
 def running_tpot():
     values = session.get('values', 'not set')
     target_ft = session.get('target_ft', 'not set')
+    iters = values["time"] // values["period"]
+    extra = values["time"] % values["period"]
+    format_period = format_time(values["period"])
+    reuse = session.get('reuse', 'not set')
+    # check dataset checksum and lookup
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["time"],target_ft)
-    #return str(list(pipeline_optimizer.evaluated_individuals_.keys())[0])
-    res_list=pipeline_optimizer.evaluated_individuals_.keys()
-    res=pipeline_optimizer.evaluated_individuals_
-    #res_list=res[list(pipeline_optimizer.evaluated_individuals_.keys())[0]]
-    res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
-    #return str(res_list)
-    col_names=["one","two","three","four","five","six"]
     return render_template(
-            "base_results.html",
-            url_mod=url_mod,
-            column_names=col_names,
-            row_data=res_list,
-            zip=zip,
-            len=len,
-            #task=values['task'])
-            )
-
+        'running_tpot.html',
+        url_mod=url_mod,
+        turn=0,
+        task=values["task"],
+        time=values["time"],
+        iters=iters,
+        PERIOD=format_period,
+        RAW_PERIOD=values["period"])
 
 
 
@@ -430,6 +449,71 @@ def running():
         iters=iters,
         PERIOD=format_period,
         RAW_PERIOD=values["period"])
+
+
+@app.route('/progress_tpot')
+def progress_tpot():
+    turn = request.args.get('iter', default=0, type=int)
+    print("turn", turn)
+    values = session.get('values', 'not set')
+    target_ft = session.get('target_ft', 'not set')
+    checksum = session.get('checksum', 'not set')
+    iters = values["time"] // values["period"]
+    extra = values["time"] % values["period"]
+    format_period = format_time(values["period"])
+    metric = gen_metric(values["task"], values["metric"])
+    path = os.path.join(app.config['UPLOAD_FOLDER'],
+                        session.get("filename", "not set"))
+    #TODO: features can be passed from previous calls for optimization
+    features = return_cols(path)
+    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["time"],target_ft)
+    res_list=pipeline_optimizer.evaluated_individuals_.keys()
+    res=pipeline_optimizer.evaluated_individuals_
+    res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
+    col_names=["one","two","three","four","five","six"]
+    return render_template(
+            "base_results.html",
+            url_mod=url_mod,
+            column_names=col_names,
+            row_data=res_list,
+            zip=zip,
+            len=len,
+#            #task=values['task'])
+            )
+
+       
+
+
+    if(turn >= iters):
+        return render_template(
+            "results.html",
+            url_mod=url_mod,
+            column_names=col_names,
+            row_data=res_list,
+            zip=zip,
+            len=len,
+            CLASSIFIERS=ESTIMATORS,
+            CLASSIFIERS_DISP=ESTIMATORS_DISP,
+            estim_dict=estim_dict,
+            task=values['task'])
+    else:
+        return render_template(
+            "progress.html",
+            url_mod=url_mod,
+            turn=turn,
+            iters=iters,
+            PERIOD=format_period,
+            RAW_PERIOD=values["period"],
+            time=values["time"],
+            column_names=col_names,
+            row_data=res_list,
+            zip=zip,
+            CLASSIFIERS=ESTIMATORS,
+            CLASSIFIERS_DISP=ESTIMATORS_DISP,
+            estim_dict=estim_dict,
+            task=values['task'])
+
+
 
 
 @app.route('/progress')
