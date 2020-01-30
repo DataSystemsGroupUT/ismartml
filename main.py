@@ -254,7 +254,6 @@ def params_p():
             return "You must select at least 1 estimator"
         if not prep_space:
             return "You must select at least 1 preprocessor"
-        values['data_type'] = data_type
         values["search_space"] = search_space
         values["prep_space"] = prep_space
         session["values"] = values
@@ -356,7 +355,7 @@ def running_tpot():
     #res_list=res[list(pipeline_optimizer.evaluated_individuals_.keys())[0]]
     res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
     #return str(res_list)
-    col_names=["one","two","three"]
+    col_names=["one","two","three","four","five","six"]
     return render_template(
             "base_results.html",
             url_mod=url_mod,

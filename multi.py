@@ -179,7 +179,7 @@ def run_task_tpot(path, task, data_type, time, target_ft):
         X, y, test_size=0.3, random_state=1)
     if task == "classification":
         pipeline_optimizer = TPOTClassifier(max_time_mins=time, population_size=20, cv=5,
-                                    random_state=42, verbosity=2)
+                                    random_state=42, verbosity=2,periodic_checkpoint_folder='tmp/tpot_per')
     #elif task == "regression":
     #    spawn_estimator = get_spawn_regressor(
     #        X_train, y_train, X_test=X_test, y_test=y_test)
