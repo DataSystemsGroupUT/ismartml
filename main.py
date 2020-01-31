@@ -271,8 +271,8 @@ def budget_tpot():
     #    if each in ESTIMATOR_TIMES.keys():
     #        tm = ESTIMATOR_TIMES[each]
     #        total_pred_time += 0.2 * (time_pred)
-    if total_pred_time<30:
-        total_pred_time=30
+    if total_pred_time<60:
+        total_pred_time=60
     return render_template('budget.html', zip=zip,
                            TASK=task, PRED_TIME=int(total_pred_time))
 
@@ -376,6 +376,11 @@ def running_tpot():
     # check dataset checksum and lookup
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
+    try:
+        shutil.rmtree("tmp/tpot_per")
+    except OSError:
+        pass
+ 
     return render_template(
         'running_tpot.html',
         url_mod=url_mod,
@@ -472,6 +477,9 @@ def progress_tpot():
     res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
     col_names=["one","two","three","four","five","six"]
     
+    #with open("tmp/tpot_obj/tpot_f", 'wb') as filehandler:
+    #    dill.dump(pipeline_optimizer, filehandler)
+
 
     turn += 1
 
