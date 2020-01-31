@@ -293,7 +293,7 @@ def budget_tpot_p():
             return "Update period must be at least 30 seconds"
         if int(period) > int(time):
             return "Update period can't be larger than total time budget"
-        values['time'] = int(time)//60
+        values['time'] = int(time)
         values['period'] = int(period)
         session["values"] = values
         session["reuse"] = reuse
@@ -466,22 +466,31 @@ def progress_tpot():
                         session.get("filename", "not set"))
     #TODO: features can be passed from previous calls for optimization
     features = return_cols(path)
-    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["time"],target_ft)
+    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["time"]//60,target_ft)
     res_list=pipeline_optimizer.evaluated_individuals_.keys()
     res=pipeline_optimizer.evaluated_individuals_
     res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
     col_names=["one","two","three","four","five","six"]
-    return render_template(
+    
+
+    turn += 1
+
+    if(turn >= iters):
+        return render_template(
             "base_results.html",
             url_mod=url_mod,
             column_names=col_names,
             row_data=res_list,
             zip=zip,
             len=len,
-#            #task=values['task'])
+            #task=values['task'])
             )
 
-       
+      
+
+    else:
+        return "aaaa"
+ 
 
 
     if(turn >= iters):
