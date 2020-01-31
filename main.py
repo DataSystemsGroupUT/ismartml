@@ -466,7 +466,7 @@ def progress_tpot():
                         session.get("filename", "not set"))
     #TODO: features can be passed from previous calls for optimization
     features = return_cols(path)
-    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["time"]//60,target_ft)
+    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["period"]//60,target_ft)
     res_list=pipeline_optimizer.evaluated_individuals_.keys()
     res=pipeline_optimizer.evaluated_individuals_
     res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
@@ -489,25 +489,8 @@ def progress_tpot():
       
 
     else:
-        return "aaaa"
- 
-
-
-    if(turn >= iters):
         return render_template(
-            "results.html",
-            url_mod=url_mod,
-            column_names=col_names,
-            row_data=res_list,
-            zip=zip,
-            len=len,
-            CLASSIFIERS=ESTIMATORS,
-            CLASSIFIERS_DISP=ESTIMATORS_DISP,
-            estim_dict=estim_dict,
-            task=values['task'])
-    else:
-        return render_template(
-            "progress.html",
+            "progress_tpot.html",
             url_mod=url_mod,
             turn=turn,
             iters=iters,
@@ -517,9 +500,6 @@ def progress_tpot():
             column_names=col_names,
             row_data=res_list,
             zip=zip,
-            CLASSIFIERS=ESTIMATORS,
-            CLASSIFIERS_DISP=ESTIMATORS_DISP,
-            estim_dict=estim_dict,
             task=values['task'])
 
 
