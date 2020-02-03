@@ -28,7 +28,8 @@ ALLOWED_EXTENSIONS = set(["npy", "csv"])
 
 
 def url_mod(fnc):
-    pre = "/ismartml"
+    #pre = "/ismartml"
+    pre = ""
     return pre + url_for(fnc)
 
 
@@ -928,4 +929,4 @@ def add_header(r):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
