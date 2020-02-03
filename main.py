@@ -19,6 +19,7 @@ from predict_meta import predict_meta, predict_time
 from utils_local import *
 from joblib import dump, load
 from pdpbox import pdp
+from tpot_search import classifier_config_dict 
 
 
 tmp_folder = 'tmp/autosk_tmp'
@@ -230,13 +231,13 @@ def params_tpot_p():
         values = session.get('values', 'not set')
         filename = session.get("filename", "not set")
         task = session.get("task", "not set")
-        search_space = request.form.getlist("estim_ls")
+        selected_opers = request.form.getlist("estim_ls")
         #prep_space = request.form.getlist("prep_ls")
-        if not search_space:
+        if not selected_opers:
             return "You must select at least 1 estimator"
         #if not prep_space:
         #    return "You must select at least 1 preprocessor"
-        values["search_space"] = search_space
+        values["selected_opers"] = selected_opers
         #values["prep_space"] = prep_space
         session["values"] = values
         return redirect(url_mod('budget_tpot'))
@@ -507,7 +508,12 @@ def progress_tpot():
                         session.get("filename", "not set"))
     #TODO: features can be passed from previous calls for optimization
     features = return_cols(path)
-    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["period"]//60,target_ft)
+
+    search_space=classifier_config_dict.copy()
+    for each in TPOT_CLASSIFIERS:
+        if each not in values["selected_opers"]:
+            del search_space[each]
+    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], values["period"]//60,target_ft,config_dict=search_space)
     res_list=pipeline_optimizer.evaluated_individuals_.keys()
     res=pipeline_optimizer.evaluated_individuals_
     res_list=[ pipe.split('(')[:-1] for pipe in res.keys()]
