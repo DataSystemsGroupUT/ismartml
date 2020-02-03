@@ -95,24 +95,7 @@
 		{% endfor %}
 		</div>
 		</p>
-		<h4><p>Select Preprocessors</p></h4>
-		<input type="checkbox" onclick="toggle_pre(this);" />&nbsp; Toggle all<br />
-		<p>
-		<div class="form-check prep" >
-		{% for pr in PREPROCESSORS[0] %}
-	    		<nobr>
-			{% if pr == "no_preprocessing" %}
-			<input type="checkbox" name="prep_ls" value="{{pr}}" checked >
-			{% else %}
-			<input type="checkbox" name="prep_ls" value="{{pr}}"  >
-			{% endif %}
-			<label>{{PREPROCESSORS[1][loop.index0]}} &nbsp; &nbsp; </label>
-			</nobr>
-		{% endfor %}
-		</div>
-		</p>
-
-
+		
 		
 		</div>
 		</div>
@@ -120,17 +103,7 @@
 
 
 		
-		{% if TASK=="classification" %}
-		<div class="col"  style="padding-right:20px; border-left: 1px solid #ccc;">
-	    	<div id="meta_data" >
-	    	<h3>
-			Meta Data Reccomendation: {{REC}}
-		</h3>
-		{% include "base_results.html" %}
-		</div>
-		</div>
-		{% endif %}
-
+		
 		</div>	
 		
     </dl>

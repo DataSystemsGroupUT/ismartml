@@ -196,17 +196,52 @@ def target_class_r():
             return redirect(url_mod('params'))
         elif values['backend']=='tpot':
             #return redirect(url_mod('params_tpot'))
-            return redirect(url_mod('budget_tpot'))
+            return redirect(url_mod('params_tpot'))
 
 @app.route('/params_tpot')
 def params_tpot():
     ################TODO :
-    values = session.get('values', 'not set')
-    target_ft = session.get('target_ft', 'not set')
-    path = os.path.join(app.config['UPLOAD_FOLDER'],
-                        session.get("filename", "not set"))
-    pipeline_optimizer = run_task_tpot(path, values["task"], values["data_type"], target_ft)
-    return str(list(pipeline_optimizer.evaluated_individuals_.keys())[0])
+    #rec = session.get("rec", "not set")
+    task = session.get("task", "not set")
+    #column_names = ["Classifier", "Score"]
+    #bolds = []
+    # Configure for Task
+    if task == "classification":
+        # Get corect lists for this task
+        ESTIMATORS = [TPOT_CLASSIFIERS, TPOT_CLASSIFIERS]
+        #PREPROCESSORS = [PREPROCESSORS_CL, PREPROCESSORS_CL_DISP]
+    else:
+        ESTIMATORS = [REGRESSORS, REGRESSORS_DISP]
+        #PREPROCESSORS = [PREPROCESSORS_RG, PREPROCESSORS_RG_DISP]
+    return render_template(
+        'parameters_tpot.html',
+        ESTIMATORS=ESTIMATORS,
+        #PREPROCESSORS=PREPROCESSORS,
+        #column_names=column_names,
+        #row_data=rec,
+        zip=zip,
+        TASK=task,
+        #BOLD_CL=bolds)
+        )
+
+@app.route('/params_tpot', methods=['POST'])
+def params_tpot_p():
+    if request.method == 'POST':
+        values = session.get('values', 'not set')
+        filename = session.get("filename", "not set")
+        task = session.get("task", "not set")
+        search_space = request.form.getlist("estim_ls")
+        #prep_space = request.form.getlist("prep_ls")
+        if not search_space:
+            return "You must select at least 1 estimator"
+        #if not prep_space:
+        #    return "You must select at least 1 preprocessor"
+        values["search_space"] = search_space
+        #values["prep_space"] = prep_space
+        session["values"] = values
+        return redirect(url_mod('budget_tpot'))
+
+
 
 @app.route('/params')
 def params():
