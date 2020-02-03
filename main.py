@@ -6,7 +6,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pipeline_gen
 import re
+import time
 from app import app
+from threading import Thread
 from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline  # smote pipeline
 from sklearn.impute import SimpleImputer
@@ -37,6 +39,20 @@ def url_mod(fnc):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit(
         '.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def merge_logs():
+    while True:
+        time.sleep(5)
+        dr=os.listdir("static/data")
+        with open("static/data/prog.txt", "w") as file: 
+            file.write(str(dr))
+
+
+
+thread = Thread(target=merge_logs)
+thread.daemon = True
+thread.start()
 
 
 @app.route('/')
