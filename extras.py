@@ -192,6 +192,7 @@ ESTIMATOR_TIMES = {'Adjusted SVM': 0.07594684791087697,
                    'gradient_boosting': 0.5271939275232157,
                    'logistic_regression': 0.059534068533149326}
 
+TPOT_CLASSIFIERS=['sklearn.naive_bayes.GaussianNB', 'sklearn.naive_bayes.BernoulliNB', 'sklearn.naive_bayes.MultinomialNB', 'sklearn.tree.DecisionTreeClassifier', 'sklearn.ensemble.ExtraTreesClassifier', 'sklearn.ensemble.RandomForestClassifier', 'sklearn.ensemble.GradientBoostingClassifier', 'sklearn.neighbors.KNeighborsClassifier', 'sklearn.svm.LinearSVC', 'sklearn.linear_model.LogisticRegression', 'xgboost.XGBClassifier', 'sklearn.linear_model.SGDClassifier', 'sklearn.preprocessing.Binarizer', 'sklearn.decomposition.FastICA', 'sklearn.cluster.FeatureAgglomeration', 'sklearn.preprocessing.MaxAbsScaler', 'sklearn.preprocessing.MinMaxScaler', 'sklearn.preprocessing.Normalizer', 'sklearn.kernel_approximation.Nystroem', 'sklearn.decomposition.PCA', 'sklearn.preprocessing.PolynomialFeatures', 'sklearn.kernel_approximation.RBFSampler', 'sklearn.preprocessing.RobustScaler', 'sklearn.preprocessing.StandardScaler', 'tpot.builtins.ZeroCount', 'tpot.builtins.OneHotEncoder', 'sklearn.feature_selection.SelectFwe', 'sklearn.feature_selection.SelectPercentile', 'sklearn.feature_selection.VarianceThreshold', 'sklearn.feature_selection.RFE', 'sklearn.feature_selection.SelectFromModel']
 
 def gen_metric(task, metrics_choice):
     if task == "classification":
@@ -228,3 +229,4 @@ def format_time(secs):
     else:
         return str(days) + "d " + str(hours) + "h " + \
             str(minutes) + "m " + str(seconds) + "s "
+
