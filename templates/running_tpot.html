@@ -57,6 +57,24 @@
 	});
 	</script>
 
+        <script>
+function executeQuery() {
+$.ajax({
+   url:        'static/data/prog.txt',
+   type:'GET',
+   success: function(data) {
+       var content = $('<p>').append(data);
+       $('#results').html( content );
+   }
+});
+  setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
+}
+
+$(document).ready(function() {
+  // run the first time; all subsequent calls will take care of themselves
+  setTimeout(executeQuery, 5000);
+});	
+     </script>
 	<div id="header_bar">
 	<img id="banner" src ="static/images/status/status6.svg">
      </div>
@@ -82,5 +100,7 @@
 	           </div>
 
 
-
+		   <div >
+			       <p id="results" >Loading Data...</p>
+		   </div>
 {% endblock %}
