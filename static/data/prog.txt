@@ -1,1 +1,6 @@
-['pipeline_gen_3_idx_0_2020.02.03_14-00-57.py', 'pipeline_gen_3_idx_0_2020.02.03_14-10-34.py', 'prog.txt', 'pipeline_gen_3_idx_1_2020.02.03_14-17-10.py', 'pipeline_gen_3_idx_0_2020.02.03_14-17-10.py', 'pipeline_gen_3_idx_1_2020.02.03_13-47-28.py', 'pipeline_gen_3_idx_1_2020.02.03_14-19-05.py', 'pipeline_gen_3_idx_1_2020.02.03_14-00-57.py', 'pipeline_gen_3_idx_0_2020.02.03_13-47-28.py', 'pipeline_gen_3_idx_0_2020.02.03_14-19-05.py', 'pipeline_gen_3_idx_0_2020.02.03_14-20-55.py', 'pipeline_gen_3_idx_1_2020.02.03_13-58-58.py', 'pipeline_gen_3_idx_1_2020.02.03_14-20-55.py', 'pipeline_gen_3_idx_1_2020.02.03_14-10-34.py', 'pipeline_gen_3_idx_0_2020.02.03_13-58-58.py']
+Normalizer(norm="max"),PolynomialFeatures(degree=2, include_bias=False, interaction_only=False),RandomForestClassifier(bootstrap=True, criterion="entropy", max_features=0.2, min_samples_leaf=8, min_samples_split=4, n_estimators=100)
+DecisionTreeClassifier(criterion="gini", max_depth=7, min_samples_leaf=18, min_samples_split=17)
+DecisionTreeClassifier(criterion="gini", max_depth=7, min_samples_leaf=18, min_samples_split=17)
+Normalizer(norm="max"),RandomForestClassifier(bootstrap=True, criterion="entropy", max_features=0.2, min_samples_leaf=8, min_samples_split=4, n_estimators=100)
+DecisionTreeClassifier(criterion="gini", max_depth=10, min_samples_leaf=16, min_samples_split=17)
+Normalizer(norm="max"),RandomForestClassifier(bootstrap=True, criterion="entropy", max_features=0.2, min_samples_leaf=8, min_samples_split=4, n_estimators=100)

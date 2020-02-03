@@ -44,9 +44,35 @@ def allowed_file(filename):
 def merge_logs():
     while True:
         time.sleep(5)
-        dr=os.listdir("static/data")
+        dr = os.listdir("tmp_files/tpot")
+        combined_res = ""
+        start = False
+        for each in dr:
+            with open("tmp_files/tpot/"+each,'r') as f:
+                lns=f.readlines()
+                curr=[]
+                for line in lns:
+                    if line[:13] == "# Average CV " :
+                        #combined_res.append(line[21:])
+                        #combined_res += line
+                        start = True
+                    elif line[0] == "#":
+                        start = False
+                    if start:
+                        curr.append(line)
+            if len(curr) > 2:
+                curr = curr[2:-1]
+            else:
+                curr = curr[1:]
+                curr[0] = curr[0][20:]
+            for each in curr:
+                combined_res += each.strip()
+            combined_res+='\n'
+
+        #res_list=[ pipe.split('(')[:-1] for pipe in combined_res]
+        #combined_res=str(res_list)
         with open("static/data/prog.txt", "w") as file: 
-            file.write(str(dr))
+            file.write(combined_res)
 
 
 
