@@ -45,9 +45,10 @@ def merge_logs():
     while True:
         time.sleep(5)
         dr = os.listdir("tmp_files/tpot")
-        combined_res = ""
+        combined_res = "<table><tr><th>Pipeline</th></tr>"
         start = False
         for each in dr:
+            combined_res+="<tr><td>"
             with open("tmp_files/tpot/"+each,'r') as f:
                 lns=f.readlines()
                 curr=[]
@@ -66,8 +67,10 @@ def merge_logs():
                 curr = curr[1:]
                 curr[0] = curr[0][20:]
             for each in curr:
-                combined_res += each.strip()
+                combined_res += re.sub(r'\([^)]*\)', '', each.strip())
             combined_res+='\n'
+            combined_res+="</td></tr>"
+        combined_res+="</table>"
 
         #res_list=[ pipe.split('(')[:-1] for pipe in combined_res]
         #combined_res=str(res_list)
