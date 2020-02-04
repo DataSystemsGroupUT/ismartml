@@ -67,16 +67,18 @@ def merge_logs():
             else:
                 curr[0] = curr[0].split(":")[1]
                 curr[1] = curr[1][20:]
+            curr.append(each)
             res_list.append(curr)
         res_list.sort(key = lambda x: x[0],reverse=True) 
-        combined_res = "<table><tr><th>Accuracy</th><th>Pipeline</th></tr>"
+        combined_res = "<table><tr><th>Accuracy</th><th>Pipeline</th><th>Details</th></tr>"
         for curr in res_list:
             combined_res+="<tr><td>"
             combined_res+=curr[0]+"</td><td>"
-            for each in curr[1:]:
+            for each in curr[1:-1]:
                 combined_res += re.sub(r'\([^)]*\)', '', each.strip())
-            combined_res+='\n'
+            combined_res+="""</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'generate_model' )+"?model="+{} }}');">Interpret</button>""".format(curr[-1])
             combined_res+="</td></tr>"
+        
         combined_res+="</table>"
         #res_list=[ pipe.split('(')[:-1] for pipe in combined_res]
         #combined_res=str(res_list)
