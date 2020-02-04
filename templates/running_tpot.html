@@ -9,6 +9,12 @@
 		    window.location.replace("{{url_mod('progress_tpot')}}"+"?iter={{turn}}");
             });
         </script>
+        <script>
+	     function escape_window(address) {
+		     window.open('{{ url_mod( "generate_model" )+"?model="}}'+address);
+	     }
+        </script>
+
 	<script> 
 	var t=0.0;
 	var per={{RAW_PERIOD|int}}

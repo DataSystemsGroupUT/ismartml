@@ -3,7 +3,12 @@
 {% block head %}
     	{{ super() }}
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	
+	<script>
+	function escape_window(address) {
+		window.open('{{ url_mod( "generate_model" )+"?model="}}'+address);
+	}
+	</script>
+
      </script>
 	<div id="header_bar">
 	<img id="banner" src ="static/images/status/status7.svg">

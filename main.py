@@ -76,7 +76,8 @@ def merge_logs():
             combined_res+=curr[0]+"</td><td>"
             for each in curr[1:-1]:
                 combined_res += re.sub(r'\([^)]*\)', '', each.strip())
-            combined_res+="""</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'generate_model' )+"?model="+{} }}');">Interpret</button>""".format(curr[-1])
+            #combined_res+="</td><td><button type=\"button\" class=\"btn btn-primary\" value=\"View\" name=\"model_id\" onclick=\"window.open('{{ url_mod( 'generate_model' )+\"?model=\"+{} }}');\">Interpret</button>".format(curr[-1])
+            combined_res+="""</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('{}')">Interpret</button>""".format(curr[-1])
             combined_res+="</td></tr>"
         
         combined_res+="</table>"
@@ -584,7 +585,7 @@ def progress_tpot():
     with open("static/data/prog.txt",'r') as f:
         res_data=f.read()
 
-    return render_template("results_tpot.html",res_data=res_data)
+    return render_template("results_tpot.html",res_data=res_data,url_mod=url_mod)
 
       
 
