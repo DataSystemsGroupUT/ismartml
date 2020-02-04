@@ -83,6 +83,8 @@ def merge_logs():
         combined_res+="</table>"
         #res_list=[ pipe.split('(')[:-1] for pipe in combined_res]
         #combined_res=str(res_list)
+        if len(res_list) == 0:
+            combined_res=""
         with open("static/data/prog.txt", "w") as file: 
             file.write(combined_res.replace(',',' - '))
 
@@ -839,6 +841,29 @@ def view_model():
     return render_template("model.html", model=model,
                            estimator=estim, model_index=index)
 
+@app.route("/generate_model_tpot")
+def generate_model_tpot():
+    # generates model from the parameters and trains the model on the train set
+    # Load parameters
+    values = session.get('values', 'not set')
+    target_ft = session.get('target_ft', 'not set')
+    features = session.get('features', 'not set')
+    model_name = request.args.get('model', default=0, type=str)
+    with open("tmp_files/tpot/"+model_name,'r') as f:
+        lns=f.readlines()
+        new_lns=[]
+        start=True
+        for line in lns:
+            if line[:6] == "# NOTE" :
+                #combined_res += line
+                start = False
+            elif line[0] == "#":
+                start = True
+            if start:
+                new_lns.append(line)
+
+    with open("tmp_files/tpot/"+model_name,'w') as f:
+        f.writelines(new_lns)
 
 @app.route("/generate_model")
 def generate_model():

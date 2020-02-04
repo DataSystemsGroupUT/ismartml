@@ -11,7 +11,7 @@
         </script>
         <script>
 	     function escape_window(address) {
-		     window.open('{{ url_mod( "generate_model" )+"?model="}}'+address);
+		     window.open('{{ url_mod( "generate_model_tpot" )+"?model="}}'+address);
 	     }
         </script>
 
@@ -105,8 +105,9 @@ $(document).ready(function() {
 		   {% endblock %}
 	           </div>
 
-
+		   <p>
 		   <div >
-			       <p id="results" >Loading Data...</p>
+			       <p id="results" ></p>
 		   </div>
+	           </p>
 {% endblock %}
