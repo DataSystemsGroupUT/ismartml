@@ -570,34 +570,12 @@ def progress_tpot():
 
     turn += 1
 
-    if(turn >= iters):
-        return render_template(
-            "base_results.html",
-            url_mod=url_mod,
-            column_names=col_names,
-            row_data=res_list,
-            zip=zip,
-            len=len,
-            #task=values['task'])
-            )
+    with open("static/data/prog.txt",'r') as f:
+        res_data=f.read()
+
+    return render_template("results_tpot.html",res_data=res_data)
 
       
-
-    else:
-        return render_template(
-            "progress_tpot.html",
-            url_mod=url_mod,
-            turn=turn,
-            iters=iters,
-            PERIOD=format_period,
-            RAW_PERIOD=values["period"],
-            time=values["time"],
-            column_names=col_names,
-            row_data=res_list,
-            zip=zip,
-            task=values['task'])
-
-
 
 
 @app.route('/progress')

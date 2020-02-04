@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Running{% endblock %}
+{% block head %}
+    	{{ super() }}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
+     </script>
+	<div id="header_bar">
+	<img id="banner" src ="static/images/status/status7.svg">
+     </div>
+
+
+
+
+{% endblock %}
+{% block content %}
+
+		   <div >
+			   <p id="results" >{{res_data|safe}}</p>
+		   </div>
+{% endblock %}
