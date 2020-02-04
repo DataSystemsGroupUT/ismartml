@@ -62,11 +62,14 @@ def merge_logs():
                     if start:
                         curr.append(line)
             if len(curr) > 2:
-                curr = curr[2:-1]
+                curr[0] = curr[0].split(":")[1]
+                curr = curr[:-1]
+                del curr[1]
             else:
-                curr = curr[1:]
-                curr[0] = curr[0][20:]
-            for each in curr:
+                curr[0] = curr[0].split(":")[1]
+                curr[1] = curr[1][20:]
+            combined_res+=curr[0]+"</td><td>"
+            for each in curr[1:]:
                 combined_res += re.sub(r'\([^)]*\)', '', each.strip())
             combined_res+='\n'
             combined_res+="</td></tr>"
