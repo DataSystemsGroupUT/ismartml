@@ -43,12 +43,11 @@ def allowed_file(filename):
 
 def merge_logs():
     while True:
+        res_list=[]
         time.sleep(5)
         dr = os.listdir("tmp_files/tpot")
-        combined_res = "<table><tr><th>Pipeline</th></tr>"
         start = False
         for each in dr:
-            combined_res+="<tr><td>"
             with open("tmp_files/tpot/"+each,'r') as f:
                 lns=f.readlines()
                 curr=[]
@@ -68,6 +67,11 @@ def merge_logs():
             else:
                 curr[0] = curr[0].split(":")[1]
                 curr[1] = curr[1][20:]
+            res_list.append(curr)
+        res_list.sort(key = lambda x: x[0],reverse=True) 
+        combined_res = "<table><tr><th>Accuracy</th><th>Pipeline</th></tr>"
+        for curr in res_list:
+            combined_res+="<tr><td>"
             combined_res+=curr[0]+"</td><td>"
             for each in curr[1:]:
                 combined_res += re.sub(r'\([^)]*\)', '', each.strip())
@@ -460,11 +464,14 @@ def running_tpot():
     # check dataset checksum and lookup
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    try:
-        shutil.rmtree("tmp/tpot_per")
-    except OSError:
-        pass
- 
+
+    dr = os.listdir("tmp_files/tpot")
+    for each in dr:
+        os.remove("tmp_files/tpot/"+each)
+
+
+
+
     return render_template(
         'running_tpot.html',
         url_mod=url_mod,
