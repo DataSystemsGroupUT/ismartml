@@ -71,11 +71,10 @@ def merge_logs():
             combined_res+='\n'
             combined_res+="</td></tr>"
         combined_res+="</table>"
-
         #res_list=[ pipe.split('(')[:-1] for pipe in combined_res]
         #combined_res=str(res_list)
         with open("static/data/prog.txt", "w") as file: 
-            file.write(combined_res)
+            file.write(combined_res.replace(',',' - '))
 
 
 

@@ -1,51 +1,59 @@
 <table><tr><th>Pipeline</th></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,PolynomialFeatures,RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
 </td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,PolynomialFeatures,RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
 </td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,PolynomialFeatures,RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,PolynomialFeatures,RandomForestClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,PolynomialFeatures,RandomForestClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,PolynomialFeatures,RandomForestClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,PolynomialFeatures,RandomForestClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
 </td></tr><tr><td>DecisionTreeClassifier
 </td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
 </td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
-</td></tr><tr><td>Normalizer,PolynomialFeatures,RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
 </td></tr><tr><td>DecisionTreeClassifier
-</td></tr><tr><td>Normalizer,RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
+</td></tr><tr><td>Normalizer - PolynomialFeatures - RandomForestClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>DecisionTreeClassifier
+</td></tr><tr><td>Normalizer - RandomForestClassifier
 </td></tr><tr><td>DecisionTreeClassifier
 </td></tr></table>
