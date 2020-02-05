@@ -840,6 +840,10 @@ def view_model():
     model = res_list[estim][index]
     return render_template("model.html", model=model,
                            estimator=estim, model_index=index)
+@app.route('/model_tpot')
+def view_model_tpot():
+    from tmp_files.tpot_parsed import exported_pipeline as pipe
+    return str(pipe)
 
 @app.route("/generate_model_tpot")
 def generate_model_tpot():
@@ -870,6 +874,7 @@ def generate_model_tpot():
     from tmp_files.tpot_parsed import exported_pipeline as pipe
     X, y, data = process_data(path, "csv", target_ft)
     pipe.fit(X, y)
+    dump(pipe, 'tmp_files/model_{}.joblib'.format(model_name[:-3]))
     with open("tmp_files/model_{}.pickle".format(model_name[:-3]), 'wb') as filehandler:
         pickle.dump(pipe, filehandler)
 
@@ -967,18 +972,37 @@ def generate_model():
 
 @app.route('/download_joblib')
 def download_joblib():
-    index = request.args.get('model', default=0, type=int)
-    estim = request.args.get('estimator', default=None, type=str)
-    return send_from_directory("tmp_files", 'model_{}_{}.joblib'.format(
-        estim, str(index)), as_attachment=True)
+    values = session.get('values', 'not set')
+    if values["backend"] == "autosklearn":
+        index = request.args.get('model', default=0, type=int)
+        estim = request.args.get('estimator', default=None, type=str)
+        return send_from_directory("tmp_files", 'model_{}_{}.joblib'.format(
+            estim, str(index)), as_attachment=True)
+    elif values["backend"] == "tpot":
+        model_name = request.args.get('model', default=None, type=str)
+        return send_from_directory("tmp_files", 'model_{}.joblib'.format(
+            model_name), as_attachment=True)
+
+
+    
+    
+    
 
 
 @app.route('/download_pickle')
 def download_pickle():
-    index = request.args.get('model', default=0, type=int)
-    estim = request.args.get('estimator', default=None, type=str)
-    return send_from_directory("tmp_files", 'model_{}_{}.pickle'.format(
-        estim, str(index)), as_attachment=True)
+    values = session.get('values', 'not set')
+    if values["backend"] == "autosklearn":
+        index = request.args.get('model', default=0, type=int)
+        estim = request.args.get('estimator', default=None, type=str)
+        return send_from_directory("tmp_files", 'model_{}_{}.pickle'.format(
+            estim, str(index)), as_attachment=True)
+    elif values["backend"] == "tpot":
+        model_name = request.args.get('model', default=None, type=str)
+        return send_from_directory("tmp_files", 'model_{}.pickle'.format(
+            model_name), as_attachment=True)
+
+
 
 
 @app.route('/plot_pdp')

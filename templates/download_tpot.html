@@ -52,7 +52,7 @@
 {% endblock %}
 {% block content %}
 <p class="text-center">
-	<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'view_model' )+"?model="+model_name }}');">Show Parameters</button>
+	<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'view_model_tpot' )+"?model="+model_name }}');">Show Parameters</button>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_mod( 'download_pickle' )+"?model="+model_name }}');">Download .pickle</button>
 		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_mod( 'download_joblib' )+"?model="+model_name }}');">Download .joblib</button>
 </p>
@@ -195,11 +195,6 @@
 
 
 </div>
-{% if not row_data %}
-<p>Not supported for this classifier</p>
-{% else %}
-<img class="target_plt"  src="static/images/figs/model_imp.png">
-{% endif %}
 <!--
 {% if  partial_fig_names %}
 <h3  class="text-center">Partial Dependance Plots</h3>
