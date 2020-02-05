@@ -873,7 +873,28 @@ def generate_model_tpot():
     with open("tmp_files/model_{}_tpot.pickle".format(model_name[:-3]), 'wb') as filehandler:
         pickle.dump(pipe, filehandler)
 
-    return str(pipe)
+    metric_res = pipeline_gen.get_matrix(pipe, X, y, False)
+    column_names = ["Metric", "Score"]
+    metric_names = ["Accuracy", "Recall", "Precision", "F1"]
+    metric_res = [[metric_names[i], round(
+        metric_res[i], 3)] for i in range(len(metric_res))]
+
+    # partial dependancy
+    partial_fig_names = []
+    return render_template(
+        "download_tpot.html",
+        url_mod=url_mod,
+        features=features,
+        targets=np.unique(y),
+        model_name=model_name[:-3],
+        column_names=column_names,
+        row_data=metric_res,
+        CL_Name="MISSING",
+        metric_res=metric_res,
+        zip=zip,
+        partial_fig_names=partial_fig_names)
+
+    
 
 @app.route("/generate_model")
 def generate_model():

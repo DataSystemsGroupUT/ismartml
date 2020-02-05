@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% block title %}Model Explain{% endblock %}
+
+{% block head %}
+    	{{ super() }}
+    <link rel="stylesheet" href="static/css/download.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		jQuery('#modellink').click(function(e) {
+		var url = "/loading";
+		    $('.modal-body').load(url,function(result){
+				$('#plt_modal').modal({show:true});
+			});
+
+                var f1=$("#feat_1 :selected").val();
+                var f2=$("#feat_2 :selected").val();
+                var t1=$("#targ_1 :selected").val();
+			var url = "{{url_mod('plot_modal')}}?model=model_name&f1="+f1+"&f2="+f2+"&t1="+t1;
+		    $('.modal-body').load(url,function(result){
+				$('#plt_modal').modal({show:true});
+			});
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		jQuery('#pdplink').click(function(e) {
+		var url = "/loading";
+		    $('.modal-body').load(url,function(result){
+				$('#plt_modal').modal({show:true});
+			});
+
+                var f1=$("#feat_pdp :selected").val();
+                var t1=$("#targ_pdp :selected").val();
+			var url = "{{url_mod('plot_pdp')}}?model=model_name}}&f1="+f1+"&t1="+t1;
+		    $('.modal-body').load(url,function(result){
+				$('#plt_modal').modal({show:true});
+			});
+		});
+	});
+</script>
+
+
+
+
+
+	<div id="header_bar">
+	<img id="banner" src ="static/images/status/status8.svg">
+     </div>
+{% endblock %}
+{% block content %}
+<p class="text-center">
+	<button type="button" class="btn btn-primary" value="View" name="model_id" onclick="window.open('{{ url_mod( 'view_model' )+"?model="+model_name }}');">Show Parameters</button>
+		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_mod( 'download_pickle' )+"?model="+model_name }}');">Download .pickle</button>
+		<button type="button" class="btn btn-primary" value="Generate" name="model_dl" onclick="window.open('{{ url_mod( 'download_joblib' )+"?model="+model_name }}');">Download .joblib</button>
+</p>
+<div class="container-fluid">
+  <div class="row  align-items-center">
+    <div class="col">
+<img class="feature_plt" src="static/images/figs/conf_mt_0.png">
+    </div>
+    <div class="col">
+<img class="feature_plt" src="static/images/figs/conf_mt_1.png">
+    </div>
+    <div class="col">
+<p class="feature_plt"> {% include "base_results.html" %}</p>
+    </div>
+  </div>
+</div>
+<div>
+
+<div class="jumbotron">
+<h3 class="text-center">Partial Dependence Plot</h3>
+<div class="container-fluid">
+  <div class="row  align-items-center">
+    <div class="col">
+<label>Feature </label>
+<select class="form-control" id="feat_pdp">
+{% for feat in features %}
+	<nobr>
+        <option value={{feat}}>{{feat}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+    </div>
+    <div class="col">
+<label>Target Class Label</label>
+<select class="form-control" id="targ_pdp">
+{% for label in targets %}
+	<nobr>
+        <option value={{label}}>{{label}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+
+    </div>
+    <div class="col">
+
+<label><br /> <br /></label>
+
+<p class="text-center">
+<a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="pdplink">Plot</a>
+</p>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="jumbotron">
+<h3 class="text-center">Feature Interaction Plot</h3>
+<div class="container-fluid">
+  <div class="row  align-items-center">
+    <div class="col">
+<label>Feature 1</label>
+<select class="form-control" id="feat_1">
+{% for feat in features %}
+	<nobr>
+        <option value={{feat}}>{{feat}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+    </div>
+    <div class="col">
+    
+<label>Feature 2</label>
+<select class="form-control" id="feat_2">
+{% for feat in features %}
+	<nobr>
+{% if loop.index0==1 %}
+        <option selected="selected"  value={{feat}}>{{feat}}</option> 
+{% else %}
+        <option value={{feat}}>{{feat}}</option> 
+{% endif %}
+	</nobr>
+{% endfor %}
+</select>
+
+    </div>
+    <div class="col">
+<label>Target Class Label</label>
+<select class="form-control" id="targ_1">
+{% for label in targets %}
+	<nobr>
+        <option value={{label}}>{{label}}</option> 
+	</nobr>
+{% endfor %}
+</select>
+
+    </div>
+    <div class="col">
+
+<label><br /> <br /></label>
+
+<p class="text-center">
+<a class="btn btn-primary pull-right" data-toggle="modal" href="#plt_modal" id="modellink">Plot</a>
+</p>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="plt_modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title center">Plot</h4>
+            </div>
+            <div class="modal-body no-border">
+            </div>
+            <div class="modal-footer no-border">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+
+
+
+</div>
+{% if not row_data %}
+<p>Not supported for this classifier</p>
+{% else %}
+<img class="target_plt"  src="static/images/figs/model_imp.png">
+{% endif %}
+<!--
+{% if  partial_fig_names %}
+<h3  class="text-center">Partial Dependance Plots</h3>
+{% for plt in partial_fig_names %}
+	   <nobr>
+	   <label class="pdp_plt_label"><img class="feature_plt" src="static/images/figs/{{plt}}.png"></label>
+	</nobr>
+{% endfor %}
+
+{% endif %}
+-->
+{% endblock %}
