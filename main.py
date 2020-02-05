@@ -849,6 +849,8 @@ def generate_model_tpot():
     target_ft = session.get('target_ft', 'not set')
     features = session.get('features', 'not set')
     model_name = request.args.get('model', default=0, type=str)
+    path = os.path.join(app.config['UPLOAD_FOLDER'],
+                        session.get("filename", "not set"))
     with open("tmp_files/tpot/"+model_name,'r') as f:
         lns=f.readlines()
         new_lns=[]
@@ -862,8 +864,16 @@ def generate_model_tpot():
             if start:
                 new_lns.append(line)
 
-    with open("tmp_files/tpot/"+model_name,'w') as f:
-        f.writelines(new_lns)
+    with open("tmp_files/tpot_parsed.py",'w') as f:
+        f.writelines(new_lns[:-5])
+
+    from tmp_files.tpot_parsed import exported_pipeline as pipe
+    X, y, data = process_data(path, "csv", target_ft)
+    pipe.fit(X, y)
+    with open("tmp_files/model_{}_tpot.pickle".format(model_name[:-3]), 'wb') as filehandler:
+        pickle.dump(pipe, filehandler)
+
+    return str(pipe)
 
 @app.route("/generate_model")
 def generate_model():
