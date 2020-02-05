@@ -16,7 +16,7 @@
                 var f1=$("#feat_1 :selected").val();
                 var f2=$("#feat_2 :selected").val();
                 var t1=$("#targ_1 :selected").val();
-			var url = "{{url_mod('plot_modal')}}?model=model_name&f1="+f1+"&f2="+f2+"&t1="+t1;
+			var url = "{{url_mod('plot_modal')}}?model={{model_name}}&f1="+f1+"&f2="+f2+"&t1="+t1;
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
 			});
@@ -34,7 +34,7 @@
 
                 var f1=$("#feat_pdp :selected").val();
                 var t1=$("#targ_pdp :selected").val();
-			var url = "{{url_mod('plot_pdp')}}?model=model_name}}&f1="+f1+"&t1="+t1;
+			var url = "{{url_mod('plot_pdp')}}?model={{model_name}}&f1="+f1+"&t1="+t1;
 		    $('.modal-body').load(url,function(result){
 				$('#plt_modal').modal({show:true});
 			});

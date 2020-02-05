@@ -870,7 +870,7 @@ def generate_model_tpot():
     from tmp_files.tpot_parsed import exported_pipeline as pipe
     X, y, data = process_data(path, "csv", target_ft)
     pipe.fit(X, y)
-    with open("tmp_files/model_{}_tpot.pickle".format(model_name[:-3]), 'wb') as filehandler:
+    with open("tmp_files/model_{}.pickle".format(model_name[:-3]), 'wb') as filehandler:
         pickle.dump(pipe, filehandler)
 
     metric_res = pipeline_gen.get_matrix(pipe, X, y, False)
@@ -983,18 +983,25 @@ def download_pickle():
 
 @app.route('/plot_pdp')
 def plot_pdp():
+    values = session.get('values', 'not set')
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    index = request.args.get('model', default=0, type=int)
-    estim = request.args.get('estimator', default=None, type=str)
     target_ft = session.get('target_ft', 'not set')
     features = session.get('features', 'not set')
     f1 = request.args.get('f1', default=None, type=str)
     t1 = request.args.get('t1', default=None, type=str)
     X, y, data = process_data(path, "csv", target_ft)
     chosen_class = list(np.unique(y)).index(int(float(t1)))
-    with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
-        pipe = pickle.load(filehandler)
+    if values["backend"] == "autosklearn":
+        index = request.args.get('model', default=0, type=int)
+        estim = request.args.get('estimator', default=None, type=str)
+        with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
+            pipe = pickle.load(filehandler)
+    elif values["backend"] == "tpot":
+        model_name = request.args.get('model', default=None, type=str)
+        with open("tmp_files/model_{}.pickle".format(model_name), 'rb') as filehandler:
+            pipe = pickle.load(filehandler)
+
     mod_path = "modal_" + "pdp_" + str(f1.replace('.', '_'))
     feat_p = pdp.pdp_isolate(
         model=pipe,
@@ -1011,10 +1018,9 @@ def plot_pdp():
 
 @app.route('/plot_modal')
 def plot_modal():
+    values = session.get('values', 'not set')
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    index = request.args.get('model', default=0, type=int)
-    estim = request.args.get('estimator', default=None, type=str)
     target_ft = session.get('target_ft', 'not set')
     features = session.get('features', 'not set')
     f1 = request.args.get('f1', default=None, type=str)
@@ -1022,8 +1028,15 @@ def plot_modal():
     t1 = request.args.get('t1', default=None, type=str)
     X, y, data = process_data(path, "csv", target_ft)
     chosen_class = list(np.unique(y)).index(int(float(t1)))
-    with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
-        pipe = pickle.load(filehandler)
+    if values["backend"] == "autosklearn":
+        index = request.args.get('model', default=0, type=int)
+        estim = request.args.get('estimator', default=None, type=str)
+        with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
+            pipe = pickle.load(filehandler)
+    elif values["backend"] == "tpot":
+        model_name = request.args.get('model', default=None, type=str)
+        with open("tmp_files/model_{}.pickle".format(model_name), 'rb') as filehandler:
+            pipe = pickle.load(filehandler)
     mod_path = "modal_" + str(f1.replace('.', '_')) + \
         "_" + str(f2.replace('.', '_'))
     pdp_V1_V2 = pdp.pdp_interact(
