@@ -265,7 +265,7 @@ def params_tpot():
     # Configure for Task
     if task == "classification":
         # Get corect lists for this task
-        ESTIMATORS = [TPOT_CLASSIFIERS, TPOT_CLASSIFIERS]
+        ESTIMATORS = [TPOT_CLASSIFIERS, [cl.split('.')[-1] for cl in TPOT_CLASSIFIERS]]
         #PREPROCESSORS = [PREPROCESSORS_CL, PREPROCESSORS_CL_DISP]
     else:
         ESTIMATORS = [REGRESSORS, REGRESSORS_DISP]
@@ -366,7 +366,7 @@ def budget_tpot():
     #        total_pred_time += 0.2 * (time_pred)
     if total_pred_time<60:
         total_pred_time=60
-    return render_template('budget.html', zip=zip,
+    return render_template('budget_tpot.html', zip=zip,
                            TASK=task, PRED_TIME=int(total_pred_time))
 
 
@@ -375,7 +375,8 @@ def budget_tpot_p():
     if request.method == 'POST':
         values = session.get('values', 'not set')
         time = request.form['time']
-        period = request.form['period']
+        #period = request.form['period']
+        period=time
         data_type = session.get('data_type', 'not set')
         filename = session.get("filename", "not set")
         task = session.get("task", "not set")

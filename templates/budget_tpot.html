@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}iSmartML{% endblock %}
+{% block head %}
+    	{{ super() }}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+	//clears page cache
+	$(window).bind("pageshow", function() {
+	    var /orm = $('form'); 
+	    // let the browser natively reset defaults
+	    form[0].reset();
+	}); 
+        </script>
+
+
+
+	<script>
+	//toggle all
+	function toggle_est(source) {
+	    var checkboxes = document.querySelectorAll('div.estm input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
+
+	<script>
+	//toggle all
+	function toggle_pre(source) {
+	    var checkboxes = document.querySelectorAll('div.prep input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
+	<script>
+	//toggle all
+	function toggle_features(source) {
+	    var checkboxes = document.querySelectorAll('div.features input[type="checkbox"]');
+	    for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i] != source)
+		    checkboxes[i].checked = source.checked;
+	    }
+	}
+	</script>
+
+
+
+	<script>
+	//checkbox checker, not using now
+	$(document).ready(function(){
+    		var requiredCheckboxes = $('.cl-checkbox :checkbox[required]');
+    		requiredCheckboxes.change(function(){
+        		if(requiredCheckboxes.is(':checked')) {
+            			requiredCheckboxes.removeAttr('required');
+       			 } else {
+            			requiredCheckboxes.attr('required', 'required');
+        		}
+    		});
+	});
+	</script>
+	
+
+
+	<div id="header_bar">
+	<img id="banner" src ="static/images/status/status5.svg">
+     </div>
+
+{% endblock %}
+
+{% block content %}
+<form method="post" action="" enctype="multipart/form-data">
+    <dl>
+	    	<div class="row">
+		<div class="col-8" >
+		<div id="cl_div" >
+				
+		
+		<h4><p>Use Data From Past Runs on this Dataset</p></h4>
+		<p>
+		<div class="form-radio">
+			<input type="radio" name="reuse" value="yes" required >
+			<label>Yes &nbsp; &nbsp; </label>
+			<input type="radio" name="reuse" value="no" required checked>
+			<label>No &nbsp; &nbsp; </label>
+		</div>
+		</p>
+	
+
+		</div>
+		</div>
+
+
+
+		
+		
+		</div>	
+		
+		<h4><p>Enter Time Budget in seconds (minimum 60)</p></h4>
+		<p>Recommended Time: {{PRED_TIME}}</p>
+	    	<p>	
+		      <div class="form-group w-25">
+			<input type="text" class="form-control" name="time" required>
+		      </div>
+		</p>
+    </dl>
+    <p>
+		<button type="submit" class="btn btn-primary">Next</button>
+	</p>
+</form>
+
+{% endblock %}

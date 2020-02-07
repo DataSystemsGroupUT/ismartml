@@ -1,3 +1,7 @@
-<table><tr><th>Accuracy</th><th>Pipeline</th><th>Details</th></tr><tr><td> 0.7858241758241757
-</td><td>Normalizer - RandomForestClassifier</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('pipeline_gen_3_idx_1_2020.02.05_18-24-59.py')">Interpret</button></td></tr><tr><td> 0.7857326007326007
-</td><td>DecisionTreeClassifier</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('pipeline_gen_3_idx_0_2020.02.05_18-24-59.py')">Interpret</button></td></tr></table>
+<table><tr><th>Accuracy</th><th>Pipeline</th><th>Details</th></tr><tr><td> 0.7972527472527473
+</td><td>LinearSVC</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('pipeline_gen_13_idx_0_2020.02.06_15-04-32.py')">Interpret</button></td></tr><tr><td> 0.7934798534798535
+</td><td>Normalizer - PolynomialFeatures - RandomForestClassifier</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('pipeline_gen_5_idx_1_2020.02.06_15-02-45.py')">Interpret</button></td></tr><tr><td> 0.7933882783882785
+</td><td>RandomForestClassifier</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('pipeline_gen_10_idx_0_2020.02.06_15-04-01.py')">Interpret</button></td></tr><tr><td> 0.7895787545787546
+</td><td>DecisionTreeClassifier</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('pipeline_gen_5_idx_0_2020.02.06_15-02-45.py')">Interpret</button></td></tr><tr><td> 0.7858241758241757
+</td><td>Normalizer - RandomForestClassifier</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('pipeline_gen_3_idx_1_2020.02.06_15-02-14.py')">Interpret</button></td></tr><tr><td> 0.7857326007326007
+</td><td>DecisionTreeClassifier</td><td><button type="button" class="btn btn-primary" value="View" name="model_id" onclick="escape_window('pipeline_gen_3_idx_0_2020.02.06_15-02-14.py')">Interpret</button></td></tr></table>
