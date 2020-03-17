@@ -57,12 +57,13 @@ def start_p():
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
-        if file and allowed_file(file.filename):
+        if file :
             filename = secure_filename(file.filename)
             if data_type == "numpy" and filename[-3:] != "npy":
                 return "Wrong file extension (expected .npy)"
             if data_type == "csv" and (filename[-3:] != "csv" and filename[-3:] != "CSV"):
-                return "Wrong file extension (expected .csv)"
+                err = "Unsupported file extension (expected .csv)"
+                return render_template("error.html", err=err)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             rec = []
             if task == "classification":
