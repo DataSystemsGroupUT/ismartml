@@ -127,7 +127,7 @@ def target_class():
     target_ft = session.get('target_ft', 'not set')
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    data = pd.read_csv(path)
+    data = pd.read_csv(path,sep = None)
     unique, counts = np.unique(data[target_ft], return_counts=True)
     classes = dict(zip(unique, counts))
     mx_key = max(classes, key=classes.get)

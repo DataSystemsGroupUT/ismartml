@@ -13,13 +13,16 @@ def hash_file(path):
 
 def load_initial(path):
     """ Encodes data and returns new data """
-    data = pd.read_csv(path)
+    data = pd.read_csv(path,sep=None)
     mask = data.dtypes==object
     categorical = data.columns[mask].tolist()
+    print(categorical)
     if categorical:
+        print("crash")
         le = LabelEncoder()
-        data[categorical] = data[categorical].apply(lambda x: le.fit_transform(x))
+        data[categorical] = data[categorical].apply(lambda x: le.fit_transform(x.astype(str)))
         data.to_csv(path, index=False)
+    print("Not crash")
     return data
 
 def return_cols(path):
