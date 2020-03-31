@@ -85,13 +85,20 @@ def featur_pg():
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
     data = load_initial(path,sep=values["sep"])
+    empty_cols = [col for col in data.columns if data[col].isnull().all()]
+    data.drop(empty_cols,
+        axis=1,
+        inplace=True)
+    dropped_msg=""
+    if empty_cols:
+        dropped_msg = "Empty columns detected, dropped columns : "+str(empty_cols) 
     features= data.columns
     for i in range(len(features)):
         plt.clf()
         data[features[i]].hist()
         plt.savefig("static/images/figs/" + str(i),
                     bbox_inches="tight", transparent=True)
-    return render_template("features.html", FEATURES=features)
+    return render_template("features.html", FEATURES=features, dropped_msg=dropped_msg)
 
 
 @app.route('/features', methods=['POST'])
