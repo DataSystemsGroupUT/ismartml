@@ -55,6 +55,7 @@ def start_p():
         data_type = "csv"
         task = request.form['task']
         sep = request.form['sep']
+        #sep= None
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
@@ -133,7 +134,7 @@ def target_class():
     target_ft = session.get('target_ft', 'not set')
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    data = pd.read_csv(path,sep = None)
+    data = pd.read_csv(path)
     unique, counts = np.unique(data[target_ft], return_counts=True)
     classes = dict(zip(unique, counts))
     mx_key = max(classes, key=classes.get)
