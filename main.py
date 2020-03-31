@@ -709,6 +709,8 @@ def plot_pdp():
     f1 = request.args.get('f1', default=None, type=str)
     t1 = request.args.get('t1', default=None, type=str)
     X, y, data = process_data(path, "csv", target_ft)
+    #remove nans
+    data = data.dropna()
     chosen_class = list(np.unique(y)).index(int(float(t1)))
     with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
         pipe = pickle.load(filehandler)
@@ -738,6 +740,9 @@ def plot_modal():
     f2 = request.args.get('f2', default=None, type=str)
     t1 = request.args.get('t1', default=None, type=str)
     X, y, data = process_data(path, "csv", target_ft)
+    #remove nans
+    data = data.dropna()
+
     chosen_class = list(np.unique(y)).index(int(float(t1)))
     with open("tmp_files/model_{}_{}.pickle".format(estim, str(index)), 'rb') as filehandler:
         pipe = pickle.load(filehandler)
