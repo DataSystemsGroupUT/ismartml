@@ -56,6 +56,7 @@ def filter_excluded(ls):
 def predict_meta(meta):
     model = load(Model)
     scaler = load(Scaler)
+    #meta = meta[~np.isnan(meta)] 
     X = scaler.transform(meta.reshape(1, -1))
     outp = model.predict_proba(X)[0]
     srt = np.argsort(outp)[::-1]

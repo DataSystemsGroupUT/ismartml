@@ -225,7 +225,6 @@ meta_features_names=["nr_instances", "log_nr_instances", "nr_features",\
 def  extractMetaFeatures(dataset, file, classCol = None):
     
     
-    
     t0 = time.time()
     
     #### 5. Number of Classes - DONE
@@ -453,13 +452,13 @@ def  extractMetaFeatures(dataset, file, classCol = None):
     
     return  meta_features
 
-def get_meta(file,data_type):
+def get_meta(file,data_type, target_col=None):
     if(data_type=="numpy"):
         dataset=np.load(file)
         dataset=pd.DataFrame(dataset)
     elif data_type =="csv":
         dataset = pd.read_csv(file, index_col=None, header=0)
-    return (np.array(extractMetaFeatures(dataset, file)[1:],dtype='float'))
+    return (np.array(extractMetaFeatures(dataset, file,classCol=target_col)[1:],dtype='float'))
     #return extractMetaFeatures(dataset, file)[1:]
 
 
@@ -470,4 +469,3 @@ if __name__ == "__main__":
     dataset=pd.DataFrame(dataset)
     #dataset = pd.read_csv(file, index_col=None, header=0)
     print(np.array(extractMetaFeatures(dataset, file)[1:],dtype='float'))
-

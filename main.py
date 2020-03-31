@@ -54,6 +54,7 @@ def start_p():
         #data_type = request.form['data_type']
         data_type = "csv"
         task = request.form['task']
+        sep = request.form['sep']
         if file.filename == '':
             flash('No file selected for uploading')
             return redirect(request.url)
@@ -65,16 +66,11 @@ def start_p():
                 err = "Unsupported file extension (expected .csv)"
                 return render_template("error.html", err=err)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            rec = []
-            if task == "classification":
-                meta = get_meta(os.path.join(
-                    app.config['UPLOAD_FOLDER'], filename), data_type)
-                rec = predict_meta(meta)
             values['task'] = task
+            values["sep"] = sep
             session["filename"] = filename
             session["values"] = values
             session["data_type"] = data_type
-            session["rec"] = rec
             session["task"] = task
             return redirect(url_mod("featur_pg"))
         else:
@@ -87,7 +83,7 @@ def featur_pg():
     values = session.get('values', 'not set')
     path = os.path.join(app.config['UPLOAD_FOLDER'],
                         session.get("filename", "not set"))
-    data = load_initial(path)
+    data = load_initial(path,sep=values["sep"])
     features= data.columns
     for i in range(len(features)):
         plt.clf()
@@ -101,6 +97,7 @@ def featur_pg():
 def feature_pgr():
     if request.method == 'POST':
         # check if the post request has the file part
+        task = session.get("task", "not set")
         target_ft = request.form['target_ft']
         session["target_ft"] = target_ft
         features = request.form.getlist("features_ls")
@@ -108,6 +105,15 @@ def feature_pgr():
             return "You can't discard the target class"
         features.remove(target_ft)
         session["features"] = features
+        filename = session.get("filename", "not set")
+        data_type = "csv"
+        rec = []
+        if task == "classification":
+            meta = get_meta(os.path.join(
+                app.config['UPLOAD_FOLDER'], filename), data_type,target_col=target_ft)
+        rec = predict_meta(meta)
+        session["rec"] = rec
+
         path = os.path.join(
             app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
         new_data = select_cols(path, list(features) + [target_ft])

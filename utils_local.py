@@ -11,9 +11,9 @@ def hash_file(path):
             chk.update(chunk)
     return chk.hexdigest()
 
-def load_initial(path):
+def load_initial(path,sep=','):
     """ Encodes data and returns new data """
-    data = pd.read_csv(path,sep=None)
+    data = pd.read_csv(path,sep=sep)
     mask = data.dtypes==object
     categorical = data.columns[mask].tolist()
     print(categorical)
