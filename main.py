@@ -116,16 +116,18 @@ def feature_pgr():
         filename = session.get("filename", "not set")
         data_type = "csv"
         rec = []
-        if task == "classification":
-            meta = get_meta(os.path.join(
-                app.config['UPLOAD_FOLDER'], filename), data_type,target_col=target_ft)
-            rec = predict_meta(meta)
-        session["rec"] = rec
-
         path = os.path.join(
             app.config['UPLOAD_FOLDER'], session.get("filename", "not set"))
         new_data = select_cols(path, list(features) + [target_ft])
+        new_data = new_data[new_data[target_ft].notna()]
         new_data.to_csv(path, index=False)
+
+        if task == "classification":
+            meta = get_meta(path, data_type,target_col=target_ft)
+            rec = predict_meta(meta)
+        session["rec"] = rec
+
+
         return redirect(url_mod('target_class'))
 
 
