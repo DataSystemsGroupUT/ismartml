@@ -119,7 +119,7 @@ def feature_pgr():
         if task == "classification":
             meta = get_meta(os.path.join(
                 app.config['UPLOAD_FOLDER'], filename), data_type,target_col=target_ft)
-        rec = predict_meta(meta)
+            rec = predict_meta(meta)
         session["rec"] = rec
 
         path = os.path.join(

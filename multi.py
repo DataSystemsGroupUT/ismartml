@@ -73,8 +73,7 @@ def get_spawn_classifier(X_train, y_train, X_test=None, y_test=None):
             seed=seed,
             smac_scenario_args=smac_scenario_args,
         )
-        automl.fit(X_train, y_train, X_test=X_test, y_test=y_test,
-                   metric=metric, dataset_name=dataset_name)
+        automl.fit(X_train, y_train, metric=metric, dataset_name=dataset_name)
         # print(automl.cv_results_)
         return automl.cv_results_
     return spawn_classifier
