@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}iSmartML{% endblock %}
+{% block head %}
+    	{{ super() }}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	$(document).on('change', '.custom-file-input', function (event) {
+    		$(this).next('.custom-file-label').html(event.target.files[0].name);
+		})
+        </script>
+	<div id="header_bar"></div>
+
+{% endblock %}
+
+{% block content %}
+
+<h1 id="ismartml" class="target_cap">iSmartML</h1>
+<p><strong>iSmartML</strong> is an interactive and user-guided framework for improving the utility and usability of the <em>AutoML</em> process with the following main features:</p>
+<ul>
+<li><p>The framework provides the end-user with a user-friendly configuration <em>control panel</em> that allows nontechnical users and domain experts (e.g., physicians) to easily define, configure and control the search space for the AutoML search process according to their own preferences.</p>
+</li>
+<li><p>The framework is equipped with a <em>recommendation engine</em>, that uses a meta-learning mechanism, to help the end-users on defining the effective search space for the input dataset, potentially useful pre-processors and accurately estimating the time budget.</p>
+</li>
+<li><p>The framework provides the end-user with a <em>monitoring panel</em> that allows tracking the progress of the search process during the whole allocated time budget and reports a stream of model configurations by sending alerts whenever a better pipeline is found during any point of time through the search process.</p>
+</li>
+<li><p>The framework is equipped with a <em>logging</em> mechanism which enables storing the results of the explored configurations over a given dataset on one run so that repeated runs on the same dataset can be more effective by avoiding re-exploring the same candidate configurations on the search space.</p>
+</li>
+<li><p>The framework is equipped with an <em>explanation module</em> which allows the end-user to understand and diagnose the design of the returned machine learning models using various explanation techniques. In particular, the explanation module allows the end-user to choose the model with the best satisfactory explanation for a higher trust or to use the information of the explanation process to refine and optimize a new iteration of the automated search process.</p>
+</li>
+</ul>
+<p align="center">
+<img alt="architecture" src="https://user-images.githubusercontent.com/8884249/68950788-86d0bd00-07c5-11ea-8b91-cab51811cc2b.png">
+</p>
+
+<h2 class="target_cap">Demo:</h2>
+<p>
+<iframe  width="550" height="350" src="https://www.youtube.com/embed/aug5UXd1dNI">
+</iframe>
+<p>
+
+<h2 id="getting-started" class="target_cap">Getting Started</h2>
+<p>These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.</p>
+<h3 id="prerequisites" class="target_cap">Prerequisites</h3>
+<pre><code><span class="hljs-symbol">sudo</span> apt-<span class="hljs-meta">get</span> install <span class="hljs-keyword">build-essential </span><span class="hljs-keyword">swig</span>
+</code></pre><h3 id="installing" class="target_cap">Installing</h3>
+<p>Install iSmartML locally</p>
+<p>Clone repository and install dependencies</p>
+<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/DataSystemsGroupUT/ismartml.git
+cd ismartml
+pip install -r requirements.txt
+</code></pre><h2 id="running" class="target_cap">Running</h2>
+<p>Run locally</p>
+<pre><code><span class="hljs-keyword">python</span> main.<span class="hljs-keyword">py</span>
+</code></pre><p>The tool should be avilable at</p>
+<pre><code><span class="hljs-symbol">http:</span><span class="hljs-comment">//localhost:8080/</span>
+</code></pre><p>Or deploy with a web server</p>
+
+
+
+
+
+{% endblock %}
