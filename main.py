@@ -43,7 +43,7 @@ def about():
 def start():
     if not os.path.exists("data/hash_list.txt"):
         os.mknod("data/hash_list.txt")
-    return render_template("index.html")
+    return render_template("index.html", url_mod=url_mod)
 
 
 @app.route('/', methods=['POST'])
