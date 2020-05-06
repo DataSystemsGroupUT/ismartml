@@ -78,7 +78,11 @@
 	    	<div class="row">
 		<div class="col-8" >
 		<div id="cl_div" >
-		<h4><p>Select Classifiers</p></h4>
+		<h4><p>Select Classifiers
+		<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Classifier is an algorithm that is used to learn the data and make predictions. Only selected classifiers will be considered for the optimization process.">
+		</i>
+
+		</p></h4>
 		<input type="checkbox" onclick="toggle_est(this);" />&nbsp; Toggle all<br />
 		<p>
 		<div class="form-check estm">
@@ -95,7 +99,11 @@
 		{% endfor %}
 		</div>
 		</p>
-		<h4><p>Select Preprocessors</p></h4>
+		<h4><p>Select Preprocessors
+		<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Preprocessing is performed on the data before it is fed to the classifier or regressor. It is an attempt to transform data in more fitted form for training. Only selected preprocessors will be considered for the optimization process.">
+		</i>
+
+		</p></h4>
 		<input type="checkbox" onclick="toggle_pre(this);" />&nbsp; Toggle all<br />
 		<p>
 		<div class="form-check prep" >
