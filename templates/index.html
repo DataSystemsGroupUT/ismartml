@@ -26,10 +26,18 @@
 {% block content %}
 <form method="post" action="" enctype="multipart/form-data">
     <dl>		
-	    	<h4><p>Select Task <a href="https://scikit-learn.org/stable/tutorial/basic/tutorial.html#machine-learning-the-problem-setting" target="_blank"><i class="fa fa-question-circle"></i></a></p></h4>
+	    	<h4><p>Select Task</p></h4>
 		<p>
-		    <input type="radio" name="task" value="classification" required checked > Classification
+		    <input type="radio" name="task" value="classification" required checked > Classification  
+			<a href="https://scikit-learn.org/stable/tutorial/basic/tutorial.html#machine-learning-the-problem-setting" target="_blank">
+				<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Samples belong to two or more classes and we want to learn from already labeled data how to predict the class of unlabeled data.">
+				</i>
+			</a> &nbsp
 		    <input type="radio" name="task" value="regression"> Regression
+			<a href="https://scikit-learn.org/stable/tutorial/basic/tutorial.html#machine-learning-the-problem-setting" target="_blank">
+				<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="If the desired output consists of one or more continuous variables, then the task is called regression.">
+				</i>
+			</a> &nbsp
 		</p>
 		
 
@@ -39,12 +47,7 @@
 		    <input type="radio" name="data_type" value="numpy"> Numpy Array
 		</p>
 -->	
-                <h4><p>Select Seperator</p></h4>
-		<p>
-		    <input type="radio" name="sep" value="," required checked >Coma(,)
-		    <input type="radio" name="sep" value=";"> Semicolon(;)
-		</p>
-		
+
 
 		<h4><p>Upload Dataset </p></h4>
 		
@@ -58,6 +61,14 @@
 		  </div>
 		  </div>
 		</p>
+
+                <h4><p>Select Seperator</p></h4>
+		<p>
+		    <input type="radio" name="sep" value="," required checked >Coma(,)
+		    <input type="radio" name="sep" value=";"> Semicolon(;)
+		</p>
+		
+
     </dl>
     <p>
 		<button type="submit" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModalCenter">Next</button>

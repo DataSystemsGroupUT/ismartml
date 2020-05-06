@@ -75,9 +75,13 @@
 {% block content %}
 <form method="post" action="" enctype="multipart/form-data">
     <dl>	
-                <h5>{{dropped_msg}}<h5>
-		<h4><p>Select Target Class</p></h4>
-		<p>
+                <h5>{{dropped_msg}}</h5>
+		<h4><p>Select Target Feature
+				<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Target feature is feature/column in the data that we want to predict.">
+				</i>
+			 <br>
+		</p></h4>
+		<p>	
 		<div class="form-radio">
 		{% for ft in FEATURES %}
 			<nobr>
@@ -92,9 +96,7 @@
 		{% endfor %}
 		</div>
 		</p>
-	
 
-	    	<div class="row">
 		<div  >
 		<div id="cl_div" >
 		<h4><p>Select Features To Keep</p></h4>
@@ -110,7 +112,6 @@
 		</div>
 		</p>
 	
-		</div>
 		</div>
     </dl>
     <p>
