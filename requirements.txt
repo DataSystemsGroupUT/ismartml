@@ -1,4 +1,5 @@
 alabaster==0.7.12
+numpy==1.16.4
 attrs==19.1.0
 -e git+https://github.com/automl/auto-sklearn.git@1c6af59ff61f1d0a3b54b16a35ffbc5d2d3828cd#egg=auto_sklearn
 Babel==2.7.0
@@ -40,7 +41,6 @@ nbconvert==5.5.0
 nbformat==4.4.0
 nose==1.3.7
 notebook==5.7.8
-numpy==1.16.4
 packaging==19.0
 pandas==0.24.2
 pandocfilters==1.4.2
@@ -65,7 +65,7 @@ PyYAML==5.1.1
 pyzmq==18.0.2
 qtconsole==4.5.1
 requests==2.22.0
-scikit-learn==0.19.2
+#scikit-learn==0.19.2
 scipy==1.3.0
 Send2Trash==1.5.0
 six==1.12.0
@@ -92,4 +92,6 @@ webencodings==0.5.1
 Werkzeug==0.15.4
 widgetsnbextension==3.4.2
 xgboost==0.90
+imbalanced-learn==0.5.0
 
+PDPbox==0.2.0

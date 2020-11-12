@@ -26,7 +26,7 @@ ALLOWED_EXTENSIONS = set(["npy", "csv"])
 
 
 def url_mod(fnc):
-    pre = "/ismartml"
+    pre = ""
     return pre + url_for(fnc)
 
 
