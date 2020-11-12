@@ -27,9 +27,15 @@ The tool is avilable at https://bigdata.cs.ut.ee/ismartml/
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ## Using Docker(Recommended)
+### From dockerhub
+```
+docker run -p 8080:80 shotaa/ismartml
+```
+iSmartML should be avilable at http://localhost:8080/ in your browser
 
 
-### Build Image
+### Alternatively Build Image
+
 ```
 git clone https://github.com/DataSystemsGroupUT/ismartml.git
 docker build -t="ismartml" 
