@@ -38,6 +38,7 @@ iSmartML should be avilable at http://localhost:8080/ in your browser
 
 ```
 git clone https://github.com/DataSystemsGroupUT/ismartml.git
+cd ismartml
 docker build -t="ismartml" 
 docker run -p 8080:80  -t ismartml 
 ```
