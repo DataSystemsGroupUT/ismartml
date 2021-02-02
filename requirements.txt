@@ -4,7 +4,7 @@ attrs==19.1.0
 -e git+https://github.com/automl/auto-sklearn.git@1c6af59ff61f1d0a3b54b16a35ffbc5d2d3828cd#egg=auto_sklearn
 Babel==2.7.0
 backcall==0.1.0
-bleach==3.1.0
+bleach==3.3.0
 certifi==2019.6.16
 chardet==3.0.4
 Click==7.0
